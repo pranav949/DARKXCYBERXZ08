@@ -1,0 +1,650 @@
+/* =========================================================
+   DARKXCYBERXZ08
+   CORE VISUAL SYSTEM
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #f1f1f1;
+    font-family: "Space Grotesk", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   BOOT SCREEN
+========================================================= */
+
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #030303;
+
+    font-family: "JetBrains Mono", monospace;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+#boot-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.boot-container {
+    width: min(650px, 88%);
+}
+
+.boot-brand {
+    margin-bottom: 40px;
+
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+.boot-line {
+    margin: 10px 0;
+
+    color: #8a8a8a;
+
+    font-size: 13px;
+    letter-spacing: 0.08em;
+}
+
+.boot-status {
+    margin-top: 30px;
+
+    font-size: 14px;
+    letter-spacing: 0.15em;
+
+    color: #ffffff;
+}
+
+.boot-progress {
+    width: 100%;
+    height: 2px;
+
+    margin-top: 18px;
+
+    background: #202020;
+
+    overflow: hidden;
+}
+
+#boot-progress-bar {
+    display: block;
+
+    width: 0%;
+    height: 100%;
+
+    background: #ffffff;
+
+    transition: width 0.2s linear;
+}
+
+
+/* =========================================================
+   MAIN SITE
+========================================================= */
+
+#main-site {
+    position: relative;
+
+    min-height: 100vh;
+
+    opacity: 0;
+
+    transition: opacity 1s ease;
+}
+
+#main-site.visible {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 80px;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5vw;
+
+    background: rgba(5, 5, 5, 0.72);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+}
+
+.logo {
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 10px;
+    letter-spacing: 0.08em;
+
+    color: #858585;
+}
+
+.nav-links a {
+    position: relative;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: #ffffff;
+
+    transition: width 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 140px 8vw 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 255, 255, 0.055),
+            transparent 30%
+        ),
+        #050505;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.hero-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.25;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.055) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 0%,
+            transparent 72%
+        );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+.hero-eyebrow {
+    margin-bottom: 28px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.16em;
+
+    color: #777777;
+}
+
+.hero-title {
+    font-size: clamp(64px, 12vw, 190px);
+
+    line-height: 0.82;
+
+    font-weight: 700;
+
+    letter-spacing: -0.07em;
+
+    text-transform: uppercase;
+}
+
+.hero-title span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+}
+
+.hero-tagline {
+    margin-top: 50px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: clamp(16px, 2vw, 24px);
+
+    line-height: 1.45;
+
+    letter-spacing: 0.08em;
+
+    color: #bdbdbd;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-actions {
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 42px;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 22px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.btn-primary {
+    background: #ffffff;
+
+    color: #050505;
+}
+
+.btn-primary:hover {
+    background: transparent;
+
+    color: #ffffff;
+
+    border-color: #ffffff;
+
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.45);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   TELEMETRY
+========================================================= */
+
+.telemetry {
+    position: absolute;
+
+    right: 5vw;
+    bottom: 12vh;
+
+    z-index: 3;
+
+    width: 230px;
+
+    padding: 18px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    background: rgba(10, 10, 10, 0.68);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.45);
+}
+
+.telemetry-header {
+    padding-bottom: 12px;
+
+    margin-bottom: 10px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.12em;
+
+    color: #6d6d6d;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.telemetry-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 8px 0;
+
+    font-size: 9px;
+
+    letter-spacing: 0.08em;
+}
+
+.telemetry-row span {
+    color: #666666;
+}
+
+.telemetry-row strong {
+    font-weight: 500;
+
+    color: #eeeeee;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+    position: relative;
+
+    min-height: 80vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 120px 8vw;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(255, 255, 255, 0.025),
+            transparent 28%
+        ),
+        #050505;
+}
+
+.section-label {
+    margin-bottom: 24px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.18em;
+
+    color: #686868;
+}
+
+.section h2 {
+    max-width: 900px;
+
+    font-size: clamp(42px, 7vw, 100px);
+
+    line-height: 0.95;
+
+    letter-spacing: -0.05em;
+
+    text-transform: uppercase;
+}
+
+.section p {
+    max-width: 600px;
+
+    margin-top: 32px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: #777777;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 35px 8vw;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+    color: #555555;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .telemetry {
+        right: 5vw;
+        bottom: 6vh;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: 68px;
+
+        padding: 0 5vw;
+    }
+
+    .logo {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 100svh;
+
+        padding:
+            120px 6vw
+            180px;
+    }
+
+    .hero-title {
+        font-size: clamp(52px, 17vw, 100px);
+    }
+
+    .hero-tagline {
+        margin-top: 34px;
+
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .telemetry {
+        position: absolute;
+
+        left: 6vw;
+        right: auto;
+        bottom: 35px;
+
+        width: calc(100% - 12vw);
+    }
+
+    .section {
+        min-height: 70vh;
+
+        padding:
+            100px 6vw;
+    }
+
+    .section h2 {
+        font-size: clamp(38px, 12vw, 70px);
+    }
+
+    .footer {
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 30px 6vw;
+    }
+
+}
