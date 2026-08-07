@@ -3305,4 +3305,83 @@ input {
         max-width: 100% !important;
         margin: 20px auto !important;
     }
+}/* =========================================================
+   3D GLOBE / HERO INTERFACE MOBILE FIT FIX
+========================================================= */
+
+/* Hero section ko screen ke andar constrain karein */
+.hero {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-height: 100vh !important;
+    overflow: hidden !important; /* Globe bahar na nikle */
+}
+
+/* 3D Canvas Container */
+#cyber-environment {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Canvas element styling */
+#cyber-environment canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+
+/* Mobile Screens Par Globe Ko Scale (Scale-Down) Karein */
+@media screen and (max-width: 768px) {
+
+    /* Globe ko mobile screen me chhota aur fit karein */
+    #cyber-environment canvas {
+        transform: scale(0.65) !important; /* Globe ka size 65% kar dega taaki cut na ho */
+        transform-origin: center 40% !important; /* Globe ko content ke piche center rakhega */
+        opacity: 0.55 !important; /* Text saaf dikhne ke liye light opacity */
+    }
+
+    /* Hero Content Box */
+    .hero-content {
+        position: relative !important;
+        z-index: 25 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 100px 20px 30px !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Mobile Text Fit Fix */
+    .hero-title {
+        font-size: clamp(28px, 8.5vw, 48px) !important;
+        line-height: 1.05 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    /* Buttons Fit Fix */
+    .hero-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100% !important;
+        min-height: 48px !important;
+    }
+
+    /* System Telemetry Box ko niche shift karein */
+    .telemetry {
+        position: relative !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: calc(100% - 40px) !important;
+        margin: 20px auto !important;
+    }
 }
