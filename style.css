@@ -3383,5 +3383,12 @@ input {
         bottom: auto !important;
         width: calc(100% - 40px) !important;
         margin: 20px auto !important;
+    }/* =========================================================
+   MOBILE PAR 3D GLOBE KO HIDE KARNE KE LIYE FIX
+========================================================= */
+@media screen and (max-width: 768px) {
+    #cyber-environment {
+        display: none !important;
     }
+}
 }
