@@ -3250,4 +3250,250 @@ input {
         transition-duration:
             0.01ms !important;
     }
+}/* =====================================================
+   MOBILE RESPONSIVE // DX08
+===================================================== */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    #main-site {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+        width: 100%;
+        padding: 18px 16px;
+        box-sizing: border-box;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+
+    /* GENERAL SECTIONS */
+
+    .section {
+        width: 100%;
+        max-width: 100%;
+        padding: 70px 18px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .section h2 {
+        max-width: 100%;
+        font-size: clamp(30px, 9vw, 52px);
+        line-height: 1;
+        word-break: normal;
+    }
+
+    .section > p {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        width: 100%;
+        min-height: 100svh;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .hero-title {
+        font-size: clamp(42px, 13vw, 90px);
+        line-height: 0.9;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-tagline {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .hero-actions a {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+
+    /* TELEMETRY */
+
+    .telemetry {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: 35px 18px 0;
+        width: auto;
+        max-width: calc(100% - 36px);
+        box-sizing: border-box;
+    }
+
+
+    /* GRID / CARDS */
+
+    .core-grid,
+    .core-system-grid {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: 1fr !important;
+        box-sizing: border-box;
+    }
+
+    .core-card,
+    .core-module,
+    .core-module-main,
+    .core-module-wide {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .core-card h3,
+    .core-module h3 {
+        font-size: clamp(28px, 9vw, 55px);
+        line-height: 1;
+        overflow-wrap: anywhere;
+    }
+
+    .core-card p,
+    .core-module p {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+
+    /* COURSE CARDS */
+
+    .course-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .course-card h3 {
+        font-size: clamp(32px, 10vw, 60px);
+        line-height: 1;
+    }
+
+    .course-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+
+    /* SANDBOX / CORE */
+
+    .sandbox-layout {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+    }
+
+    .sandbox-terminal {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* HUD */
+
+    .hud {
+        display: none;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 30px 18px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+
+    /* LONG TEXT */
+
+    * {
+        max-width: 100%;
+    }
+
+    img,
+    video,
+    canvas,
+    iframe {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+
+/* EXTRA SMALL PHONES */
+
+@media (max-width: 480px) {
+
+    .section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .hero-content {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .telemetry {
+        margin-left: 14px;
+        margin-right: 14px;
+        max-width: calc(100% - 28px);
+    }
+
+    .core-card,
+    .core-module {
+        padding: 22px 18px;
+    }
+
 }
