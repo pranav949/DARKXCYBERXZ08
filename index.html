@@ -31,6 +31,13 @@
         defer>
     </script>
 
+    <!-- MOBILE DEVICE DETECTOR SCRIPT -->
+    <script>
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 800) {
+            document.documentElement.classList.add('dx08-mobile-device');
+        }
+    </script>
+
 </head>
 
 
