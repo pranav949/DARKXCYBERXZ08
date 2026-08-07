@@ -2569,4 +2569,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-});
+});/* =====================================================
+DX08 // MOBILE DEVICE FORCE MODE
+Fixes Android "Desktop Site" viewport scaling
+===================================================== */
+
+(function () {
+
+ const isTouchDevice =
+     navigator.maxTouchPoints > 1 ||
+     "ontouchstart" in window;
+
+ const smallPhysicalDisplay =
+     Math.min(
+         window.screen.width,
+         window.screen.height
+     ) <= 1100;
+
+ const mobileUA =
+     /Android|iPhone|iPad|iPod|Mobile/i.test(
+         navigator.userAgent
+     );
+
+ if (
+     (isTouchDevice && smallPhysicalDisplay) ||
+     mobileUA
+ ) {
+     document.documentElement.classList.add(
+         "dx08-mobile-device"
+     );
+ }
+
+})();

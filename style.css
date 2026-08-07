@@ -3496,4 +3496,220 @@ input {
         padding: 22px 18px;
     }
 
+}/* =====================================================
+   DX08 // MOBILE DEVICE OVERRIDE
+   Works even when Android "Desktop Site" is ON
+===================================================== */
+
+html.dx08-mobile-device,
+html.dx08-mobile-device body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* MAIN SITE */
+
+html.dx08-mobile-device #main-site {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* NAVBAR */
+
+html.dx08-mobile-device .navbar {
+    width: 100%;
+    height: 68px;
+    padding: 18px 16px;
+    box-sizing: border-box;
+}
+
+html.dx08-mobile-device .nav-links {
+    display: none;
+}
+
+html.dx08-mobile-device .logo {
+    font-size: 18px;
+}
+
+
+/* SECTIONS */
+
+html.dx08-mobile-device .section {
+    width: 100%;
+    max-width: 100%;
+    padding: 70px 18px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+/* HERO */
+
+html.dx08-mobile-device .hero {
+    width: 100%;
+    min-height: 100svh;
+    height: auto;
+    overflow: hidden;
+}
+
+html.dx08-mobile-device .hero-content {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 150px 20px 0;
+    box-sizing: border-box;
+}
+
+html.dx08-mobile-device .hero-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(42px, 13vw, 90px);
+    line-height: 0.9;
+    overflow-wrap: anywhere;
+}
+
+html.dx08-mobile-device .hero-tagline {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* BUTTONS */
+
+html.dx08-mobile-device .hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+}
+
+html.dx08-mobile-device .hero-actions a {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+/* TELEMETRY */
+
+html.dx08-mobile-device .telemetry {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 35px 18px 30px;
+    width: auto;
+    max-width: calc(100% - 36px);
+    box-sizing: border-box;
+}
+
+
+/* ALL GRIDS → SINGLE COLUMN */
+
+html.dx08-mobile-device .core-grid,
+html.dx08-mobile-device .core-system-grid {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr !important;
+    box-sizing: border-box;
+}
+
+
+/* CARDS */
+
+html.dx08-mobile-device .core-card,
+html.dx08-mobile-device .core-module,
+html.dx08-mobile-device .core-module-main,
+html.dx08-mobile-device .core-module-wide {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* HEADINGS */
+
+html.dx08-mobile-device .section h2 {
+    max-width: 100%;
+    font-size: clamp(30px, 9vw, 52px);
+    line-height: 1;
+}
+
+html.dx08-mobile-device .core-card h3,
+html.dx08-mobile-device .core-module h3 {
+    font-size: clamp(28px, 9vw, 55px);
+    line-height: 1;
+    overflow-wrap: anywhere;
+}
+
+
+/* COURSE */
+
+html.dx08-mobile-device .course-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+html.dx08-mobile-device .course-card h3 {
+    font-size: clamp(32px, 10vw, 60px);
+    line-height: 1;
+}
+
+html.dx08-mobile-device .course-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+
+/* SANDBOX */
+
+html.dx08-mobile-device .sandbox-layout {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+}
+
+html.dx08-mobile-device .sandbox-terminal {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* HUD */
+
+html.dx08-mobile-device .hud {
+    display: none;
+}
+
+
+/* FOOTER */
+
+html.dx08-mobile-device .footer {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 18px;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+
+/* PREVENT OVERSIZED ELEMENTS */
+
+html.dx08-mobile-device img,
+html.dx08-mobile-device video,
+html.dx08-mobile-device canvas,
+html.dx08-mobile-device iframe {
+    max-width: 100%;
 }
