@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,19 +12,34 @@
 
     <meta
         name="description"
-        content="DARKXCYBERXZ08 — Research, AI Red Teaming, Labs and Security Research."
+        content="DARKXCYBERXZ08 — Educational cyber research, AI red teaming, controlled labs and security research."
     >
 
-    <title>DARKXCYBERXZ08 — Research Lab</title>
+    <meta
+        name="theme-color"
+        content="#030303"
+    >
 
+    <title>DARKXCYBERXZ08 — Research Environment</title>
+
+    <!-- MAIN CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- THREE.JS -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        defer>
+    </script>
+
 </head>
+
 
 <body>
 
-    <!-- =========================================
+
+    <!-- =====================================================
          BOOT SCREEN
-    ========================================== -->
+    ====================================================== -->
 
     <div id="boot-screen">
 
@@ -37,19 +54,27 @@
             </div>
 
             <div class="boot-line">
+                LOADING // CORE
+            </div>
+
+            <div class="boot-line">
                 LOADING // RECON
             </div>
 
             <div class="boot-line">
-                LOADING // AI RED TEAM
+                LOADING // AI RESEARCH
             </div>
 
             <div class="boot-line">
-                LOADING // RESEARCH
+                LOADING // CONTROLLED LABS
             </div>
 
             <div class="boot-line">
-                LOADING // LABS
+                LOADING // RESEARCH DATABASE
+            </div>
+
+            <div class="boot-line">
+                ESTABLISHING SECURE CHANNEL...
             </div>
 
             <div class="boot-status">
@@ -65,43 +90,124 @@
     </div>
 
 
-    <!-- =========================================
+
+    <!-- =====================================================
          MAIN WEBSITE
-    ========================================== -->
+    ======================================================== -->
 
     <main id="main-site">
 
-        <!-- NAVIGATION -->
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
 
         <header class="navbar">
 
-            <a href="#home" class="logo">
-                DARKXCYBERXZ08
+            <a
+                href="#home"
+                class="logo magnetic"
+            >
+                DX08
             </a>
+
 
             <nav class="nav-links">
 
-                <a href="#home">HOME</a>
-                <a href="#learn">LEARN</a>
-                <a href="#ai-red-team">AI RED TEAM</a>
-                <a href="#labs">LABS</a>
-                <a href="#ctf">CTF</a>
-                <a href="#research">RESEARCH</a>
-                <a href="#tools">TOOLS</a>
-                <a href="#writeups">WRITEUPS</a>
+                <a
+                    href="#home"
+                    class="magnetic"
+                >
+                    DX08
+                </a>
+
+                <a
+                    href="#learn"
+                    class="magnetic"
+                >
+                    LEARN
+                </a>
+
+                <a
+                    href="#labs"
+                    class="magnetic"
+                >
+                    LABS
+                </a>
+
+                <a
+                    href="#ai"
+                    class="magnetic"
+                >
+                    AI
+                </a>
+
+                <a
+                    href="#unfiltered"
+                    class="magnetic premium-nav"
+                >
+                    UNFILTERED HACKING
+                    <span class="nav-lock">◆</span>
+                </a>
+
+                <a
+                    href="#research"
+                    class="magnetic"
+                >
+                    RESEARCH
+                </a>
+
+                <a
+                    href="#auth"
+                    class="magnetic nav-access"
+                >
+                    ACCESS
+                </a>
 
             </nav>
 
         </header>
 
 
-        <!-- =========================================
+
+        <!-- =================================================
              HOME
-        ========================================== -->
+        ================================================== -->
 
-        <section id="home" class="hero">
+        <section
+            id="home"
+            class="hero"
+        >
 
-            <div class="hero-grid"></div>
+            <!-- 3D ENVIRONMENT -->
+
+            <div
+                id="cyber-environment"
+                aria-hidden="true"
+            >
+            </div>
+
+
+            <!-- GRID -->
+
+            <div
+                class="hero-grid"
+                aria-hidden="true"
+            >
+            </div>
+
+
+            <!-- SCANLINE -->
+
+            <div
+                class="scanline"
+                aria-hidden="true"
+            >
+            </div>
+
+
+
+            <!-- HERO CONTENT -->
 
             <div class="hero-content">
 
@@ -109,26 +215,51 @@
                     // RESEARCH ENVIRONMENT : ONLINE
                 </div>
 
+
                 <h1 class="hero-title">
-                    DARKX
-                    <span>CYBERXZ08</span>
+
+                    <span class="magnetic-text">
+                        DARKX
+                    </span>
+
+                    <span class="outline magnetic-text">
+                        CYBERXZ08
+                    </span>
+
                 </h1>
 
+
                 <p class="hero-tagline">
+
                     RECON SILENTLY.
                     <br>
-                    EXPLOIT.
+
+                    <span class="glitch-text">
+                        UNDERSTAND.
+                    </span>
+
                     <br>
-                    GET ACCESS.
+
+                    RESEARCH DEEPLY.
+
                 </p>
+
+
 
                 <div class="hero-actions">
 
-                    <a href="#labs" class="btn-primary">
+                    <a
+                        href="#labs"
+                        class="btn-primary magnetic"
+                    >
                         ENTER THE LAB
                     </a>
 
-                    <a href="#research" class="btn-secondary">
+
+                    <a
+                        href="#research"
+                        class="btn-secondary magnetic"
+                    >
                         READ RESEARCH
                     </a>
 
@@ -137,7 +268,10 @@
             </div>
 
 
-            <!-- SYSTEM TELEMETRY -->
+
+            <!-- =================================================
+                 TELEMETRY
+            ================================================== -->
 
             <div class="telemetry">
 
@@ -145,205 +279,827 @@
                     SYSTEM TELEMETRY
                 </div>
 
-                <div class="telemetry-row">
-                    <span>SYSTEM</span>
-                    <strong>ONLINE</strong>
-                </div>
 
                 <div class="telemetry-row">
-                    <span>RESEARCH</span>
-                    <strong>ACTIVE</strong>
+
+                    <span>
+                        SYSTEM
+                    </span>
+
+                    <strong>
+                        ONLINE
+                    </strong>
+
                 </div>
 
-                <div class="telemetry-row">
-                    <span>LABS</span>
-                    <strong>042</strong>
-                </div>
 
                 <div class="telemetry-row">
-                    <span>STATUS</span>
-                    <strong>████████</strong>
+
+                    <span>
+                        RESEARCH
+                    </span>
+
+                    <strong>
+                        ACTIVE
+                    </strong>
+
+                </div>
+
+
+                <div class="telemetry-row">
+
+                    <span>
+                        LABS
+                    </span>
+
+                    <strong>
+                        042
+                    </strong>
+
+                </div>
+
+
+                <div class="telemetry-row">
+
+                    <span>
+                        SANDBOX
+                    </span>
+
+                    <strong>
+                        SAFE
+                    </strong>
+
+                </div>
+
+
+                <div class="telemetry-row">
+
+                    <span>
+                        NETWORK
+                    </span>
+
+                    <strong>
+                        SECURE
+                    </strong>
+
+                </div>
+
+
+                <div class="telemetry-coordinates">
+
+                    NODE:
+                    DX-08
+
+                    <br>
+
+                    ENV:
+                    RESEARCH
+
+                    <br>
+
+                    SIG:
+                    98.4%
+
                 </div>
 
             </div>
+
+
+
+            <!-- =================================================
+                 HUD
+            ================================================== -->
+
+            <div class="hud hud-top-left">
+
+                <span>
+                    SYS://DX08
+                </span>
+
+                <span>
+                    SECURE
+                </span>
+
+            </div>
+
+
+            <div class="hud hud-top-right">
+
+                <span>
+                    NODE_08
+                </span>
+
+                <span>
+                    LIVE
+                </span>
+
+            </div>
+
+
+            <div class="hud hud-bottom-left">
+
+                <span>
+                    SIGNAL
+                </span>
+
+                <span class="signal-bars">
+                    ▂▄▆█
+                </span>
+
+            </div>
+
+
+            <div class="hud hud-bottom-right">
+
+                <span>
+                    2026 // DARK ENVIRONMENT
+                </span>
+
+            </div>
+
 
         </section>
 
 
-        <!-- =========================================
-             LEARN
-        ========================================== -->
 
-        <section id="learn" class="section">
+        <!-- =================================================
+             LEARN
+        ================================================== -->
+
+        <section
+            id="learn"
+            class="section learn-section"
+        >
 
             <div class="section-label">
-                01 // LEARN
+                02 // LEARN
             </div>
 
-            <h2>
+
+            <h2 class="magnetic-text">
                 UNDERSTAND THE SYSTEM.
             </h2>
 
+
             <p>
-                Explore the foundations behind modern systems,
-                networks, applications and security research.
+                Learn the foundations behind modern systems,
+                networks, applications, AI security and research.
             </p>
 
-        </section>
 
 
-        <!-- =========================================
-             AI RED TEAM
-        ========================================== -->
+            <!-- DEMO COURSE -->
 
-        <section id="ai-red-team" class="section">
+            <div class="course-card">
 
-            <div class="section-label">
-                02 // AI RED TEAM
+                <div class="course-card-top">
+
+                    <span class="course-tag">
+                        DX08 // STARTER
+                    </span>
+
+                    <span class="course-price">
+                        ₹15
+                    </span>
+
+                </div>
+
+
+
+                <h3>
+
+                    DARKXCYBERXZ08
+                    <br>
+                    DEMO GUIDE
+
+                </h3>
+
+
+
+                <p>
+
+                    A compact introduction to the DARKXCYBERXZ08
+                    environment, learning roadmap, research areas
+                    and upcoming controlled labs.
+
+                </p>
+
+
+
+                <div class="course-meta">
+
+                    <span>
+                        FORMAT // PDF
+                    </span>
+
+                    <span>
+                        ACCESS // DEMO
+                    </span>
+
+                    <span>
+                        LEVEL // STARTER
+                    </span>
+
+                </div>
+
+
+
+                <a
+                    class="course-button"
+                    href="#auth"
+                >
+                    GET DEMO ACCESS // ₹15
+                </a>
+
+
             </div>
 
-            <h2>
-                BREAK THE LOGIC.
-            </h2>
-
-            <p>
-                Study AI behavior, prompt injection,
-                model security and red-team research.
-            </p>
 
         </section>
 
 
-        <!-- =========================================
-             LABS
-        ========================================== -->
 
-        <section id="labs" class="section">
+        <!-- =================================================
+             LABS
+        ================================================== -->
+
+        <section
+            id="labs"
+            class="section"
+        >
 
             <div class="section-label">
                 03 // LABS
             </div>
 
-            <h2>
+
+            <h2 class="magnetic-text">
                 CONTROLLED ENVIRONMENTS.
             </h2>
 
+
             <p>
-                Practice security concepts inside
-                intentionally vulnerable research environments.
+
+                Explore intentionally vulnerable,
+                isolated research environments designed
+                for safe hands-on learning.
+
             </p>
+
+
+
+            <div class="core-grid">
+
+
+                <!-- LAB 01 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        LAB // 01
+                    </span>
+
+                    <h3>
+                        WEB LAB
+                    </h3>
+
+                    <p>
+                        Learn application security concepts
+                        inside controlled sandbox environments.
+                    </p>
+
+                    <span class="core-status">
+                        ENV // ISOLATED
+                    </span>
+
+                </article>
+
+
+
+                <!-- LAB 02 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        LAB // 02
+                    </span>
+
+                    <h3>
+                        NETWORK LAB
+                    </h3>
+
+                    <p>
+                        Explore network concepts and
+                        defensive traffic analysis.
+                    </p>
+
+                    <span class="core-status">
+                        ENV // CONTROLLED
+                    </span>
+
+                </article>
+
+
+
+                <!-- LAB 03 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        LAB // 03
+                    </span>
+
+                    <h3>
+                        AI LAB
+                    </h3>
+
+                    <p>
+                        Experiment with AI security,
+                        prompt behavior and model testing.
+                    </p>
+
+                    <span class="core-status">
+                        ENV // RESEARCH
+                    </span>
+
+                </article>
+
+
+
+                <!-- LAB 04 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        LAB // 04
+                    </span>
+
+                    <h3>
+                        FORENSICS LAB
+                    </h3>
+
+                    <p>
+                        Explore digital evidence,
+                        system traces, incident analysis
+                        and defensive investigation workflows.
+                    </p>
+
+                    <span class="core-status">
+                        ENV // ANALYSIS
+                    </span>
+
+                </article>
+
+
+            </div>
+
 
         </section>
 
 
-        <!-- =========================================
-             CTF
-        ========================================== -->
 
-        <section id="ctf" class="section">
+        <!-- =================================================
+             AI
+        ================================================== -->
+
+        <section
+        id="ai"
+        class="section"
+    >
+    
+        <div class="section-label">
+            04 // AI
+        </div>
+    
+    
+        <h2 class="magnetic-text">
+            BREAK THE LOGIC.
+        </h2>
+    
+    
+        <p>
+    
+            Study AI behavior, prompt injection,
+            model security, red-team methodology
+            and defensive research.
+    
+        </p>
+    
+    
+    
+        <div class="core-grid">
+    
+    
+            <article class="core-card">
+    
+                <span class="core-index">
+                    AI // 01
+                </span>
+    
+                <h3>
+                    MODEL BEHAVIOR
+                </h3>
+    
+                <p>
+                    Understand how models interpret
+                    instructions, context and input.
+                </p>
+    
+                <span class="core-status">
+                    STATUS // RESEARCH
+                </span>
+    
+            </article>
+    
+    
+    
+            <article class="core-card">
+    
+                <span class="core-index">
+                    AI // 02
+                </span>
+    
+                <h3>
+                    RED TEAMING
+                </h3>
+    
+                <p>
+                    Explore safe AI testing methodology
+                    and controlled adversarial evaluation.
+                </p>
+    
+                <span class="core-status">
+                    STATUS // CONTROLLED
+                </span>
+    
+            </article>
+    
+    
+    
+            <article class="core-card">
+    
+                <span class="core-index">
+                    AI // 03
+                </span>
+    
+                <h3>
+                    DEFENSE
+                </h3>
+    
+                <p>
+                    Study mitigations, evaluation methods
+                    and safer AI system design.
+                </p>
+    
+                <span class="core-status">
+                    STATUS // ACTIVE
+                </span>
+    
+            </article>
+    
+    
+    
+            <!-- AI // 04 -->
+    
+            <article class="core-card">
+    
+                <span class="core-index">
+                    AI // 04
+                </span>
+    
+                <h3>
+                    ADVERSARIAL
+                    <span>EVALUATION</span>
+                </h3>
+    
+                <p>
+                    Test AI systems against controlled
+                    adversarial inputs, evaluate failure
+                    modes and measure model robustness.
+                </p>
+    
+                <span class="core-status">
+                    STATUS // EVALUATION
+                </span>
+    
+            </article>
+    
+    
+        </div>
+    
+    
+    </section>
+
+
+
+        <!-- =================================================
+             UNFILTERED HACKING // PREMIUM
+        ================================================== -->
+
+        <section
+            id="unfiltered"
+            class="section premium-section"
+        >
 
             <div class="section-label">
-                04 // CTF
+                05 // UNFILTERED HACKING
             </div>
 
-            <h2>
-                THINK. ANALYZE. SOLVE.
+
+            <h2 class="magnetic-text">
+                RAW RESEARCH ACCESS.
             </h2>
 
+
             <p>
-                Challenge your skills through controlled
-                capture-the-flag exercises.
+
+                A premium research layer containing deeper
+                educational material, raw methodology,
+                advanced analysis and controlled sandbox research.
+
             </p>
+
+
+
+            <div class="course-card premium-card">
+
+
+                <div class="course-card-top">
+
+                    <span class="course-tag">
+                        DX08 // PREMIUM
+                    </span>
+
+                    <span class="course-price">
+                        ₹999
+                    </span>
+
+                </div>
+
+
+
+                <h3>
+
+                    UNFILTERED
+                    <br>
+                    HACKING
+
+                </h3>
+
+
+
+                <p>
+
+                    Premium access to the deeper DARKXCYBERXZ08
+                    research layer. Designed for advanced
+                    learning and authorized sandbox research.
+
+                </p>
+
+
+
+                <div class="course-meta">
+
+                    <span>
+                        ACCESS // PREMIUM
+                    </span>
+
+                    <span>
+                        CONTENT // RAW
+                    </span>
+
+                    <span>
+                        MODE // SANDBOX
+                    </span>
+
+                </div>
+
+
+
+                <a
+                    class="course-button"
+                    href="#auth"
+                >
+                    UNLOCK PREMIUM // ₹999
+                </a>
+
+
+            </div>
+
 
         </section>
 
 
-        <!-- =========================================
-             RESEARCH
-        ========================================== -->
 
-        <section id="research" class="section">
+        <!-- =================================================
+             RESEARCH
+        ================================================== -->
+
+        <section
+            id="research"
+            class="section"
+        >
 
             <div class="section-label">
-                05 // RESEARCH
+                06 // RESEARCH
             </div>
 
-            <h2>
+
+            <h2 class="magnetic-text">
                 RESEARCH THE UNKNOWN.
             </h2>
 
+
             <p>
+
                 Technical research, experiments,
-                findings and security analysis.
+                findings, security analysis and
+                documented observations.
+
             </p>
 
-        </section>
 
 
-        <!-- =========================================
-             TOOLS
-        ========================================== -->
+            <div class="core-grid">
 
-        <section id="tools" class="section">
 
-            <div class="section-label">
-                06 // TOOLS
+                <!-- RESEARCH 01 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        RES // 01
+                    </span>
+
+                    <h3>
+                        AI RESEARCH
+                    </h3>
+
+                    <p>
+                        Explore AI security behavior,
+                        evaluation and emerging research.
+                    </p>
+
+                    <span class="core-status">
+                        STATUS // ACTIVE
+                    </span>
+
+                </article>
+
+
+
+                <!-- RESEARCH 02 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        RES // 02
+                    </span>
+
+                    <h3>
+                        WEB SECURITY
+                    </h3>
+
+                    <p>
+                        Study application security concepts
+                        through authorized research.
+                    </p>
+
+                    <span class="core-status">
+                        STATUS // ACTIVE
+                    </span>
+
+                </article>
+
+
+
+                <!-- RESEARCH 03 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        RES // 03
+                    </span>
+
+                    <h3>
+                        EXPERIMENTS
+                    </h3>
+
+                    <p>
+                        Document controlled experiments,
+                        observations and technical findings.
+                    </p>
+
+                    <span class="core-status">
+                        STATUS // LOGGING
+                    </span>
+
+                </article>
+
+
+
+                <!-- RESEARCH 04 -->
+
+                <article class="core-card">
+
+                    <span class="core-index">
+                        RES // 04
+                    </span>
+
+                    <h3>
+                        SECURITY ANALYSIS
+                    </h3>
+
+                    <p>
+                        Analyze security findings,
+                        attack surfaces, vulnerabilities
+                        and defensive observations.
+                    </p>
+
+                    <span class="core-status">
+                        STATUS // ANALYSIS
+                    </span>
+
+                </article>
+
+
             </div>
 
-            <h2>
-                BUILD YOUR TOOLKIT.
-            </h2>
-
-            <p>
-                Research utilities, references,
-                cheatsheets and lab resources.
-            </p>
 
         </section>
 
 
-        <!-- =========================================
-             WRITEUPS
-        ========================================== -->
 
-        <section id="writeups" class="section">
+        <!-- =================================================
+             ACCESS
+        ================================================== -->
+
+        <section
+            id="auth"
+            class="section auth-section"
+        >
 
             <div class="section-label">
-                07 // WRITEUPS
+                07 // ACCESS
             </div>
 
-            <h2>
-                DOCUMENT EVERYTHING.
+
+            <h2 class="magnetic-text">
+                SECURE ACCESS.
             </h2>
 
+
             <p>
-                Technical writeups, experiments,
-                lessons and research notes.
+                Authentication system initializing...
+                Login and premium access will be connected here.
             </p>
+
+
+            <div id="auth-container">
+
+                <!--
+                    SUPABASE AUTH WILL BE CONNECTED HERE.
+                    LOGIN / SIGNUP / PREMIUM ACCESS
+                -->
+
+            </div>
+
 
         </section>
 
 
-        <!-- FOOTER -->
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
         <footer class="footer">
+
 
             <div>
                 DARKXCYBERXZ08
             </div>
 
+
             <div>
-                RECON // RESEARCH // UNDERSTAND
+                CORE // LEARN // LABS // AI // RESEARCH
             </div>
 
+
         </footer>
+
 
     </main>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ======================================================= -->
 
     <script src="script.js"></script>
 
+
 </body>
+
 </html>
