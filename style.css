@@ -3252,202 +3252,33 @@ input {
     }
 }
 
-/* =====================================================
-   DX08 // MOBILE DEVICE OVERRIDE
-   Android / Touch Device Mobile Force
-===================================================== */
-html.dx08-mobile-device,
-html.dx08-mobile-device body {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow-x: hidden;
-}
 
-html.dx08-mobile-device #main-site {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow-x: hidden;
-}
-
-html.dx08-mobile-device .navbar {
-    width: 100%;
-    height: 64px;
-    padding: 0 16px;
-    box-sizing: border-box;
-}
-
-html.dx08-mobile-device .nav-links {
-    display: none !important;
-}
-
-html.dx08-mobile-device .logo {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-}
-
-html.dx08-mobile-device .section {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    padding: 75px 18px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-html.dx08-mobile-device .hero {
-    width: 100%;
-    min-height: 100svh;
-    height: auto;
-    overflow: hidden;
-}
-
-html.dx08-mobile-device #cyber-environment {
-    z-index: 1;
-    opacity: 0.68;
-    overflow: hidden;
-}
-
-html.dx08-mobile-device #cyber-environment canvas {
-    width: 100% !important;
-    height: 100% !important;
-    transform: scale(0.80);
-    transform-origin: 72% 58%;
-}
-
-html.dx08-mobile-device .hero-grid {
-    z-index: 2;
-    opacity: 0.30;
-}
-
-html.dx08-mobile-device .hero-content {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    padding: 105px 18px 30px;
-    box-sizing: border-box;
-    transform: none;
-    z-index: 20;
-}
-
-html.dx08-mobile-device .hero-title {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin-bottom: 22px;
-    font-size: clamp(34px, 7vw, 58px);
-    line-height: 0.9;
-    letter-spacing: -0.055em;
-    white-space: normal;
-    overflow: visible;
-}
-
-html.dx08-mobile-device .hero-title > span {
-    display: block;
-    width: max-content;
-    max-width: 100%;
-}
-
-html.dx08-mobile-device .hero-tagline {
-    max-width: 100%;
-    font-size: 10px;
-    line-height: 1.65;
-    letter-spacing: 0.1em;
-}
-
-html.dx08-mobile-device .hero-actions {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    margin-top: 24px;
-}
-
-html.dx08-mobile-device .hero-actions a {
-    width: 100%;
-    max-width: 100%;
-    min-height: 46px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-html.dx08-mobile-device .telemetry {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    width: auto;
-    max-width: calc(100% - 28px);
-    margin: 22px 14px 25px;
-    padding: 13px;
-    box-sizing: border-box;
-    transform: none;
-    animation: none;
-}
-
-html.dx08-mobile-device .core-grid,
-html.dx08-mobile-device .core-system-grid,
-html.dx08-mobile-device .sandbox-layout {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    grid-template-columns: 1fr !important;
-    box-sizing: border-box;
-}
-
-html.dx08-mobile-device .core-card,
-html.dx08-mobile-device .core-module,
-html.dx08-mobile-device .core-module-main,
-html.dx08-mobile-device .core-module-wide,
-html.dx08-mobile-device .sandbox-terminal,
-html.dx08-mobile-device .course-card,
-html.dx08-mobile-device #auth-container,
-html.dx08-mobile-device .auth-panel {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-}
-
-html.dx08-mobile-device .hud {
-    display: none !important;
-}
-
-html.dx08-mobile-device .footer {
-    width: 100%;
-    min-height: auto;
-    box-sizing: border-box;
-    padding: 28px 18px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 12px;
-    text-align: left;
-}/* =========================================================
-   FORCE FIX FOR MOBILE & DESKTOP SITE MODE OVERLAP
+/* =========================================================
+   ULTIMATE MOBILE & DESKTOP SITE MODE OVERLAP FIX
 ========================================================= */
 
 @media screen and (max-width: 1024px) {
-    body, html, #main-site {
+    html, body, #main-site {
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
     }
 
+    .hero {
+        min-height: 100vh !important;
+        height: auto !important;
+        position: relative !important;
+    }
+
     .hero-content {
         position: relative !important;
-        top: auto !important;
-        left: auto !important;
+        top: unset !important;
+        left: unset !important;
         transform: none !important;
-        width: 100% !important;
-        padding: 100px 20px 30px !important;
+        width: 90% !important;
+        max-width: 500px !important;
+        margin: 0 auto !important;
+        padding: 110px 0 40px !important;
     }
 
     .hero-title {
@@ -3456,22 +3287,22 @@ html.dx08-mobile-device .footer {
         word-break: break-word !important;
     }
 
-    .core-grid {
-        display: flex !important;
+    .hero-actions {
+        position: relative !important;
         flex-direction: column !important;
         width: 100% !important;
     }
 
-    .core-card, .course-card {
+    .btn-primary, .btn-secondary {
         width: 100% !important;
-        max-width: 100% !important;
     }
 
     .telemetry {
         position: relative !important;
-        right: auto !important;
-        bottom: auto !important;
+        right: unset !important;
+        bottom: unset !important;
         width: 100% !important;
-        margin: 20px 0 !important;
+        max-width: 100% !important;
+        margin: 20px auto !important;
     }
 }
