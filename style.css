@@ -3701,41 +3701,137 @@
    }
    
    
-   /* =========================================================
-      DEVICE CLASS OVERRIDE
-      Works if JS adds:
-      html.dx08-mobile-device
-      ========================================================= */
-   
-   html.dx08-mobile-device,
-   html.dx08-mobile-device body {
-       width: 100%;
-       max-width: 100%;
-       overflow-x: hidden;
-   }
-   
-   html.dx08-mobile-device #main-site {
-       width: 100%;
-       max-width: 100%;
-       overflow-x: hidden;
-   }
-   
-   html.dx08-mobile-device .nav-links {
-       display: none;
-   }
-   
-   html.dx08-mobile-device .core-grid,
-   html.dx08-mobile-device .core-system-grid,
-   html.dx08-mobile-device .sandbox-layout {
-       grid-template-columns: 1fr !important;
-   }
-   
-   html.dx08-mobile-device img,
-   html.dx08-mobile-device video,
-   html.dx08-mobile-device canvas,
-   html.dx08-mobile-device iframe {
-       max-width: 100%;
-   }
+  /* =========================================================
+   DEVICE CLASS OVERRIDE
+   Android / Touch Device Mobile Force
+========================================================= */
+
+html.dx08-mobile-device,
+html.dx08-mobile-device body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+html.dx08-mobile-device #main-site {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* NAV */
+
+html.dx08-mobile-device .navbar {
+    width: 100%;
+    max-width: 100%;
+}
+
+html.dx08-mobile-device .nav-links {
+    display: none !important;
+}
+
+/* HERO */
+
+html.dx08-mobile-device .hero {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+html.dx08-mobile-device .hero-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    left: auto;
+    right: auto;
+    box-sizing: border-box;
+}
+
+html.dx08-mobile-device .hero-title {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+/* SECTIONS */
+
+html.dx08-mobile-device .section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* CORE */
+
+html.dx08-mobile-device .core-grid,
+html.dx08-mobile-device .core-system-grid,
+html.dx08-mobile-device .sandbox-layout {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr !important;
+}
+
+html.dx08-mobile-device .core-card,
+html.dx08-mobile-device .core-module,
+html.dx08-mobile-device .core-module-main,
+html.dx08-mobile-device .core-module-wide,
+html.dx08-mobile-device .sandbox-terminal {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* AUTH */
+
+html.dx08-mobile-device #auth-container,
+html.dx08-mobile-device .auth-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* COURSE */
+
+html.dx08-mobile-device .course-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* MEDIA */
+
+html.dx08-mobile-device img,
+html.dx08-mobile-device video,
+html.dx08-mobile-device canvas,
+html.dx08-mobile-device iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+html.dx08-mobile-device canvas {
+    display: block;
+}
+
+/* PREVENT LONG TEXT FROM BREAKING MOBILE WIDTH */
+
+html.dx08-mobile-device h1,
+html.dx08-mobile-device h2,
+html.dx08-mobile-device h3,
+html.dx08-mobile-device p,
+html.dx08-mobile-device span,
+html.dx08-mobile-device a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
    
    
    /* =========================================================
