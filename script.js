@@ -2664,3 +2664,27 @@ function forceCleanMobileLayout() {
 forceCleanMobileLayout();
 window.addEventListener('resize', forceCleanMobileLayout);
 window.addEventListener('orientationchange', () => setTimeout(forceCleanMobileLayout, 200));
+// Page load ya wapas aane par OAuth loading states ko reset karne ke liye
+window.addEventListener('pageshow', (event) => {
+    // Agar user back button dabakar wapas aaya hai
+    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+        // Sabhi auth buttons aur loaders ko enable/reset kar do
+        const authButtons = document.querySelectorAll('.oauth-button, .auth-submit');
+        authButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+        });
+    }
+});
+
+// Window par focus aane par bhi state clear karein
+window.addEventListener('focus', () => {
+    const authButtons = document.querySelectorAll('.oauth-button, .auth-submit');
+    authButtons.forEach(btn => {
+        if(btn.disabled) {
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    });
+});
