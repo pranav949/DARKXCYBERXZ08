@@ -3103,4 +3103,96 @@ input {
         bottom: auto !important;
         z-index: 5 !important;
     }
+}/* =====================================================
+   ULTIMATE BULLETPROOF RESPONSIVE FIX (ALL MODES)
+===================================================== */
+@media screen and (max-width: 1024px) {
+    /* 1. Global Reset for Mobile/Small Screens */
+    html, body, #main-site {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* 2. Hide Desktop 3D Globe on Small Screens */
+    #cyber-environment {
+        display: none !important;
+    }
+
+    /* 3. Hero Section as Fluid Flex Container */
+    .hero, section#home {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 90px 15px 80px 15px !important;
+        overflow-y: auto !important;
+    }
+
+    /* 4. Strict Order: Hero Content (Heading + Buttons) First */
+    .hero-content {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+        order: 1 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 7vw, 46px) !important;
+        line-height: 1.15 !important;
+        color: #fff !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* 5. Buttons Section */
+    .hero-actions {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        padding: 0 10px !important;
+        order: 2 !important;
+        z-index: 15 !important;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100% !important;
+        min-height: 48px !important;
+        margin: 4px 0 !important;
+    }
+
+    /* 6. Telemetry Box Strictly Below Buttons */
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 92% !important;
+        max-width: 420px !important;
+        margin: 25px auto 40px auto !important;
+        order: 3 !important;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        z-index: 5 !important;
+    }
 }
