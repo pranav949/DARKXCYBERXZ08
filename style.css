@@ -3438,4 +3438,45 @@ html.dx08-mobile-device .hero-actions {
         transform: none !important;
         z-index: 5 !important;
     }
+}@media screen and (max-width: 1024px) {
+    .hero, section#home {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 100px 15px 80px 15px !important;
+    }
+    .hero-content {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+    /* Logo / Heading jo cut ho rahi thi use visible karein */
+    .hero-content h1, .hero-content .logo, .cyber-title {
+        font-size: clamp(24px, 7vw, 42px) !important;
+        line-height: 1.2 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    /* Telemetry box ko saaf-suthra niche rakhein */
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 92% !important;
+        max-width: 420px !important;
+        margin: 20px auto !important;
+        transform: none !important;
+    }
+    /* Agar main screen par terminal abhi bhi hai toh use chhipa do kyunki hum ise button modal mein shift kar rahe hain */
+    .terminal-container {
+        display: none !important;
+    }
 }

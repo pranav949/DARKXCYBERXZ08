@@ -270,6 +270,15 @@
                         READ RESEARCH
                     </a>
 
+                    <!-- TERMINAL TRIGGER BUTTON -->
+                    <button
+                        type="button"
+                        id="open-terminal-btn"
+                        class="btn-secondary magnetic"
+                    >
+                        OPEN SYSTEM TERMINAL
+                    </button>
+
                 </div>
 
             </div>
@@ -277,19 +286,21 @@
 
 
             <!-- =================================================
-                 INTERACTIVE TERMINAL CLI BOX
+                 TERMINAL MODAL (POPUP)
             ================================================== -->
-            <div class="terminal-cli-box">
-                <div class="terminal-cli-header">
-                    <span>DX08_TERMINAL // v2.0</span>
-                    <span class="terminal-dots">•••</span>
-                </div>
-                <div id="terminal-output" class="terminal-cli-output">
-                    > SYSTEM INITIALIZED... TYPE 'help' FOR COMMANDS.
-                </div>
-                <div class="terminal-cli-input-wrapper">
-                    <span class="terminal-prompt">></span>
-                    <input type="text" id="terminal-input" placeholder="try 'scan', 'status', 'help'..." autocomplete="off">
+            <div id="terminal-modal" class="terminal-modal" style="display: none;">
+                <div class="terminal-modal-content">
+                    <div class="terminal-cli-header">
+                        <span>DX08_TERMINAL // v2.0</span>
+                        <button type="button" id="close-terminal-btn" class="close-btn">[X]</button>
+                    </div>
+                    <div id="terminal-output" class="terminal-cli-output">
+                        > SYSTEM INITIALIZED... TYPE 'help' FOR COMMANDS.
+                    </div>
+                    <div class="terminal-cli-input-wrapper">
+                        <span class="terminal-prompt">></span>
+                        <input type="text" id="terminal-input" placeholder="try 'scan', 'status', 'help'..." autocomplete="off">
+                    </div>
                 </div>
             </div>
 
@@ -1124,6 +1135,25 @@
     ======================================================= -->
 
     <script src="script.js"></script>
+    
+    <!-- TERMINAL POPUP LOGIC -->
+    <script>
+        const openTermBtn = document.getElementById("open-terminal-btn");
+        const closeTermBtn = document.getElementById("close-terminal-btn");
+        const termModal = document.getElementById("terminal-modal");
+
+        if (openTermBtn && termModal) {
+            openTermBtn.addEventListener("click", () => {
+                termModal.style.display = "flex";
+            });
+        }
+
+        if (closeTermBtn && termModal) {
+            closeTermBtn.addEventListener("click", () => {
+                termModal.style.display = "none";
+            });
+        }
+    </script>
 
 
 </body>
