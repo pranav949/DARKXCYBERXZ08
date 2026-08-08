@@ -3024,7 +3024,7 @@ input {
 
 
 /* =========================================================
-   MOBILE RESPONSIVE 3D GLOBE & HERO OPTIMIZATION (No Overlap)
+   MOBILE MATRIX RAIN BACKGROUND EFFECT (Professional Clean UI)
 ========================================================= */
 
 @media screen and (max-width: 1024px) {
@@ -3034,45 +3034,47 @@ input {
         overflow-x: hidden !important;
     }
 
+    /* Globe ko hata kar matrix canvas ko background mein set karein */
     #cyber-environment {
         display: block !important;
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        height: 60vh !important;
+        height: 100% !important;
         z-index: 1 !important;
-        opacity: 0.4 !important;
+        opacity: 0.25 !important; /* Text saaf dikhe isliye halka transparent */
         pointer-events: none !important;
         overflow: hidden !important;
+        background: #020304 !important;
     }
 
     #cyber-environment canvas {
+        display: block !important;
         width: 100% !important;
         height: 100% !important;
-        transform: scale(0.45) !important; 
-        transform-origin: center center !important;
     }
 
+    /* Hero content aur buttons ki proper positioning taaki koi cut na ho */
     .hero-content {
         position: relative !important;
         z-index: 10 !important;
         width: 90% !important;
         max-width: 500px !important;
         margin: 0 auto !important;
-        padding-top: 100px !important;
+        padding-top: 110px !important;
         text-align: center !important;
         background: transparent !important;
     }
 
     .hero-title {
-        font-size: clamp(30px, 7.5vw, 48px) !important;
+        font-size: clamp(32px, 8vw, 52px) !important;
         line-height: 1.1 !important;
         color: #fff !important;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.9) !important;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.8) !important;
         white-space: normal !important;
         word-break: break-word !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 15px !important;
     }
 
     .hero-subtitle {
@@ -3088,7 +3090,7 @@ input {
         flex-direction: column !important;
         gap: 12px !important;
         width: 100% !important;
-        padding: 0 10px !important;
+        padding: 0 20px !important;
     }
 
     .btn-primary, .btn-secondary {
@@ -3099,6 +3101,7 @@ input {
         margin: 5px 0 !important;
     }
 
+    /* Telemetry box ko mobile par niche shift karein */
     .telemetry {
         position: relative !important;
         z-index: 10 !important;
@@ -3106,8 +3109,8 @@ input {
         bottom: auto !important;
         width: 90% !important;
         max-width: 100% !important;
-        margin: 30px auto 20px auto !important;
-        background: rgba(2, 5, 10, 0.85) !important;
-        border: 1px solid rgba(0, 229, 255, 0.4) !important;
+        margin: 30px auto !important;
+        background: rgba(0, 20, 40, 0.8) !important;
+        border: 1px solid #0ff !important;
     }
 }
