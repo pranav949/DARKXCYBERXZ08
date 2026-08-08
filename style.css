@@ -3122,16 +3122,20 @@ input {
 }
 
 html.dx08-mobile-device .telemetry {
-    position: static !important;
+    position: relative !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    z-index: 10 !important;
+    z-index: 50 !important;
     clear: both !important;
     float: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
     width: 90% !important;
     max-width: 450px !important;
-    margin: 40px auto 50px auto !important;
+    margin: 40px auto 40px auto !important;
     padding: 15px !important;
     background: rgba(2, 10, 20, 0.95) !important;
     border: 1px solid rgba(0, 229, 255, 0.6) !important;
