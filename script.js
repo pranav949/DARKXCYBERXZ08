@@ -2648,13 +2648,28 @@ window.addEventListener('load', function() {
     }
 });// Move telemetry below hero actions dynamically on mobile/desktop-site
 window.addEventListener('DOMContentLoaded', () => {
-    const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
-    
-    if (isMobilePortrait) {
-        const telemetry = document.querySelector('.telemetry');
-        const heroContent = document.querySelector('.hero-content');
-        if (telemetry && heroContent) {
-            heroContent.appendChild(telemetry);
+    const telemetry = document.querySelector('.telemetry');
+    const heroContent = document.querySelector('.hero-content');
+
+    function handleLayout() {
+        if (!telemetry) return;
+
+        // Agar landscape mode hai (width height se zyada hai)
+        if (window.innerWidth > window.innerHeight && window.innerHeight <= 600) {
+            telemetry.style.display = 'none';
+        } else {
+            telemetry.style.display = 'block';
+            // Agar portrait mobile hai toh buttons ke niche daal do
+            if (window.innerWidth <= 768 && heroContent && !heroContent.contains(telemetry)) {
+                heroContent.appendChild(telemetry);
+            }
         }
     }
+
+    // Page load par check karo
+    handleLayout();
+
+    // Jab bhi screen rotate ho tab check karo
+    window.addEventListener('resize', handleLayout);
+    window.addEventListener('orientationchange', handleLayout);
 });

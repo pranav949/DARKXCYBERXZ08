@@ -3242,4 +3242,8 @@ html.dx08-mobile-device .hero-actions {
     .telemetry {
         display: none !important;
     }
+}@media screen and (orientation: landscape) {
+    .telemetry {
+        display: none !important;
+    }
 }
