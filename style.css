@@ -3391,4 +3391,51 @@ html.dx08-mobile-device .hero-actions {
     .terminal-container, .terminal {
         position: absolute !important;
     }
+}/* =====================================================
+   FINAL HEADING & LAYOUT FIX FOR MOBILE
+===================================================== */
+@media screen and (max-width: 1024px) {
+    /* Hero section ko proper vertical layout dein */
+    .hero, section#home {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 90px 15px 80px 15px !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+    }
+
+    /* Heading, Logo aur Buttons ko sabse upar saaf dikhane ke liye */
+    .hero-content {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 0 auto 25px auto !important;
+        text-align: center !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+    }
+
+    /* Telemetry box ko buttons ke theek niche set karein */
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 92% !important;
+        max-width: 420px !important;
+        margin: 20px auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        z-index: 5 !important;
+    }
 }
