@@ -3166,4 +3166,17 @@ html.dx08-mobile-device .hero-actions {
         width: 225px !important;
         margin: 0 !important;
     }
+}@media screen and (max-height: 600px) and (orientation: landscape) {
+    html.dx08-mobile-device .telemetry,
+    .telemetry {
+        position: absolute !important;
+        right: 20px !important;
+        bottom: 20px !important;
+        width: 260px !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        font-size: 11px !important;
+        z-index: 100 !important;
+    }
 }
