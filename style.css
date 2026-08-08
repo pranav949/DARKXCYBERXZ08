@@ -3129,13 +3129,23 @@ html.dx08-mobile-device .telemetry {
     z-index: 10 !important;
     clear: both !important;
     float: none !important;
-    width: 100% !important;
+    left: -12px !important; /* Isse box thoda sa left shift ho jayega */
+    right: auto !important;
+    width: 92% !important;
     max-width: 450px !important;
     margin: 35px auto 20px auto !important;
     padding: 15px !important;
     background: rgba(2, 10, 20, 0.95) !important;
     border: 1px solid rgba(0, 229, 255, 0.6) !important;
     box-sizing: border-box !important;
+    text-align: left !important;
+}
+
+html.dx08-mobile-device .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
 }
 
 html.dx08-mobile-device .hero-actions {
@@ -3143,6 +3153,7 @@ html.dx08-mobile-device .hero-actions {
     z-index: 20 !important;
     display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
     gap: 12px !important;
     width: 100% !important;
     margin-bottom: 10px !important;
