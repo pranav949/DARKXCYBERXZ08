@@ -3237,4 +3237,9 @@ html.dx08-mobile-device .hero-actions {
         z-index: 100 !important;
         transform: none !important;
     }
+}/* Landscape mode mein telemetry box ko hide kar do taaki koi dikkt na aaye */
+@media screen and (orientation: landscape) and (max-height: 700px) {
+    .telemetry {
+        display: none !important;
+    }
 }
