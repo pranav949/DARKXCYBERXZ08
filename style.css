@@ -3263,4 +3263,32 @@ html.dx08-mobile-device .hero-actions {
         bottom: auto !important;
         z-index: 5 !important;
     }
+}@media screen and (max-width: 1024px) {
+    /* Telemetry aur Terminal ko ek clean vertical stack mein set karein */
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 92% !important;
+        max-width: 450px !important;
+        margin: 30px auto 15px auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+    }
+
+    .terminal-container, .terminal, #terminal-output {
+        position: relative !important;
+        display: block !important;
+        width: 92% !important;
+        max-width: 450px !important;
+        margin: 15px auto 40px auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        z-index: 10 !important;
+    }
 }
