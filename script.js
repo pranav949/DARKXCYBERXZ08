@@ -2649,5 +2649,4 @@ document.addEventListener("DOMContentLoaded", () => {
     fixMobileLayout();
     window.addEventListener('resize', fixMobileLayout);
     window.addEventListener('orientationchange', () => setTimeout(fixMobileLayout, 200));
-
 });

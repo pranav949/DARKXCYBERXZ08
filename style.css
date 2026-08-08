@@ -3269,4 +3269,59 @@ html.dx08-mobile-device .hero-actions {
         margin: 20px auto !important;
         clear: both !important;
     }
+}@media screen and (max-width: 1024px) {
+    /* Poore hero section ko mobile par scrollable aur proper flow mein rakhein */
+    .hero, section#home {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 90px 15px 80px 15px !important;
+        overflow-y: auto !important;
+    }
+
+    /* Hero content (Logo, text, buttons) sabse upar rahenge */
+    .hero-content {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        order: 1 !important;
+    }
+
+    /* Telemetry box buttons ke niche aayega */
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 420px !important;
+        margin: 25px auto !important;
+        order: 2 !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+    }
+
+    /* Terminal box telemetry ke bilkul niche aayega */
+    .terminal-container, .terminal, #terminal-output {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 420px !important;
+        margin: 20px auto 40px auto !important;
+        order: 3 !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+    }
 }
