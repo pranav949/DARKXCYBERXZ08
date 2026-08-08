@@ -2646,4 +2646,11 @@ window.addEventListener('load', function() {
 
         setInterval(drawMatrix, 33);
     }
+});// Move telemetry below hero actions dynamically on mobile/desktop-site
+window.addEventListener('DOMContentLoaded', () => {
+    const telemetry = document.querySelector('.telemetry');
+    const heroContent = document.querySelector('.hero-content');
+    if (telemetry && heroContent) {
+        heroContent.appendChild(telemetry);
+    }
 });

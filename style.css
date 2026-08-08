@@ -3126,16 +3126,12 @@ html.dx08-mobile-device .telemetry {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    z-index: 50 !important;
+    z-index: 10 !important;
     clear: both !important;
     float: none !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 90% !important;
+    width: 100% !important;
     max-width: 450px !important;
-    margin: 40px auto 40px auto !important;
+    margin: 35px auto 20px auto !important;
     padding: 15px !important;
     background: rgba(2, 10, 20, 0.95) !important;
     border: 1px solid rgba(0, 229, 255, 0.6) !important;
@@ -3145,8 +3141,9 @@ html.dx08-mobile-device .telemetry {
 html.dx08-mobile-device .hero-actions {
     position: relative !important;
     z-index: 20 !important;
+    display: flex !important;
     flex-direction: column !important;
     gap: 12px !important;
     width: 100% !important;
-    padding: 0 20px !important;
+    margin-bottom: 10px !important;
 }
