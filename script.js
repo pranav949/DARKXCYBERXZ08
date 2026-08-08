@@ -2630,23 +2630,5 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
-       MOBILE LAYOUT PERMANENT FIX (Jad se solution)
-    ===================================================== */
-    function fixMobileLayout() {
-        if (window.innerWidth <= 1024) {
-            const heroContent = document.querySelector('.hero-content') || document.querySelector('.hero');
-            const telemetry = document.querySelector('.telemetry');
-            const terminal = document.querySelector('.terminal-container');
 
-            if (heroContent) {
-                if (telemetry) heroContent.appendChild(telemetry);
-                if (terminal) heroContent.appendChild(terminal);
-            }
-        }
-    }
-
-    fixMobileLayout();
-    window.addEventListener('resize', fixMobileLayout);
-    window.addEventListener('orientationchange', () => setTimeout(fixMobileLayout, 200));
 });

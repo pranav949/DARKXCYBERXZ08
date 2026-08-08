@@ -3324,4 +3324,71 @@ html.dx08-mobile-device .hero-actions {
         bottom: auto !important;
         transform: none !important;
     }
+}@media screen and (max-width: 1024px) {
+    /* Main container ya body ko vertical column bana do */
+    body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* Hero section ko properly scrollable flex container banayein */
+    .hero, section#home {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 80px 10px 100px 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Sabhi main blocks ko strict order do: 1. Text/Buttons, 2. Telemetry, 3. Terminal */
+    .hero-content {
+        order: 1 !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    .telemetry {
+        order: 2 !important;
+        position: relative !important;
+        display: block !important;
+        width: 95% !important;
+        max-width: 420px !important;
+        margin: 20px auto !important;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        z-index: 5 !important;
+    }
+
+    .terminal-container, .terminal, #terminal-output {
+        order: 3 !important;
+        position: relative !important;
+        display: block !important;
+        width: 95% !important;
+        max-width: 420px !important;
+        margin: 20px auto !important;
+        transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        z-index: 10 !important;
+    }
 }
