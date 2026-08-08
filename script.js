@@ -2531,6 +2531,112 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
+       MOBILE MATRIX RAIN FALLBACK
+    ===================================================== */
+
+    if (window.innerWidth <= 1024) {
+        window.addEventListener('load', function() {
+            const container = document.getElementById('cyber-environment');
+            if (!container) return;
+            
+            container.innerHTML = '<canvas id="matrix-canvas"></canvas>';
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const characters = '01AZ010101DX08CYBER#$<>*+';
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(2, 3, 4, 0.18)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#00e5ff';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(drawMatrix, 30);
+        });
+    }
+
+
+    /* =====================================================
+       BULLETPROOF TELEMETRY & LAYOUT MANAGER
+    ===================================================== */
+
+    const telemetry = document.querySelector('.telemetry');
+    const heroContent = document.querySelector('.hero-content');
+    
+    if (telemetry) {
+        const originalParent = telemetry.parentNode;
+        const originalNextSibling = telemetry.nextElementSibling;
+
+        function handleAllLayouts() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 650;
+            const isMobileScreen = window.innerWidth <= 1024;
+
+            if (!isTouchDevice && window.innerWidth > 1024) {
+                if (originalParent && !originalParent.contains(telemetry)) {
+                    if (originalNextSibling) {
+                        originalParent.insertBefore(telemetry, originalNextSibling);
+                    } else {
+                        originalParent.appendChild(telemetry);
+                    }
+                }
+                telemetry.style.display = 'block';
+                telemetry.style.position = '';
+                telemetry.style.left = '';
+                telemetry.style.right = '';
+                telemetry.style.margin = '';
+                return;
+            }
+
+            if (isLandscape && isMobileScreen) {
+                if (telemetry.parentNode) {
+                    telemetry.parentNode.removeChild(telemetry);
+                }
+                return;
+            }
+
+            if (heroContent && !heroContent.contains(telemetry)) {
+                heroContent.appendChild(telemetry);
+            }
+            telemetry.style.display = 'block';
+            telemetry.style.position = 'relative';
+            telemetry.style.left = '0';
+            telemetry.style.right = '0';
+            telemetry.style.margin = '25px auto 15px auto';
+        }
+
+        handleAllLayouts();
+
+        window.addEventListener('resize', handleAllLayouts);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(handleAllLayouts, 150);
+        });
+    }
+
+
+    /* =====================================================
        START EVERYTHING
     ===================================================== */
 
@@ -2569,138 +2675,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-});/* =====================================================
-DX08 // MOBILE DEVICE FORCE MODE
-Fixes Android "Desktop Site" viewport scaling
-===================================================== */
-
-(function () {
-
- const isTouchDevice =
-     navigator.maxTouchPoints > 1 ||
-     "ontouchstart" in window;
-
- const smallPhysicalDisplay =
-     Math.min(
-         window.screen.width,
-         window.screen.height
-     ) <= 1100;
-
- const mobileUA =
-     /Android|iPhone|iPad|iPod|Mobile/i.test(
-         navigator.userAgent
-     );
-
- if (
-     (isTouchDevice && smallPhysicalDisplay) ||
-     mobileUA
- ) {
-     document.documentElement.classList.add(
-         "dx08-mobile-device"
-     );
- }
-
-})();
-
-/* =====================================================
-DX08 // MOBILE MATRIX RAIN EFFECT INTEGRATION
-===================================================== */
-window.addEventListener('load', function() {
-    if (window.innerWidth <= 1024) {
-        const container = document.getElementById('cyber-environment');
-        if (!container) return;
-        
-        container.innerHTML = '<canvas id="matrix-canvas"></canvas>';
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const characters = '01AZ010101DX08CYBER#$<>*+';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(2, 3, 4, 0.15)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00e5ff';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 33);
-    }
-});// Move telemetry below hero actions dynamically on mobile/desktop-site
-window.addEventListener('DOMContentLoaded', () => {
-    const telemetry = document.querySelector('.telemetry');
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (!telemetry) return;
-
-    const originalParent = telemetry.parentNode;
-    const originalNextSibling = telemetry.nextElementSibling;
-
-    function handleAllLayouts() {
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 650;
-        const isMobileScreen = window.innerWidth <= 1024;
-
-        // 1. Agar PC/Laptop hai (Touch nahi hai aur screen badi hai)
-        if (!isTouchDevice && window.innerWidth > 1024) {
-            if (originalParent && !originalParent.contains(telemetry)) {
-                if (originalNextSibling) {
-                    originalParent.insertBefore(telemetry, originalNextSibling);
-                } else {
-                    originalParent.appendChild(telemetry);
-                }
-            }
-            telemetry.style.display = 'block';
-            telemetry.style.position = '';
-            telemetry.style.left = '';
-            telemetry.style.right = '';
-            telemetry.style.margin = '';
-            return;
-        }
-
-        // 2. Agar Mobile Landscape mode hai (chahe normal ho ya desktop-site) -> Hide kar do taaki layout na fte
-        if (isLandscape && isMobileScreen) {
-            if (telemetry.parentNode) {
-                telemetry.parentNode.removeChild(telemetry);
-            }
-            return;
-        }
-
-        // 3. Agar Mobile Portrait mode hai ya mobile mein Desktop Site on hai -> Buttons ke niche center mein dikhao
-        if (heroContent && !heroContent.contains(telemetry)) {
-            heroContent.appendChild(telemetry);
-        }
-        telemetry.style.display = 'block';
-        telemetry.style.position = 'relative';
-        telemetry.style.left = '0';
-        telemetry.style.right = '0';
-        telemetry.style.margin = '25px auto 15px auto';
-    }
-
-    handleAllLayouts();
-
-    window.addEventListener('resize', handleAllLayouts);
-    window.addEventListener('orientationchange', () => {
-        setTimeout(handleAllLayouts, 150);
-    });
 });

@@ -3022,11 +3022,6 @@ input {
     }
 }
 
-
-/* =========================================================
-   MOBILE MATRIX RAIN BACKGROUND EFFECT (Professional Clean UI)
-========================================================= */
-
 @media screen and (max-width: 1024px) {
     html, body, #main-site {
         width: 100% !important;
@@ -3075,13 +3070,6 @@ input {
         margin-bottom: 15px !important;
     }
 
-    .hero-subtitle {
-        font-size: 16px !important;
-        color: #ccc !important;
-        margin-bottom: 25px !important;
-        padding: 0 15px !important;
-    }
-
     .hero-actions {
         position: relative !important;
         z-index: 20 !important;
@@ -3098,27 +3086,6 @@ input {
         min-height: 48px !important;
         margin: 5px 0 !important;
     }
-
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 10 !important;
-        clear: both !important;
-        float: none !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: 90% !important;
-        max-width: 450px !important;
-        margin: 35px auto 50px auto !important;
-        padding: 15px !important;
-        background: rgba(2, 10, 20, 0.95) !important;
-        border: 1px solid rgba(0, 229, 255, 0.6) !important;
-        box-sizing: border-box !important;
-    }
 }
 
 html.dx08-mobile-device .telemetry {
@@ -3129,7 +3096,7 @@ html.dx08-mobile-device .telemetry {
     z-index: 10 !important;
     clear: both !important;
     float: none !important;
-    left: -12px !important; /* Isse box thoda sa left shift ho jayega */
+    left: -12px !important;
     right: auto !important;
     width: 92% !important;
     max-width: 450px !important;
@@ -3157,7 +3124,8 @@ html.dx08-mobile-device .hero-actions {
     gap: 12px !important;
     width: 100% !important;
     margin-bottom: 10px !important;
-}/* Asli PC aur Badi screens ke liye telemetry right corner mein rahega */
+}
+
 @media screen and (min-width: 1025px) {
     .telemetry {
         position: absolute !important;
@@ -3166,112 +3134,84 @@ html.dx08-mobile-device .hero-actions {
         width: 225px !important;
         margin: 0 !important;
     }
-}@media screen and (max-height: 600px) and (orientation: landscape) {
-    html.dx08-mobile-device .telemetry,
+}
+
+@media screen and (orientation: landscape) and (max-height: 650px) {
     .telemetry {
-        position: absolute !important;
-        right: 20px !important;
-        bottom: 20px !important;
-        width: 260px !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 10px !important;
-        font-size: 11px !important;
-        z-index: 100 !important;
-    }
-}@media screen and (max-height: 600px) and (orientation: landscape) {
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        width: 85% !important;
-        max-width: 400px !important;
-        margin: 20px auto 10px auto !important;
-        padding: 10px !important;
-        font-size: 11px !important;
-        z-index: 10 !important;
-        left: 0 !important;
-        right: 0 !important;
-    }
-}@media screen and (orientation: landscape) and (max-height: 650px) {
-    .telemetry {
-        position: absolute !important;
-        right: 20px !important;
-        bottom: 20px !important;
-        top: auto !important;
-        left: auto !important;
-        width: 280px !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 10px !important;
-        font-size: 11px !important;
-        z-index: 100 !important;
-        transform: none !important;
-    }
-}/* 1. MOBILE PORTRAIT: Buttons ke niche, aur thoda sa left aligned */
-@media screen and (max-width: 768px) and (orientation: portrait) {
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        width: 92% !important;
-        max-width: 450px !important;
-        margin: 35px auto 20px auto !important;
-        left: -12px !important; /* Isse box thoda sa left shift ho jayega jaisa tujhe chahiye */
-        right: auto !important;
-        z-index: 10 !important;
+        display: none !important;
     }
 }
 
-/* 2. MOBILE LANDSCAPE: Right side corner mein fix */
-@media screen and (max-height: 600px) and (orientation: landscape) {
-    .telemetry {
-        position: absolute !important;
-        right: 15px !important;
-        bottom: 15px !important;
-        top: auto !important;
-        left: auto !important;
-        width: 260px !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 10px !important;
-        font-size: 11px !important;
-        z-index: 100 !important;
-        transform: none !important;
-    }
-}/* Landscape mode mein telemetry box ko hide kar do taaki koi dikkt na aaye */
-@media screen and (orientation: landscape) and (max-height: 700px) {
-    .telemetry {
-        display: none !important;
-    }
-}@media screen and (orientation: landscape) {
-    .telemetry {
-        display: none !important;
-    }
-}@media screen and (orientation: landscape) and (max-height: 650px) {
-    .telemetry {
-        display: none !important;
-    }
-}/* PC/Laptop ke liye telemetry hamesha dikhegi */
-@media screen and (min-width: 769px) {
-    .telemetry {
-        display: block !important;
-    }
-}@media screen and (max-height: 550px) and (orientation: landscape) {
-    .hero-content {
-        padding-top: 5px !important;
-        gap: 8px !important;
-    }
-    
-    .hero-content .btn, 
-    .hero-content button, 
-    .hero-content a[href*="research"],
-    .hero-content .read-research {
-        padding: 8px 16px !important;
-        font-size: 13px !important;
-        margin-bottom: 5px !important;
-    }
-}/* Mobile Landscape mein telemetry hamesha hidden rahegi */
-@media screen and (max-width: 1024px) and (orientation: landscape) and (max-height: 650px) {
-    .telemetry {
-        display: none !important;
+/* =========================================================
+   TERMINAL CLI BOX STYLING (Added)
+========================================================= */
+.terminal-cli-box {
+    position: absolute;
+    left: 6vw;
+    bottom: 6vh;
+    z-index: 35;
+    width: min(420px, 40vw);
+    background: rgba(2, 6, 10, 0.9);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 229, 255, 0.08);
+    backdrop-filter: blur(10px);
+    font-family: "Courier New", Courier, monospace;
+}
+
+.terminal-cli-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: rgba(0, 229, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    color: #00e5ff;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+}
+
+.terminal-dots {
+    color: rgba(255, 45, 170, 0.8);
+    letter-spacing: 2px;
+}
+
+.terminal-cli-output {
+    padding: 10px 12px;
+    height: 65px;
+    overflow-y: auto;
+    color: rgba(0, 229, 255, 0.85);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.terminal-cli-input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-top: 1px solid rgba(0, 229, 255, 0.15);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.terminal-prompt {
+    color: #ff2daa;
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.terminal-cli-input-wrapper input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #eaffff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 800px) {
+    .terminal-cli-box {
+        display: none;
     }
 }

@@ -277,6 +277,25 @@
 
 
             <!-- =================================================
+                 INTERACTIVE TERMINAL CLI BOX
+            ================================================== -->
+            <div class="terminal-cli-box">
+                <div class="terminal-cli-header">
+                    <span>DX08_TERMINAL // v2.0</span>
+                    <span class="terminal-dots">•••</span>
+                </div>
+                <div id="terminal-output" class="terminal-cli-output">
+                    > SYSTEM INITIALIZED... TYPE 'help' FOR COMMANDS.
+                </div>
+                <div class="terminal-cli-input-wrapper">
+                    <span class="terminal-prompt">></span>
+                    <input type="text" id="terminal-input" placeholder="try 'scan', 'status', 'help'..." autocomplete="off">
+                </div>
+            </div>
+
+
+
+            <!-- =================================================
                  TELEMETRY
             ================================================== -->
 
@@ -293,7 +312,7 @@
                         SYSTEM
                     </span>
 
-                    <strong>
+                    <strong id="tel-sys">
                         ONLINE
                     </strong>
 
@@ -306,7 +325,7 @@
                         RESEARCH
                     </span>
 
-                    <strong>
+                    <strong id="tel-res">
                         ACTIVE
                     </strong>
 
@@ -319,7 +338,7 @@
                         LABS
                     </span>
 
-                    <strong>
+                    <strong id="tel-labs">
                         042
                     </strong>
 
@@ -332,7 +351,7 @@
                         SANDBOX
                     </span>
 
-                    <strong>
+                    <strong id="tel-box">
                         SAFE
                     </strong>
 
@@ -345,7 +364,7 @@
                         NETWORK
                     </span>
 
-                    <strong>
+                    <strong id="tel-net">
                         SECURE
                     </strong>
 
@@ -365,7 +384,7 @@
                     <br>
 
                     SIG:
-                    98.4%
+                    <span id="tel-sig">98.4%</span>
 
                 </div>
 
