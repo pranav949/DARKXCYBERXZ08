@@ -3200,4 +3200,9 @@ input {
     .indicator-dot, .blinking-light {
         display: none !important;
     }
+}@media screen and (max-width: 1024px) {
+    /* Sirf mobile screens ke liye upar wala HUD element hide karne ke liye */
+    .hud.hud-top-left {
+        display: none !important;
+    }
 }
