@@ -3211,34 +3211,7 @@ html.dx08-mobile-device .hero-actions {
 }
 
 @media screen and (max-width: 1024px) {
-    .hero {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        padding-bottom: 80px !important;
-    }
-    .hero-content {
-        position: relative !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        width: 92% !important;
-        max-width: 400px !important;
-        margin: 30px auto 20px auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        top: auto !important;
-    }
-}@media screen and (max-width: 1024px) {
-    /* Poore hero section ko mobile par clean vertical stack banayein */
+    /* Sabhi elements ko mobile par normal block aur flow mein layein */
     .hero, section#home {
         position: relative !important;
         height: auto !important;
@@ -3247,96 +3220,47 @@ html.dx08-mobile-device .hero-actions {
         flex-direction: column !important;
         align-items: center !important;
         justify-content: flex-start !important;
-        padding: 100px 15px 60px 15px !important;
+        padding: 90px 15px 80px 15px !important;
         overflow-y: auto !important;
     }
 
-    /* Hero content aur text ko properly align karein */
     .hero-content {
         position: relative !important;
         width: 100% !important;
-        max-width: 600px !important;
+        max-width: 450px !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
         margin: 0 auto !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
     }
 
-    /* Telemetry box ko buttons ke niche normal block banayein taaki overlap na ho */
+    /* Telemetry box */
     .telemetry {
         position: relative !important;
         display: block !important;
         width: 100% !important;
-        max-width: 450px !important;
-        margin: 40px auto 20px auto !important;
+        max-width: 420px !important;
+        margin: 30px auto 20px auto !important;
+        transform: none !important;
         left: auto !important;
         right: auto !important;
         top: auto !important;
         bottom: auto !important;
-        z-index: 10 !important;
     }
 
-    /* Terminal box ko bhi properly align karein */
-    .terminal-container, #terminal-output, .terminal {
+    /* Terminal box ko telemetry ke NEECHE fix kiya taaki text hide na ho */
+    .terminal-container, .terminal, #terminal-output {
         position: relative !important;
+        display: block !important;
         width: 100% !important;
-        max-width: 450px !important;
-        margin: 20px auto !important;
+        max-width: 420px !important;
+        margin: 25px auto 10px auto !important;
+        transform: none !important;
         left: auto !important;
         right: auto !important;
-    }@media screen and (max-width: 1024px) {
-        /* Sabhi absolute elements ko relative bana do taaki line se aayein */
-        .hero, section#home, .hero-content, .telemetry, .terminal-container {
-            position: relative !important;
-            transform: none !important;
-            left: auto !important;
-            right: auto !important;
-            top: auto !important;
-            bottom: auto !important;
-            float: none !important;
-        }
-    
-        /* Poore hero section ko mobile par clean vertical layout do */
-        .hero, section#home {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            height: auto !important;
-            min-height: 100vh !important;
-            padding: 90px 15px 60px 15px !important;
-            overflow-y: auto !important;
-        }
-    
-        /* Hero content (Logo, text, buttons) */
-        .hero-content {
-            width: 100% !important;
-            max-width: 450px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            margin: 0 auto !important;
-        }
-    
-        /* Telemetry box bilkul niche saaf suthra dikhega */
-        .telemetry {
-            display: block !important;
-            width: 100% !important;
-            max-width: 420px !important;
-            margin: 30px auto !important;
-        }
-    
-        /* Terminal box */
-        .terminal-container {
-            display: block !important;
-            width: 100% !important;
-            max-width: 420px !important;
-            margin: 20px auto !important;
-        }
+        top: auto !important;
+        bottom: auto !important;
+        z-index: 5 !important;
     }
 }
