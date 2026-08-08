@@ -3250,4 +3250,9 @@ html.dx08-mobile-device .hero-actions {
     .telemetry {
         display: none !important;
     }
+}/* PC/Laptop ke liye telemetry hamesha dikhegi */
+@media screen and (min-width: 769px) {
+    .telemetry {
+        display: block !important;
+    }
 }

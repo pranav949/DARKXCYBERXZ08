@@ -2651,39 +2651,42 @@ window.addEventListener('DOMContentLoaded', () => {
     const telemetry = document.querySelector('.telemetry');
     const heroContent = document.querySelector('.hero-content');
     
-    // Telemetry ki original parent node aur position save kar lo taaki wapas la sakein
-    const originalParent = telemetry ? telemetry.parentNode : null;
-    const originalNextSibling = telemetry ? telemetry.nextElementSibling : null;
+    if (!telemetry) return;
+
+    const originalParent = telemetry.parentNode;
+    const originalNextSibling = telemetry.nextElementSibling;
 
     function manageTelemetry() {
-        if (!telemetry) return;
+        // Check karo ki yeh asal mein mobile/tablet device hai ya nahi
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        
+        // Agar PC/Laptop hai, toh JS isko bilkul nahi chhedegi (apni CSS wali jagah par rahega)
+        if (!isMobileDevice) {
+            if (originalParent && !originalParent.contains(telemetry)) {
+                if (originalNextSibling) {
+                    originalParent.insertBefore(telemetry, originalNextSibling);
+                } else {
+                    originalParent.appendChild(telemetry);
+                }
+            }
+            telemetry.style.display = 'block';
+            return;
+        }
 
-        const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 600;
+        // Ab yeh sirf Mobile devices ke liye hai:
+        const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 650;
 
         if (isLandscape) {
-            // Landscape mein telemetry ko DOM se hata do taaki screen par dikhe hi na
+            // Mobile landscape mein telemetry ko DOM se hata do
             if (telemetry.parentNode) {
                 telemetry.parentNode.removeChild(telemetry);
             }
         } else {
-            // Portrait ya PC mode mein wapas layein
-            const isPortraitMobile = window.innerWidth <= 768;
-
-            if (isPortraitMobile && heroContent) {
-                // Mobile portrait mein buttons ke niche daal do
-                if (!heroContent.contains(telemetry)) {
-                    heroContent.appendChild(telemetry);
-                }
-            } else {
-                // PC / Badi screen par wapas apni original jagah par bhej do
-                if (originalParent && !originalParent.contains(telemetry)) {
-                    if (originalNextSibling) {
-                        originalParent.insertBefore(telemetry, originalNextSibling);
-                    } else {
-                        originalParent.appendChild(telemetry);
-                    }
-                }
+            // Mobile portrait mein buttons ke niche daal do
+            if (heroContent && !heroContent.contains(telemetry)) {
+                heroContent.appendChild(telemetry);
             }
+            telemetry.style.display = 'block';
         }
     }
 
@@ -2691,6 +2694,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', manageTelemetry);
     window.addEventListener('orientationchange', () => {
-        setTimeout(manageTelemetry, 100); // Thoda delay taaki orientation properly detect ho
+        setTimeout(manageTelemetry, 150);
     });
 });
