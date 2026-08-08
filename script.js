@@ -2647,11 +2647,10 @@ window.addEventListener('load', function() {
         setInterval(drawMatrix, 33);
     }
 });// Move telemetry below hero actions dynamically on mobile/desktop-site
-wwindow.addEventListener('DOMContentLoaded', () => {
-    // Sirf portrait mobile screens par hi telemetry ko move karo
-    const isPortraitMobile = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+window.addEventListener('DOMContentLoaded', () => {
+    const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
     
-    if (isPortraitMobile) {
+    if (isMobilePortrait) {
         const telemetry = document.querySelector('.telemetry');
         const heroContent = document.querySelector('.hero-content');
         if (telemetry && heroContent) {
