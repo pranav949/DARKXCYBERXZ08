@@ -3214,4 +3214,19 @@ html.dx08-mobile-device .hero-actions {
     .terminal-cli-box {
         display: none;
     }
+}@media screen and (max-width: 1024px) {
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 90% !important;
+        margin: 20px auto !important;
+        right: auto !important;
+        bottom: auto !important;
+    }
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 60px;
+    }
 }

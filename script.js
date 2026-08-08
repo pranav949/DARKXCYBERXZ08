@@ -2578,62 +2578,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       BULLETPROOF TELEMETRY & LAYOUT MANAGER
-    ===================================================== */
-
-    const telemetry = document.querySelector('.telemetry');
-    const heroContent = document.querySelector('.hero-content');
     
-    if (telemetry) {
-        const originalParent = telemetry.parentNode;
-        const originalNextSibling = telemetry.nextElementSibling;
-
-        function handleAllLayouts() {
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 650;
-            const isMobileScreen = window.innerWidth <= 1024;
-
-            if (!isTouchDevice && window.innerWidth > 1024) {
-                if (originalParent && !originalParent.contains(telemetry)) {
-                    if (originalNextSibling) {
-                        originalParent.insertBefore(telemetry, originalNextSibling);
-                    } else {
-                        originalParent.appendChild(telemetry);
-                    }
-                }
-                telemetry.style.display = 'block';
-                telemetry.style.position = '';
-                telemetry.style.left = '';
-                telemetry.style.right = '';
-                telemetry.style.margin = '';
-                return;
-            }
-
-            if (isLandscape && isMobileScreen) {
-                if (telemetry.parentNode) {
-                    telemetry.parentNode.removeChild(telemetry);
-                }
-                return;
-            }
-
-            if (heroContent && !heroContent.contains(telemetry)) {
-                heroContent.appendChild(telemetry);
-            }
-            telemetry.style.display = 'block';
-            telemetry.style.position = 'relative';
-            telemetry.style.left = '0';
-            telemetry.style.right = '0';
-            telemetry.style.margin = '25px auto 15px auto';
-        }
-
-        handleAllLayouts();
-
-        window.addEventListener('resize', handleAllLayouts);
-        window.addEventListener('orientationchange', () => {
-            setTimeout(handleAllLayouts, 150);
-        });
-    }
+        
 
 
     /* =====================================================
