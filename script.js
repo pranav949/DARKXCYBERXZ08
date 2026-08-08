@@ -2631,4 +2631,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-});
+});/* =====================================================
+ABSOLUTE OVERRIDE FIX FOR MOBILE & LANDSCAPE
+===================================================== */
+function forceCleanMobileLayout() {
+ if (window.innerWidth <= 1024) {
+     const heroContent = document.querySelector('.hero-content');
+     const telemetry = document.querySelector('.telemetry');
+     const terminal = document.querySelector('.terminal-container');
+
+     if (heroContent) {
+         heroContent.style.setProperty('position', 'relative', 'important');
+         heroContent.style.setProperty('display', 'flex', 'important');
+         heroContent.style.setProperty('visibility', 'visible', 'important');
+         heroContent.style.setProperty('opacity', '1', 'important');
+     }
+
+     if (telemetry) {
+         telemetry.style.setProperty('position', 'relative', 'important');
+         telemetry.style.setProperty('display', 'block', 'important');
+         telemetry.style.setProperty('margin', '20px auto', 'important');
+     }
+
+     if (terminal) {
+         terminal.style.setProperty('position', 'relative', 'important');
+         terminal.style.setProperty('display', 'block', 'important');
+         terminal.style.setProperty('margin', '20px auto', 'important');
+     }
+ }
+}
+
+forceCleanMobileLayout();
+window.addEventListener('resize', forceCleanMobileLayout);
+window.addEventListener('orientationchange', () => setTimeout(forceCleanMobileLayout, 200));
