@@ -3101,16 +3101,20 @@ input {
         margin: 5px 0 !important;
     }
 
-    /* Telemetry box ko mobile par niche shift karein */
-    .telemetry {
-        position: relative !important;
-        z-index: 10 !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: 90% !important;
-        max-width: 100% !important;
-        margin: 30px auto !important;
-        background: rgba(0, 20, 40, 0.8) !important;
-        border: 1px solid #0ff !important;
-    }
+   /* Telemetry box ko mobile par bilkul sahi aur secure jagah par set karne ke liye */
+   .telemetry {
+    position: relative !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10 !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    margin: 40px auto 20px auto !important;
+    background: rgba(0, 15, 30, 0.9) !important;
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    box-sizing: border-box !important;
+}
 }
