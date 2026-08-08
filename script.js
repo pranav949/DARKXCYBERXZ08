@@ -8,6 +8,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
+       DOM HELPERS (Must be at the top)
+    ===================================================== */
+
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
+
+    const $$ = (selector, parent = document) =>
+        [...parent.querySelectorAll(selector)];
+
+
+    /* =====================================================
+       LIVE FLUCTUATING TELEMETRY (Added)
+    ===================================================== */
+    setInterval(() => {
+        const sigElem = $("#tel-sig");
+        const labsElem = $("#tel-labs");
+        if (sigElem) {
+            const randomSig = (97 + Math.random() * 2.5).toFixed(1);
+            sigElem.textContent = `${randomSig}%`;
+        }
+        if (labsElem) {
+            const randomLabs = String(Math.floor(40 + Math.random() * 5)).padStart(3, '0');
+            labsElem.textContent = randomLabs;
+        }
+    }, 3000);
+
+
+    /* =====================================================
+       INTERACTIVE TERMINAL CLI LOGIC (Added)
+    ===================================================== */
+    const terminalInput = $("#terminal-input");
+    const terminalOutput = $("#terminal-output");
+
+    if (terminalInput && terminalOutput) {
+        terminalInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                const cmd = terminalInput.value.trim().toLowerCase();
+                if (!cmd) return;
+
+                terminalOutput.innerHTML += `<div>> ${cmd}</div>`;
+                terminalInput.value = "";
+
+                let response = "";
+                switch (cmd) {
+                    case "help":
+                        response = "AVAILABLE: scan, status, labs, clear, whoami";
+                        break;
+                    case "scan":
+                        response = "SCANNING NODE_08... ALL PORTS SECURE & ENCRYPTED.";
+                        break;
+                    case "status":
+                        response = "SYS://ONLINE. FIREWALL ACTIVE. SANDBOX SAFE.";
+                        break;
+                    case "labs":
+                        response = "LOADED LABS: WEB, NETWORK, AI, FORENSICS.";
+                        break;
+                    case "whoami":
+                        response = "USER: GUEST_RESEARCHER // LEVEL_1 CLEARANCE.";
+                        break;
+                    case "clear":
+                        terminalOutput.innerHTML = "> TERMINAL RESET.";
+                        return;
+                    default:
+                        response = `COMMAND NOT RECOGNIZED: '${cmd}'. TYPE 'help'.`;
+                        break;
+                }
+
+                terminalOutput.innerHTML += `<div>${response}</div>`;
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+        });
+    }
+
+
+    /* =====================================================
        SUPABASE CONFIG
     ===================================================== */
 
@@ -18,17 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "sb_publishable_m0kCKzljY5jiV8mB6NgQ1w_taOYxbXA";
 
     let supabaseClient = null;
-
-
-    /* =====================================================
-       DOM HELPERS
-    ===================================================== */
-
-    const $ = (selector, parent = document) =>
-        parent.querySelector(selector);
-
-    const $$ = (selector, parent = document) =>
-        [...parent.querySelectorAll(selector)];
 
 
     /* =====================================================
@@ -160,86 +224,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       BOOT SYSTEM
+   /* =====================================================
+       BOOT SYSTEM (100% Fail-Safe Bypass)
     ===================================================== */
 
-    const bootScreen =
-        $("#boot-screen");
-
-    const mainSite =
-        $("#main-site");
-
-    const progressBar =
-        $("#boot-progress-bar");
-
-
-    let bootProgress = 0;
-
-
     function runBootSequence() {
+        const bootScreen = document.getElementById("boot-screen");
+        const mainSite = document.getElementById("main-site");
+        const progressBar = document.getElementById("boot-progress-bar");
+        
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 20;
+            if (progressBar) progressBar.style.width = progress + "%";
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                if (bootScreen) bootScreen.classList.add("hidden");
+                if (mainSite) mainSite.classList.add("visible");
+                initThreeEnvironment();
+            }
+        }, 100);
 
-        if (!bootScreen || !mainSite) {
-
+        setTimeout(() => {
+            if (bootScreen) bootScreen.classList.add("hidden");
+            if (mainSite) mainSite.classList.add("visible");
             initThreeEnvironment();
-
-            return;
-
-        }
-
-
-        const bootInterval =
-            setInterval(() => {
-
-                bootProgress +=
-                    Math.floor(
-                        Math.random() * 8
-                    ) + 3;
-
-
-                if (bootProgress >= 100) {
-
-                    bootProgress = 100;
-
-                }
-
-
-                if (progressBar) {
-
-                    progressBar.style.width =
-                        `${bootProgress}%`;
-
-                }
-
-
-                if (bootProgress >= 100) {
-
-                    clearInterval(
-                        bootInterval
-                    );
-
-
-                    setTimeout(() => {
-
-                        bootScreen.classList.add(
-                            "hidden"
-                        );
-
-                        mainSite.classList.add(
-                            "visible"
-                        );
-
-
-                        initThreeEnvironment();
-
-                    }, 650);
-
-                }
-
-            }, 150);
-
+        }, 2000);
     }
-
 
     /* =====================================================
        THREE.JS CYBER ENVIRONMENT
@@ -2578,10 +2590,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    
-        
-
-
     /* =====================================================
        START EVERYTHING
     ===================================================== */
@@ -2620,5 +2628,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
     );
+
+
+    /* =====================================================
+       MOBILE LAYOUT PERMANENT FIX (Jad se solution)
+    ===================================================== */
+    function fixMobileLayout() {
+        if (window.innerWidth <= 1024) {
+            const heroContent = document.querySelector('.hero-content') || document.querySelector('.hero');
+            const telemetry = document.querySelector('.telemetry');
+            const terminal = document.querySelector('.terminal-container');
+
+            if (heroContent) {
+                if (telemetry) heroContent.appendChild(telemetry);
+                if (terminal) heroContent.appendChild(terminal);
+            }
+        }
+    }
+
+    fixMobileLayout();
+    window.addEventListener('resize', fixMobileLayout);
+    window.addEventListener('orientationchange', () => setTimeout(fixMobileLayout, 200));
 
 });
