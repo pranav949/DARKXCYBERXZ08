@@ -3269,4 +3269,9 @@ html.dx08-mobile-device .hero-actions {
         font-size: 13px !important;
         margin-bottom: 5px !important;
     }
+}/* Mobile Landscape mein telemetry hamesha hidden rahegi */
+@media screen and (max-width: 1024px) and (orientation: landscape) and (max-height: 650px) {
+    .telemetry {
+        display: none !important;
+    }
 }

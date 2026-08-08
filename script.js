@@ -2656,12 +2656,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const originalParent = telemetry.parentNode;
     const originalNextSibling = telemetry.nextElementSibling;
 
-    function manageTelemetry() {
-        // Check karo ki yeh asal mein mobile/tablet device hai ya nahi
-        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-        
-        // Agar PC/Laptop hai, toh JS isko bilkul nahi chhedegi (apni CSS wali jagah par rahega)
-        if (!isMobileDevice) {
+    function handleAllLayouts() {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 650;
+        const isMobileScreen = window.innerWidth <= 1024;
+
+        // 1. Agar PC/Laptop hai (Touch nahi hai aur screen badi hai)
+        if (!isTouchDevice && window.innerWidth > 1024) {
             if (originalParent && !originalParent.contains(telemetry)) {
                 if (originalNextSibling) {
                     originalParent.insertBefore(telemetry, originalNextSibling);
@@ -2670,30 +2671,36 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }
             telemetry.style.display = 'block';
+            telemetry.style.position = '';
+            telemetry.style.left = '';
+            telemetry.style.right = '';
+            telemetry.style.margin = '';
             return;
         }
 
-        // Ab yeh sirf Mobile devices ke liye hai:
-        const isLandscape = window.innerWidth > window.innerHeight && window.innerHeight <= 650;
-
-        if (isLandscape) {
-            // Mobile landscape mein telemetry ko DOM se hata do
+        // 2. Agar Mobile Landscape mode hai (chahe normal ho ya desktop-site) -> Hide kar do taaki layout na fte
+        if (isLandscape && isMobileScreen) {
             if (telemetry.parentNode) {
                 telemetry.parentNode.removeChild(telemetry);
             }
-        } else {
-            // Mobile portrait mein buttons ke niche daal do
-            if (heroContent && !heroContent.contains(telemetry)) {
-                heroContent.appendChild(telemetry);
-            }
-            telemetry.style.display = 'block';
+            return;
         }
+
+        // 3. Agar Mobile Portrait mode hai ya mobile mein Desktop Site on hai -> Buttons ke niche center mein dikhao
+        if (heroContent && !heroContent.contains(telemetry)) {
+            heroContent.appendChild(telemetry);
+        }
+        telemetry.style.display = 'block';
+        telemetry.style.position = 'relative';
+        telemetry.style.left = '0';
+        telemetry.style.right = '0';
+        telemetry.style.margin = '25px auto 15px auto';
     }
 
-    manageTelemetry();
+    handleAllLayouts();
 
-    window.addEventListener('resize', manageTelemetry);
+    window.addEventListener('resize', handleAllLayouts);
     window.addEventListener('orientationchange', () => {
-        setTimeout(manageTelemetry, 150);
+        setTimeout(handleAllLayouts, 150);
     });
 });
