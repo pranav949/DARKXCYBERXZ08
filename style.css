@@ -3237,4 +3237,57 @@ html.dx08-mobile-device .hero-actions {
         bottom: auto !important;
         top: auto !important;
     }
+}@media screen and (max-width: 1024px) {
+    /* Poore hero section ko mobile par clean vertical stack banayein */
+    .hero, section#home {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 100px 15px 60px 15px !important;
+        overflow-y: auto !important;
+    }
+
+    /* Hero content aur text ko properly align karein */
+    .hero-content {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 600px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    /* Telemetry box ko buttons ke niche normal block banayein taaki overlap na ho */
+    .telemetry {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 40px auto 20px auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        z-index: 10 !important;
+    }
+
+    /* Terminal box ko bhi properly align karein */
+    .terminal-container, #terminal-output, .terminal {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 20px auto !important;
+        left: auto !important;
+        right: auto !important;
+    }
 }
