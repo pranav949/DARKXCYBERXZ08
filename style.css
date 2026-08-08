@@ -3022,6 +3022,10 @@ input {
     }
 }
 
+/* =====================================================
+   STRICT MOBILE ONLY FIXES (MAX-WIDTH: 1024px)
+   PC/DESKTOP IS COMPLETELY UNTOUCHED & SAFE
+===================================================== */
 @media screen and (max-width: 1024px) {
     html, body, #main-site {
         width: 100% !important;
@@ -3029,42 +3033,36 @@ input {
         overflow-x: hidden !important;
     }
 
-    #cyber-environment {
-        display: block !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 1 !important;
-        opacity: 0.25 !important;
-        pointer-events: none !important;
-        overflow: hidden !important;
-        background: #020304 !important;
-    }
-
-    #cyber-environment canvas {
-        display: block !important;
-        width: 100% !important;
-        height: 100% !important;
+    .hero, section#home {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 100px 15px 80px 15px !important;
+        overflow-y: auto !important;
     }
 
     .hero-content {
         position: relative !important;
-        z-index: 10 !important;
-        width: 90% !important;
-        max-width: 500px !important;
-        margin: 0 auto !important;
-        padding-top: 110px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 0 auto 20px auto !important;
         text-align: center !important;
-        background: transparent !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
     }
 
     .hero-title {
         font-size: clamp(32px, 8vw, 52px) !important;
         line-height: 1.1 !important;
         color: #fff !important;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.8) !important;
         white-space: normal !important;
         word-break: break-word !important;
         margin-bottom: 15px !important;
@@ -3086,451 +3084,18 @@ input {
         min-height: 48px !important;
         margin: 5px 0 !important;
     }
-}
 
-html.dx08-mobile-device .telemetry {
-    position: relative !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 10 !important;
-    clear: both !important;
-    float: none !important;
-    left: -12px !important;
-    right: auto !important;
-    width: 92% !important;
-    max-width: 450px !important;
-    margin: 35px auto 20px auto !important;
-    padding: 15px !important;
-    background: rgba(2, 10, 20, 0.95) !important;
-    border: 1px solid rgba(0, 229, 255, 0.6) !important;
-    box-sizing: border-box !important;
-    text-align: left !important;
-}
-
-html.dx08-mobile-device .hero-content {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-}
-
-html.dx08-mobile-device .hero-actions {
-    position: relative !important;
-    z-index: 20 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 12px !important;
-    width: 100% !important;
-    margin-bottom: 10px !important;
-}
-
-@media screen and (min-width: 1025px) {
-    .telemetry {
-        position: absolute !important;
-        right: 5vw !important;
-        bottom: 12vh !important;
-        width: 225px !important;
-        margin: 0 !important;
-    }
-}
-
-@media screen and (orientation: landscape) and (max-height: 650px) {
-    .telemetry {
-        display: none !important;
-    }
-}
-
-/* =========================================================
-   TERMINAL CLI BOX STYLING (Added)
-========================================================= */
-.terminal-cli-box {
-    position: absolute;
-    left: 6vw;
-    bottom: 6vh;
-    z-index: 35;
-    width: min(420px, 40vw);
-    background: rgba(2, 6, 10, 0.9);
-    border: 1px solid rgba(0, 229, 255, 0.35);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 229, 255, 0.08);
-    backdrop-filter: blur(10px);
-    font-family: "Courier New", Courier, monospace;
-}
-
-.terminal-cli-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 12px;
-    background: rgba(0, 229, 255, 0.08);
-    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
-    color: #00e5ff;
-    font-size: 8px;
-    letter-spacing: 0.15em;
-}
-
-.terminal-dots {
-    color: rgba(255, 45, 170, 0.8);
-    letter-spacing: 2px;
-}
-
-.terminal-cli-output {
-    padding: 10px 12px;
-    height: 65px;
-    overflow-y: auto;
-    color: rgba(0, 229, 255, 0.85);
-    font-size: 10px;
-    line-height: 1.4;
-}
-
-.terminal-cli-input-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 6px 12px;
-    border-top: 1px solid rgba(0, 229, 255, 0.15);
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.terminal-prompt {
-    color: #ff2daa;
-    margin-right: 8px;
-    font-weight: bold;
-    font-size: 11px;
-}
-
-.terminal-cli-input-wrapper input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #eaffff;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 10px;
-    letter-spacing: 0.05em;
-}
-
-@media screen and (max-width: 1024px) {
-    /* Sabhi elements ko mobile par normal block aur flow mein layein */
-    .hero, section#home {
-        position: relative !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        padding: 90px 15px 80px 15px !important;
-        overflow-y: auto !important;
-    }
-
-    .hero-content {
-        position: relative !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        margin: 0 auto !important;
-    }
-
-    /* Telemetry box */
     .telemetry {
         position: relative !important;
         display: block !important;
-        width: 100% !important;
+        width: 92% !important;
         max-width: 420px !important;
-        margin: 30px auto 20px auto !important;
-        transform: none !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-    }
-
-    /* Terminal box ko telemetry ke NEECHE fix kiya taaki text hide na ho */
-    .terminal-container, .terminal, #terminal-output {
-        position: relative !important;
-        display: block !important;
-        width: 100% !important;
-        max-width: 420px !important;
-        margin: 25px auto 10px auto !important;
+        margin: 20px auto !important;
         transform: none !important;
         left: auto !important;
         right: auto !important;
         top: auto !important;
         bottom: auto !important;
         z-index: 5 !important;
-    }
-}@media screen and (max-width: 1024px) {
-    .telemetry, .terminal-container {
-        display: block !important;
-        margin: 20px auto !important;
-        clear: both !important;
-    }
-}@media screen and (max-width: 1024px) {
-    /* Poore hero section ko mobile par scrollable aur proper flow mein rakhein */
-    .hero, section#home {
-        position: relative !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        padding: 90px 15px 80px 15px !important;
-        overflow-y: auto !important;
-    }
-
-    /* Hero content (Logo, text, buttons) sabse upar rahenge */
-    .hero-content {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        text-align: center !important;
-        margin: 0 auto !important;
-        order: 1 !important;
-    }
-
-    /* Telemetry box buttons ke niche aayega */
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        width: 100% !important;
-        max-width: 420px !important;
-        margin: 25px auto !important;
-        order: 2 !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-    }
-
-    /* Terminal box telemetry ke bilkul niche aayega */
-    .terminal-container, .terminal, #terminal-output {
-        position: relative !important;
-        display: block !important;
-        width: 100% !important;
-        max-width: 420px !important;
-        margin: 20px auto 40px auto !important;
-        order: 3 !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-    }
-}/* =====================================================
-   ULTIMATE PERMANENT LAYOUT FIX (ALL MODES)
-===================================================== */
-
-/* 1. Mobile aur Portrait / Landscape Screens ke liye */
-@media screen and (max-width: 1024px) {
-    .hero, section#home {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        padding: 80px 10px 80px 10px !important;
-    }
-
-    .hero-content {
-        order: 1 !important;
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        margin: 0 auto 15px auto !important;
-        text-align: center !important;
-    }
-
-    .telemetry {
-        order: 2 !important;
-        position: relative !important;
-        display: block !important;
-        width: 92% !important;
-        max-width: 420px !important;
-        margin: 15px auto !important;
-        transform: none !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-    }
-
-    /* Terminal ko telemetry se proper gap dene ke liye margin-top badhaya */
-    .terminal-container, .terminal, #terminal-output {
-        order: 3 !important;
-        position: relative !important;
-        display: block !important;
-        width: 92% !important;
-        max-width: 420px !important;
-        margin: 25px auto 30px auto !important;
-        transform: none !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-    }
-}
-
-/* 2. Jab Phone mein "Desktop Site" on ho (Screen width > 1024px par bhi) */
-@media screen and (min-width: 1025px) {
-    .telemetry {
-        position: absolute !important;
-        /* Desktop wali original positioning restore karein taaki fat na ho */
-    }
-    .terminal-container, .terminal {
-        position: absolute !important;
-    }
-}/* =====================================================
-   FINAL HEADING & LAYOUT FIX FOR MOBILE
-===================================================== */
-@media screen and (max-width: 1024px) {
-    /* Hero section ko proper vertical layout dein */
-    .hero, section#home {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        padding: 90px 15px 80px 15px !important;
-        box-sizing: border-box !important;
-        overflow-y: auto !important;
-    }
-
-    /* Heading, Logo aur Buttons ko sabse upar saaf dikhane ke liye */
-    .hero-content {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        margin: 0 auto 25px auto !important;
-        text-align: center !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 10 !important;
-    }
-
-    /* Telemetry box ko buttons ke theek niche set karein */
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        width: 92% !important;
-        max-width: 420px !important;
-        margin: 20px auto !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        z-index: 5 !important;
-    }
-}@media screen and (max-width: 1024px) {
-    .hero, section#home {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        padding: 100px 15px 80px 15px !important;
-    }
-    .hero-content {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        text-align: center !important;
-        margin-bottom: 20px !important;
-    }
-    /* Logo / Heading jo cut ho rahi thi use visible karein */
-    .hero-content h1, .hero-content .logo, .cyber-title {
-        font-size: clamp(24px, 7vw, 42px) !important;
-        line-height: 1.2 !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-    /* Telemetry box ko saaf-suthra niche rakhein */
-    .telemetry {
-        position: relative !important;
-        display: block !important;
-        width: 92% !important;
-        max-width: 420px !important;
-        margin: 20px auto !important;
-        transform: none !important;
-    }
-    /* Agar main screen par terminal abhi bhi hai toh use chhipa do kyunki hum ise button modal mein shift kar rahe hain */
-    .terminal-container {
-        display: none !important;
-    }
-}@media screen and (max-width: 1024px) {
-    /* Hero section ko thoda upar se padding do taaki heading cut na ho */
-    .hero, section#home {
-        padding-top: 110px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 100vh !important;
-    }
-
-    /* Heading aur logo ko 100% visible aur clear karne ke liye */
-    .hero-content {
-        position: relative !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        margin: 0 auto 20px auto !important;
-        text-align: center !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-        z-index: 10 !important;
-    }
-
-    .hero-title, .hero-tagline, .hero-eyebrow {
-        visibility: visible !important;
-        opacity: 1 !important;
-        display: block !important;
-    }
-
-    /* Terminal modal ki styling taaki wo button dabane par acche se khule */
-    .terminal-modal {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background: rgba(2, 3, 9, 0.95) !important;
-        z-index: 99999 !important;
-        display: none;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .terminal-modal-content {
-        width: 92% !important;
-        max-width: 450px !important;
-        background: rgba(0, 15, 25, 0.98) !important;
-        border: 1px solid rgba(0, 229, 255, 0.5) !important;
-        padding: 15px !important;
     }
 }
