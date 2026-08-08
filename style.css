@@ -3157,4 +3157,13 @@ html.dx08-mobile-device .hero-actions {
     gap: 12px !important;
     width: 100% !important;
     margin-bottom: 10px !important;
+}/* Asli PC aur Badi screens ke liye telemetry right corner mein rahega */
+@media screen and (min-width: 1025px) {
+    .telemetry {
+        position: absolute !important;
+        right: 5vw !important;
+        bottom: 12vh !important;
+        width: 225px !important;
+        margin: 0 !important;
+    }
 }

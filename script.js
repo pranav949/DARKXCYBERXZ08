@@ -2648,9 +2648,14 @@ window.addEventListener('load', function() {
     }
 });// Move telemetry below hero actions dynamically on mobile/desktop-site
 window.addEventListener('DOMContentLoaded', () => {
-    const telemetry = document.querySelector('.telemetry');
-    const heroContent = document.querySelector('.hero-content');
-    if (telemetry && heroContent) {
-        heroContent.appendChild(telemetry);
+    // Agar mobile/touch device hai (chahe desktop site on ho), toh hi telemetry ko move karo
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 1024;
+    
+    if (isMobileDevice) {
+        const telemetry = document.querySelector('.telemetry');
+        const heroContent = document.querySelector('.hero-content');
+        if (telemetry && heroContent) {
+            heroContent.appendChild(telemetry);
+        }
     }
 });
