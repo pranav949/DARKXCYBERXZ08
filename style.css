@@ -3195,4 +3195,9 @@ input {
         bottom: auto !important;
         z-index: 5 !important;
     }
+}@media screen and (max-width: 1024px) {
+    /* Sirf mobile screen par blinking indicator ko hide karne ke liye */
+    .indicator-dot, .blinking-light {
+        display: none !important;
+    }
 }
