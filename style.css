@@ -2082,7 +2082,6 @@ input {
     overflow: hidden;
 }
 
-/* Ambient moving grid behind CORE */
 .core-section::before {
     content: "";
 
@@ -2142,7 +2141,6 @@ input {
     }
 }
 
-/* Cyan ambient glow */
 .core-section::after {
     content: "";
 
@@ -2364,8 +2362,6 @@ input {
     }
 }
 
-
-/* moving scan texture */
 .core-card::before {
     content: "";
 
@@ -2387,8 +2383,6 @@ input {
     opacity: 0.25;
 }
 
-
-/* animated vertical scan beam */
 .core-card::after {
     content: "";
 
@@ -2438,11 +2432,6 @@ input {
     }
 }
 
-
-/* =========================================================
-   CORE CARD CORNER HUD
-========================================================= */
-
 .core-card .core-index::before {
     content: "";
 
@@ -2462,11 +2451,6 @@ input {
 
     opacity: 0.5;
 }
-
-
-/* =========================================================
-   CORE CARD HOVER
-========================================================= */
 
 .core-card:hover {
     z-index: 10;
@@ -2504,11 +2488,6 @@ input {
     animation-duration:
         2.2s;
 }
-
-
-/* =========================================================
-   CORE INDEX
-========================================================= */
 
 .core-index {
     position: relative;
@@ -2568,11 +2547,6 @@ input {
         translateX(3px);
 }
 
-
-/* =========================================================
-   CORE CARD TITLE
-========================================================= */
-
 .core-card h3 {
     position: relative;
 
@@ -2615,11 +2589,6 @@ input {
         0 0 45px rgba(0, 229, 255, 0.08);
 }
 
-
-/* =========================================================
-   CORE CARD DESCRIPTION
-========================================================= */
-
 .core-card p {
     position: relative;
 
@@ -2651,11 +2620,6 @@ input {
         rgba(225, 250, 255, 0.62);
 }
 
-
-/* =========================================================
-   CORE STATUS
-========================================================= */
-
 .core-status {
     position: absolute;
 
@@ -2680,6 +2644,9 @@ input {
     font-size: 7px;
 
     letter-spacing: 0.13em;
+
+    animation:
+        statusFlicker 4s ease-in-out infinite;
 }
 
 .core-status::before {
@@ -2726,16 +2693,6 @@ input {
     }
 }
 
-
-/* =========================================================
-   CORE STATUS TEXT EFFECT
-========================================================= */
-
-.core-status {
-    animation:
-        statusFlicker 4s ease-in-out infinite;
-}
-
 @keyframes statusFlicker {
     0%,
     94%,
@@ -2755,11 +2712,6 @@ input {
         opacity: 0.45;
     }
 }
-
-
-/* =========================================================
-   MAGNETIC HOVER
-========================================================= */
 
 .magnetic {
     transition:
@@ -2856,405 +2808,223 @@ input {
 
 
 /* =========================================================
-   DESKTOP HERO BALANCE
+   MEDIA QUERIES & RESPONSIVE FIXES
 ========================================================= */
 
 @media (min-width: 1101px) {
-
     .hero-content {
         left: 6vw;
-
         width: 42vw;
     }
-
     .hero-title {
-        font-size:
-            clamp(42px, 5.5vw, 88px);
+        font-size: clamp(42px, 5.5vw, 88px);
     }
 }
-
-
-/* =========================================================
-   TABLET
-========================================================= */
 
 @media (max-width: 1100px) {
-
     .navbar {
-        padding:
-            0 3vw;
+        padding: 0 3vw;
     }
-
     .nav-links {
-        gap:
-            12px;
+        gap: 12px;
     }
-
     .nav-links a {
-        font-size:
-            7px;
+        font-size: 7px;
     }
-
     .hero-content {
         left: 5vw;
-
         width: 48vw;
     }
-
     .hero-title {
-        font-size:
-            clamp(48px, 7vw, 90px);
+        font-size: clamp(48px, 7vw, 90px);
     }
-
     .telemetry {
-        right:
-            3vw;
+        right: 3vw;
     }
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media (max-width: 800px) {
-
     .navbar {
-        height:
-            68px;
+        height: 68px;
     }
-
     .logo {
-        font-size:
-            11px;
+        font-size: 11px;
     }
-
     .nav-links {
-        display:
-            none;
+        display: none;
     }
-
     .hero-content {
-        left:
-            7vw;
-
-        top:
-            45%;
-
-        width:
-            75vw;
+        left: 7vw;
+        top: 45%;
+        width: 75vw;
     }
-
     .hero-title {
-        font-size:
-            clamp(46px, 14vw, 85px);
-
-        white-space:
-            normal;
+        font-size: clamp(46px, 14vw, 85px);
+        white-space: normal;
     }
-
     .telemetry {
-        right:
-            6vw;
-
-        bottom:
-            8vh;
-
-        width:
-            175px;
-
-        transform:
-            scale(0.82);
-
-        transform-origin:
-            right bottom;
+        right: 6vw;
+        bottom: 8vh;
+        width: 175px;
+        transform: scale(0.82);
+        transform-origin: right bottom;
     }
-
     .hud-top-left,
     .hud-top-right {
-        top:
-            88px;
+        top: 88px;
     }
-
     .section {
-        min-height:
-            auto;
-
-        padding:
-            110px 7vw;
+        min-height: auto;
+        padding: 110px 7vw;
     }
-
     .auth-section {
-        min-height:
-            100vh;
+        min-height: 100vh;
     }
-
     .core-grid {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
-
     .core-card {
-        min-height:
-            270px;
-
-        padding:
-            28px;
+        min-height: 270px;
+        padding: 28px;
     }
-
     .core-index {
-        margin-bottom:
-            42px;
+        margin-bottom: 42px;
     }
-
     .core-card h3 {
-        font-size:
-            30px;
+        font-size: 30px;
     }
-
     .core-status {
-        left:
-            28px;
-
-        bottom:
-            24px;
+        left: 28px;
+        bottom: 24px;
     }
 }
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
 
 @media (max-width: 520px) {
-
     .navbar {
-        height:
-            62px;
+        height: 62px;
     }
-
     .logo {
-        font-size:
-            9px;
+        font-size: 9px;
     }
-
     .hero-content {
-        top:
-            42%;
-
-        width:
-            86vw;
+        top: 42%;
+        width: 86vw;
     }
-
     .hero-eyebrow {
-        font-size:
-            7px;
+        font-size: 7px;
     }
-
     .hero-tagline {
-        font-size:
-            10px;
+        font-size: 10px;
     }
-
     .hero-actions {
-        flex-direction:
-            column;
-
-        width:
-            190px;
+        flex-direction: column;
+        width: 190px;
     }
-
     .btn-primary,
     .btn-secondary {
-        width:
-            100%;
+        width: 100%;
     }
-
     .telemetry {
-        display:
-            none;
+        display: none;
     }
-
     .hud {
-        font-size:
-            6px;
+        font-size: 6px;
     }
-
-    .hud-top-right {
-        display:
-            none;
-    }
-
+    .hud-top-right,
     .hud-bottom-right {
-        display:
-            none;
+        display: none;
     }
-
     .hud-bottom-left {
-        bottom:
-            20px;
+        bottom: 20px;
     }
-
     .section {
-        padding:
-            95px 6vw;
+        padding: 95px 6vw;
     }
-
     .section h2 {
-        font-size:
-            36px;
+        font-size: 36px;
     }
-
     .section p {
-        font-size:
-            12px;
+        font-size: 12px;
     }
-
     .auth-panel {
-        padding:
-            21px;
+        padding: 21px;
     }
-
     .course-card {
-        margin-top:
-            40px;
-
-        padding:
-            22px;
+        margin-top: 40px;
+        padding: 22px;
     }
-
     .course-card-top {
-        margin-bottom:
-            20px;
+        margin-bottom: 20px;
     }
-
     .course-tag {
-        font-size:
-            7px;
+        font-size: 7px;
     }
-
     .course-price {
-        font-size:
-            13px;
+        font-size: 13px;
     }
-
     .course-card h3 {
-        font-size:
-            23px;
-
-        line-height:
-            1.1;
+        font-size: 23px;
+        line-height: 1.1;
     }
-
     .course-card > p {
-        font-size:
-            12px;
-
-        line-height:
-            1.7;
+        font-size: 12px;
+        line-height: 1.7;
     }
-
     .course-meta {
-        gap:
-            12px;
-
-        font-size:
-            6px;
+        gap: 12px;
+        font-size: 6px;
     }
-
     .course-button {
-        min-height:
-            45px;
-
-        font-size:
-            7px;
+        min-height: 45px;
+        font-size: 7px;
     }
-
     .core-grid {
-        gap:
-            1px;
+        gap: 1px;
     }
-
     .core-card {
-        min-height:
-            245px;
-
-        padding:
-            23px;
+        min-height: 245px;
+        padding: 23px;
     }
-
     .core-index {
-        margin-bottom:
-            38px;
+        margin-bottom: 38px;
     }
-
     .core-card h3 {
-        font-size:
-            26px;
+        font-size: 26px;
     }
-
     .core-card p {
-        font-size:
-            12px;
+        font-size: 12px;
     }
-
     .core-status {
-        left:
-            23px;
-
-        bottom:
-            20px;
+        left: 23px;
+        bottom: 20px;
     }
-
     .footer {
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
-
-        gap:
-            10px;
-
-        padding:
-            28px 6vw;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 28px 6vw;
     }
-
     .footer::before {
-        left:
-            6vw;
+        left: 6vw;
     }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-
     html {
-        scroll-behavior:
-            auto;
+        scroll-behavior: auto;
     }
-
     *,
     *::before,
     *::after {
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
 
 /* =========================================================
-   ULTIMATE MOBILE & DESKTOP SITE MODE OVERLAP FIX
+   MOBILE RESPONSIVE 3D GLOBE & HERO OPTIMIZATION (No Overlap)
 ========================================================= */
 
 @media screen and (max-width: 1024px) {
@@ -3264,172 +3034,76 @@ input {
         overflow-x: hidden !important;
     }
 
-    .hero {
-        min-height: 100vh !important;
-        height: auto !important;
-        position: relative !important;
+    #cyber-environment {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 1 !important;
+        opacity: 0.5 !important;
+        pointer-events: none !important;
+        overflow: hidden !important;
+    }
+
+    #cyber-environment canvas {
+        width: 100% !important;
+        height: 100% !important;
+        transform: scale(0.5) translateY(-20%) !important; 
+        transform-origin: center center !important;
     }
 
     .hero-content {
         position: relative !important;
-        top: unset !important;
-        left: unset !important;
-        transform: none !important;
+        z-index: 10 !important;
         width: 90% !important;
         max-width: 500px !important;
         margin: 0 auto !important;
-        padding: 110px 0 40px !important;
+        padding-top: 120px !important;
+        text-align: center !important;
+        background: transparent !important;
     }
 
     .hero-title {
         font-size: clamp(32px, 8vw, 56px) !important;
+        line-height: 1.2 !important;
+        color: #fff !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
         white-space: normal !important;
         word-break: break-word !important;
+        margin-bottom: 15px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 16px !important;
+        color: #ccc !important;
+        margin-bottom: 25px !important;
+        padding: 0 15px !important;
     }
 
     .hero-actions {
         position: relative !important;
         flex-direction: column !important;
+        gap: 10px !important;
         width: 100% !important;
+        padding: 0 20px !important;
     }
 
     .btn-primary, .btn-secondary {
         width: 100% !important;
-    }
-
-    .telemetry {
-        position: relative !important;
-        right: unset !important;
-        bottom: unset !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 20px auto !important;
-    }
-}/* =========================================================
-   3D GLOBE / HERO INTERFACE MOBILE FIT FIX
-========================================================= */
-
-/* Hero section ko screen ke andar constrain karein */
-.hero {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    min-height: 100vh !important;
-    overflow: hidden !important; /* Globe bahar na nikle */
-}
-
-/* 3D Canvas Container */
-#cyber-environment {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-}
-
-/* Canvas element styling */
-#cyber-environment canvas {
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-}
-
-/* Mobile Screens Par Globe Ko Scale (Scale-Down) Karein */
-@media screen and (max-width: 768px) {
-
-    /* Globe ko mobile screen me chhota aur fit karein */
-    #cyber-environment canvas {
-        transform: scale(0.65) !important; /* Globe ka size 65% kar dega taaki cut na ho */
-        transform-origin: center 40% !important; /* Globe ko content ke piche center rakhega */
-        opacity: 0.55 !important; /* Text saaf dikhne ke liye light opacity */
-    }
-
-    /* Hero Content Box */
-    .hero-content {
-        position: relative !important;
-        z-index: 25 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 100px 20px 30px !important;
-        margin: 0 auto !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Mobile Text Fit Fix */
-    .hero-title {
-        font-size: clamp(28px, 8.5vw, 48px) !important;
-        line-height: 1.05 !important;
-        white-space: normal !important;
-        word-break: break-word !important;
-    }
-
-    /* Buttons Fit Fix */
-    .hero-actions {
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 12px !important;
-    }
-
-    .btn-primary, .btn-secondary {
-        width: 100% !important;
-        min-height: 48px !important;
-    }
-
-    /* System Telemetry Box ko niche shift karein */
-    .telemetry {
-        position: relative !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: calc(100% - 40px) !important;
-        margin: 20px auto !important;
-    }/* =========================================================
-   MOBILE PAR 3D GLOBE KO HIDE KARNE KE LIYE FIX
-========================================================= */
-@media screen and (max-width: 768px) {
-    #cyber-environment {
-        display: none !important;
-    }
-}
-}/* =========================================================
-   PERMANENT DESKTOP SITE & LANDSCAPE OVERLAP FIX
-========================================================= */
-
-@media screen and (max-width: 1024px) {
-    #cyber-environment {
-        display: none !important;
-    }
-
-    .hero-content {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        width: 100% !important;
-        padding: 90px 18px 30px !important;
-        margin: 0 auto !important;
-    }
-
-    .hero-title {
-        font-size: clamp(32px, 8vw, 52px) !important;
-        white-space: normal !important;
-        word-break: break-word !important;
-    }
-
-    .hero-actions {
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-
-    .btn-primary, .btn-secondary {
-        width: 100% !important;
+        margin: 5px 0 !important;
     }
 
     .telemetry {
         position: relative !important;
         right: auto !important;
         bottom: auto !important;
-        width: 100% !important;
-        margin: 20px 0 !important;
+        width: 90% !important;
+        max-width: 100% !important;
+        margin: 30px auto !important;
+        background: rgba(0, 20, 40, 0.7) !important;
+        border: 1px solid #0ff !important;
+        z-index: 10 !important;
     }
 }
