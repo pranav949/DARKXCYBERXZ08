@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ANDROID HACKER TERMINAL // DX08</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #020403;
+            color: #00ff66;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .top-nav {
+            background: #060e09;
+            border-bottom: 1px solid #00ff66;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+        .top-nav a {
+            color: #ff0055;
+            text-decoration: none;
+            border: 1px solid #ff0055;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .terminal-box {
+            flex: 1;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #output-screen {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 12px;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+        .input-row {
+            display: flex;
+            align-items: center;
+            background: #060e09;
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            padding: 8px 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .prompt {
+            color: #00ff66;
+            margin-right: 6px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        #mobile-cmd-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            outline: none;
+        }
+        .t-success { color: #00ff66; }
+        .t-error { color: #ff0055; font-weight: bold; }
+        .t-warn { color: #ffcc00; }
+        .t-info { color: #00ffff; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <span style="color: #00ffff; font-weight: bold;">📱 ANDROID TERMINAL</span>
+        <a href="terminal.html">← BACK TO IDE</a>
+    </div>
+
+    <div class="terminal-box">
+        <div id="output-screen">
+            <div class="t-success">[+] MOBILE KERNEL SHELL v1.0 ONLINE.</div>
+            <div class="t-info">[*] Type 'help' for command list. Optimized for smartphones.</div>
+            <br>
+        </div>
+        
+        <div class="input-row">
+            <span class="prompt">dx08:~$</span>
+            <input type="text" id="mobile-cmd-input" autofocus autocomplete="off" spellcheck="false" placeholder="Enter command...">
+        </div>
+    </div>
+
+    <script>
+        const outputScreen = document.getElementById('output-screen');
+        const cmdInput = document.getElementById('mobile-cmd-input');
+
+        cmdInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                let cmd = cmdInput.value.trim();
+                if (!cmd) return;
+                appendLine("dx08:~$ " + cmd, 'user');
+                handleCommand(cmd);
+                cmdInput.value = '';
+            }
+        });
+
+        function appendLine(text, type) {
+            let div = document.createElement('div');
+            if (type === 'user') div.style.color = '#fff';
+            else if (type === 'success') div.className = 't-success';
+            else if (type === 'error') div.className = 't-error';
+            else if (type === 'warn') div.className = 't-warn';
+            else if (type === 'info') div.className = 't-info';
+            div.textContent = text;
+            outputScreen.appendChild(div);
+            outputScreen.scrollTop = outputScreen.scrollHeight;
+        }
+
+        function handleCommand(input) {
+            let parts = input.split(' ');
+            let cmd = parts[0].toLowerCase();
+
+            switch(cmd) {
+                case 'help':
+                    appendLine("MOBILE COMMANDS:\n- help : list commands\n- scan : network probe\n- status : core health\n- clear : wipe screen", 'info');
+                    break;
+                case 'scan':
+                    appendLine("[*] Scanning mobile local subnet...", 'warn');
+                    setTimeout(() => appendLine("[+] Target secure: Android Sandbox Active", 'success'), 600);
+                    break;
+                case 'status':
+                    appendLine("[+] MOBILE SHELL: ACTIVE | PING: 14ms", 'success');
+                    break;
+                case 'clear':
+                    outputScreen.innerHTML = '<div class="t-success">[+] SCREEN CLEARED.</div><br>';
+                    break;
+                default:
+                    appendLine("bash: command not found: " + cmd, 'error');
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

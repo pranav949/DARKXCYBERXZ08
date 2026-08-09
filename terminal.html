@@ -26,12 +26,13 @@
             box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
         }
         .war-logo { font-weight: bold; color: #00ffff; letter-spacing: 2px; }
-        .war-btns { display: flex; gap: 10px; }
+        .war-btns { display: flex; gap: 10px; align-items: center; }
         .war-btn {
             background: rgba(0, 255, 102, 0.08);
             border: 1px solid #00ff66; color: #00ff66;
             padding: 6px 14px; border-radius: 4px; cursor: pointer;
             font-family: inherit; font-size: 12px; font-weight: bold;
+            text-decoration: none; display: inline-block;
         }
         .war-btn:hover { background: rgba(0, 255, 102, 0.3); box-shadow: 0 0 10px #00ff66; }
         .war-btn.active { background: #00ff66; color: #020403; }
@@ -63,8 +64,9 @@
         <div class="war-btns">
             <button class="war-btn active" id="btn-ide" onclick="switchView('ide')">[ WEB IDE & PREVIEW ]</button>
             <button class="war-btn" id="btn-term" onclick="switchView('terminal')">[ HACKER TERMINAL ]</button>
+            <a href="android-terminal.html" class="war-btn" style="border-color: #00ffff; color: #00ffff;">📱 MOBILE TERMINAL</a>
             <button class="war-btn" onclick="saveWorkspace()">💾 SAVE PROJECT</button>
-            <a href="index.html" style="text-decoration:none;"><button class="war-btn danger">EXIT</button></a>
+            <a href="index.html" style="text-decoration:none;"><button class="war-btn danger" style="border:none; background:transparent; cursor:pointer;">EXIT</button></a>
         </div>
     </div>
 
@@ -73,7 +75,7 @@
             <div class="sidebar">
                 <h4>PROJECT FILES</h4>
                 <ul id="file-list" class="file-list"></ul>
-                <button class="war-btn" style="margin-top: 10px;" onclick="createNewFile()">+ NEW FILE</button>
+                <button class="war-btn" style="margin-top: 10px; width: 100%; text-align: center;" onclick="createNewFile()">+ NEW FILE</button>
             </div>
             <div class="editor-pane">
                 <div class="pane-header">
