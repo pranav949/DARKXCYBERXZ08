@@ -3,130 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08_TERMINAL // Dedicated Console</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DARKXCYBERXZ08 // ELITE CYBER WAR ROOM & IDE</title>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: #020309;
-            color: #00e5ff;
-            font-family: monospace;
-            padding: 20px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
+            background-color: #020403;
+            color: #00ff66;
+            font-family: 'Courier New', Courier, monospace;
             height: 100vh;
-            box-sizing: border-box;
-        }
-        .terminal-page-container {
-            flex: 1;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            background: rgba(0, 10, 20, 0.95);
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+            overflow: hidden;
         }
-        .terminal-header-bar {
+        .war-header {
+            background: #060e09;
+            border-bottom: 2px solid #00ff66;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(0, 229, 255, 0.3);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        .back-btn {
-            color: #ff2daa;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .term-output-area {
-            flex: 1;
-            overflow-y: auto;
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .term-input-row {
-            display: flex;
             align-items: center;
-            border-top: 1px solid rgba(0, 229, 255, 0.2);
-            padding-top: 10px;
+            font-size: 14px;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
         }
-        .term-input-row span {
-            margin-right: 8px;
-            color: #ff2daa;
+        .war-logo { font-weight: bold; color: #00ffff; letter-spacing: 2px; }
+        .war-btns { display: flex; gap: 10px; }
+        .war-btn {
+            background: rgba(0, 255, 102, 0.08);
+            border: 1px solid #00ff66; color: #00ff66;
+            padding: 6px 14px; border-radius: 4px; cursor: pointer;
+            font-family: inherit; font-size: 12px; font-weight: bold;
         }
-        #page-terminal-input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #00e5ff;
-            font-family: monospace;
-            font-size: 13px;
-            outline: none;
-        }
+        .war-btn:hover { background: rgba(0, 255, 102, 0.3); box-shadow: 0 0 10px #00ff66; }
+        .war-btn.active { background: #00ff66; color: #020403; }
+        .war-btn.danger { border-color: #ff0055; color: #ff0055; background: rgba(255, 0, 85, 0.08); }
+        .war-workspace { flex: 1; display: flex; overflow: hidden; }
+        .view-section { flex: 1; display: none; height: 100%; }
+        .view-section.active { display: flex; }
+        .sidebar { width: 250px; background: #040806; border-right: 1px solid rgba(0, 255, 102, 0.3); display: flex; flex-direction: column; padding: 12px; }
+        .sidebar h4 { color: #00ffff; font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid rgba(0, 255, 255, 0.3); padding-bottom: 5px; }
+        .file-list { list-style: none; flex: 1; overflow-y: auto; }
+        .file-item { padding: 8px 10px; margin-bottom: 4px; cursor: pointer; border-radius: 4px; font-size: 13px; background: rgba(0, 255, 102, 0.03); border: 1px solid rgba(0, 255, 102, 0.1); }
+        .file-item:hover { background: rgba(0, 255, 102, 0.1); }
+        .file-item.active { background: rgba(0, 255, 102, 0.2); border-color: #00ff66; color: #fff; }
+        .editor-pane, .preview-pane { flex: 1; display: flex; flex-direction: column; background: #020403; border-right: 1px solid rgba(0, 255, 102, 0.3); }
+        .pane-header { background: #050a07; padding: 8px 15px; font-size: 12px; color: #00ffff; border-bottom: 1px solid rgba(0, 255, 102, 0.3); display: flex; justify-content: space-between; }
+        #code-editor { flex: 1; background: #020403; color: #00ff66; border: none; padding: 15px; font-family: 'Courier New', Courier, monospace; font-size: 14px; outline: none; resize: none; line-height: 1.5; }
+        #live-preview { flex: 1; border: none; background: #fff; width: 100%; height: 100%; }
+        .terminal-container { flex: 1; background: #020403; display: flex; flex-direction: column; padding: 15px; }
+        #terminal-output { flex: 1; overflow-y: auto; font-size: 13px; line-height: 1.5; display: flex; flex-direction: column; gap: 6px; }
+        .terminal-input-wrap { display: flex; align-items: center; border-top: 1px solid rgba(0, 255, 102, 0.3); padding-top: 10px; margin-top: 10px; }
+        #terminal-input { flex: 1; background: transparent; border: none; color: #fff; font-family: 'Courier New', Courier, monospace; font-size: 14px; outline: none; }
+        .t-success { color: #00ff66; } .t-error { color: #ff0055; font-weight: bold; } .t-warn { color: #ffcc00; } .t-info { color: #00ffff; }
     </style>
 </head>
 <body>
 
-    <div class="terminal-page-container">
-        <div class="terminal-header-bar">
-            <span>DX08_TERMINAL // SECURE CONSOLE v2.0</span>
-            <a href="index.html" class="back-btn">[ ← BACK TO HOME ]</a>
-        </div>
-        
-        <div id="page-terminal-output" class="term-output-area">
-            <div>> SECURE CONNECTION ESTABLISHED.</div>
-            <div>> SYSTEM INITIALIZED... TYPE 'help' FOR COMMANDS.</div>
-        </div>
-
-        <div class="term-input-row">
-            <span>></span>
-            <input type="text" id="page-terminal-input" placeholder="try 'scan', 'status', 'help'..." autofocus autocomplete="off">
+    <div class="war-header">
+        <span class="war-logo">🛡️ DARKXCYBERXZ08 // WAR ROOM & IDE</span>
+        <div class="war-btns">
+            <button class="war-btn active" id="btn-ide" onclick="switchView('ide')">[ WEB IDE & PREVIEW ]</button>
+            <button class="war-btn" id="btn-term" onclick="switchView('terminal')">[ HACKER TERMINAL ]</button>
+            <button class="war-btn" onclick="saveWorkspace()">💾 SAVE PROJECT</button>
+            <a href="index.html" style="text-decoration:none;"><button class="war-btn danger">EXIT</button></a>
         </div>
     </div>
 
-    <script>
-        const input = document.getElementById("page-terminal-input");
-        const output = document.getElementById("page-terminal-output");
+    <div class="war-workspace">
+        <div id="view-ide" class="view-section active">
+            <div class="sidebar">
+                <h4>PROJECT FILES</h4>
+                <ul id="file-list" class="file-list"></ul>
+                <button class="war-btn" style="margin-top: 10px;" onclick="createNewFile()">+ NEW FILE</button>
+            </div>
+            <div class="editor-pane">
+                <div class="pane-header">
+                    <span id="active-file-label">index.html</span>
+                    <span style="color: #00ff66;">STATUS: EDITING</span>
+                </div>
+                <textarea id="code-editor" spellcheck="false"></textarea>
+            </div>
+            <div class="preview-pane">
+                <div class="pane-header" style="background: #111; color: #fff;">
+                    <span>LIVE OUTPUT PREVIEW</span>
+                    <span style="color: #00ff66;">● LIVE SYNC</span>
+                </div>
+                <iframe id="live-preview"></iframe>
+            </div>
+        </div>
 
-        input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                const cmd = input.value.trim().toLowerCase();
-                if (!cmd) return;
+        <div id="view-term" class="view-section">
+            <div class="terminal-container">
+                <div id="terminal-output">
+                    <div class="t-success">[+] DARKXCYBERXZ08 KERNEL SHELL v5.0 SECURED.</div>
+                    <div class="t-info">[*] Type 'help' to check available cyber commands.</div>
+                    <br>
+                </div>
+                <div class="terminal-input-wrap">
+                    <span style="color: #00ff66; margin-right: 8px; font-weight: bold;">dx08@war-room:~#</span>
+                    <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type command here...">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                output.innerHTML += `<div>> ${cmd}</div>`;
-                input.value = "";
-
-                let response = "";
-                switch (cmd) {
-                    case "help":
-                        response = "AVAILABLE COMMANDS: scan, status, labs, clear, whoami";
-                        break;
-                    case "scan":
-                        response = "SCANNING NODE_08... ALL PORTS SECURE & ENCRYPTED.";
-                        break;
-                    case "status":
-                        response = "SYS://ONLINE. FIREWALL ACTIVE. SANDBOX SAFE.";
-                        break;
-                    case "labs":
-                        response = "LOADED LABS: WEB, NETWORK, AI, FORENSICS.";
-                        break;
-                    case "whoami":
-                        response = "USER: GUEST_RESEARCHER // LEVEL_1 CLEARANCE.";
-                        break;
-                    case "clear":
-                        output.innerHTML = "> TERMINAL RESET.";
-                        return;
-                    default:
-                        response = `COMMAND NOT RECOGNIZED: '${cmd}'. TYPE 'help'.`;
-                        break;
-                }
-
-                output.innerHTML += `<div>${response}</div>`;
-                output.scrollTop = output.scrollHeight;
-            }
-        });
-    </script>
+    <!-- External Script attached cleanly -->
+    <script src="war-script.js"></script>
 </body>
 </html>
