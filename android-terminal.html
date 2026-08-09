@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ANDROID HACKER TERMINAL // DX08</title>
+    <title>DX08 ELITE HACKING KERNEL // TERMUX v10</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: #020403;
+            background-color: #050505;
             color: #00ff66;
             font-family: 'Courier New', Courier, monospace;
             height: 100vh;
@@ -15,56 +15,52 @@
             flex-direction: column;
             overflow: hidden;
         }
-        .top-nav {
-            background: #060e09;
-            border-bottom: 1px solid #00ff66;
-            padding: 10px 15px;
+        .term-header {
+            background: #111;
+            border-bottom: 1px solid #333;
+            padding: 8px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 12px;
         }
-        .top-nav a {
-            color: #ff0055;
+        .term-header a {
+            color: #ff3333;
             text-decoration: none;
-            border: 1px solid #ff0055;
-            padding: 4px 8px;
+            border: 1px solid #ff3333;
+            padding: 3px 8px;
             border-radius: 3px;
             font-weight: bold;
         }
-        .terminal-box {
+        .term-body {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            background: #000;
         }
-        #output-screen {
+        #term-screen {
             flex: 1;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            font-size: 12px;
+            gap: 6px;
+            font-size: 13px;
             line-height: 1.4;
-            word-break: break-word;
+            word-break: break-all;
         }
-        .input-row {
+        .prompt-line {
             display: flex;
             align-items: center;
-            background: #060e09;
-            border: 1px solid rgba(0, 255, 102, 0.4);
-            padding: 8px 10px;
+            margin-top: 6px;
+            background: #0a0a0a;
+            padding: 6px 8px;
             border-radius: 4px;
-            margin-top: 10px;
+            border: 1px solid #222;
         }
-        .prompt {
-            color: #00ff66;
-            margin-right: 6px;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        #mobile-cmd-input {
+        .p-user { color: #00ff66; font-weight: bold; margin-right: 6px; font-size: 12px; }
+        #term-input {
             flex: 1;
             background: transparent;
             border: none;
@@ -73,78 +69,142 @@
             font-size: 14px;
             outline: none;
         }
-        .t-success { color: #00ff66; }
-        .t-error { color: #ff0055; font-weight: bold; }
-        .t-warn { color: #ffcc00; }
-        .t-info { color: #00ffff; }
+        .t-green { color: #00ff66; }
+        .t-red { color: #ff3333; font-weight: bold; }
+        .t-yellow { color: #f1fa8c; }
+        .t-cyan { color: #8be9fd; }
+        .t-purple { color: #bd93f9; }
     </style>
 </head>
 <body>
 
-    <div class="top-nav">
-        <span style="color: #00ffff; font-weight: bold;">📱 ANDROID TERMINAL</span>
-        <a href="terminal.html">← BACK TO IDE</a>
+    <div class="term-header">
+        <span style="color: #00ffff; font-weight: bold;">⚡ root@dx08-cyber-ops:~</span>
+        <a href="terminal.html">EXIT SHELL</a>
     </div>
 
-    <div class="terminal-box">
-        <div id="output-screen">
-            <div class="t-success">[+] MOBILE KERNEL SHELL v1.0 ONLINE.</div>
-            <div class="t-info">[*] Type 'help' for command list. Optimized for smartphones.</div>
+    <div class="term-body">
+        <div id="term-screen">
+            <div class="t-green">==================================================</div>
+            <div class="t-cyan">   DX08 ADVANCED CYBER DEFENSE & OFFENSIVE SHELL  </div>
+            <div class="t-green">==================================================</div>
+            <div class="t-yellow">[*] Type <span style="color:#ff3333">tools</span> to view available world hacking modules.</div>
+            <div class="t-yellow">[*] Type <span style="color:#ff3333">help</span> for command manual.</div>
             <br>
         </div>
-        
-        <div class="input-row">
-            <span class="prompt">dx08:~$</span>
-            <input type="text" id="mobile-cmd-input" autofocus autocomplete="off" spellcheck="false" placeholder="Enter command...">
+
+        <div class="prompt-line">
+            <span class="p-user">root@dx08:~#</span>
+            <input type="text" id="term-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type command (e.g., tools, msfconsole)...">
         </div>
     </div>
 
     <script>
-        const outputScreen = document.getElementById('output-screen');
-        const cmdInput = document.getElementById('mobile-cmd-input');
+        const screen = document.getElementById('term-screen');
+        const input = document.getElementById('term-input');
 
-        cmdInput.addEventListener('keydown', function(e) {
+        input.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
-                let cmd = cmdInput.value.trim();
+                let cmd = input.value.trim();
                 if (!cmd) return;
-                appendLine("dx08:~$ " + cmd, 'user');
-                handleCommand(cmd);
-                cmdInput.value = '';
+                printLine("root@dx08:~# " + cmd, 'user');
+                executeCommand(cmd);
+                input.value = '';
             }
         });
 
-        function appendLine(text, type) {
+        function printLine(text, type) {
             let div = document.createElement('div');
             if (type === 'user') div.style.color = '#fff';
-            else if (type === 'success') div.className = 't-success';
-            else if (type === 'error') div.className = 't-error';
-            else if (type === 'warn') div.className = 't-warn';
-            else if (type === 'info') div.className = 't-info';
+            else if (type === 'success') div.className = 't-green';
+            else if (type === 'error') div.className = 't-red';
+            else if (type === 'warn') div.className = 't-yellow';
+            else if (type === 'info') div.className = 't-cyan';
+            else if (type === 'purple') div.className = 't-purple';
             div.textContent = text;
-            outputScreen.appendChild(div);
-            outputScreen.scrollTop = outputScreen.scrollHeight;
+            screen.appendChild(div);
+            screen.scrollTop = screen.scrollHeight;
         }
 
-        function handleCommand(input) {
-            let parts = input.split(' ');
-            let cmd = parts[0].toLowerCase();
+        function executeCommand(command) {
+            let parts = command.split(' ');
+            let mainCmd = parts[0].toLowerCase();
 
-            switch(cmd) {
+            switch(mainCmd) {
                 case 'help':
-                    appendLine("MOBILE COMMANDS:\n- help : list commands\n- scan : network probe\n- status : core health\n- clear : wipe screen", 'info');
+                    printLine("AVAILABLE CORE COMMANDS:\n  tools        - List world hacking frameworks (Metasploit, Nmap, Sqlmap, etc.)\n  install <tool> - Install/Setup hacking package\n  clear        - Clear terminal screen\n  whoami       - Print active user privileges\n  uname -a     - Print kernel details", 'info');
                     break;
-                case 'scan':
-                    appendLine("[*] Scanning mobile local subnet...", 'warn');
-                    setTimeout(() => appendLine("[+] Target secure: Android Sandbox Active", 'success'), 600);
+                case 'tools':
+                    printLine("WORLD HACKING SUITE MODULES:\n  1. metasploit (msfconsole) - Exploit Development & Pentesting\n  2. sqlmap                  - Automatic SQL Injection & Database Takeover\n  3. nmap                    - Network Discovery & Vulnerability Scanner\n  4. hydra                   - Lightning Fast Login Brute-forcer\n  5. sherlock                - Hunt social media accounts across social networks\n  6. aircrack-ng             - Wi-Fi Security Auditing Tools\n\nUsage: Type tool name directly to execute (e.g., sqlmap, msfconsole)", 'purple');
                     break;
-                case 'status':
-                    appendLine("[+] MOBILE SHELL: ACTIVE | PING: 14ms", 'success');
+                case 'install':
+                    let toolName = parts[1];
+                    if (!toolName) {
+                        printLine("Error: specify tool to install. Example: install metasploit", 'error');
+                        return;
+                    }
+                    printLine("Reading package lists... Done", 'warn');
+                    printLine("Building dependency tree... Done", 'warn');
+                    printLine("Fetching package " + toolName + " from secure DX08 repository...", 'info');
+                    setTimeout(() => {
+                        printLine("[+] Unpacking " + toolName + " (v5.2-stable)...", 'success');
+                        printLine("[+] Setting up dependencies and setting permissions...", 'success');
+                        printLine("[✔] Successfully installed " + toolName + "! You can run it now.", 'success');
+                    }, 1200);
+                    break;
+                case 'msfconsole':
+                case 'metasploit':
+                    printLine("[-] Starting Metasploit Framework Console...", 'warn');
+                    setTimeout(() => {
+                        printLine("       =[ metasploit v6.3.4-dev                          ]", 'info');
+                        printLine("+ -- --=[ 2332 exploits - 1200 auxiliary - 410 post       ]", 'info');
+                        printLine("+ -- --=[ 1385 payloads - 46 encoders - 11 nops            ]", 'info');
+                        printLine("\n[i] Metasploit connected to local handler. Type 'use exploit/multi/handler' to start.", 'success');
+                    }, 1000);
+                    break;
+                case 'sqlmap':
+                    printLine("        ___", 'info');
+                    printLine("       __H__", 'info');
+                    printLine(" ;getCode('( ' )'; \\'__'", 'info');
+                    printLine(" (.--. ' /-'", 'info');
+                    printLine("['. /_\\ ']", 'info');
+                    printLine(" | \\", 'info');
+                    printLine("[!] sqlmap/1.7.4-stable loaded. Provide target url with --url flag.", 'warn');
+                    break;
+                case 'nmap':
+                    let target = parts[1] || "127.0.0.1";
+                    printLine("Starting Nmap scan on target: " + target, 'info');
+                    setTimeout(() => {
+                        printLine("PORT     STATE SERVICE", 'success');
+                        printLine("21/tcp   open  ftp", 'success');
+                        printLine("22/tcp   open  ssh", 'success');
+                        printLine("80/tcp   open  http", 'success');
+                        printLine("443/tcp  open  https", 'success');
+                        printLine("[+] Nmap done: 1 IP address (1 host up) scanned successfully.", 'success');
+                    }, 1000);
+                    break;
+                case 'hydra':
+                    printLine("[*] Hydra v9.5 (c) 2023 by van Hauser / ThC - www.thc.org", 'info');
+                    printLine("[!] Syntax: hydra -l user -P passlist.txt ssh://target", 'warn');
+                    break;
+                case 'sherlock':
+                    printLine("[*] Checking username across social networks...", 'info');
+                    setTimeout(() => {
+                        printLine("[+][-] Searching username on 400+ platforms...", 'warn');
+                        printLine("[+] Target found on: GitHub, Instagram, Twitter, Telegram", 'success');
+                    }, 1000);
+                    break;
+                case 'whoami':
+                    printLine("root (UID 0 / GID 0 - Full Kernel Privileges Active)", 'success');
+                    break;
+                case 'uname':
+                    printLine("Linux dx08-sec-kernel 6.5.0-custom-elitesec #1 SMP PREEMPT aarch64", 'info');
                     break;
                 case 'clear':
-                    outputScreen.innerHTML = '<div class="t-success">[+] SCREEN CLEARED.</div><br>';
+                    screen.innerHTML = '<div class="t-green">Terminal buffer wiped.</div><br>';
                     break;
                 default:
-                    appendLine("bash: command not found: " + cmd, 'error');
+                    printLine("bash: command not found: " + mainCmd + ". Type 'tools' or 'help' for options.", 'error');
                     break;
             }
         }
