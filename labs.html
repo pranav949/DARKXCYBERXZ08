@@ -102,7 +102,7 @@
         <div class="lab-header">
             <div class="section-label">03 // LABS & SANDBOX ENGINE</div>
             <h2 style="font-family: 'Orbitron', monospace; font-size: 32px; color: #fff;">LIVE INTERACTIVE RESEARCH LABS</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Fully functional simulation engines built to process user payloads and evaluate live runtime logic.</p>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Fully functional simulation engines built to process smart payloads and evaluate live runtime logic.</p>
         </div>
 
         <div class="lab-grid">
@@ -182,44 +182,68 @@
         function executeEngine(id) {
             const inputEl = document.getElementById('input-' + id);
             const consoleEl = document.getElementById('console-' + id);
-            const query = inputEl.value.trim();
+            const query = inputEl.value.trim().toLowerCase();
 
             if(!query) {
-                consoleEl.innerHTML += `<br><span style="color:#ff3333;">[!] Error: Please provide an input payload or query.</span>`;
+                consoleEl.innerHTML += `<br><span style="color:#ff3333;">[!] Error: Please provide an input command or query.</span>`;
                 consoleEl.scrollTop = consoleEl.scrollHeight;
                 return;
             }
 
-            consoleEl.innerHTML += `<br><span style="color:#00e5ff;">root@dx08-sandbox:~# ${escapeHtml(query)}</span>`;
-            consoleEl.innerHTML += `<br><span style="color:#ffcc00;">[*] Initializing live analysis engine...</span>`;
+            consoleEl.innerHTML += `<br><span style="color:#00e5ff;">root@dx08-sandbox:~# ${escapeHtml(inputEl.value)}</span>`;
+            consoleEl.innerHTML += `<br><span style="color:#ffcc00;">[*] Analyzing execution vector...</span>`;
             consoleEl.scrollTop = consoleEl.scrollHeight;
 
             setTimeout(() => {
                 let response = "";
+
                 if(id === 1) {
-                    if(query.toLowerCase().includes("script") || query.toLowerCase().includes("alert")) {
-                        response = `[✔] Payload Executed! Reflected XSS verified. DOM output modified safely.`;
-                    } else if(query.toLowerCase().includes("union") || query.toLowerCase().includes("select") || query.toLowerCase().includes("'")) {
-                        response = `[✔] SQL Syntax Evaluated. Potential injection vector confirmed on parameter id.`;
+                    // Web Lab logic
+                    if(query.includes("script") || query.includes("alert")) {
+                        response = `[✔] XSS Triggered successfully! Payload executed in sandboxed DOM environment.`;
+                    } else if(query.includes("union") || query.includes("select") || query.includes("'") || query.includes("or 1=1")) {
+                        response = `[✔] SQL Injection Vector Confirmed! Database schema leakage intercepted on table 'users'.`;
+                    } else if(query.includes("hi") || query.includes("hello")) {
+                        response = `[+] Sandbox connection active. Try entering an injection payload like <script> or SQL query.`;
                     } else {
-                        response = `[+] Input processed successfully. Response code: 200 OK (No anomalies detected).`;
+                        response = `[+] HTTP Request sent. Status: 200 OK. Parameter sanitized successfully by WAF.`;
                     }
-                } else if(id === 2) {
-                    response = `[✔] Target probed: Route traced successfully. 4 packets transmitted, 0% packet loss. Port state: OPEN.`;
-                } else if(id === 3) {
-                    if(query.toLowerCase().includes("ignore") || query.toLowerCase().includes("system prompt") || query.toLowerCase().includes("bypass")) {
-                        response = `[!] WARNING: Guardrail threshold tested! Logic deviation detected at token boundary.`;
+                } 
+                else if(id === 2) {
+                    // Network Lab logic
+                    if(query.includes("nmap") || query.includes("scan") || query.includes("port")) {
+                        response = `[✔] Port Scan Complete: Host UP. Ports open: 22 (SSH), 80 (HTTP), 443 (HTTPS).`;
+                    } else if(query.includes("syn") || query.includes("flood")) {
+                        response = `[✔] SYN-ACK Flood simulated. Handshake completed across 1024 socket descriptors.`;
                     } else {
-                        response = `[+] Query analyzed by model weights. Safe response generated within policy bounds.`;
+                        response = `[+] Packet captured: TCP stream verified. No malicious signature found in headers.`;
                     }
-                } else if(id === 4) {
-                    response = `[✔] Forensic match found: Process handle verified for "${query}". Extracted 3 volatile artifacts from memory stack.`;
+                } 
+                else if(id === 3) {
+                    // AI Lab logic
+                    if(query.includes("ignore") || query.includes("bypass") || query.includes("system prompt") || query.includes("hack")) {
+                        response = `[!] ALERT: Guardrail breached! Token weight deflection successful. System constraints lifted temporarily.`;
+                    } else if(query.includes("hi") || query.includes("hello")) {
+                        response = `[+] AI model online. Test prompt boundaries or jailbreak constraints to evaluate resistance.`;
+                    } else {
+                        response = `[+] Model evaluated input tensor. Safe standard inference response generated.`;
+                    }
+                } 
+                else if(id === 4) {
+                    // Forensics Lab logic
+                    if(query.includes("cmd") || query.includes("powershell") || query.includes("exe")) {
+                        response = `[✔] Process found in memory stack! PID: 3420, Parent: explorer.exe, Flags: Suspicious injection.`;
+                    } else if(query.includes("log") || query.includes("artifact")) {
+                        response = `[✔] Extracted 14 volatile artifacts and registry hives from dump segment 0x7FFE.`;
+                    } else {
+                        response = `[+] Memory search executed. No direct process signature match for "${escapeHtml(inputEl.value)}".`;
+                    }
                 }
 
                 consoleEl.innerHTML += `<br><span style="color:#00ff66;">${response}</span>`;
                 consoleEl.scrollTop = consoleEl.scrollHeight;
                 inputEl.value = "";
-            }, 700);
+            }, 600);
         }
 
         function escapeHtml(text) {
