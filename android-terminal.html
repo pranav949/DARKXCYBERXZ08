@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DX08 ELITE HACKING KERNEL // TERMUX v10</title>
+    <title>DX08 ELITE HACKING KERNEL // HYDRA ENGINE v3.0</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -79,37 +79,73 @@
 <body>
 
     <div class="term-header">
-        <span style="color: #00ffff; font-weight: bold;">⚡ root@dx08-cyber-ops:~</span>
+        <span id="path-label" style="color: #00ffff; font-weight: bold;">root@dx08:~#</span>
         <a href="terminal.html">EXIT SHELL</a>
     </div>
 
     <div class="term-body">
         <div id="term-screen">
             <div class="t-green">==================================================</div>
-            <div class="t-cyan">   DX08 ADVANCED CYBER DEFENSE & OFFENSIVE SHELL  </div>
+            <div class="t-cyan">   DX08 KERNEL: VFS + HYDRA BRUTE-FORCE ENGINE    </div>
             <div class="t-green">==================================================</div>
-            <div class="t-yellow">[*] Type <span style="color:#ff3333">tools</span> to view available world hacking modules.</div>
-            <div class="t-yellow">[*] Type <span style="color:#ff3333">help</span> for command manual.</div>
+            <div class="t-yellow">[*] Type <span style="color:#ff3333">help</span> or <span style="color:#ff3333">hydra</span> to run attack simulation.</div>
             <br>
         </div>
 
         <div class="prompt-line">
-            <span class="p-user">root@dx08:~#</span>
-            <input type="text" id="term-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type command (e.g., tools, msfconsole)...">
+            <span class="p-user" id="prompt-symbol">root@dx08:~#</span>
+            <input type="text" id="term-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type command...">
         </div>
     </div>
 
     <script>
         const screen = document.getElementById('term-screen');
         const input = document.getElementById('term-input');
+        const promptSymbol = document.getElementById('prompt-symbol');
+        const pathLabel = document.getElementById('path-label');
+
+        let vfs = JSON.parse(localStorage.getItem('dx08_vfs')) || {
+            "/": {
+                type: "dir",
+                content: {
+                    "readme.txt": { type: "file", content: "Welcome to DX08 Secure Environment. All systems operational." },
+                    "wordlist.txt": { type: "file", content: "admin123\nroot\npassword\nsecret123\nhackme" }
+                }
+            }
+        };
+
+        let currentPath = "/";
+
+        function saveVFS() {
+            localStorage.setItem('dx08_vfs', JSON.stringify(vfs));
+        }
+
+        function getDirByPath(path) {
+            if (path === "/") return vfs["/"];
+            let parts = path.split("/").filter(p => p);
+            let curr = vfs["/"];
+            for (let p of parts) {
+                if (curr.content[p] && curr.content[p].type === "dir") {
+                    curr = curr.content[p];
+                } else {
+                    return null;
+                }
+            }
+            return curr;
+        }
 
         input.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 let cmd = input.value.trim();
+                input.value = ''; 
                 if (!cmd) return;
-                printLine("root@dx08:~# " + cmd, 'user');
+                
+                printLine(promptSymbol.textContent + " + " + cmd, 'user');
+                // fix display text format
+                let historyDiv = screen.lastChild;
+                historyDiv.textContent = promptSymbol.textContent + " " + cmd;
+
                 executeCommand(cmd);
-                input.value = '';
             }
         });
 
@@ -129,82 +165,129 @@
         function executeCommand(command) {
             let parts = command.split(' ');
             let mainCmd = parts[0].toLowerCase();
+            let arg = parts[1];
+
+            let activeDir = getDirByPath(currentPath);
 
             switch(mainCmd) {
                 case 'help':
-                    printLine("AVAILABLE CORE COMMANDS:\n  tools        - List world hacking frameworks (Metasploit, Nmap, Sqlmap, etc.)\n  install <tool> - Install/Setup hacking package\n  clear        - Clear terminal screen\n  whoami       - Print active user privileges\n  uname -a     - Print kernel details", 'info');
-                    break;
-                case 'tools':
-                    printLine("WORLD HACKING SUITE MODULES:\n  1. metasploit (msfconsole) - Exploit Development & Pentesting\n  2. sqlmap                  - Automatic SQL Injection & Database Takeover\n  3. nmap                    - Network Discovery & Vulnerability Scanner\n  4. hydra                   - Lightning Fast Login Brute-forcer\n  5. sherlock                - Hunt social media accounts across social networks\n  6. aircrack-ng             - Wi-Fi Security Auditing Tools\n\nUsage: Type tool name directly to execute (e.g., sqlmap, msfconsole)", 'purple');
-                    break;
-                case 'install':
-                    let toolName = parts[1];
-                    if (!toolName) {
-                        printLine("Error: specify tool to install. Example: install metasploit", 'error');
-                        return;
-                    }
-                    printLine("Reading package lists... Done", 'warn');
-                    printLine("Building dependency tree... Done", 'warn');
-                    printLine("Fetching package " + toolName + " from secure DX08 repository...", 'info');
-                    setTimeout(() => {
-                        printLine("[+] Unpacking " + toolName + " (v5.2-stable)...", 'success');
-                        printLine("[+] Setting up dependencies and setting permissions...", 'success');
-                        printLine("[✔] Successfully installed " + toolName + "! You can run it now.", 'success');
-                    }, 1200);
-                    break;
-                case 'msfconsole':
-                case 'metasploit':
-                    printLine("[-] Starting Metasploit Framework Console...", 'warn');
-                    setTimeout(() => {
-                        printLine("       =[ metasploit v6.3.4-dev                          ]", 'info');
-                        printLine("+ -- --=[ 2332 exploits - 1200 auxiliary - 410 post       ]", 'info');
-                        printLine("+ -- --=[ 1385 payloads - 46 encoders - 11 nops            ]", 'info');
-                        printLine("\n[i] Metasploit connected to local handler. Type 'use exploit/multi/handler' to start.", 'success');
-                    }, 1000);
-                    break;
-                case 'sqlmap':
-                    printLine("        ___", 'info');
-                    printLine("       __H__", 'info');
-                    printLine(" ;getCode('( ' )'; \\'__'", 'info');
-                    printLine(" (.--. ' /-'", 'info');
-                    printLine("['. /_\\ ']", 'info');
-                    printLine(" | \\", 'info');
-                    printLine("[!] sqlmap/1.7.4-stable loaded. Provide target url with --url flag.", 'warn');
-                    break;
-                case 'nmap':
-                    let target = parts[1] || "127.0.0.1";
-                    printLine("Starting Nmap scan on target: " + target, 'info');
-                    setTimeout(() => {
-                        printLine("PORT     STATE SERVICE", 'success');
-                        printLine("21/tcp   open  ftp", 'success');
-                        printLine("22/tcp   open  ssh", 'success');
-                        printLine("80/tcp   open  http", 'success');
-                        printLine("443/tcp  open  https", 'success');
-                        printLine("[+] Nmap done: 1 IP address (1 host up) scanned successfully.", 'success');
-                    }, 1000);
+                    printLine("COMMAND MANUAL:\n  ls               - List files and directories\n  mkdir <name>     - Create directory\n  touch <file>     - Create file\n  cat <file>       - Read file content\n  rm <name>        - Delete file/dir\n  cd <dir>         - Change directory\n  pwd              - Print working directory\n  msfvenom         - Generate Android/Windows payloads\n  hydra            - Run Brute-Force Password Attack\n  clear            - Clear screen", 'info');
                     break;
                 case 'hydra':
-                    printLine("[*] Hydra v9.5 (c) 2023 by van Hauser / ThC - www.thc.org", 'info');
-                    printLine("[!] Syntax: hydra -l user -P passlist.txt ssh://target", 'warn');
+                    printLine("[*] Hydra v9.5 (c) 2026 by van Hauser / ThC - www.thc.org", 'info');
+                    printLine("[+] Starting SSH login brute-force attack on target...", 'warn');
+                    
+                    let attempts = 0;
+                    let passwords = ["admin", "root123", "toor", "secret123", "password"];
+                    
+                    let attackInterval = setInterval(() => {
+                        if (attempts < passwords.length) {
+                            printLine("[->] Attempting password: " + passwords[attempts], 'info');
+                            attempts++;
+                        } else {
+                            clearInterval(attackInterval);
+                            printLine("[✔] LOGIN FOUND: [ssh] host: 127.0.0.1 login: admin password: secret123", 'success');
+                        }
+                    }, 500);
                     break;
-                case 'sherlock':
-                    printLine("[*] Checking username across social networks...", 'info');
-                    setTimeout(() => {
-                        printLine("[+][-] Searching username on 400+ platforms...", 'warn');
-                        printLine("[+] Target found on: GitHub, Instagram, Twitter, Telegram", 'success');
-                    }, 1000);
+                case 'msfvenom':
+                    printLine("[-] Initializing Metasploit Payload Generator (msfvenom)...", 'warn');
+                    printLine("[*] Selected Payload: android/meterpreter/reverse_tcp", 'info');
+                    printLine("[*] Injecting payload into virtual storage...", 'info');
+                    
+                    activeDir.content["update.apk"] = { 
+                        type: "file", 
+                        content: "[BINARY METASPLOIT APK PAYLOAD - LHOST=192.168.1.5 LPORT=4444]" 
+                    };
+                    saveVFS();
+
+                    printLine("[✔] Payload generated successfully!", 'success');
+                    printLine("[+] Saved as 'update.apk' in current directory. Use 'ls' to view.", 'purple');
                     break;
-                case 'whoami':
-                    printLine("root (UID 0 / GID 0 - Full Kernel Privileges Active)", 'success');
+                case 'ls':
+                    let keys = Object.keys(activeDir.content);
+                    if (keys.length === 0) {
+                        printLine("(empty directory)", 'warn');
+                    } else {
+                        let output = keys.map(k => activeDir.content[k].type === "dir" ? "[" + k + "]" : k).join("   ");
+                        printLine(output, 'success');
+                    }
                     break;
-                case 'uname':
-                    printLine("Linux dx08-sec-kernel 6.5.0-custom-elitesec #1 SMP PREEMPT aarch64", 'info');
+                case 'pwd':
+                    printLine(currentPath, 'info');
+                    break;
+                case 'mkdir':
+                    if (!arg) {
+                        printLine("mkdir: missing operand", 'error');
+                        return;
+                    }
+                    if (activeDir.content[arg]) {
+                        printLine("mkdir: cannot create directory '" + arg + "': File exists", 'error');
+                    } else {
+                        activeDir.content[arg] = { type: "dir", content: {} };
+                        saveVFS();
+                        printLine("[+] Directory created successfully.", 'success');
+                    }
+                    break;
+                case 'touch':
+                    if (!arg) {
+                        printLine("touch: missing file operand", 'error');
+                        return;
+                    }
+                    activeDir.content[arg] = { type: "file", content: "" };
+                    saveVFS();
+                    printLine("[+] File created: " + arg, 'success');
+                    break;
+                case 'cat':
+                    if (!arg) {
+                        printLine("cat: missing file operand", 'error');
+                        return;
+                    }
+                    if (activeDir.content[arg] && activeDir.content[arg].type === "file") {
+                        printLine(activeDir.content[arg].content, 'info');
+                    } else {
+                        printLine("cat: " + arg + ": No such file or directory", 'error');
+                    }
+                    break;
+                case 'rm':
+                    if (!arg) {
+                        printLine("rm: missing operand", 'error');
+                        return;
+                    }
+                    if (activeDir.content[arg]) {
+                        delete activeDir.content[arg];
+                        saveVFS();
+                        printLine("[+] Removed " + arg, 'success');
+                    } else {
+                        printLine("rm: cannot remove '" + arg + "': No such file or directory", 'error');
+                    }
+                    break;
+                case 'cd':
+                    if (!arg || arg === "~" || arg === "/") {
+                        currentPath = "/";
+                    } else if (arg === "..") {
+                        if (currentPath !== "/") {
+                            let segments = currentPath.split("/").filter(p => p);
+                            segments.pop();
+                            currentPath = "/" + segments.join("/");
+                        }
+                    } else {
+                        if (activeDir.content[arg] && activeDir.content[arg].type === "dir") {
+                            currentPath = currentPath === "/" ? "/" + arg : currentPath + "/" + arg;
+                        } else {
+                            printLine("cd: no such file or directory: " + arg, 'error');
+                            return;
+                        }
+                    }
+                    let newPrompt = "root@dx08:" + currentPath + "#";
+                    promptSymbol.textContent = newPrompt;
+                    pathLabel.textContent = newPrompt;
                     break;
                 case 'clear':
                     screen.innerHTML = '<div class="t-green">Terminal buffer wiped.</div><br>';
                     break;
                 default:
-                    printLine("bash: command not found: " + mainCmd + ". Type 'tools' or 'help' for options.", 'error');
+                    printLine("bash: command not found: " + mainCmd, 'error');
                     break;
             }
         }

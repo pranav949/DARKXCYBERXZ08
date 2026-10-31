@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DX08 // CONTROLLED LABS & SANDBOX ENVIRONMENT</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .lab-container {
+            max-width: 1100px;
+            margin: 120px auto 60px auto;
+            padding: 0 20px;
+        }
+        .lab-header {
+            border-left: 2px solid #00e5ff;
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .lab-detail-card {
+            background: rgba(0, 229, 255, 0.03);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 25px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .lab-detail-card:hover {
+            border-color: #00e5ff;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
+        }
+        .lab-console {
+            background: #020304;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+            color: #00ff66;
+            margin-top: 15px;
+            height: 120px;
+            overflow-y: auto;
+        }
+        .launch-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+            font-family: 'Orbitron', monospace;
+            font-size: 8px;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .launch-btn:hover {
+            background: #00e5ff;
+            color: #020303;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #00e5ff;
+            font-family: 'Orbitron', monospace;
+            font-size: 8px;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lab-container">
+        <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
+        
+        <div class="lab-header">
+            <div class="section-label">03 // LABS & SANDBOX</div>
+            <h2 style="font-family: 'Orbitron', monospace; font-size: 32px; color: #fff;">CONTROLLED RESEARCH LABS</h2>
+            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Isolated, intentionally vulnerable runtime architectures designed for deep application security analysis and payload verification.</p>
+        </div>
+
+        <div class="lab-grid">
+            <!-- LAB 01 -->
+            <div class="lab-detail-card">
+                <span class="core-index">LAB // 01</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 10px;">WEB APPLICATION LAB</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.5);">Focuses on injection flaws, broken authentication, CORS bypasses, and DOM-based vulnerabilities.</p>
+                <div class="lab-console" id="console-1">
+                    [+] Initializing Web Sandbox...<br>
+                    [+] Target: localhost:3000/vulnerable<br>
+                    [+] Status: READY FOR PROBE
+                </div>
+                <button class="launch-btn" onclick="runLabSimulation(1)">RUN TARGET PROBE</button>
+            </div>
+
+            <!-- LAB 02 -->
+            <div class="lab-detail-card">
+                <span class="core-index">LAB // 02</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 10px;">NETWORK TRAFFIC LAB</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.5);">Packet analysis, socket inspection, handshake simulation, and firewall rule auditing.</p>
+                <div class="lab-console" id="console-2">
+                    [+] Interface: eth0 (Promiscuous)<br>
+                    [+] Capturing TCP streams...<br>
+                    [+] Status: LISTENING
+                </div>
+                <button class="launch-btn" onclick="runLabSimulation(2)">SNIFF PACKETS</button>
+            </div>
+
+            <!-- LAB 03 -->
+            <div class="lab-detail-card">
+                <span class="core-index">LAB // 03</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 10px;">AI SECURITY LAB</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.5);">Prompt logic manipulation, system prompt leakage, and tokenizer boundary analysis.</p>
+                <div class="lab-console" id="console-3">
+                    [+] Model Weights: Loaded (v3.0)<br>
+                    [+] Safety Guardrails: BYPASSABLE<br>
+                    [+] Status: STANDBY
+                </div>
+                <button class="launch-btn" onclick="runLabSimulation(3)">TEST BOUNDARIES</button>
+            </div>
+
+            <!-- LAB 04 -->
+            <div class="lab-detail-card">
+                <span class="core-index">LAB // 04</span>
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 20px; margin-bottom: 10px;">DIGITAL FORENSICS</h3>
+                <p style="font-size: 13px; color: rgba(225,250,255,0.5);">Memory dump parsing, artifact recovery, log extraction, and malicious footprint tracking.</p>
+                <div class="lab-console" id="console-4">
+                    [+] Memory Image: mem_dump.raw<br>
+                    [+] Signature Scanner: ACTIVE<br>
+                    [+] Status: ANALYSIS PENDING
+                </div>
+                <button class="launch-btn" onclick="runLabSimulation(4)">PARSE MEMORY</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runLabSimulation(id) {
+            const consoleEl = document.getElementById('console-' + id);
+            consoleEl.innerHTML += "<br>[*] Executing diagnostic sequence...";
+            setTimeout(() => {
+                if(id === 1) consoleEl.innerHTML += "<br>[✔] Vulnerability found: XSS via parameter injection.";
+                if(id === 2) consoleEl.innerHTML += "<br>[✔] Handshake captured: SYN-ACK verified.";
+                if(id === 3) consoleEl.innerHTML += "<br>[✔] Prompt injection vector successful.";
+                if(id === 4) consoleEl.innerHTML += "<br>[✔] Extracted 3 hidden process artifacts.";
+                consoleEl.scrollTop = consoleEl.scrollHeight;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
