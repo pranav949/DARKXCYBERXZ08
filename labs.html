@@ -3,104 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // ENTERPRISE MASTER EXPLOIT & INTELLIGENCE LABORATORY</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DX08 // ENTERPRISE CYBER SECURITY LAB</title>
     <style>
         :root { --primary: #00e5ff; --bg-dark: #020304; --panel-bg: rgba(0, 229, 255, 0.02); --border-color: rgba(0, 229, 255, 0.3); --text-green: #00ff66; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier New', monospace; overflow-x: hidden; }
-        .lab-container { max-width: 1450px; margin: 90px auto 40px auto; padding: 0 20px; }
+        .lab-container { max-width: 1400px; margin: 80px auto; padding: 0 20px; }
         .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 25px; }
-        .lab-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
-        .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; height: 750px; overflow-y: auto; }
-        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 750px; }
-        .tool-category { font-family: 'Orbitron', monospace; font-size: 10.5px; color: var(--primary); margin: 12px 0 6px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 3px; }
-        .tool-item { padding: 7px 10px; margin: 3px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11.5px; cursor: pointer; border-radius: 3px; transition: 0.2s; }
+        .lab-grid { display: grid; grid-template-columns: 280px 1fr; gap: 20px; }
+        .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; height: 700px; overflow-y: auto; }
+        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 700px; }
+        .tool-category { font-size: 11px; color: var(--primary); margin: 15px 0 8px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 4px; }
+        .tool-item { padding: 8px 10px; margin: 4px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 12px; cursor: pointer; border-radius: 3px; transition: 0.2s; }
         .tool-item:hover { background: rgba(0,229,255,0.15); color: #fff; border-color: var(--primary); }
-        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 20px; font-size: 11px; color: var(--text-green); overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
+        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 20px; font-size: 11.5px; color: var(--text-green); overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
         .lab-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: var(--text-green); box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
-        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-family: 'Orbitron', monospace; font-size: 10px; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-        .launch-btn:hover { background: var(--primary); color: #020303; box-shadow: 0 0 20px var(--primary); }
-        .back-link { display: inline-block; margin-bottom: 15px; color: var(--primary); font-family: 'Orbitron', monospace; font-size: 9px; letter-spacing: 0.1em; text-decoration: none; }
+        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 11px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .launch-btn:hover { background: var(--primary); color: #020303; }
+        .back-link { display: inline-block; margin-bottom: 15px; color: var(--primary); font-size: 10px; text-decoration: none; }
     </style>
 </head>
 <body>
     <div class="lab-container">
         <a href="index.html" class="back-link">← [ MAIN SYSTEM REPOSITORY ]</a>
         <div class="lab-header">
-            <div class="section-label">05 // ENTERPRISE UNRESTRICTED KERNEL & EXPLOIT LAB</div>
-            <h2 style="font-family: 'Orbitron', monospace; font-size: 28px; color: #fff;">DX08 ADVANCED CYBER INTELLIGENCE SUITE</h2>
-            <p style="color: rgba(225,250,255,0.6); margin-top: 6px;">Production-grade repository containing raw executable scripts, complete installation workflows, source dumps, and error diagnostics.</p>
+            <h2>DX08 CORE EXPLOITATION LABORATORY</h2>
+            <p style="color: rgba(225,250,255,0.6); font-size: 13px; margin-top: 5px;">Direct raw command interface for core penetration testing tools.</p>
         </div>
 
         <div class="lab-grid">
             <div class="sidebar-panel">
-                <div style="font-family: 'Orbitron'; font-size: 11px; color: #fff; margin-bottom: 8px;">EXPLOIT MODULES INDEX</div>
+                <div style="font-size: 12px; color: #fff; margin-bottom: 10px; font-weight: bold;">CORE TOOLS INDEX</div>
+                
                 <div class="tool-category">Reconnaissance</div>
-                <div class="tool-item" onclick="loadModule('nmap')">01. Nmap Network Scanner</div>
-                <div class="tool-item" onclick="loadModule('gobuster')">02. Gobuster URI Brute</div>
-                <div class="tool-item" onclick="loadModule('nikto')">03. Nikto Web Vulnerability</div>
-                <div class="tool-category">Exploitation Frameworks</div>
-                <div class="tool-item" onclick="loadModule('metasploit')">04. Metasploit Framework</div>
-                <div class="tool-item" onclick="loadModule('sqlmap')">05. Sqlmap Database Takeover</div>
-                <div class="tool-item" onclick="loadModule('zphisher')">06. Zphisher Phishing Core</div>
-                <div class="tool-item" onclick="loadModule('hydra')">07. THC Hydra Brute-Forcer</div>
+                <div class="tool-item" onclick="loadTool('nmap')">01. Nmap Scanner</div>
+                
+                <div class="tool-category">Exploitation</div>
+                <div class="tool-item" onclick="loadTool('metasploit')">02. Metasploit Framework</div>
+                <div class="tool-item" onclick="loadTool('sqlmap')">03. Sqlmap Injection</div>
+
+                <div class="tool-category">Credential & Phishing</div>
+                <div class="tool-item" onclick="loadTool('zphisher')">04. Zphisher Core</div>
+                <div class="tool-item" onclick="loadTool('hydra')">05. THC Hydra Brute</div>
             </div>
 
             <div class="terminal-panel">
-                <div style="font-family: 'Orbitron'; font-size: 10.5px; color: var(--primary); margin-bottom: 8px;">VIRTUAL LINUX KERNEL TERMINAL // ROOT CONSOLE</div>
-                <div class="lab-console" id="terminal-console">DX08 Enterprise Security Core v15.0 (Debian/Kali GNU/Linux Bookworm)
-[System Status] Unrestricted kernel database loaded. Type any tool name below.</div>
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px;">VIRTUAL TERMINAL // ROOT CONSOLE</div>
+                <div class="lab-console" id="terminal-console">DX08 Security Terminal v1.0. Click any tool on the sidebar or type its name to view installation and execution commands.</div>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, sqlmap, metasploit)..." onkeydown="if(event.key === 'Enter') processCommand()">
-                    <button class="launch-btn" onclick="processCommand()">EXECUTE</button>
+                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (nmap, metasploit, sqlmap, zphisher, hydra)..." onkeydown="if(event.key === 'Enter') runCommand()">
+                    <button class="launch-btn" onclick="runCommand()">EXECUTE</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        function loadModule(name) {
+        const COMMAND_DB = {
+            "nmap": "[+ NMAP NETWORK DISCOVERY +]\n\n1. INSTALLATION:\n   sudo apt update && sudo apt install nmap -y\n\n2. EXECUTION COMMANDS:\n   # Comprehensive TCP SYN scan with version detection\n   sudo nmap -sS -sV -O -T4 <target_ip>\n\n   # Vulnerability check script\n   nmap --script vuln <target_ip>",
+            
+            "metasploit": "[+ METASPLOIT FRAMEWORK +]\n\n1. INSTALLATION:\n   curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n   chmod +x msfinstall && sudo ./msfinstall\n\n2. EXECUTION COMMANDS:\n   msfconsole -q\n   msf6 > use exploit/multi/handler\n   msf6 > set PAYLOAD python/meterpreter/reverse_tcp\n   msf6 > exploit",
+            
+            "sqlmap": "[+ SQLMAP DATABASE TAKEOVER +]\n\n1. INSTALLATION:\n   git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev\n\n2. EXECUTION COMMANDS:\n   # Test single URL parameter\n   python3 sqlmap.py -u \"http://target.com/page.php?id=1\" --batch\n\n   # Enumerate databases\n   python3 sqlmap.py -u \"http://target.com/page.php?id=1\" --dbs --batch",
+            
+            "zphisher": "[+ ZPHISHER PHISHING SUITE +]\n\n1. INSTALLATION:\n   git clone https://github.com/htr-tech/zphisher.git\n   cd zphisher && chmod +x zphisher.sh\n\n2. EXECUTION COMMANDS:\n   bash zphisher.sh",
+            
+            "hydra": "[+ THC HYDRA LOGIN CRACKER +]\n\n1. INSTALLATION:\n   sudo apt install hydra -y\n\n2. EXECUTION COMMANDS:\n   hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16"
+        };
+
+        function loadTool(name) {
             document.getElementById('terminal-input').value = name;
-            processCommand();
+            runCommand();
         }
 
-        function processCommand() {
+        function runCommand() {
             var input = document.getElementById('terminal-input');
             var consoleBox = document.getElementById('terminal-console');
-            var raw = input.value.trim();
-            var cmd = raw.toLowerCase();
+            var cmd = input.value.trim().toLowerCase();
 
-            if(!raw) return;
+            if(!cmd) return;
 
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# " + escapeHtml(raw);
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# " + cmd;
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
-                var res = "";
-                if(cmd === 'nmap') {
-                    res = "[+ NMAP SCANNER +]\n1. INSTALLATION: sudo apt install nmap -y\n2. EXECUTION: nmap -sS target_ip";
-                } else if(cmd === 'metasploit') {
-                    res = "[+ METASPLOIT +]\n1. INSTALLATION: curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall && sudo ./msfinstall";
-                } else if(cmd === 'sqlmap') {
-                    res = "[+ SQLMAP +]\n1. INSTALLATION: git clone https://github.com/sqlmapproject/sqlmap.git\n2. EXECUTION: python3 sqlmap.py -u target_url --batch";
-                } else if(cmd === 'zphisher') {
-                    res = "[+ ZPHISHER +]\n1. INSTALLATION: git clone https://github.com/htr-tech/zphisher.git && cd zphisher && bash zphisher.sh";
+                var output = "";
+                if(COMMAND_DB[cmd]) {
+                    output = COMMAND_DB[cmd];
+                } else if(cmd === 'clear') {
+                    consoleBox.innerHTML = "DX08 Security Terminal v1.0.";
+                    input.value = "";
+                    return;
                 } else {
-                    res = "[+ MODULE: " + escapeHtml(raw).toUpperCase() + " +]\nStatus: Ready for deployment.";
+                    output = "[!] Module '" + cmd + "' not found in index. Available: nmap, metasploit, sqlmap, zphisher, hydra.";
                 }
 
-                consoleBox.innerHTML += "\n\n" + escapeHtml(res);
+                consoleBox.innerHTML += "\n\n" + output;
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
-            }, 300);
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }, 200);
         }
     </script>
 </body>
