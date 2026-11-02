@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DX08 // MASTER ENTERPRISE OFFENSIVE & DEFENSIVE CYBER LAB</title>
+    <!-- Importing Google Fonts for classic Hacker Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
     <style>
         :root { 
             --primary: #00e5ff; 
             --offensive: #ff3366; 
             --defensive: #00ff66; 
-            --terminal-text: #00ffcc; 
+            --terminal-text: #00ff66; 
             --bg-dark: #020304; 
             --panel-bg: rgba(0, 229, 255, 0.02); 
             --border-color: rgba(0, 229, 255, 0.3); 
             --accent-glow: rgba(0, 229, 255, 0.15);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier New', monospace; overflow-x: hidden; }
+        body { background-color: var(--bg-dark); color: #fff; font-family: 'Share Tech Mono', monospace; overflow-x: hidden; }
 
         .lab-container { max-width: 1450px; margin: 25px auto; padding: 0 20px; }
         .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
         
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
-        .mode-btn { padding: 10px 20px; font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; }
+        .mode-btn { padding: 10px 20px; font-family: 'Share Tech Mono', monospace; font-size: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .btn-white { background: rgba(0,255,102,0.05); color: var(--defensive); border-color: var(--defensive); }
         .btn-white.active, .btn-white:hover { background: var(--defensive); color: #000; box-shadow: 0 0 15px var(--defensive); }
         .btn-black { background: rgba(255,51,102,0.05); color: var(--offensive); border-color: var(--offensive); }
@@ -30,13 +32,15 @@
 
         .lab-grid { display: grid; grid-template-columns: 350px 1fr; gap: 20px; }
         .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; height: 800px; overflow-y: auto; }
-        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
+        
+        /* Hacker Style Terminal Window */
+        .terminal-panel { background: #000200; border: 1px solid var(--defensive); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; box-shadow: 0 0 20px rgba(0,255,102,0.1); }
         
         .tool-category { font-size: 11px; color: var(--primary); margin: 15px 0 8px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 4px; }
-        .tool-item { display: flex; align-items: center; gap: 12px; padding: 8px 10px; margin: 5px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11.5px; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        .tool-item { display: flex; align-items: center; gap: 12px; padding: 8px 10px; margin: 5px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 12px; cursor: pointer; border-radius: 4px; transition: 0.2s; font-family: 'Share Tech Mono', monospace; }
         .tool-item:hover { background: var(--accent-glow); color: #fff; border-color: var(--primary); transform: translateX(3px); }
         
-        .tool-badge { width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8.5px; font-weight: bold; font-family: 'Courier New', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); box-shadow: 0 0 10px rgba(0,229,255,0.2); text-align: center; }
+        .tool-badge { width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: bold; font-family: 'Share Tech Mono', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); box-shadow: 0 0 10px rgba(0,229,255,0.2); text-align: center; }
         .badge-nmap { background: rgba(255, 0, 128, 0.15); color: #ff0080; border-color: #ff0080; }
         .badge-gobuster { background: rgba(0, 255, 102, 0.15); color: #00ff66; border-color: #00ff66; }
         .badge-nikto { background: rgba(255, 170, 0, 0.15); color: #ffaa00; border-color: #ffaa00; }
@@ -53,20 +57,22 @@
         .badge-socat { background: rgba(200, 100, 255, 0.15); color: #c864ff; border-color: #c864ff; }
         
         .action-bar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-        .seq-btn { background: rgba(0, 229, 255, 0.08); border: 1px solid var(--border-color); color: var(--primary); padding: 5px 12px; font-size: 10.5px; cursor: pointer; border-radius: 3px; font-family: 'Courier New', monospace; transition: 0.2s; }
-        .seq-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+        .seq-btn { background: rgba(0, 255, 102, 0.08); border: 1px solid rgba(0,255,102,0.3); color: var(--defensive); padding: 5px 12px; font-size: 11px; cursor: pointer; border-radius: 3px; font-family: 'Share Tech Mono', monospace; transition: 0.2s; }
+        .seq-btn:hover { background: var(--defensive); color: #000; border-color: var(--defensive); box-shadow: 0 0 10px var(--defensive); }
 
         .terminal-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .copy-btn { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 4px 10px; font-size: 10px; cursor: pointer; border-radius: 3px; font-family: 'Courier New', monospace; transition: 0.2s; }
-        .copy-btn:hover { background: var(--primary); color: #000; }
+        .copy-btn { background: rgba(0, 255, 102, 0.1); border: 1px solid var(--defensive); color: var(--defensive); padding: 4px 10px; font-size: 11px; cursor: pointer; border-radius: 3px; font-family: 'Share Tech Mono', monospace; transition: 0.2s; }
+        .copy-btn:hover { background: var(--defensive); color: #000; }
 
-        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 20px; font-size: 12px; color: var(--terminal-text); overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
+        /* Classic Hacker Terminal Console Font & Glow */
+        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,255,102,0.4); padding: 20px; font-family: 'VT323', monospace; font-size: 20px; letter-spacing: 1px; color: var(--terminal-text); overflow-y: auto; line-height: 1.4; border-radius: 4px; white-space: pre-wrap; text-shadow: 0 0 6px rgba(0,255,102,0.4); }
+        
         .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
-        .lab-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 12px 15px; font-family: 'Courier New', monospace; font-size: 13px; outline: none; border-radius: 4px; }
-        .lab-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
-        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 11px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-        .launch-btn:hover { background: var(--primary); color: #020303; box-shadow: 0 0 20px var(--primary); }
-        .back-link { display: inline-block; margin-bottom: 10px; color: var(--primary); font-size: 10px; text-decoration: none; }
+        .lab-input { flex: 1; background: #000500; border: 1px solid var(--defensive); color: var(--defensive); padding: 12px 15px; font-family: 'Share Tech Mono', monospace; font-size: 13px; outline: none; border-radius: 4px; }
+        .lab-input:focus { border-color: var(--defensive); box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); }
+        .launch-btn { padding: 12px 24px; background: rgba(0, 255, 102, 0.15); border: 1px solid var(--defensive); color: var(--defensive); font-family: 'Share Tech Mono', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .launch-btn:hover { background: var(--defensive); color: #000; box-shadow: 0 0 20px var(--defensive); }
+        .back-link { display: inline-block; margin-bottom: 10px; color: var(--primary); font-size: 11px; text-decoration: none; }
         .section-group { display: none; }
         .section-group.active { display: block; }
     </style>
@@ -76,7 +82,7 @@
         <a href="index.html" class="back-link">&larr; [ MAIN SYSTEM REPOSITORY ]</a>
         <div class="lab-header">
             <div>
-                <h2 style="font-size: 22px; color: #fff;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
+                <h2 style="font-size: 22px; color: #fff; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
                 <p style="color: rgba(225,250,255,0.6); font-size: 11.5px; margin-top: 2px;">Enterprise Dual-Mode Architecture: Defensive Auditing vs Unrestricted Offensive Red-Team Arsenal.</p>
             </div>
         </div>
@@ -121,7 +127,7 @@
 
             <div class="terminal-panel">
                 <div class="terminal-header-bar">
-                    <div style="font-size: 10.5px; color: var(--primary);">KALI LINUX UNRESTRICTED C2 CONSOLE // ENTERPRISE ANALYSIS</div>
+                    <div style="font-size: 11px; color: var(--defensive);">KALI LINUX ROOT CONSOLE // HACKER TERMINAL MODE</div>
                     <button class="copy-btn" onclick="copyCurrentScript()">COPY SCRIPT</button>
                 </div>
 
@@ -131,7 +137,7 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. VULNERABILITY & MITIGATION MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v31.0 (Professional Vulnerability Assessment Matrix)
+                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v32.0 (Hacker Font Matrix Enabled)
 [System Status] Select any offensive module to view professional execution workflow and targeted asset impact.</div>
                 
                 <div class="lab-input-group">
@@ -293,7 +299,7 @@
                           "2. EXECUTION SCRIPT:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. ENTERPRISE IMPACT ANALYSIS:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v31.0 (Professional Vulnerability Assessment Matrix)";
+                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v32.0 (Hacker Font Matrix Enabled)";
                     input.value = "";
                     return;
                 } else {
