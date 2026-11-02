@@ -17,18 +17,6 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier New', monospace; overflow-x: hidden; }
-        
-        /* Hacking texture grid overlay */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 999;
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
-        }
 
         .lab-container { max-width: 1450px; margin: 30px auto; padding: 0 20px; }
         .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
