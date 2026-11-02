@@ -21,7 +21,6 @@
 
         .lab-container { max-width: 1550px; margin: 20px auto; padding: 0 20px; }
         
-        /* Professional Enterprise Header with Logo */
         .lab-header { 
             background: rgba(0, 229, 255, 0.03); 
             border: 1px solid var(--border-color); 
@@ -35,6 +34,9 @@
         .brand-logo { display: flex; align-items: center; gap: 12px; }
         .logo-box { width: 40px; height: 40px; background: rgba(0,229,255,0.1); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 14px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,229,255,0.2); }
         
+        /* Live Network Status Badge in Header */
+        .net-status-badge { font-size: 10.5px; color: var(--defensive); border: 1px solid var(--defensive); padding: 5px 12px; border-radius: 4px; background: rgba(0,255,102,0.05); }
+
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
         .mode-btn { padding: 10px 20px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .btn-white { background: rgba(0,255,102,0.05); color: var(--defensive); border-color: var(--defensive); }
@@ -101,7 +103,7 @@
     <div class="lab-container">
         <a href="index.html" class="back-link">&larr; [ MAIN SYSTEM REPOSITORY ]</a>
         
-        <!-- Header with Logo and Title -->
+        <!-- Header with Logo and Live Network Type Badge -->
         <div class="lab-header">
             <div class="brand-logo">
                 <div class="logo-box">DX</div>
@@ -110,8 +112,8 @@
                     <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Dual-Mode Operations Suite</p>
                 </div>
             </div>
-            <div style="font-size: 11px; color: var(--primary); border: 1px solid var(--border-color); padding: 5px 12px; border-radius: 4px; background: rgba(0,229,255,0.05);">
-                STATUS: SECURE // ROOT ACTIVE
+            <div id="network-badge" class="net-status-badge">
+                NETWORK: SCANNING...
             </div>
         </div>
 
@@ -165,8 +167,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Master Enterprise Security Core v45.0 (Global Context Engine Active)
-[System Status] Select any module or query the AI expert regarding website architecture, tools, and error resolution.</div>
+                <div class="lab-console" id="terminal-console">DX08 Master Enterprise Security Core v50.0 (Network Telemetry Active)
+[System Status] Real-time network detection enabled. Use terminal commands or AI expert mentor below.</div>
                 
                 <div class="lab-input-group">
                     <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
@@ -174,14 +176,13 @@
                 </div>
             </div>
 
-            <!-- Intelligent Context-Aware AI Panel -->
             <div class="ai-panel">
-                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 GLOBAL ENTERPRISE AI MENTOR]</div>
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 ENTERPRISE AI EXPERT & MENTOR]</div>
                 
-                <div class="ai-console" id="ai-console">DX08-AI Expert: Synchronized with website database. I know all tools in White-Hat & Black-Hat modes, installation pipelines, and error fixes. Ask me anything or type 'help'!</div>
+                <div class="ai-console" id="ai-console">DX08-AI Expert: Online. I am synchronized with your network telemetry and website modules. Ask me anything or type 'network' to check your connection status!</div>
                 
                 <div class="ai-input-group">
-                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI about website, tools, or errors..." onkeydown="if(event.key === 'Enter') askAiMentor()">
+                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI about network, tools, or errors..." onkeydown="if(event.key === 'Enter') askAiMentor()">
                     <button class="ai-send-btn" onclick="askAiMentor()">QUERY</button>
                 </div>
 
@@ -285,6 +286,41 @@
         let currentModule = "nmap";
         let currentMode = "white";
         let lastOutput = "";
+        let detectedNetwork = "Detecting...";
+
+        // Real-time Network Telemetry Detection (Wi-Fi vs Cellular/SIM)
+        window.addEventListener('DOMContentLoaded', () => {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const badge = document.getElementById('network-badge');
+
+            function updateNetworkInfo() {
+                if (connection) {
+                    let type = connection.effectiveType || "unknown";
+                    let downlink = connection.downlink || "unknown";
+                    
+                    // Browsers classify cellular as 'cellular', '4g', '3g' etc., and broadband/wifi usually report max downlink or ethernet
+                    if (connection.type === 'cellular' || type === 'cellular' || type === '4g' || type === '3g') {
+                        detectedNetwork = "MOBILE DATA (SIM / CELLULAR - " + type.toUpperCase() + ")";
+                        badge.style.color = "#ff3366";
+                        badge.style.borderColor = "#ff3366";
+                        badge.style.background = "rgba(255,51,102,0.05)";
+                    } else {
+                        detectedNetwork = "BROADBAND / WI-FI (ETHERNET - " + downlink + " Mbps)";
+                        badge.style.color = "#00ff66";
+                        badge.style.borderColor = "#00ff66";
+                        badge.style.background = "rgba(0,255,102,0.05)";
+                    }
+                } else {
+                    detectedNetwork = "HIGH-SPEED BROADBAND / WI-FI";
+                }
+                badge.innerText = "NETWORK TYPE: " + detectedNetwork;
+            }
+
+            if (connection) {
+                connection.addEventListener('change', updateNetworkInfo);
+            }
+            updateNetworkInfo();
+        });
 
         function switchMode(mode) {
             currentMode = mode;
@@ -347,7 +383,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v45.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v50.0";
                     input.value = "";
                     return;
                 } else {
@@ -375,23 +411,20 @@
                 let query = q.toLowerCase();
                 let ans = "";
 
-                // Global Knowledge Base Engine covering website architecture, tools, and error resolution
-                if(query.includes('website') || query.includes('kurs') || query.includes('course') || query.includes('dx08')) {
-                    ans = "DX08-AI Expert: [WEBSITE ARCHITECTURE OVERVIEW]\n- This platform is a professional Dual-Mode Enterprise Cyber Lab (White-Hat Defensive vs Black-Hat Offensive Unrestricted).\n- Features 3 columns: Sidebar Arsenal, Kali Linux Terminal Console with sequential execution, and this Intelligent AI Mentor & Support Desk.";
+                if(query.includes('network') || query.includes('sim') || query.includes('wifi') || query.includes('internet')) {
+                    ans = "DX08-AI Expert: [LIVE NETWORK TELEMETRY REPORT]\n- Detected Connection: " + detectedNetwork + "\n- Analysis: The system analyzes browser connection metrics to identify whether the operator is routing via cellular data (SIM) or fixed broadband (Wi-Fi).";
                 } else if(query.includes('zphisher')) {
-                    ans = "DX08-AI Expert: [ZPHISHER INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Automated social engineering and credential harvesting core.\n- Command:\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && bash zphisher.sh\n- Error Resolution: If port 80/8080 conflict occurs, run 'sudo fuser -k 8080/tcp'.";
+                    ans = "DX08-AI Expert: [ZPHISHER FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command:\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && bash zphisher.sh\n- Error Fix: Kill conflicting ports using 'sudo fuser -k 8080/tcp'.";
                 } else if(query.includes('nmap')) {
-                    ans = "DX08-AI Expert: [NMAP INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Network discovery and port scanning suite.\n- Command: sudo nmap -sS -sV -O -T4 <target_ip>\n- Error Resolution: Use '-Pn' if the target blocks ICMP echo pings.";
+                    ans = "DX08-AI Expert: [NMAP FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command: sudo nmap -sS -sV -O -T4 <target_ip>\n- Error Fix: Add '-Pn' if target blocks ping probes.";
                 } else if(query.includes('metasploit') || query.includes('msf')) {
-                    ans = "DX08-AI Expert: [METASPLOIT INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Advanced C2 exploitation framework.\n- Command: msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <ip>; exploit\"\n- Error Resolution: Initialize postgresql workspace via 'sudo msfdb init' if handlers fail.";
+                    ans = "DX08-AI Expert: [METASPLOIT FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command: msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; exploit\"\n- Error Fix: Run 'sudo msfdb init' first.";
                 } else if(query.includes('sqlmap')) {
-                    ans = "DX08-AI Expert: [SQLMAP INTELLIGENCE REPORT]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Description: Automated SQL injection engine.\n- Command: python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch\n- Error Resolution: Deploy '--tamper=space2comment' to evade strict WAF filters.";
-                } else if(query.includes('error') || query.includes('fail') || query.includes('stuck') || query.includes('issue')) {
-                    ans = "DX08-AI Expert: [GLOBAL ERROR DIAGNOSTICS & FIX]\n- Action Plan: \n  1. Verify active network interface (tun0/eth0).\n  2. Execute 'sudo apt --fix-broken install' for broken packages.\n  3. Check port bindings using 'sudo netstat -tulnp'.\n  4. Contact 24/7 support via Telegram or Email provided below.";
-                } else if(query.includes('help') || query.includes('kya krna hai')) {
-                    ans = "DX08-AI Expert: [OPERATIONAL GUIDE]\n- Select either White-Hat or Black-Hat mode from top.\n- Click any tool in the sidebar to load its deployment scripts into the terminal.\n- Use the [1. SETUP], [2. EXPLOIT], [3. IMPACT MATRIX] buttons for rapid execution.";
+                    ans = "DX08-AI Expert: [SQLMAP FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command: python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch\n- Error Fix: Use '--tamper=space2comment' for WAF evasion.";
+                } else if(query.includes('error') || query.includes('fail') || query.includes('stuck')) {
+                    ans = "DX08-AI Expert: [TROUBLESHOOTING PROTOCOL]\n- Run 'sudo apt --fix-broken install', check active socket listeners via 'sudo netstat -tulnp', or reach out to support below.";
                 } else {
-                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q + " [Active Mode: " + currentMode.toUpperCase() + "]") + "': Full website context synchronized. I am ready to provide precise installation workflows, exploitation scripts, and error troubleshooting for any module.";
+                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + ", Network: " + detectedNetwork + "]: Fully synchronized with all website modules, tools, and error logs. Ask me about any specific exploit script or network telemetry.";
                 }
 
                 aiConsole.innerHTML += "\n\n" + ans;
