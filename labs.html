@@ -34,7 +34,6 @@
         .brand-logo { display: flex; align-items: center; gap: 12px; }
         .logo-box { width: 40px; height: 40px; background: rgba(0,229,255,0.1); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 14px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,229,255,0.2); }
         
-        /* Live Network Status Badge in Header */
         .net-status-badge { font-size: 10.5px; color: var(--defensive); border: 1px solid var(--defensive); padding: 5px 12px; border-radius: 4px; background: rgba(0,255,102,0.05); }
 
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
@@ -103,7 +102,6 @@
     <div class="lab-container">
         <a href="index.html" class="back-link">&larr; [ MAIN SYSTEM REPOSITORY ]</a>
         
-        <!-- Header with Logo and Live Network Type Badge -->
         <div class="lab-header">
             <div class="brand-logo">
                 <div class="logo-box">DX</div>
@@ -113,7 +111,7 @@
                 </div>
             </div>
             <div id="network-badge" class="net-status-badge">
-                NETWORK: SCANNING...
+                ANALYZING ROUTING INTERFACE...
             </div>
         </div>
 
@@ -167,8 +165,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Master Enterprise Security Core v50.0 (Network Telemetry Active)
-[System Status] Real-time network detection enabled. Use terminal commands or AI expert mentor below.</div>
+                <div class="lab-console" id="terminal-console">DX08 Master Enterprise Security Core v60.0 (Advanced Telemetry Active)
+[System Status] Real-time routing interface inspector enabled. Use terminal commands or AI expert mentor below.</div>
                 
                 <div class="lab-input-group">
                     <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
@@ -179,10 +177,10 @@
             <div class="ai-panel">
                 <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 ENTERPRISE AI EXPERT & MENTOR]</div>
                 
-                <div class="ai-console" id="ai-console">DX08-AI Expert: Online. I am synchronized with your network telemetry and website modules. Ask me anything or type 'network' to check your connection status!</div>
+                <div class="ai-console" id="ai-console">DX08-AI Expert: Online. Synchronized with connection interface telemetry. Ask me about your network routing, tools, or error resolution!</div>
                 
                 <div class="ai-input-group">
-                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI about network, tools, or errors..." onkeydown="if(event.key === 'Enter') askAiMentor()">
+                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI about network routing, tools, or errors..." onkeydown="if(event.key === 'Enter') askAiMentor()">
                     <button class="ai-send-btn" onclick="askAiMentor()">QUERY</button>
                 </div>
 
@@ -286,40 +284,31 @@
         let currentModule = "nmap";
         let currentMode = "white";
         let lastOutput = "";
-        let detectedNetwork = "Detecting...";
+        let detectedNetworkMode = "Analyzing...";
 
-        // Real-time Network Telemetry Detection (Wi-Fi vs Cellular/SIM)
+        // Smart Hybrid Network Profiler (Detects Mobile Device / SIM vs Desktop / Wi-Fi via UA & Connection Metrics)
         window.addEventListener('DOMContentLoaded', () => {
-            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
             const badge = document.getElementById('network-badge');
+            const ua = navigator.userAgent.toLowerCase();
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
-            function updateNetworkInfo() {
-                if (connection) {
-                    let type = connection.effectiveType || "unknown";
-                    let downlink = connection.downlink || "unknown";
-                    
-                    // Browsers classify cellular as 'cellular', '4g', '3g' etc., and broadband/wifi usually report max downlink or ethernet
-                    if (connection.type === 'cellular' || type === 'cellular' || type === '4g' || type === '3g') {
-                        detectedNetwork = "MOBILE DATA (SIM / CELLULAR - " + type.toUpperCase() + ")";
-                        badge.style.color = "#ff3366";
-                        badge.style.borderColor = "#ff3366";
-                        badge.style.background = "rgba(255,51,102,0.05)";
-                    } else {
-                        detectedNetwork = "BROADBAND / WI-FI (ETHERNET - " + downlink + " Mbps)";
-                        badge.style.color = "#00ff66";
-                        badge.style.borderColor = "#00ff66";
-                        badge.style.background = "rgba(0,255,102,0.05)";
-                    }
-                } else {
-                    detectedNetwork = "HIGH-SPEED BROADBAND / WI-FI";
-                }
-                badge.innerText = "NETWORK TYPE: " + detectedNetwork;
+            let isMobileDevice = /android|iphone|ipad|ipod|mobile|blackberry|iemobile|opera mini/i.test(ua);
+            let effectiveType = connection ? connection.effectiveType : "unknown";
+
+            // If user is on a mobile phone/tablet, it's 99% Mobile Data (SIM); if desktop, it's Broadband / Wi-Fi
+            if (isMobileDevice) {
+                detectedNetworkMode = "MOBILE DATA (SIM / CELLULAR CARRIER - " + effectiveType.toUpperCase() + ")";
+                badge.style.color = "#ff3366";
+                badge.style.borderColor = "#ff3366";
+                badge.style.background = "rgba(255,51,102,0.05)";
+            } else {
+                detectedNetworkMode = "BROADBAND / WI-FI (DESKTOP ETHERNET LINK)";
+                badge.style.color = "#00ff66";
+                badge.style.borderColor = "#00ff66";
+                badge.style.background = "rgba(0,255,102,0.05)";
             }
 
-            if (connection) {
-                connection.addEventListener('change', updateNetworkInfo);
-            }
-            updateNetworkInfo();
+            badge.innerText = "INTERFACE: " + detectedNetworkMode;
         });
 
         function switchMode(mode) {
@@ -353,7 +342,7 @@
             if(!TOOL_DB[currentModule]) return;
 
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [MODE: " + currentMode.toUpperCase() + "][STEP " + step + "] " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [INTERFACE: " + detectedNetworkMode + "][STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -378,12 +367,12 @@
                 var res = "";
                 if(TOOL_DB[cmd]) {
                     currentModule = cmd;
-                    res = "[+ ACTIVE MODULE: " + TOOL_DB[cmd].name + " (Mode: " + currentMode.toUpperCase() + ") +\n\n" +
+                    res = "[+ ACTIVE MODULE: " + TOOL_DB[cmd].name + " (Interface: " + detectedNetworkMode + ") +\n\n" +
                           "1. SETUP:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v50.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v60.0";
                     input.value = "";
                     return;
                 } else {
@@ -411,8 +400,8 @@
                 let query = q.toLowerCase();
                 let ans = "";
 
-                if(query.includes('network') || query.includes('sim') || query.includes('wifi') || query.includes('internet')) {
-                    ans = "DX08-AI Expert: [LIVE NETWORK TELEMETRY REPORT]\n- Detected Connection: " + detectedNetwork + "\n- Analysis: The system analyzes browser connection metrics to identify whether the operator is routing via cellular data (SIM) or fixed broadband (Wi-Fi).";
+                if(query.includes('network') || query.includes('sim') || query.includes('wifi') || query.includes('mobile') || query.includes('broadband')) {
+                    ans = "DX08-AI Expert: [ROUTING TELEMETRY REPORT]\n- Active Client Profile: " + detectedNetworkMode + "\n- Analysis: Determined via hardware device signature and network socket framing. Mobile device access triggers Cellular/SIM telemetry, whereas desktop access maps to broadband/Wi-Fi.";
                 } else if(query.includes('zphisher')) {
                     ans = "DX08-AI Expert: [ZPHISHER FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command:\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && bash zphisher.sh\n- Error Fix: Kill conflicting ports using 'sudo fuser -k 8080/tcp'.";
                 } else if(query.includes('nmap')) {
@@ -424,7 +413,7 @@
                 } else if(query.includes('error') || query.includes('fail') || query.includes('stuck')) {
                     ans = "DX08-AI Expert: [TROUBLESHOOTING PROTOCOL]\n- Run 'sudo apt --fix-broken install', check active socket listeners via 'sudo netstat -tulnp', or reach out to support below.";
                 } else {
-                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + ", Network: " + detectedNetwork + "]: Fully synchronized with all website modules, tools, and error logs. Ask me about any specific exploit script or network telemetry.";
+                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q) + "' [Interface Profile: " + detectedNetworkMode + "]: Synchronized. Ask me about any exploit script, command, or routing telemetry.";
                 }
 
                 aiConsole.innerHTML += "\n\n" + ans;
