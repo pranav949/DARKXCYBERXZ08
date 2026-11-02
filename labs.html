@@ -29,7 +29,6 @@
         .btn-black { background: rgba(255,51,102,0.05); color: var(--offensive); border-color: var(--offensive); }
         .btn-black.active, .btn-black:hover { background: var(--offensive); color: #000; box-shadow: 0 0 15px var(--offensive); }
 
-        /* 3-Column Grid: Sidebar Arsenal | Terminal Console | AI Assistant & Support */
         .lab-grid { display: grid; grid-template-columns: 320px 1fr 350px; gap: 15px; }
         .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; height: 800px; overflow-y: auto; }
         .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
@@ -65,7 +64,6 @@
 
         .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 15px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--terminal-text); overflow-y: auto; line-height: 1.5; border-radius: 4px; white-space: pre-wrap; }
         
-        /* AI Chatbox Styling */
         .ai-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 12px; font-family: 'Courier Prime', monospace; font-size: 11.5px; color: #a5f3fc; overflow-y: auto; line-height: 1.5; border-radius: 4px; margin-bottom: 10px; white-space: pre-wrap; }
         .ai-input-group { display: flex; gap: 8px; }
         .ai-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: #fff; padding: 10px 12px; font-family: 'Courier Prime', monospace; font-size: 11.5px; outline: none; border-radius: 4px; }
@@ -92,7 +90,7 @@
         <div class="lab-header">
             <div>
                 <h2 style="font-size: 20px; color: #fff; font-family: 'Courier Prime', monospace;">DX08 MASTER THREAT INTELLIGENCE & EXPLOIT LAB</h2>
-                <p style="color: rgba(225,250,255,0.6); font-size: 11px; margin-top: 2px;">Enterprise Dual-Mode Architecture with Integrated AI Mentor & 24/7 Support Desk.</p>
+                <p style="color: rgba(225,250,255,0.6); font-size: 11px; margin-top: 2px;">Enterprise Dual-Mode Architecture with Dynamic AI Intelligence Engine & Support Desk.</p>
             </div>
         </div>
 
@@ -102,7 +100,6 @@
         </div>
 
         <div class="lab-grid">
-            <!-- 1. Sidebar Arsenal -->
             <div class="sidebar-panel">
                 <div id="sec-white" class="section-group active">
                     <div style="font-size: 10.5px; color: var(--defensive); margin-bottom: 8px; font-weight: bold;">[DEFENSIVE & AUDITING TOOLS]</div>
@@ -135,7 +132,6 @@
                 </div>
             </div>
 
-            <!-- 2. Terminal Console -->
             <div class="terminal-panel">
                 <div class="terminal-header-bar">
                     <div style="font-size: 10px; color: var(--primary);">KALI LINUX ROOT CONSOLE // ENTERPRISE TERMINAL</div>
@@ -148,7 +144,7 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v34.0 (Terminal Ready)
+                <div class="lab-console" id="terminal-console">DX08 Unrestricted Red-Team Core v36.0 (Dynamic AI Engine Enabled)
 [System Status] Select any module to view execution scripts and vulnerability breakdown.</div>
                 
                 <div class="lab-input-group">
@@ -157,21 +153,20 @@
                 </div>
             </div>
 
-            <!-- 3. AI MENTOR & SUPPORT DESK PANEL -->
             <div class="ai-panel">
-                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 AI MENTOR & SUPPORT DESK]</div>
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 DYNAMIC AI EXPERT]</div>
                 
-                <div class="ai-console" id="ai-console">DX08-AI: Hello Operator! Ask me any doubt regarding tool usage, script execution, or lab errors. I am here 24/7 to guide you.</div>
+                <div class="ai-console" id="ai-console">DX08-AI Expert: Neural net online. I am listening to your queries. Ask me about any tool, methodology, or error!</div>
                 
                 <div class="ai-input-group">
-                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI doubt (e.g., how to use nmap?)..." onkeydown="if(event.key === 'Enter') askAiMentor()">
-                    <button class="ai-send-btn" onclick="askAiMentor()">ASK AI</button>
+                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI anything (e.g., what is zphisher?)..." onkeydown="if(event.key === 'Enter') askAiMentor()">
+                    <button class="ai-send-btn" onclick="askAiMentor()">QUERY</button>
                 </div>
 
                 <div class="support-box">
-                    Facing technical issues or course queries?<br>
-                    Contact Support: <a href="mailto:support@dx08sec.internal">support@dx08sec.internal</a><br>
-                    Telegram Helpline: <a href="https://t.me/dx08_support" target="_blank">@dx08_support</a>
+                    Enterprise Technical Support Desk:<br>
+                    Email: <a href="mailto:support@dx08sec.internal">support@dx08sec.internal</a><br>
+                    Secure Channel: <a href="https://t.me/dx08_support" target="_blank">@dx08_support</a>
                 </div>
             </div>
         </div>
@@ -328,7 +323,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v34.0";
+                    consoleBox.innerHTML = "DX08 Unrestricted Red-Team Core v36.0";
                     input.value = "";
                     return;
                 } else {
@@ -353,17 +348,28 @@
             aiConsole.scrollTop = aiConsole.scrollHeight;
 
             setTimeout(function() {
-                let ans = "DX08-AI: To execute this effectively, ensure your Kali Linux interface (eth0/tun0) is active. Paste the script from the terminal into your root shell. If errors occur, check dependencies or use the [1. SETUP] button first!";
                 let query = q.toLowerCase();
+                let ans = "";
 
-                if(query.includes('nmap')) {
-                    ans = "DX08-AI: Nmap is used for network discovery. Always replace '<target_ip>' with your target laboratory IP address before running step 2.";
+                // Dynamic Response Generation based on user query
+                if(query.includes('hi') || query.includes('hello') || query.includes('hey')) {
+                    ans = "DX08-AI Expert: Greetings, Operator. Systems are fully calibrated. Ask me about specific tool execution, payload obfuscation, or target vulnerability assessment.";
+                } else if(query.includes('zphisher')) {
+                    ans = "DX08-AI Expert: Zphisher is an automated phishing framework designed for red-team credential harvesting. It clones target login portals and tunnels traffic via LocalXpose or Cloudflare to capture plain-text credentials and session tokens.";
+                } else if(query.includes('nmap')) {
+                    ans = "DX08-AI Expert: Nmap (Network Mapper) is an essential reconnaissance utility. To bypass basic firewalls during an audit, use SYN stealth scans (-sS) combined with service version detection (-sV).";
                 } else if(query.includes('metasploit') || query.includes('msf')) {
-                    ans = "DX08-AI: For Metasploit, ensure postgresql is running ('sudo systemctl start postgresql') before executing 'sudo msfdb init'.";
+                    ans = "DX08-AI Expert: Metasploit C2 framework utilizes multi-handlers to receive reverse connections. Ensure your payload architecture matches the target OS (e.g., python/meterpreter/reverse_tcp).";
                 } else if(query.includes('sqlmap')) {
-                    ans = "DX08-AI: Sqlmap requires an active vulnerable parameter (e.g., '?id=1'). Use tamper scripts if a WAF blocks your requests.";
-                } else if(query.includes('error') || query.includes('stuck')) {
-                    ans = "DX08-AI: If your installation fails, run 'sudo apt --fix-broken install' or contact our support team via Telegram below!";
+                    ans = "DX08-AI Expert: Sqlmap automates SQL injection detection. When encountering strict WAF rules, deploy tamper scripts like 'space2comment' and increase risk/level parameters.";
+                } else if(query.includes('hydra') || query.includes('brute')) {
+                    ans = "DX08-AI Expert: THC Hydra performs high-speed protocol login cracking. Always specify optimal thread counts (-t 32) and ensure target lockout thresholds are monitored to prevent denial of service.";
+                } else if(query.includes('hashcat') || query.includes('john') || query.includes('crack')) {
+                    ans = "DX08-AI Expert: Offline password cracking requires high-entropy wordlists (like rockyou.txt). Hashcat leverages GPU parallel processing for NTLM/Bcrypt hashes, while John theRipper handles custom rule mangling.";
+                } else if(query.includes('error') || query.includes('stuck') || query.includes('fail') || query.includes('not working')) {
+                    ans = "DX08-AI Expert: Troubleshooting protocol initiated: Check your network interface bindings (tun0/eth0), verify package repositories with 'sudo apt update', or review syntax parameters in the terminal console.";
+                } else {
+                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q) + "': In advanced offensive operations, ensure proper scope definition, syntax validation, and egress routing. Feel free to ask about specific exploitation modules or auditing workflows.";
                 }
 
                 aiConsole.innerHTML += "\n\n" + ans;
