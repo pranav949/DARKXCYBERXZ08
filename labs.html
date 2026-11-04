@@ -34,10 +34,6 @@
         .brand-logo { display: flex; align-items: center; gap: 12px; }
         .logo-box { width: 40px; height: 40px; background: rgba(0,229,255,0.1); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 14px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,229,255,0.2); }
         
-        .net-status-badge { font-size: 10.5px; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; }
-        .net-wifi { color: #00ff66; border: 1px solid #00ff66; background: rgba(0,255,102,0.05); }
-        .net-sim { color: #ff3366; border: 1px solid #ff3366; background: rgba(255,51,102,0.05); }
-
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
         .mode-btn { padding: 10px 20px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .btn-white { background: rgba(0,255,102,0.05); color: var(--defensive); border-color: var(--defensive); }
@@ -104,9 +100,8 @@
                     <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Autonomous AI Operations Suite</p>
                 </div>
             </div>
-            <!-- Clickable Smart Telemetry Badge with Persistent State -->
-            <div id="network-badge" class="net-status-badge net-wifi" onclick="toggleNetworkTelemetry()" title="Click to switch Network Mode">
-                LINK: BROADBAND / WI-FI [CLICK TO TOGGLE]
+            <div style="font-size: 11px; color: var(--defensive); border: 1px solid var(--defensive); padding: 6px 14px; border-radius: 4px; background: rgba(0,255,102,0.05); font-weight: bold;">
+                STATUS: SECURE // ROOT ACTIVE
             </div>
         </div>
 
@@ -163,8 +158,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v100.0 (Persistent Smart Telemetry Active)
-[System Status] Click the top-right network badge to instantly toggle between Wi-Fi and Mobile SIM. State saves automatically.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v105.0 (Clean Professional Mode Active)
+[System Status] Select any tool from the sidebar or click '[00. DX08 Neural AI Knowledge Core]' to enter the dedicated AI Mentor Lab.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -267,36 +262,6 @@
         let isAiLabActive = false;
         let lastOutput = "";
 
-        // Smart Persistent Network Telemetry
-        window.addEventListener('DOMContentLoaded', () => {
-            let savedState = localStorage.getItem('dx08_net_mode');
-            if(!savedState) {
-                // Auto-detect based on device type on first load
-                let isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent.toLowerCase());
-                savedState = isMobile ? 'sim' : 'wifi';
-                localStorage.setItem('dx08_net_mode', savedState);
-            }
-            updateBadgeUI(savedState);
-        });
-
-        function toggleNetworkTelemetry() {
-            let currentState = localStorage.getItem('dx08_net_mode') || 'wifi';
-            let newState = currentState === 'wifi' ? 'sim' : 'wifi';
-            localStorage.setItem('dx08_net_mode', newState);
-            updateBadgeUI(newState);
-        }
-
-        function updateBadgeUI(state) {
-            const badge = document.getElementById('network-badge');
-            if(state === 'wifi') {
-                badge.className = "net-status-badge net-wifi";
-                badge.innerText = "LINK: BROADBAND / WI-FI [CLICK TO TOGGLE]";
-            } else {
-                badge.className = "net-status-badge net-sim";
-                badge.innerText = "LINK: MOBILE DATA (SIM CARRIER) [CLICK TO TOGGLE]";
-            }
-        }
-
         function switchMode(mode) {
             currentMode = mode;
             const btnWhite = document.querySelector('.btn-white');
@@ -336,7 +301,7 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v100.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v105.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
                                    "White-Hat defensive protocols, Black-Hat red-team scripts, and error logs.\n" +
@@ -351,9 +316,8 @@
             var consoleBox = document.getElementById('workspace-console');
             if(!TOOL_DB[currentModule]) return;
 
-            let linkType = localStorage.getItem('dx08_net_mode') === 'wifi' ? "BROADBAND/WI-FI" : "MOBILE SIM";
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [" + linkType + "][STEP " + step + "] " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [MODE: " + currentMode.toUpperCase() + "][STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -392,7 +356,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v100.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v105.0";
                     input.value = "";
                     return;
                 } else {
@@ -425,40 +389,4 @@
                 } else if(query.includes('nmap')) {
                     ans = "DX08 AI Expert: [NMAP MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Network discovery, port scanning, and OS fingerprinting.\n- Execution Script:\n  sudo nmap -sS -sV -O -T4 --script vuln <target_ip>\n- Error Resolution: If host appears down, append '-Pn' to bypass ICMP ping blocks.";
                 } else if(query.includes('metasploit') || query.includes('msf')) {
-                    ans = "DX08 AI Expert: [METASPLOIT MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: C2 exploitation framework and multi-handler management.\n- Installation & Execution Script:\n  curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n  chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init\n  msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; exploit\"\n- Error Resolution: Run 'sudo msfdb init' to initialize the local PostgreSQL workspace database.";
-                } else if(query.includes('sqlmap')) {
-                    ans = "DX08 AI Expert: [SQLMAP MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Automated SQL injection detection and database takeover.\n- Execution Script:\n  git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev\n  python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --batch\n- Error Resolution: If WAF blocks requests, use tamper scripts like '--tamper=space2comment'.";
-                } else if(query.includes('hydra')) {
-                    ans = "DX08 AI Expert: [THC HYDRA MASTER INTEL]\n- Purpose: High-speed authentication brute-forcer for SSH, FTP, and login portals.\n- Execution Script:\n  hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16 -V\n- Error Resolution: Reduce thread count (-t 4) if network drops connections due to rate-limiting.";
-                } else if(query.includes('error') || query.includes('fail') || query.includes('stuck') || query.includes('issue')) {
-                    ans = "DX08 AI Expert: [AUTONOMOUS ERROR DIAGNOSTICS & FIX]\n- Step 1: Run 'sudo apt --fix-broken install' to repair missing packages.\n- Step 2: Check active network binding via 'sudo netstat -tulnp' or verify if your interface is active.\n- Step 3: If persistent issues occur, contact support via Telegram: @dx08_support or Email: support@dx08sec.internal.";
-                } else if(query.includes('website') || query.includes('course') || query.includes('details')) {
-                    ans = "DX08 AI Expert: [WEBSITE ARCHITECTURE OVERVIEW]\n- This is a 999 INR premium cybersecurity laboratory dashboard (`labs.html`).\n- Features dual-mode architecture (White-Hat Defensive Auditing vs Black-Hat Unrestricted Offensive Red-Team).\n- Includes 3-column layout with sidebar tool arsenal, sequential execution console, and this Dedicated AI Knowledge Core.";
-                } else {
-                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + "]: Comprehensive knowledge base synchronized. Specify any tool (Nmap, Zphisher, Metasploit, Sqlmap, Hydra) for exact scripts, commands, and error resolution steps.";
-                }
-
-                consoleBox.innerHTML += "\n\n" + ans;
-                consoleBox.scrollTop = consoleBox.scrollHeight;
-                input.value = "";
-            }, 300);
-        }
-
-        function copyCurrentScript() {
-            if(!lastOutput) {
-                alert("No script loaded in terminal to copy!");
-                return;
-            }
-            navigator.clipboard.writeText(lastOutput).then(function() {
-                alert("Script copied successfully! Ready to paste in Kali Linux.");
-            }, function() {
-                alert("Failed to copy script.");
-            });
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-    </script>
-</body>
-</html>
+                    ans = "DX08 AI Expert: [METASPLOIT MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: C2 exploitation framework and multi-handler management
