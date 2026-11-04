@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div id="network-badge" class="net-status-badge">
-                TELEMETRY: INSPECTING LINK...
+                ISP & CARRIER: QUERYING LIVE IP...
             </div>
         </div>
 
@@ -160,8 +160,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v75.0 (Smart Hybrid Telemetry Active)
-[System Status] Select any tool from the sidebar or click '[00. DX08 Neural AI Knowledge Core]' to enter the dedicated AI Mentor Lab.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v80.0 (Live ISP Telemetry API Active)
+[System Status] Real-time IP carrier lookup enabled. Use terminal commands or AI mentor below.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -263,30 +263,35 @@
         let currentMode = "white";
         let isAiLabActive = false;
         let lastOutput = "";
-        let detectedNetworkMode = "Analyzing...";
+        let liveCarrierInfo = "Querying IP Gateway...";
 
-        // Smart Hybrid Network Inspector (Accurately differentiates Wi-Fi vs Mobile Data based on connection attributes)
+        // Real-time IP & ISP Telemetry API Check (Differentiates Mobile SIM vs Broadband/Wi-Fi accurately)
         window.addEventListener('DOMContentLoaded', () => {
             const badge = document.getElementById('network-badge');
-            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            
-            let type = connection ? connection.type : "";
-            let effectiveType = connection ? connection.effectiveType : "";
-            let downlink = connection ? connection.downlink : 10;
 
-            // If browser explicitly reports cellular or effective type is 2g/3g/4g with lower bandwidth, or mobile connection type matches
-            if (type === 'cellular' || effectiveType === 'slow-2g' || effectiveType === '2g' || effectiveType === '3g' || (effectiveType === '4g' && downlink < 5)) {
-                detectedNetworkMode = "MOBILE DATA (SIM / CELLULAR CARRIER)";
-                badge.style.color = "#ff3366";
-                badge.style.borderColor = "#ff3366";
-                badge.style.background = "rgba(255,51,102,0.05)";
-            } else {
-                detectedNetworkMode = "BROADBAND / WI-FI (HIGH-SPEED ETHERNET)";
-                badge.style.color = "#00ff66";
-                badge.style.borderColor = "#00ff66";
-                badge.style.background = "rgba(0,255,102,0.05)";
-            }
-            badge.innerText = "NETWORK LINK: " + detectedNetworkMode;
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    let org = (data.org || data.asn || "").toLowerCase();
+                    let ip = data.ip || "";
+                    
+                    // Check if provider belongs to mobile carriers (Jio, Airtel, Vi, BSNL cellular) or Broadband
+                    if (org.includes('jio') || org.includes('airtel') || org.includes('vodafone') || org.includes('idea') || org.includes('cellular') || org.includes('mobile')) {
+                        liveCarrierInfo = `MOBILE DATA (SIM CARRIER: ${data.org.toUpperCase()})`;
+                        badge.style.color = "#ff3366";
+                        badge.style.borderColor = "#ff3366";
+                        badge.style.background = "rgba(255,51,102,0.05)";
+                    } else {
+                        liveCarrierInfo = `BROADBAND / WI-FI (ISP: ${data.org ? data.org.toUpperCase() : 'FIXED LINE'})`;
+                        badge.style.color = "#00ff66";
+                        badge.style.borderColor = "#00ff66";
+                        badge.style.background = "rgba(0,255,102,0.05)";
+                    }
+                    badge.innerText = "NETWORK LINK: " + liveCarrierInfo;
+                })
+                .catch(err => {
+                    badge.innerText = "NETWORK LINK: BROADBAND / WI-FI (DIRECT GATEWAY)";
+                });
         });
 
         function switchMode(mode) {
@@ -328,7 +333,7 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v75.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v80.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
                                    "White-Hat defensive protocols, Black-Hat red-team scripts, and error logs.\n" +
@@ -344,7 +349,7 @@
             if(!TOOL_DB[currentModule]) return;
 
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [LINK: " + detectedNetworkMode + "][STEP " + step + "] " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [CARRIER: " + liveCarrierInfo + "][STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -383,7 +388,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v75.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v80.0";
                     input.value = "";
                     return;
                 } else {
@@ -426,7 +431,7 @@
                 } else if(query.includes('website') || query.includes('course') || query.includes('details')) {
                     ans = "DX08 AI Expert: [WEBSITE ARCHITECTURE OVERVIEW]\n- This is a 999 INR premium cybersecurity laboratory dashboard (`labs.html`).\n- Features dual-mode architecture (White-Hat Defensive Auditing vs Black-Hat Unrestricted Offensive Red-Team).\n- Includes 3-column layout with sidebar tool arsenal, sequential execution console, and this Dedicated AI Knowledge Core.";
                 } else {
-                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + ", Link: " + detectedNetworkMode + "]: Comprehensive knowledge base synchronized. Specify any tool (Nmap, Zphisher, Metasploit, Sqlmap, Hydra) for exact scripts, commands, and error resolution steps.";
+                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + ", Carrier: " + liveCarrierInfo + "]: Comprehensive knowledge base synchronized. Specify any tool (Nmap, Zphisher, Metasploit, Sqlmap, Hydra) for exact scripts, commands, and error resolution steps.";
                 }
 
                 consoleBox.innerHTML += "\n\n" + ans;
