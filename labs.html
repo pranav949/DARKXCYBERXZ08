@@ -34,7 +34,7 @@
         .brand-logo { display: flex; align-items: center; gap: 12px; }
         .logo-box { width: 40px; height: 40px; background: rgba(0,229,255,0.1); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 14px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,229,255,0.2); }
         
-        .net-status-badge { font-size: 10.5px; color: var(--defensive); border: 1px solid var(--defensive); padding: 5px 12px; border-radius: 4px; background: rgba(0,255,102,0.05); }
+        .net-status-badge { font-size: 10.5px; color: var(--defensive); border: 1px solid var(--defensive); padding: 5px 12px; border-radius: 4px; background: rgba(0,255,102,0.05); cursor: pointer; }
 
         .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
         .mode-btn { padding: 10px 20px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
@@ -102,8 +102,8 @@
                     <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Autonomous AI Operations Suite</p>
                 </div>
             </div>
-            <div id="network-badge" class="net-status-badge">
-                ISP & CARRIER: INSPECTING LINK...
+            <div id="network-badge" class="net-status-badge" onclick="toggleNetworkMode()" title="Click to toggle network mode">
+                INTERFACE: BROADBAND / WI-FI [TOGGLE]
             </div>
         </div>
 
@@ -160,8 +160,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v85.0 (Smart ISP Broadband Filter Active)
-[System Status] Fixed Fiber/Broadband detection logic. Use terminal commands or AI mentor below.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v95.0 (Interactive Telemetry Switch Active)
+[System Status] Click the top-right network badge anytime to toggle between Broadband/Wi-Fi and Mobile SIM data. Use terminal or AI mentor below.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -263,41 +263,24 @@
         let currentMode = "white";
         let isAiLabActive = false;
         let lastOutput = "";
-        let liveCarrierInfo = "Querying IP Gateway...";
+        let isWifiMode = true;
 
-        // Smart Fiber & Broadband vs Mobile Data Filter
-        window.addEventListener('DOMContentLoaded', () => {
+        // Toggle function so user/tester can instantly switch between Wi-Fi and Mobile SIM display
+        function toggleNetworkMode() {
+            isWifiMode = !isWifiMode;
             const badge = document.getElementById('network-badge');
-
-            fetch('https://ipapi.co/json/')
-                .then(res => res.json())
-                .then(data => {
-                    let org = (data.org || data.asn || "").toLowerCase();
-                    
-                    // Check if it's explicitly broadband / fiber / fixed line (JioFiber, Airtel Xstream, etc.)
-                    if (org.includes('fiber') || org.includes('broadband') || org.includes('ftth') || org.includes('dsl') || org.includes('cable') || org.includes('corp') || org.includes('enterprise') || org.includes('act') || org.includes('hathway')) {
-                        liveCarrierInfo = `BROADBAND / WI-FI (ISP: ${data.org.toUpperCase()})`;
-                        badge.style.color = "#00ff66";
-                        badge.style.borderColor = "#00ff66";
-                        badge.style.background = "rgba(0,255,102,0.05)";
-                    } else if (org.includes('jio') || org.includes('airtel') || org.includes('vodafone') || org.includes('idea')) {
-                        // If Jio/Airtel is detected without fiber keyword, check if user is on mobile or if it's fixed line gateway
-                        liveCarrierInfo = `BROADBAND / WI-FI (FIXED GATEWAY: ${data.org.toUpperCase()})`;
-                        badge.style.color = "#00ff66";
-                        badge.style.borderColor = "#00ff66";
-                        badge.style.background = "rgba(0,255,102,0.05)";
-                    } else {
-                        liveCarrierInfo = `BROADBAND / WI-FI (ISP: ${data.org ? data.org.toUpperCase() : 'FIXED LINE'})`;
-                        badge.style.color = "#00ff66";
-                        badge.style.borderColor = "#00ff66";
-                        badge.style.background = "rgba(0,255,102,0.05)";
-                    }
-                    badge.innerText = "NETWORK LINK: " + liveCarrierInfo;
-                })
-                .catch(err => {
-                    badge.innerText = "NETWORK LINK: BROADBAND / WI-FI (DIRECT GATEWAY)";
-                });
-        });
+            if (isWifiMode) {
+                badge.innerText = "INTERFACE: BROADBAND / WI-FI [TOGGLE]";
+                badge.style.color = "#00ff66";
+                badge.style.borderColor = "#00ff66";
+                badge.style.background = "rgba(0,255,102,0.05)";
+            } else {
+                badge.innerText = "INTERFACE: MOBILE DATA (SIM CARRIER) [TOGGLE]";
+                badge.style.color = "#ff3366";
+                badge.style.borderColor = "#ff3366";
+                badge.style.background = "rgba(255,51,102,0.05)";
+            }
+        }
 
         function switchMode(mode) {
             currentMode = mode;
@@ -338,7 +321,7 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v85.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v95.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
                                    "White-Hat defensive protocols, Black-Hat red-team scripts, and error logs.\n" +
@@ -353,8 +336,9 @@
             var consoleBox = document.getElementById('workspace-console');
             if(!TOOL_DB[currentModule]) return;
 
+            let linkType = isWifiMode ? "BROADBAND/WI-FI" : "MOBILE SIM";
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [CARRIER: " + liveCarrierInfo + "][STEP " + step + "] " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [" + linkType + "][STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -393,7 +377,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v85.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v95.0";
                     input.value = "";
                     return;
                 } else {
@@ -436,7 +420,7 @@
                 } else if(query.includes('website') || query.includes('course') || query.includes('details')) {
                     ans = "DX08 AI Expert: [WEBSITE ARCHITECTURE OVERVIEW]\n- This is a 999 INR premium cybersecurity laboratory dashboard (`labs.html`).\n- Features dual-mode architecture (White-Hat Defensive Auditing vs Black-Hat Unrestricted Offensive Red-Team).\n- Includes 3-column layout with sidebar tool arsenal, sequential execution console, and this Dedicated AI Knowledge Core.";
                 } else {
-                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + ", Link: " + liveCarrierInfo + "]: Comprehensive knowledge base synchronized. Specify any tool (Nmap, Zphisher, Metasploit, Sqlmap, Hydra) for exact scripts, commands, and error resolution steps.";
+                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + "]: Comprehensive knowledge base synchronized. Specify any tool (Nmap, Zphisher, Metasploit, Sqlmap, Hydra) for exact scripts, commands, and error resolution steps.";
                 }
 
                 consoleBox.innerHTML += "\n\n" + ans;
