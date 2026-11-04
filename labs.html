@@ -43,16 +43,17 @@
         .btn-black { background: rgba(255,51,102,0.05); color: var(--offensive); border-color: var(--offensive); }
         .btn-black.active, .btn-black:hover { background: var(--offensive); color: #000; box-shadow: 0 0 15px var(--offensive); }
 
-        .lab-grid { display: grid; grid-template-columns: 320px 1fr 350px; gap: 15px; }
+        .lab-grid { display: grid; grid-template-columns: 320px 1fr; gap: 15px; }
         .sidebar-panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; height: 800px; overflow-y: auto; }
-        .terminal-panel { background: #010203; border: 1px solid var(--border-color); padding: 15px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
-        .ai-panel { background: #010203; border: 1px solid var(--primary); padding: 15px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; box-shadow: 0 0 15px rgba(0,229,255,0.1); }
+        
+        .workspace-panel { background: #010203; border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; display: flex; flex-direction: column; height: 800px; }
         
         .tool-category { font-size: 10.5px; color: var(--primary); margin: 12px 0 6px 0; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,229,255,0.2); padding-bottom: 3px; }
         .tool-item { display: flex; align-items: center; gap: 10px; padding: 7px 8px; margin: 4px 0; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1); color: #a5f3fc; font-size: 11px; cursor: pointer; border-radius: 4px; transition: 0.2s; font-family: 'Courier Prime', monospace; }
         .tool-item:hover { background: var(--accent-glow); color: #fff; border-color: var(--primary); transform: translateX(3px); }
         
         .tool-badge { width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; font-family: 'Courier Prime', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); text-align: center; }
+        .badge-ai { background: rgba(0, 229, 255, 0.2); color: var(--primary); border-color: var(--primary); }
         .badge-nmap { background: rgba(255, 0, 128, 0.15); color: #ff0080; border-color: #ff0080; }
         .badge-gobuster { background: rgba(0, 255, 102, 0.15); color: #00ff66; border-color: #00ff66; }
         .badge-nikto { background: rgba(255, 170, 0, 0.15); color: #ffaa00; border-color: #ffaa00; }
@@ -68,31 +69,22 @@
         .badge-netcat { background: rgba(100, 150, 255, 0.15); color: #6496ff; border-color: #6496ff; }
         .badge-socat { background: rgba(200, 100, 255, 0.15); color: #c864ff; border-color: #c864ff; }
         
-        .action-bar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
-        .seq-btn { background: rgba(0, 229, 255, 0.08); border: 1px solid var(--border-color); color: var(--primary); padding: 4px 10px; font-size: 10px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
+        .action-bar { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+        .seq-btn { background: rgba(0, 229, 255, 0.08); border: 1px solid var(--border-color); color: var(--primary); padding: 5px 12px; font-size: 10.5px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
         .seq-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        .terminal-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .copy-btn { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 3px 8px; font-size: 9.5px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
+        .terminal-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .copy-btn { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 4px 10px; font-size: 10px; cursor: pointer; border-radius: 3px; font-family: 'Courier Prime', monospace; transition: 0.2s; }
         .copy-btn:hover { background: var(--primary); color: #000; }
 
-        .lab-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 15px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--terminal-text); overflow-y: auto; line-height: 1.5; border-radius: 4px; white-space: pre-wrap; }
+        .workspace-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 20px; font-family: 'Courier Prime', monospace; font-size: 12.5px; color: var(--terminal-text); overflow-y: auto; line-height: 1.6; border-radius: 4px; white-space: pre-wrap; }
         
-        .ai-console { flex: 1; background: #000; border: 1px solid rgba(0,229,255,0.3); padding: 12px; font-family: 'Courier Prime', monospace; font-size: 11.5px; color: #a5f3fc; overflow-y: auto; line-height: 1.5; border-radius: 4px; margin-bottom: 10px; white-space: pre-wrap; }
-        .ai-input-group { display: flex; gap: 8px; }
-        .ai-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: #fff; padding: 10px 12px; font-family: 'Courier Prime', monospace; font-size: 11.5px; outline: none; border-radius: 4px; }
-        .ai-input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
-        .ai-send-btn { padding: 10px 16px; background: rgba(0, 229, 255, 0.2); border: 1px solid var(--primary); color: var(--primary); font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-        .ai-send-btn:hover { background: var(--primary); color: #000; }
-
-        .support-box { margin-top: 10px; padding: 10px; background: rgba(0, 229, 255, 0.03); border: 1px dashed var(--border-color); border-radius: 4px; font-size: 10.5px; color: rgba(225,250,255,0.7); text-align: center; }
-        .support-box a { color: var(--primary); text-decoration: none; font-weight: bold; }
-
-        .lab-input-group { display: flex; gap: 10px; margin-top: 12px; }
-        .lab-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 10px 12px; font-family: 'Courier Prime', monospace; font-size: 12px; outline: none; border-radius: 4px; }
-        .lab-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
-        .launch-btn { padding: 10px 20px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+        .workspace-input-group { display: flex; gap: 10px; margin-top: 15px; }
+        .workspace-input { flex: 1; background: #010203; border: 1px solid var(--border-color); color: var(--primary); padding: 12px 15px; font-family: 'Courier Prime', monospace; font-size: 13px; outline: none; border-radius: 4px; }
+        .workspace-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+        .launch-btn { padding: 12px 24px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--primary); color: var(--primary); font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
         .launch-btn:hover { background: var(--primary); color: #020303; box-shadow: 0 0 20px var(--primary); }
+        
         .back-link { display: inline-block; margin-bottom: 8px; color: var(--primary); font-size: 10px; text-decoration: none; }
         .section-group { display: none; }
         .section-group.active { display: block; }
@@ -107,11 +99,11 @@
                 <div class="logo-box">DX</div>
                 <div>
                     <h2 style="font-size: 18px; color: #fff; font-family: 'Courier Prime', monospace; letter-spacing: 1px;">DX08 ENTERPRISE CYBER LABS</h2>
-                    <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Dual-Mode Operations Suite</p>
+                    <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Autonomous AI Operations Suite</p>
                 </div>
             </div>
             <div id="network-badge" class="net-status-badge">
-                ANALYZING ROUTING INTERFACE...
+                TELEMETRY: INSPECTING LINK...
             </div>
         </div>
 
@@ -122,7 +114,10 @@
 
         <div class="lab-grid">
             <div class="sidebar-panel">
-                <div id="sec-white" class="section-group active">
+                <div class="tool-category">Autonomous Intelligence Hub</div>
+                <div class="tool-item" onclick="openAiLab()"><div class="tool-badge badge-ai">AI</div>00. DX08 Neural AI Knowledge Core</div>
+
+                <div id="sec-white" class="section-group active" style="margin-top: 15px;">
                     <div style="font-size: 10.5px; color: var(--defensive); margin-bottom: 8px; font-weight: bold;">[DEFENSIVE & AUDITING TOOLS]</div>
                     
                     <div class="tool-category">Reconnaissance</div>
@@ -133,7 +128,7 @@
                     <div class="tool-item" onclick="loadModule('searchsploit')"><div class="tool-badge badge-search">EXDB</div>05. Searchsploit Exploit-DB</div>
                 </div>
 
-                <div id="sec-black" class="section-group">
+                <div id="sec-black" class="section-group" style="margin-top: 15px;">
                     <div style="font-size: 10.5px; color: var(--offensive); margin-bottom: 8px; font-weight: bold;">[RED-TEAM ATTACK MATRIX]</div>
                     
                     <div class="tool-category">Exploitation Frameworks</div>
@@ -153,10 +148,10 @@
                 </div>
             </div>
 
-            <div class="terminal-panel">
+            <div class="workspace-panel">
                 <div class="terminal-header-bar">
-                    <div style="font-size: 10px; color: var(--primary);">KALI LINUX ROOT CONSOLE // ENTERPRISE TERMINAL</div>
-                    <button class="copy-btn" onclick="copyCurrentScript()">COPY SCRIPT</button>
+                    <div id="workspace-title" style="font-size: 11px; color: var(--primary);">KALI LINUX ROOT CONSOLE // ENTERPRISE TERMINAL</div>
+                    <button class="copy-btn" id="workspace-copy-btn" onclick="copyCurrentScript()">COPY SCRIPT</button>
                 </div>
 
                 <div class="action-bar" id="action-bar">
@@ -165,29 +160,12 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="lab-console" id="terminal-console">DX08 Master Enterprise Security Core v60.0 (Advanced Telemetry Active)
-[System Status] Real-time routing interface inspector enabled. Use terminal commands or AI expert mentor below.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v75.0 (Smart Hybrid Telemetry Active)
+[System Status] Select any tool from the sidebar or click '[00. DX08 Neural AI Knowledge Core]' to enter the dedicated AI Mentor Lab.</div>
                 
-                <div class="lab-input-group">
-                    <input type="text" id="terminal-input" class="lab-input" placeholder="Type tool name (e.g., nmap, metasploit, zphisher)..." onkeydown="if(event.key === 'Enter') processCommand()">
-                    <button class="launch-btn" onclick="processCommand()">EXECUTE</button>
-                </div>
-            </div>
-
-            <div class="ai-panel">
-                <div style="font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: bold; text-transform: uppercase;">[DX08 ENTERPRISE AI EXPERT & MENTOR]</div>
-                
-                <div class="ai-console" id="ai-console">DX08-AI Expert: Online. Synchronized with connection interface telemetry. Ask me about your network routing, tools, or error resolution!</div>
-                
-                <div class="ai-input-group">
-                    <input type="text" id="ai-input" class="ai-input" placeholder="Ask AI about network routing, tools, or errors..." onkeydown="if(event.key === 'Enter') askAiMentor()">
-                    <button class="ai-send-btn" onclick="askAiMentor()">QUERY</button>
-                </div>
-
-                <div class="support-box">
-                    Enterprise Technical Support Desk:<br>
-                    Email: <a href="mailto:support@dx08sec.internal">support@dx08sec.internal</a><br>
-                    Secure Channel: <a href="https://t.me/dx08_support" target="_blank">@dx08_support</a>
+                <div class="workspace-input-group">
+                    <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
+                    <button class="launch-btn" id="workspace-action-btn" onclick="handleWorkspaceInput()">EXECUTE</button>
                 </div>
             </div>
         </div>
@@ -283,32 +261,32 @@
 
         let currentModule = "nmap";
         let currentMode = "white";
+        let isAiLabActive = false;
         let lastOutput = "";
         let detectedNetworkMode = "Analyzing...";
 
-        // Smart Hybrid Network Profiler (Detects Mobile Device / SIM vs Desktop / Wi-Fi via UA & Connection Metrics)
+        // Smart Hybrid Network Inspector (Accurately differentiates Wi-Fi vs Mobile Data based on connection attributes)
         window.addEventListener('DOMContentLoaded', () => {
             const badge = document.getElementById('network-badge');
-            const ua = navigator.userAgent.toLowerCase();
             const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            
+            let type = connection ? connection.type : "";
+            let effectiveType = connection ? connection.effectiveType : "";
+            let downlink = connection ? connection.downlink : 10;
 
-            let isMobileDevice = /android|iphone|ipad|ipod|mobile|blackberry|iemobile|opera mini/i.test(ua);
-            let effectiveType = connection ? connection.effectiveType : "unknown";
-
-            // If user is on a mobile phone/tablet, it's 99% Mobile Data (SIM); if desktop, it's Broadband / Wi-Fi
-            if (isMobileDevice) {
-                detectedNetworkMode = "MOBILE DATA (SIM / CELLULAR CARRIER - " + effectiveType.toUpperCase() + ")";
+            // If browser explicitly reports cellular or effective type is 2g/3g/4g with lower bandwidth, or mobile connection type matches
+            if (type === 'cellular' || effectiveType === 'slow-2g' || effectiveType === '2g' || effectiveType === '3g' || (effectiveType === '4g' && downlink < 5)) {
+                detectedNetworkMode = "MOBILE DATA (SIM / CELLULAR CARRIER)";
                 badge.style.color = "#ff3366";
                 badge.style.borderColor = "#ff3366";
                 badge.style.background = "rgba(255,51,102,0.05)";
             } else {
-                detectedNetworkMode = "BROADBAND / WI-FI (DESKTOP ETHERNET LINK)";
+                detectedNetworkMode = "BROADBAND / WI-FI (HIGH-SPEED ETHERNET)";
                 badge.style.color = "#00ff66";
                 badge.style.borderColor = "#00ff66";
                 badge.style.background = "rgba(0,255,102,0.05)";
             }
-
-            badge.innerText = "INTERFACE: " + detectedNetworkMode;
+            badge.innerText = "NETWORK LINK: " + detectedNetworkMode;
         });
 
         function switchMode(mode) {
@@ -332,17 +310,41 @@
         }
 
         function loadModule(name) {
+            isAiLabActive = false;
             currentModule = name;
-            document.getElementById('terminal-input').value = name;
+            document.getElementById('workspace-title').innerText = "KALI LINUX ROOT CONSOLE // " + name.toUpperCase() + " MODULE";
+            document.getElementById('action-bar').style.display = "flex";
+            document.getElementById('workspace-copy-btn').style.display = "block";
+            document.getElementById('workspace-action-btn').innerText = "EXECUTE";
+            document.getElementById('workspace-input').value = name;
             processCommand();
         }
 
+        function openAiLab() {
+            isAiLabActive = true;
+            document.getElementById('workspace-title').innerText = "DX08 NEURAL AI KNOWLEDGE CORE // AUTONOMOUS MENTOR LAB";
+            document.getElementById('action-bar').style.display = "none";
+            document.getElementById('workspace-copy-btn').style.display = "none";
+            document.getElementById('workspace-action-btn').innerText = "ASK AI";
+            
+            var consoleBox = document.getElementById('workspace-console');
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v75.0\n" +
+                                   "----------------------------------------------------------------------------------\n" +
+                                   "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
+                                   "White-Hat defensive protocols, Black-Hat red-team scripts, and error logs.\n" +
+                                   "Type any tool name (e.g., 'zphisher', 'metasploit', 'nmap') or paste your terminal error below for instant solutions!\n" +
+                                   "----------------------------------------------------------------------------------";
+            document.getElementById('workspace-input').value = "";
+            document.getElementById('workspace-input').placeholder = "Ask AI about any tool, script, or paste error here...";
+        }
+
         function runSequence(step) {
-            var consoleBox = document.getElementById('terminal-console');
+            if(isAiLabActive) return;
+            var consoleBox = document.getElementById('workspace-console');
             if(!TOOL_DB[currentModule]) return;
 
             let script = TOOL_DB[currentModule]["seq" + step];
-            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [INTERFACE: " + detectedNetworkMode + "][STEP " + step + "] " + currentModule + "...";
+            consoleBox.innerHTML += "\n\nroot@dx08-kali:~# [LINK: " + detectedNetworkMode + "][STEP " + step + "] " + currentModule + "...";
             consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
@@ -352,9 +354,17 @@
             }, 250);
         }
 
+        function handleWorkspaceInput() {
+            if(isAiLabActive) {
+                processAiQuery();
+            } else {
+                processCommand();
+            }
+        }
+
         function processCommand() {
-            var input = document.getElementById('terminal-input');
-            var consoleBox = document.getElementById('terminal-console');
+            var input = document.getElementById('workspace-input');
+            var consoleBox = document.getElementById('workspace-console');
             var raw = input.value.trim();
             var cmd = raw.toLowerCase();
 
@@ -367,12 +377,13 @@
                 var res = "";
                 if(TOOL_DB[cmd]) {
                     currentModule = cmd;
-                    res = "[+ ACTIVE MODULE: " + TOOL_DB[cmd].name + " (Interface: " + detectedNetworkMode + ") +\n\n" +
+                    document.getElementById('workspace-title').innerText = "KALI LINUX ROOT CONSOLE // " + cmd.toUpperCase() + " MODULE";
+                    res = "[+ ACTIVE MODULE: " + TOOL_DB[cmd].name + " (Mode: " + currentMode.toUpperCase() + ") +\n\n" +
                           "1. SETUP:\n   " + TOOL_DB[cmd].seq1 + "\n\n" +
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v60.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v75.0";
                     input.value = "";
                     return;
                 } else {
@@ -386,38 +397,40 @@
             }, 200);
         }
 
-        function askAiMentor() {
-            var input = document.getElementById('ai-input');
-            var aiConsole = document.getElementById('ai-console');
+        function processAiQuery() {
+            var input = document.getElementById('workspace-input');
+            var consoleBox = document.getElementById('workspace-console');
             var q = input.value.trim();
 
             if(!q) return;
 
-            aiConsole.innerHTML += "\n\nOperator: " + escapeHtml(q);
-            aiConsole.scrollTop = aiConsole.scrollHeight;
+            consoleBox.innerHTML += "\n\nOperator@dx08-ai-lab:~$ " + escapeHtml(q);
+            consoleBox.scrollTop = consoleBox.scrollHeight;
 
             setTimeout(function() {
                 let query = q.toLowerCase();
                 let ans = "";
 
-                if(query.includes('network') || query.includes('sim') || query.includes('wifi') || query.includes('mobile') || query.includes('broadband')) {
-                    ans = "DX08-AI Expert: [ROUTING TELEMETRY REPORT]\n- Active Client Profile: " + detectedNetworkMode + "\n- Analysis: Determined via hardware device signature and network socket framing. Mobile device access triggers Cellular/SIM telemetry, whereas desktop access maps to broadband/Wi-Fi.";
-                } else if(query.includes('zphisher')) {
-                    ans = "DX08-AI Expert: [ZPHISHER FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command:\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && bash zphisher.sh\n- Error Fix: Kill conflicting ports using 'sudo fuser -k 8080/tcp'.";
+                if(query.includes('zphisher')) {
+                    ans = "DX08 AI Expert: [ZPHISHER MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Automated credential harvesting and social engineering core.\n- Installation & Execution Script:\n  sudo apt update && sudo apt install git curl php python3 -y\n  git clone https://github.com/htr-tech/zphisher.git\n  cd zphisher && chmod +x zphisher.sh && bash zphisher.sh\n- Error Resolution: If port 8080 or port 80 is occupied, kill background processes using 'sudo fuser -k 8080/tcp'.";
                 } else if(query.includes('nmap')) {
-                    ans = "DX08-AI Expert: [NMAP FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command: sudo nmap -sS -sV -O -T4 <target_ip>\n- Error Fix: Add '-Pn' if target blocks ping probes.";
+                    ans = "DX08 AI Expert: [NMAP MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Network discovery, port scanning, and OS fingerprinting.\n- Execution Script:\n  sudo nmap -sS -sV -O -T4 --script vuln <target_ip>\n- Error Resolution: If host appears down, append '-Pn' to bypass ICMP ping blocks.";
                 } else if(query.includes('metasploit') || query.includes('msf')) {
-                    ans = "DX08-AI Expert: [METASPLOIT FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command: msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; exploit\"\n- Error Fix: Run 'sudo msfdb init' first.";
+                    ans = "DX08 AI Expert: [METASPLOIT MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: C2 exploitation framework and multi-handler management.\n- Installation & Execution Script:\n  curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/installer/msfinstall > msfinstall\n  chmod +x msfinstall && sudo ./msfinstall && sudo msfdb init\n  msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD python/meterpreter/reverse_tcp; exploit\"\n- Error Resolution: Run 'sudo msfdb init' to initialize the local PostgreSQL workspace database.";
                 } else if(query.includes('sqlmap')) {
-                    ans = "DX08-AI Expert: [SQLMAP FULL DETAILS]\n- Mode: " + currentMode.toUpperCase() + "\n- Command: python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --dbs --batch\n- Error Fix: Use '--tamper=space2comment' for WAF evasion.";
-                } else if(query.includes('error') || query.includes('fail') || query.includes('stuck')) {
-                    ans = "DX08-AI Expert: [TROUBLESHOOTING PROTOCOL]\n- Run 'sudo apt --fix-broken install', check active socket listeners via 'sudo netstat -tulnp', or reach out to support below.";
+                    ans = "DX08 AI Expert: [SQLMAP MASTER INTEL]\n- Mode Context: " + currentMode.toUpperCase() + "\n- Purpose: Automated SQL injection detection and database takeover.\n- Execution Script:\n  git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev && cd sqlmap-dev\n  python3 sqlmap.py -u \"http://<target_ip>/page.php?id=1\" --risk=3 --level=5 --batch\n- Error Resolution: If WAF blocks requests, use tamper scripts like '--tamper=space2comment'.";
+                } else if(query.includes('hydra')) {
+                    ans = "DX08 AI Expert: [THC HYDRA MASTER INTEL]\n- Purpose: High-speed authentication brute-forcer for SSH, FTP, and login portals.\n- Execution Script:\n  hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://<target_ip> -t 16 -V\n- Error Resolution: Reduce thread count (-t 4) if network drops connections due to rate-limiting.";
+                } else if(query.includes('error') || query.includes('fail') || query.includes('stuck') || query.includes('issue')) {
+                    ans = "DX08 AI Expert: [AUTONOMOUS ERROR DIAGNOSTICS & FIX]\n- Step 1: Run 'sudo apt --fix-broken install' to repair missing packages.\n- Step 2: Check active network binding via 'sudo netstat -tulnp' or verify if your interface is active.\n- Step 3: If persistent issues occur, contact support via Telegram: @dx08_support or Email: support@dx08sec.internal.";
+                } else if(query.includes('website') || query.includes('course') || query.includes('details')) {
+                    ans = "DX08 AI Expert: [WEBSITE ARCHITECTURE OVERVIEW]\n- This is a 999 INR premium cybersecurity laboratory dashboard (`labs.html`).\n- Features dual-mode architecture (White-Hat Defensive Auditing vs Black-Hat Unrestricted Offensive Red-Team).\n- Includes 3-column layout with sidebar tool arsenal, sequential execution console, and this Dedicated AI Knowledge Core.";
                 } else {
-                    ans = "DX08-AI Expert: Analyzing query '" + escapeHtml(q) + "' [Interface Profile: " + detectedNetworkMode + "]: Synchronized. Ask me about any exploit script, command, or routing telemetry.";
+                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "' [Active Mode: " + currentMode.toUpperCase() + ", Link: " + detectedNetworkMode + "]: Comprehensive knowledge base synchronized. Specify any tool (Nmap, Zphisher, Metasploit, Sqlmap, Hydra) for exact scripts, commands, and error resolution steps.";
                 }
 
-                aiConsole.innerHTML += "\n\n" + ans;
-                aiConsole.scrollTop = aiConsole.scrollHeight;
+                consoleBox.innerHTML += "\n\n" + ans;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
                 input.value = "";
             }, 300);
         }
